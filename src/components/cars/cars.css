@@ -1,0 +1,23 @@
+.details > div:not(:last-child) {
+  position: relative;
+}
+.details > div:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.19);
+  margin-left: 20px;
+  bottom: 0;
+  width: 80%;
+}
+@media ((min-width:1025px) and (max-width :1151px)) {
+    .update > button{
+     display: block;
+     width: 100%;
+     margin-bottom: 10px;
+
+    }
+    .update button svg{
+        margin: 0 auto;
+    }
+}
