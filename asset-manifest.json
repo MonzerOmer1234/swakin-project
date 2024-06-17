@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/swakin-project/static/css/main.28ed4a57.css",
+    "main.js": "/swakin-project/static/js/main.3d6aa052.js",
+    "static/js/453.050be174.chunk.js": "/swakin-project/static/js/453.050be174.chunk.js",
+    "index.html": "/swakin-project/index.html",
+    "main.28ed4a57.css.map": "/swakin-project/static/css/main.28ed4a57.css.map",
+    "main.3d6aa052.js.map": "/swakin-project/static/js/main.3d6aa052.js.map",
+    "453.050be174.chunk.js.map": "/swakin-project/static/js/453.050be174.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28ed4a57.css",
+    "static/js/main.3d6aa052.js"
+  ]
+}
