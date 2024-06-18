@@ -1,10 +1,18 @@
+import carImg from '../../imgs/marcedes.jpg';
+
 export default function CarItem(){
     return <>
     <div class="col-span-4 details" style={{ boxShadow: "0  0 10px #ddd" }}>
-          <div className="p-5">
+          <div className="p-5 flex">
+            <div>
+              <img src={carImg} alt="" style={{width : '100px' , height : '100px'}} />
+            </div>
+            <div className='ms-5'>
+
             <h1 className=" text-center font-bold text-xl">Marceds Benz</h1>
             <h1 className=" text-center font-bold text-xl">مرسيدس بنز</h1>
             <p className="text-center text-gray-500">C-class C 220 D</p>
+            </div>
           </div>
           <div>
             <p className="p-5 me-5 flex">
