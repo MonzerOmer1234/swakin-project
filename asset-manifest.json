@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/swakin-project/static/css/main.c7e2c5c3.css",
-    "main.js": "/swakin-project/static/js/main.2ed7cf57.js",
+    "main.css": "/swakin-project/static/css/main.62f529bf.css",
+    "main.js": "/swakin-project/static/js/main.b231c72f.js",
     "static/js/453.050be174.chunk.js": "/swakin-project/static/js/453.050be174.chunk.js",
-    "static/media/logo.jpg": "/swakin-project/static/media/logo.717ff0a08a6157d8eecc.jpg",
+    "static/media/mrs-lg.png": "/swakin-project/static/media/mrs-lg.950b17e1fa5e32e60b26.png",
+    "static/media/mrs.png": "/swakin-project/static/media/mrs.91ab0c304181f8f00054.png",
     "index.html": "/swakin-project/index.html",
-    "main.c7e2c5c3.css.map": "/swakin-project/static/css/main.c7e2c5c3.css.map",
-    "main.2ed7cf57.js.map": "/swakin-project/static/js/main.2ed7cf57.js.map",
+    "main.62f529bf.css.map": "/swakin-project/static/css/main.62f529bf.css.map",
+    "main.b231c72f.js.map": "/swakin-project/static/js/main.b231c72f.js.map",
     "453.050be174.chunk.js.map": "/swakin-project/static/js/453.050be174.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c7e2c5c3.css",
-    "static/js/main.2ed7cf57.js"
+    "static/css/main.62f529bf.css",
+    "static/js/main.b231c72f.js"
   ]
 }
