@@ -1,21 +1,23 @@
 @media ((min-width:1025px) and (max-width : 1151px)) {
-    .parent{
+    /* .parent{
         grid-template-columns: repeat(1 , minmax(0 , 1fr)) !important;
-    }
+    } */
     .booking{
         justify-content: center;
        
     }
-    .booking-btn{
+    /* .booking-btn{
         margin-left: 0;
-    }
+    } */
     .car-header{
         justify-content: flex-start !important;
     }
     .car-btn{
         margin-left: 350px;
     }
-    .book-btn{
+    /* .book-btn{
         margin-left: 300px ;
-    }
+    } */
 }
+
+  

@@ -1,19 +1,24 @@
-export default function DashboardContentTwo({height}){
-  return <>
- <div
- 
+export default function DashboardContentTwo() {
+  return (
+    <>
+      <div
         style={{
-          height: {height},
-          boxShadow: "0  0 10px #ddd",
+          height: "auto",
+          backgroundColor: "white",
           borderRadius: "8px",
-          
+          border: "1px solid #F1F1F2",
+          marginBottom: '20px',
+          marginLeft : '20px',
+          marginTop :'20px',
+          width : '90%'
         }}
       >
+        
         <div
-          className="container ms-2  flex p-4 gap-4 items-center"
-          style={{ borderBottom: "1px solid #80808030" }}
+          className="container  m-5  flex  gap-4 items-center"
+          
         >
-          <div className="bg-gray-200 h-[20px] w-[20px]">
+          <div className="bg-[#F1F1F2] h-[20px] w-[20px]">
             <svg
               className="size-4 my-[0.5px] ms-[0.5px]"
               xmlns="http://www.w3.org/2000/svg"
@@ -32,18 +37,18 @@ export default function DashboardContentTwo({height}){
               <path d="M14.5 5H9.5V3C9.5 2.45 9.95 2 10.5 2H13.5C14.05 2 14.5 2.45 14.5 3V5Z" />
             </svg>
           </div>
-          <span className="font-bold">Journey #4545</span>
+          <span className="font-bold text-[#1F2937]">Journey #4545</span>
           <a
             href="#status"
-            className="block  h-[30px] bg-green-200 rounded-full w-[80px] flex items-center justify-center "
+            className="  h-[30px] bg-[#CCFBF1] rounded-full w-[80px] flex items-center justify-center "
           >
             <span
-              className="block bg-green-400 rounded-full me-[5px] mt-[4px]"
+              className="block bg-[#115E59] rounded-full me-[5px] mt-[4px]"
               style={{ width: "5px", height: "5px", borderRadius: "50%" }}
             ></span>{" "}
-            status
+            <span className="text-[#115E59]">status</span>
           </a>
-          <span className="  font-bold">12,500SR</span>
+          <span className=" ms-auto me-[2.25rem] font-bold text-[#1F2937]">12,500SR</span>
         </div>
         <p className="mt-5 ps-6 flex items-center gap-4">
           {" "}
@@ -64,8 +69,8 @@ export default function DashboardContentTwo({height}){
             <path d="M19 8V11.8L13.49 9.59C12.53 9.21 11.47 9.21 10.51 9.59L5 11.8V8C5 6.35 6.35 5 8 5H16C17.65 5 19 6.35 19 8Z" />
             <path d="M14.5 5H9.5V3C9.5 2.45 9.95 2 10.5 2H13.5C14.05 2 14.5 2.45 14.5 3V5Z" />
           </svg>
-          <span className=" text-gray-500">Ship Name</span>
-          <span className=" font-bold">New Titanic 3224</span>
+          <span className=" text-[#1F2937]">Ship Name</span>
+          <span className=" font-bold text-[#1F2937]">New Titanic 3224</span>
         </p>
         <ol
           className="flex items-center whitespace-nowrap py-3 ps-6 mt-5 ms-7  w-[87%] "
@@ -80,7 +85,7 @@ export default function DashboardContentTwo({height}){
               href="#"
             >
               start Location <br />{" "}
-              <span className=" font-bold block text-blue-600">Dubai</span>
+              <span className=" font-bold block text-[#1F2937]">Dubai</span>
             </a>
             <svg
               className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400 dark:text-neutral-600"
@@ -103,7 +108,7 @@ export default function DashboardContentTwo({height}){
               href="#"
             >
               Stop <br />{" "}
-              <span className=" font-bold text-blue-600">Egypt</span>
+              <span className=" font-bold text-[#1F2937]">Egypt</span>
             </a>
             <svg
               className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400 dark:text-neutral-600"
@@ -121,41 +126,58 @@ export default function DashboardContentTwo({height}){
             </svg>
           </li>
           <li
-            className="flex flex-col items-center text-sm font-semibold text-gray-800 truncate dark:text-neutral-200"
+            className="flex flex-col items-center text-sm font-semibold text-gray-500 truncate dark:text-neutral-200"
             aria-current="page"
           >
             Destination <br />
-            <span className=" font-bold text-blue-600">Portsudan</span>
+            <span className=" font-bold text-[#1F2937]">Portsudan</span>
           </li>
         </ol>
-        <div className="ms-2 w-[90%] mt-4" style={{borderBottom : '1px solid rgba(128 , 128 , 128 , 0.19)'}}>
-        <div className="flex gap-3 items-center mt-10 ">
-          <p
-            className=" text-gray-600 bg-gray-300 p-2 "
+        <div
+          className="ms-2 w-[90%] mt-4"
+          style={{ borderBottom: "1px solid rgba(128 , 128 , 128 , 0.19)" }}
+        >
+          <div className="flex gap-3 ms-5 items-center mt-10 ">
+            <p
+              className=" text-gray-600 font-bold bg-[#F5F6F6] p-2 "
+              style={{ borderRadius: "5px" , fontFamily: 'Inter , sans-serif'}}
+            >
+              Departure Date <span className=" text-[#1F2937]">23-05-2024</span>
+            </p>
+            <p
+              className="text-gray-600 font-bold  bg-[#F5F6F6] p-2"
+              style={{ borderRadius: "5px" , fontFamily: 'Inter , sans-serif' }}
+            >
+              Duration <span className=" text-[#1F2937]">4 Days</span>
+            </p>
+          </div>
+          <div className="flex ms-5 mb-3 gap-3 items-center mt-10 ">
+            <p
+              className=" text-gray-600 font-bold bg-[#F5F6F6] p-2 "
+              style={{ borderRadius: "5px" }}
+            >
+              Arrival At <span className=" text-[#1F2937]">23-05-2024</span>
+            </p>
+            <p
+              className="text-gray-600 font-bold bg-[#F5F6F6] p-2"
+              style={{ borderRadius: "5px" }}
+            >
+              Number of cars <span className=" text-[#1F2937]">50</span>
+            </p>
+          </div>
+        </div>
+        <div className="flex ms-5 p-6 items-center">
+          <p>
+            Available Seats : <span className=" text-[#1F2937]"> 4</span>
+          </p>
+          <button
+            className=" bg-[#04036B] ms-auto text-white p-3 book-btn"
             style={{ borderRadius: "5px" }}
           >
-            Departure Date <span className=" text-blue-600">23-05-2024</span>
-          </p>
-          <p className="text-gray-600 bg-gray-300 p-2"   style={{ borderRadius: "5px" }}>
-            Duration <span className=" text-blue-600">4 Days</span>
-          </p>
-        </div>
-        <div className="flex mb-3 gap-3 items-center mt-10 ">
-          <p
-            className=" text-gray-600 bg-gray-300 p-2 "
-            style={{ borderRadius: "5px"  }}
-          >
-            Arrival At <span className=" text-blue-600">23-05-2024</span>
-          </p>
-          <p className="text-gray-600 bg-gray-300 p-2"   style={{ borderRadius: "5px" }}>
-            Number of cars <span className=" text-blue-600">50</span>
-          </p>
-        </div>
-        </div>
-        <div className="flex p-6 items-center">
-          <p>Available Seats : <span className=" text-blue-600">  4</span></p>
-          <button className=" bg-blue-600 text-white p-3 book-btn ms-[100px]" style={{borderRadius : '5px'}}>Book Now</button>
+            Book Now
+          </button>
         </div>
       </div>
-  </>
+    </>
+  );
 }

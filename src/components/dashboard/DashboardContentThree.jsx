@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import useOutsideClickHook from "./useOutsideClick";
 import "./modal.css";
 import RegisterModal from "../../UI/RegisterModal";
+import marcedesCar from "../../imgs/mrs.png";
 
 export default function DashboardContentThree() {
   const ref = useRef();
@@ -39,12 +40,10 @@ export default function DashboardContentThree() {
             setShowContent={setShowContent}
             setCarName={setCarName}
             setCarModel={setCarModel}
-            setCarArName={setCarArName}
-            setCarArModel={setCarArModel}
+          
             carName={carName}
             carModel={carModel}
-            carArName={carArName}
-            carArModel={carArModel}
+           
             handleSubmit={handleSubmit}
             handleReset={handleReset}
           />
@@ -53,9 +52,10 @@ export default function DashboardContentThree() {
 
       <div
         style={{
-          height: "400px",
-          boxShadow: "0  0 10px #ddd",
-          borderRadius: "5px",
+          height: "auto",
+          backgroundColor: "white",
+          borderRadius: "8px",
+          border: "1px solid #E5E7EB",
         }}
         className=" p-6"
       >
@@ -63,7 +63,7 @@ export default function DashboardContentThree() {
           <h1>Cars</h1>
           <button
             onClick={() => setShowContent(true)}
-            className="  bg-blue-800 flex py-2 w-[150px] car-btn"
+            className="  bg-[#04036B] flex py-2 w-[150px] car-btn"
             style={{ borderRadius: "5px" }}
           >
             <svg
@@ -86,24 +86,54 @@ export default function DashboardContentThree() {
         </div>
         <div className="flex mt-5 text-sm justify-between gap-2 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           <p className=" text-gray-500">
-            <span className=" font-bold text-blue-800">Marcedes Benz</span>
-            <br />
-            model - C Class - C220
+            <div className="flex items-center">
+              <img
+                src={marcedesCar}
+                alt="marcedes car"
+                width={"53px"}
+                height={"53px"}
+              />
+              <span className=" font-bold text-[#1F2937] ms-3">
+                Marcedes Benz
+                <br />
+                model - C Class - C220
+              </span>
+            </div>
           </p>
           <div className=" text-sm">
-            <span>Chassis Number</span>
+            <span
+              className="text-[#1F2937] font-bold "
+              style={{ fontFamily: "Inter , sans-serif" }}
+            >
+              Chassis Number
+            </span>
             <br />
             <span className=" text-gray-500">3235546645789</span>
           </div>
         </div>
         <div className="flex mt-5 text-sm justify-between gap-2 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           <p className=" text-gray-500">
-            <span className=" font-bold text-blue-800">Marcedes Benz</span>
-            <br />
-            model - C Class - C220
+            <div className="flex items-center">
+              <img
+                src={marcedesCar}
+                alt="marcedes car"
+                width={"53px"}
+                height={"53px"}
+              />
+              <span className=" font-bold text-[#1F2937] ms-3">
+                Marcedes Benz
+                <br />
+                model - C Class - C220
+              </span>
+            </div>
           </p>
           <div className=" text-sm">
-            <span>Chassis Number</span>
+            <span
+              className="text-[#1F2937] font-bold"
+              style={{ fontFamily: "Inter , sans-serif" }}
+            >
+              Chassis Number
+            </span>
             <br />
             <span className=" text-gray-500">3235546645789</span>
           </div>

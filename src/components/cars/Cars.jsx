@@ -54,12 +54,12 @@ const Cars = () => {
           />
         </div>
       )}
-      <div className={`  ${showContent ? "hidden" : ""}`}>
-        <div className="ms-[262px]  p-5 font-bold text-2xl flex justify-between">
+      <div>
+        <div className="ms-[282px] bg-[#E5E7EB]  p-5 font-bold text-2xl flex justify-between">
           <h1>Cars</h1>
           <button
             onClick={() => setShowContent(true)}
-            className="  bg-blue-800 flex items-center justify-around ms-[100px]  py-2 w-[220px] car-btn"
+            className="  bg-[#04036B] flex items-center   py-2 w-[220px] car-btn"
             style={{ borderRadius: "5px" }}
           >
             <svg
@@ -77,18 +77,20 @@ const Cars = () => {
                 fill="white"
               />
             </svg>
-            <span className=" ms-2 text-white ">Add a new car</span>
+            <span className=" text-white w-[148px] h-[38px] whitespace-nowrap ms-2  ">Add a new car</span>
           </button>
         </div>
-        <div class="grid grid-cols-12 gap-4 ms-[270px] mt-5">
-          <CarItem />
-          <CarItem />
-          <CarItem />
-        </div>
-        <div class="grid grid-cols-12 gap-4 ms-[270px] mt-5">
-          <CarItem />
-          <CarItem />
-          <CarItem />
+        <div className="bg-[#E5E7EB] ms-[282px] h-auto">
+          <div class=" flex items-center gap-[15px] h-auto" style={{width: 'calc(100% - 20px)'}}>
+            <CarItem />
+            <CarItem />
+            <CarItem />
+          </div>
+          <div class=" flex items-center  gap-[15px] h-auto " style={{width: 'calc(100% - 20px)'}}>
+            <CarItem />
+            <CarItem />
+            <CarItem />
+          </div>
         </div>
       </div>
     </>
