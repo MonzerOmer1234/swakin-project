@@ -35,7 +35,7 @@ export default function BookRow({
               : status === "Completed"
               ? " bg-[#CCFBF1]"
               : "bg-[#FECACA]"
-          } flex items-center w-[120px] h-[28px]  py-5 ps-5 rounded-full`}
+          } flex items-center w-[120px] h-[28px]  py-5 ps-5 rounded-full ms-2`}
         >
           <span
             style={{ width: "5px", height: "5px", borderRadius: "50%" }}

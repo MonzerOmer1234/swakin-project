@@ -59,7 +59,7 @@ const Cars = () => {
           <h1>Cars</h1>
           <button
             onClick={() => setShowContent(true)}
-            className="  bg-[#04036B] flex items-center   py-2 w-[220px] car-btn"
+            className="  bg-[#04036B] flex py-2 w-[150px] car-btn"
             style={{ borderRadius: "5px" }}
           >
             <svg
@@ -77,7 +77,7 @@ const Cars = () => {
                 fill="white"
               />
             </svg>
-            <span className=" text-white w-[148px] h-[38px] whitespace-nowrap ms-2  ">Add a new car</span>
+            <span className=" ms-2 text-white text-sm">Add a new car</span>
           </button>
         </div>
         <div className="bg-[#E5E7EB] ms-[282px] h-auto">

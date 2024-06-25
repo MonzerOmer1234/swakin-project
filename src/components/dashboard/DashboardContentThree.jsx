@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef} from "react";
 import useOutsideClickHook from "./useOutsideClick";
 import "./modal.css";
 import RegisterModal from "../../UI/RegisterModal";
@@ -8,8 +8,7 @@ export default function DashboardContentThree() {
   const ref = useRef();
 
   const [carName, setCarName] = useState("");
-  const [carArName, setCarArName] = useState("");
-  const [carArModel, setCarArModel] = useState("");
+
   const [carModel, setCarModel] = useState("");
 
   useOutsideClickHook(ref, () => setShowContent(false));
@@ -23,9 +22,9 @@ export default function DashboardContentThree() {
   }
   function handleReset() {
     setCarName("");
-    setCarArName("");
+   
     setCarModel("");
-    setCarArModel("");
+   
     setShowContent(false);
   }
   function handleSubmit() {
@@ -81,7 +80,7 @@ export default function DashboardContentThree() {
                 fill="white"
               />
             </svg>
-            <span className=" ms-2 text-white">Add a new car</span>
+            <span className=" ms-2 text-white text-sm">Add a new car</span>
           </button>
         </div>
         <div className="flex mt-5 text-sm justify-between gap-2 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
