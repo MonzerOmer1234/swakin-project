@@ -1,17 +1,16 @@
 {
   "files": {
-    "main.css": "/swakin-project/static/css/main.22b325d4.css",
-    "main.js": "/swakin-project/static/js/main.7c9c8327.js",
+    "main.css": "/swakin-project/static/css/main.de598339.css",
+    "main.js": "/swakin-project/static/js/main.46011bc1.js",
     "static/js/453.050be174.chunk.js": "/swakin-project/static/js/453.050be174.chunk.js",
-    "static/media/mrs-lg.png": "/swakin-project/static/media/mrs-lg.950b17e1fa5e32e60b26.png",
     "static/media/mrs.png": "/swakin-project/static/media/mrs.91ab0c304181f8f00054.png",
     "index.html": "/swakin-project/index.html",
-    "main.22b325d4.css.map": "/swakin-project/static/css/main.22b325d4.css.map",
-    "main.7c9c8327.js.map": "/swakin-project/static/js/main.7c9c8327.js.map",
+    "main.de598339.css.map": "/swakin-project/static/css/main.de598339.css.map",
+    "main.46011bc1.js.map": "/swakin-project/static/js/main.46011bc1.js.map",
     "453.050be174.chunk.js.map": "/swakin-project/static/js/453.050be174.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.22b325d4.css",
-    "static/js/main.7c9c8327.js"
+    "static/css/main.de598339.css",
+    "static/js/main.46011bc1.js"
   ]
 }
