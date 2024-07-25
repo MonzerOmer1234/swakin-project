@@ -41,6 +41,7 @@ body.active-modal {
 }
 
 
+
 .delete-modal-content , .error-modal-content{
   height: 200px;
   position: absolute;
@@ -63,7 +64,8 @@ body.active-modal {
 
   }
   .delete-modal-content{
-    width: 400px;
+   
+    width: 400px !important;
   }
   .image-div{
     width: calc(100% - 30px);

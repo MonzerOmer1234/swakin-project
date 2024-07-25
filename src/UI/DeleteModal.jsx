@@ -160,7 +160,7 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData }) {
             >
               x
             </span>
-            <p className=" text-red-700 py-5 px-[80px] font-bold whitespace-nowrap">
+            <p className=" text-red-700 py-5 px-[10px] md:px-[80px] font-bold ">
               Are you sure you want to delete this car ?
             </p>
             <div className="flex mt-4 justify-center gap-3">
