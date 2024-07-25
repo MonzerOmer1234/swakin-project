@@ -182,7 +182,7 @@ console.log(carData)
             </ul>
           </div>
 
-          <div className={`flex justify-center mt-3 ${changeLang ? 'ms-[-92px]' : 'ms-[42px]'}  `}>
+          <div className={`flex justify-center mt-3 ${changeLang ? 'ms-[-92px]' : 'ms-[-55px]'}  `}>
             <span
               className="font-bold  text-[#353B47]"
               style={{ fontFamily: "Inter , sans-serif" }}
@@ -309,7 +309,7 @@ console.log(carData)
                   </div>
                 </div>
               </div>
-              <div className="flex  justify-between p-5 mt-[50px]">
+              <div className="flex flex-col items-center  md:flex-row gap-5 md:gap-0  justify-between p-5 mt-[50px]">
                 <p>
                   {t('Available Seats')}
                   <span
@@ -335,7 +335,7 @@ console.log(carData)
                   <button
                     onSubmit={handleSubmit}
                     type="submit"
-                    className=" ms-auto me-5 p-3 relative -top-2  text-[white] bg-[#04036B] booking-btn"
+                    className=" md:ms-auto me-5 p-3 relative -top-2  text-[white] bg-[#04036B] booking-btn"
                     style={{ border: "1px solid #1F2937", borderRadius: "8px" }}
                   >
                     {t('Next')}

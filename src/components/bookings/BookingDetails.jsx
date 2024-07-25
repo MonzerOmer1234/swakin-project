@@ -369,7 +369,7 @@ export default function BookingDetails({
                     carData.length > 0 &&
                     carData.map((car) => (
                       <div className="container mb-[20px]">
-                        <div className="flex w-[95%]  ms-3  text-sm justify-between gap-2 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                        <div className="flex w-[95%]  ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                           <p className=" text-gray-500">
                             <div className="flex items-center">
                               <img
