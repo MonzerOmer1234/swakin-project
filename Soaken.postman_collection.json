@@ -1,0 +1,1505 @@
+{
+	"info": {
+		"_postman_id": "e0e33af0-b6d4-43af-b82c-7ee520aefc80",
+		"name": "Soaken",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6871707"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "احمد علي",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ahmed20ee24@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0537645241",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "احمد علي",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "ahmed2025@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "0537645242",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 29 Jun 2024 10:21:01 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data Created Successfully\",\n    \"data\": {\n        \"data\": {\n            \"name\": \"احمد علي\",\n            \"email\": \"ahmed2025@gmail.com\",\n            \"phone\": \"0537645242\",\n            \"password\": \"$2y$12$W3IV5BcbSDNO555b3zP.6.P2XGpZFPkC4CbbQ452HWK5hwiksRPRC\",\n            \"profile_pic\": \"customers\\\\profile.png\",\n            \"updated_at\": \"2024-06-29T10:21:01.000000Z\",\n            \"created_at\": \"2024-06-29T10:21:01.000000Z\",\n            \"id\": 4\n        },\n        \"token\": \"3|AQF3b45a4HrE4iKrVZshN74ByXk5XWHNM6XIXfaS605fac4d\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ahmed2024@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "ahmed2024@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 29 Jun 2024 10:17:24 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Successfully Login\",\n    \"data\": {\n        \"data\": {\n            \"id\": 3,\n            \"name\": \"احمد علي\",\n            \"email\": \"ahmed2024@gmail.com\",\n            \"phone\": \"0537645243\",\n            \"address\": null,\n            \"password\": \"$2y$12$DU1XHPp9PuowTddvHaWYd.C2EbXQAFSvwzDodtneeysVo2igykd2G\",\n            \"otp\": null,\n            \"otp_expired\": null,\n            \"lat\": null,\n            \"long\": null,\n            \"profile_pic\": \"customers\\\\profile.png\",\n            \"created_at\": \"2024-06-29T09:57:28.000000Z\",\n            \"updated_at\": \"2024-06-29T09:57:28.000000Z\"\n        },\n        \"token\": \"2|WJGyiEnETbvGelHAKwWVyIlpOWBIC5ozP4nBjPRs3f8d007c\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "cars",
+			"item": [
+				{
+					"name": "get-cars",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|tjWNQCLov01mpKiL04RtV3GYPc416NBtIpHEAAUn1e41c6c9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/get-cars",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"get-cars"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get-cars",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/get-cars",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"get-cars"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 29 Jun 2024 14:14:06 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data retrieved successfully\",\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "add-cars",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|tjWNQCLov01mpKiL04RtV3GYPc416NBtIpHEAAUn1e41c6c9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "car_name_ar",
+									"value": "كوريلا",
+									"type": "text"
+								},
+								{
+									"key": "model_ar",
+									"value": "LG MT",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "2019",
+									"type": "text"
+								},
+								{
+									"key": "car_color",
+									"value": "بيضاء",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/ahmedmagdi/Downloads/pexels-mikebirdy-112460.jpg"
+								},
+								{
+									"key": "chassis_no",
+									"value": "8365736573",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/add-cars",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"add-cars"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add-cars",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "car_name_ar",
+											"value": "كوريلا",
+											"type": "text"
+										},
+										{
+											"key": "model_ar",
+											"value": "LG MT",
+											"type": "text"
+										},
+										{
+											"key": "year",
+											"value": "2019",
+											"type": "text"
+										},
+										{
+											"key": "car_color",
+											"value": "بيضاء",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/ahmedmagdi/Downloads/pexels-alecansoa-26125407.jpg"
+										},
+										{
+											"key": "chassis_no",
+											"value": "8365736573",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/add-cars",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"add-cars"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jul 2024 11:21:26 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data created successfully\",\n    \"data\": {\n        \"car_name_ar\": \"كوريلا\",\n        \"model_ar\": \"LG MT\",\n        \"year\": \"2019\",\n        \"car_color\": \"بيضاء\",\n        \"chassis_no\": \"8365736573\",\n        \"customer_id\": 3,\n        \"updated_at\": \"2024-07-05T11:21:26.000000Z\",\n        \"created_at\": \"2024-07-05T11:21:26.000000Z\",\n        \"id\": 4\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "show-cars",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|tjWNQCLov01mpKiL04RtV3GYPc416NBtIpHEAAUn1e41c6c9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/show-cars/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"show-cars",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "show-cars",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/show-cars/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"show-cars",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jul 2024 11:21:55 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data retrieved successfully\",\n    \"data\": {\n        \"id\": 3,\n        \"customer_id\": 3,\n        \"car_name_ar\": \"كوريلا\",\n        \"car_name_en\": null,\n        \"model_ar\": \"LG MT\",\n        \"model_en\": null,\n        \"year\": \"2019\",\n        \"car_color\": \"بيضاء\",\n        \"created_at\": \"2024-06-29T14:22:39.000000Z\",\n        \"updated_at\": \"2024-06-29T14:22:39.000000Z\",\n        \"image\": \"cars/2ELKhhd0ZHunaqjvV6PnhTEkNfsTVTQe4HpTOxZ3.jpg\",\n        \"chassis_no\": \"8365736573\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update-cars",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|tjWNQCLov01mpKiL04RtV3GYPc416NBtIpHEAAUn1e41c6c9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"car_name_ar\" : \"كوريلا\",\n    \"model_ar\" : \"LG MT 2019\",\n    \"year\" : \"2019\",\n    \"car_color\" : \"بيضاء\",\n    // \"image\" : \"\",\n    \"chassis_no\" : \"8365736573\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/update-cars/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"update-cars",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update-cars",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"car_name_ar\" : \"كوريلا\",\n    \"model_ar\" : \"LG MT 2019\",\n    \"year\" : \"2019\",\n    \"car_color\" : \"بيضاء\",\n    // \"image\" : \"\",\n    \"chassis_no\" : \"8365736573\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/update-cars/5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"update-cars",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jul 2024 11:42:06 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data updated successfully\",\n    \"data\": {\n        \"id\": 5,\n        \"customer_id\": 3,\n        \"car_name_ar\": \"كوريلا\",\n        \"car_name_en\": null,\n        \"model_ar\": \"LG MT 2019\",\n        \"model_en\": null,\n        \"year\": \"2019\",\n        \"car_color\": \"بيضاء\",\n        \"created_at\": \"2024-07-05T11:41:42.000000Z\",\n        \"updated_at\": \"2024-07-05T11:42:06.000000Z\",\n        \"image\": \"cars/qjjwGccEyamZGV7AcewJIuyBzTDLOLJ0OgSmRlhh.jpg\",\n        \"chassis_no\": \"8365736573\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete-cars",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|tjWNQCLov01mpKiL04RtV3GYPc416NBtIpHEAAUn1e41c6c9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/delete-cars/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"delete-cars",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete-cars",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}/api/delete-cars/5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"delete-cars",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jul 2024 11:49:16 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data deleted successfully\",\n    \"data\": {\n        \"id\": 5,\n        \"customer_id\": 3,\n        \"car_name_ar\": \"كوريلا\",\n        \"car_name_en\": null,\n        \"model_ar\": \"LG MT 2019\",\n        \"model_en\": null,\n        \"year\": \"2019\",\n        \"car_color\": \"بيضاء\",\n        \"created_at\": \"2024-07-05T11:41:42.000000Z\",\n        \"updated_at\": \"2024-07-05T11:42:06.000000Z\",\n        \"image\": \"cars/qjjwGccEyamZGV7AcewJIuyBzTDLOLJ0OgSmRlhh.jpg\",\n        \"chassis_no\": \"8365736573\"\n    }\n}"
+						},
+						{
+							"name": "delete-cars",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}/api/delete-cars/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"delete-cars",
+										"1"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jul 2024 11:49:59 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"You Can't Delete Car , Car Related To Booking !!\",\n    \"data\": {\n        \"id\": 1,\n        \"customer_id\": 3,\n        \"car_name_ar\": \"اكسنت\",\n        \"car_name_en\": \"accent\",\n        \"model_ar\": \"عادية\",\n        \"model_en\": \"normal\",\n        \"year\": \"2024\",\n        \"car_color\": \"black\",\n        \"created_at\": \"2024-05-01T10:39:52.000000Z\",\n        \"updated_at\": \"2024-05-01T23:27:59.000000Z\",\n        \"image\": \"cars/01HWSWBW2G6RFZ6WNDB9XRPDVX.jpg\",\n        \"chassis_no\": \"645354546465\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "shipments",
+			"item": [
+				{
+					"name": "get-statuses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|tjWNQCLov01mpKiL04RtV3GYPc416NBtIpHEAAUn1e41c6c9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/get-shipments-statuses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"get-shipments-statuses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get-statuses",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/get-shipments-statuses",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"get-shipments-statuses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jul 2024 12:30:55 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name_ar\": \"تم انشاء الحجز\",\n            \"name_en\": \"Shipment Created\",\n            \"created_at\": \"2024-07-05T14:55:08.000000Z\",\n            \"updated_at\": \"2024-07-05T14:55:08.000000Z\",\n            \"description_ar\": \" تم إدخال تفاصيل الشحنة في النظام.\",\n            \"description_en\": \"The shipment details have been entered into the system.\"\n        },\n        {\n            \"id\": 2,\n            \"name_ar\": \"متاحة للحجز\",\n            \"name_en\": \"Available For Booking\",\n            \"created_at\": \"2024-07-05T14:55:35.000000Z\",\n            \"updated_at\": \"2024-07-05T14:55:35.000000Z\",\n            \"description_ar\": \"الشحنة متاحة وجاهزة للحجز للنقل.\",\n            \"description_en\": \"The shipment is available and ready to be booked for transport.\"\n        },\n        {\n            \"id\": 3,\n            \"name_ar\": \"تم الاستلام\",\n            \"name_en\": \"Picked Up\",\n            \"created_at\": null,\n            \"updated_at\": null,\n            \"description_ar\": \"قام الناقل باستلام الشحنة من المرسل\",\n            \"description_en\": \"The carrier has picked up the shipment from the sender.\"\n        },\n        {\n            \"id\": 4,\n            \"name_ar\": \"في الطريق الى الوجهة\",\n            \"name_en\": \"In Transit\",\n            \"created_at\": \"2024-07-05T14:54:54.000000Z\",\n            \"updated_at\": \"2024-07-05T14:55:02.000000Z\",\n            \"description_ar\": \"الشحنة حالياً في طريقها إلى الوجهة\",\n            \"description_en\": \"The shipment is currently being transported to the destination.\"\n        },\n        {\n            \"id\": 5,\n            \"name_ar\": \"تم الوصول\",\n            \"name_en\": \"arrived\",\n            \"created_at\": \"2024-05-01T22:27:26.000000Z\",\n            \"updated_at\": \"2024-05-01T22:27:26.000000Z\",\n            \"description_ar\": \"وصلت الشحنة إلى الوجهة النهائية.\",\n            \"description_en\": \"The shipment has been arrived to the final destination.\"\n        },\n        {\n            \"id\": 6,\n            \"name_ar\": \"مكتملة\",\n            \"name_en\": \"Completed\",\n            \"created_at\": \"2024-07-05T15:15:38.000000Z\",\n            \"updated_at\": \"2024-07-05T15:15:38.000000Z\",\n            \"description_ar\": \"تم إكمال عملية الشحن بنجاح، بما في ذلك جميع الخطوات الإدارية والإجرائية.\",\n            \"description_en\": \"The shipment process has been completed successfully, including all administrative and procedural steps.\"\n        },\n        {\n            \"id\": 13,\n            \"name_ar\": \"تم الالغاء\",\n            \"name_en\": \"Canceled\",\n            \"created_at\": \"2024-07-05T15:28:23.000000Z\",\n            \"updated_at\": \"2024-07-05T15:28:26.000000Z\",\n            \"description_ar\": \"تم الغاء الرحلة\",\n            \"description_en\": \"Shipment Canceled\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get-shipments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|tjWNQCLov01mpKiL04RtV3GYPc416NBtIpHEAAUn1e41c6c9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/get-shipments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"get-shipments"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get-shipments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/get-shipments",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"get-shipments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jul 2024 12:36:17 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 7,\n            \"serial_no\": \"3413f111-85aa-4eff-af7b-42886943f47c\",\n            \"start_location\": \"Qatar - Doha\",\n            \"end_location\": \"Portsudan - sudan\",\n            \"cars_no\": 10,\n            \"details_ar\": \"قطر - الدوحة\",\n            \"details_en\": \"Qatar - Doha\",\n            \"travel_date\": \"2024-07-15\",\n            \"arrival_date\": \"2024-07-25\",\n            \"price\": \"5000.00\",\n            \"shipment_status_id\": 2,\n            \"driver_id\": 1,\n            \"lat\": null,\n            \"long\": null,\n            \"created_at\": \"2024-07-05T12:35:13.000000Z\",\n            \"updated_at\": \"2024-07-05T12:35:13.000000Z\",\n            \"start_location_ar\": \"قطر - الدوحة\",\n            \"end_location_ar\": \"بورتسودان - السودان\",\n            \"ship_name\": \"test shipment\",\n            \"status\": {\n                \"id\": 2,\n                \"name_ar\": \"متاحة للحجز\",\n                \"name_en\": \"Available For Booking\",\n                \"created_at\": \"2024-07-05T14:55:35.000000Z\",\n                \"updated_at\": \"2024-07-05T14:55:35.000000Z\",\n                \"description_ar\": \"الشحنة متاحة وجاهزة للحجز للنقل.\",\n                \"description_en\": \"The shipment is available and ready to be booked for transport.\"\n            },\n            \"driver\": {\n                \"id\": 1,\n                \"name\": \"ahmed magdi\",\n                \"email\": null,\n                \"phone\": \"0536745532\",\n                \"address\": \"test office\",\n                \"password\": \"$2y$12$lL/W9dyXvjIwPc.5aMhJN.Wolwbc0KlD342zQaoDQ0xqGvKrXRdFK\",\n                \"otp\": null,\n                \"otp_expired\": null,\n                \"lat\": null,\n                \"long\": null,\n                \"profile_pic\": \"customers/01HWST85AQ4KV040WJAGDDQDW9.png\",\n                \"created_at\": \"2024-05-01T10:12:22.000000Z\",\n                \"updated_at\": \"2024-05-01T10:15:19.000000Z\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "bookings",
+			"item": [
+				{
+					"name": "get-bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|tjWNQCLov01mpKiL04RtV3GYPc416NBtIpHEAAUn1e41c6c9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/get-bookings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"get-bookings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/get-bookings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"get-bookings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jul 2024 13:44:48 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 7,\n            \"shipment_id\": 7,\n            \"customer_id\": 3,\n            \"car_qty\": 2,\n            \"discount\": \"0.00\",\n            \"tax\": \"0.00\",\n            \"total\": \"10000.00\",\n            \"serial_no\": \"c8624c04-5a6d-4f2b-b30d-3a66626e9d41\",\n            \"booking_status_id\": 1,\n            \"policy\": null,\n            \"created_at\": \"2024-07-05T13:43:16.000000Z\",\n            \"updated_at\": \"2024-07-05T13:43:16.000000Z\",\n            \"customer\": {\n                \"id\": 3,\n                \"name\": \"احمد علي\",\n                \"email\": \"ahmed2024@gmail.com\",\n                \"phone\": \"0537645243\",\n                \"address\": null,\n                \"password\": \"$2y$12$DU1XHPp9PuowTddvHaWYd.C2EbXQAFSvwzDodtneeysVo2igykd2G\",\n                \"otp\": null,\n                \"otp_expired\": null,\n                \"lat\": null,\n                \"long\": null,\n                \"profile_pic\": \"customers\\\\profile.png\",\n                \"created_at\": \"2024-06-29T09:57:28.000000Z\",\n                \"updated_at\": \"2024-06-29T09:57:28.000000Z\"\n            },\n            \"shipment\": {\n                \"id\": 7,\n                \"serial_no\": \"3413f111-85aa-4eff-af7b-42886943f47c\",\n                \"start_location\": \"Qatar - Doha\",\n                \"end_location\": \"Portsudan - sudan\",\n                \"cars_no\": 10,\n                \"details_ar\": \"قطر - الدوحة\",\n                \"details_en\": \"Qatar - Doha\",\n                \"travel_date\": \"2024-07-15\",\n                \"arrival_date\": \"2024-07-25\",\n                \"price\": \"5000.00\",\n                \"shipment_status_id\": 2,\n                \"driver_id\": 1,\n                \"lat\": null,\n                \"long\": null,\n                \"created_at\": \"2024-07-05T12:35:13.000000Z\",\n                \"updated_at\": \"2024-07-05T12:35:13.000000Z\",\n                \"start_location_ar\": \"قطر - الدوحة\",\n                \"end_location_ar\": \"بورتسودان - السودان\",\n                \"ship_name\": \"test shipment\"\n            },\n            \"status\": {\n                \"id\": 1,\n                \"name_ar\": \"في الانتظار\",\n                \"name_en\": \"Pending\",\n                \"created_at\": \"2024-05-02T00:54:03.000000Z\",\n                \"updated_at\": \"2024-05-02T00:54:03.000000Z\",\n                \"description_ar\": null,\n                \"description_en\": null\n            },\n            \"booking_detail\": [\n                {\n                    \"id\": 5,\n                    \"booking_id\": 7,\n                    \"car_id\": 3,\n                    \"created_at\": \"2024-07-05T13:43:16.000000Z\",\n                    \"updated_at\": \"2024-07-05T13:43:16.000000Z\"\n                },\n                {\n                    \"id\": 6,\n                    \"booking_id\": 7,\n                    \"car_id\": 4,\n                    \"created_at\": \"2024-07-05T13:43:16.000000Z\",\n                    \"updated_at\": \"2024-07-05T13:43:16.000000Z\"\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "add-bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|tjWNQCLov01mpKiL04RtV3GYPc416NBtIpHEAAUn1e41c6c9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"shipment_id\" : 7,\n    \"car_id\" : [3,4]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/add-bookings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"add-bookings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add-bookings",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"shipment_id\" : 7,\n    \"car_id\" : [3,4]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/add-bookings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"add-bookings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jul 2024 13:43:16 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data created successfully\",\n    \"data\": {\n        \"shipment_id\": 7,\n        \"customer_id\": 3,\n        \"car_qty\": 2,\n        \"discount\": 0,\n        \"tax\": 0,\n        \"serial_no\": \"c8624c04-5a6d-4f2b-b30d-3a66626e9d41\",\n        \"booking_status_id\": 1,\n        \"updated_at\": \"2024-07-05T13:43:16.000000Z\",\n        \"created_at\": \"2024-07-05T13:43:16.000000Z\",\n        \"id\": 7,\n        \"total\": 10000,\n        \"shipment\": {\n            \"id\": 7,\n            \"serial_no\": \"3413f111-85aa-4eff-af7b-42886943f47c\",\n            \"start_location\": \"Qatar - Doha\",\n            \"end_location\": \"Portsudan - sudan\",\n            \"cars_no\": 10,\n            \"details_ar\": \"قطر - الدوحة\",\n            \"details_en\": \"Qatar - Doha\",\n            \"travel_date\": \"2024-07-15\",\n            \"arrival_date\": \"2024-07-25\",\n            \"price\": \"5000.00\",\n            \"shipment_status_id\": 2,\n            \"driver_id\": 1,\n            \"lat\": null,\n            \"long\": null,\n            \"created_at\": \"2024-07-05T12:35:13.000000Z\",\n            \"updated_at\": \"2024-07-05T12:35:13.000000Z\",\n            \"start_location_ar\": \"قطر - الدوحة\",\n            \"end_location_ar\": \"بورتسودان - السودان\",\n            \"ship_name\": \"test shipment\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get-bookings-details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|tjWNQCLov01mpKiL04RtV3GYPc416NBtIpHEAAUn1e41c6c9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/get-bookings/c8624c04-5a6d-4f2b-b30d-3a66626e9d41",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"get-bookings",
+								"c8624c04-5a6d-4f2b-b30d-3a66626e9d41"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get-bookings-details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/get-bookings/c8624c04-5a6d-4f2b-b30d-3a66626e9d41",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"get-bookings",
+										"c8624c04-5a6d-4f2b-b30d-3a66626e9d41"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jul 2024 13:49:29 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data retrieved successfully\",\n    \"data\": {\n        \"id\": 7,\n        \"shipment_id\": 7,\n        \"customer_id\": 3,\n        \"car_qty\": 2,\n        \"discount\": \"0.00\",\n        \"tax\": \"0.00\",\n        \"total\": \"10000.00\",\n        \"serial_no\": \"c8624c04-5a6d-4f2b-b30d-3a66626e9d41\",\n        \"booking_status_id\": 1,\n        \"policy\": null,\n        \"created_at\": \"2024-07-05T13:43:16.000000Z\",\n        \"updated_at\": \"2024-07-05T13:43:16.000000Z\",\n        \"customer\": {\n            \"id\": 3,\n            \"name\": \"احمد علي\",\n            \"email\": \"ahmed2024@gmail.com\",\n            \"phone\": \"0537645243\",\n            \"address\": null,\n            \"password\": \"$2y$12$DU1XHPp9PuowTddvHaWYd.C2EbXQAFSvwzDodtneeysVo2igykd2G\",\n            \"otp\": null,\n            \"otp_expired\": null,\n            \"lat\": null,\n            \"long\": null,\n            \"profile_pic\": \"customers\\\\profile.png\",\n            \"created_at\": \"2024-06-29T09:57:28.000000Z\",\n            \"updated_at\": \"2024-06-29T09:57:28.000000Z\"\n        },\n        \"shipment\": {\n            \"id\": 7,\n            \"serial_no\": \"3413f111-85aa-4eff-af7b-42886943f47c\",\n            \"start_location\": \"Qatar - Doha\",\n            \"end_location\": \"Portsudan - sudan\",\n            \"cars_no\": 10,\n            \"details_ar\": \"قطر - الدوحة\",\n            \"details_en\": \"Qatar - Doha\",\n            \"travel_date\": \"2024-07-15\",\n            \"arrival_date\": \"2024-07-25\",\n            \"price\": \"5000.00\",\n            \"shipment_status_id\": 2,\n            \"driver_id\": 1,\n            \"lat\": null,\n            \"long\": null,\n            \"created_at\": \"2024-07-05T12:35:13.000000Z\",\n            \"updated_at\": \"2024-07-05T12:35:13.000000Z\",\n            \"start_location_ar\": \"قطر - الدوحة\",\n            \"end_location_ar\": \"بورتسودان - السودان\",\n            \"ship_name\": \"test shipment\"\n        },\n        \"status\": {\n            \"id\": 1,\n            \"name_ar\": \"في الانتظار\",\n            \"name_en\": \"Pending\",\n            \"created_at\": \"2024-05-02T00:54:03.000000Z\",\n            \"updated_at\": \"2024-05-02T00:54:03.000000Z\",\n            \"description_ar\": null,\n            \"description_en\": null\n        },\n        \"booking_detail\": [\n            {\n                \"id\": 5,\n                \"booking_id\": 7,\n                \"car_id\": 3,\n                \"created_at\": \"2024-07-05T13:43:16.000000Z\",\n                \"updated_at\": \"2024-07-05T13:43:16.000000Z\"\n            },\n            {\n                \"id\": 6,\n                \"booking_id\": 7,\n                \"car_id\": 4,\n                \"created_at\": \"2024-07-05T13:43:16.000000Z\",\n                \"updated_at\": \"2024-07-05T13:43:16.000000Z\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "get-data",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4|tjWNQCLov01mpKiL04RtV3GYPc416NBtIpHEAAUn1e41c6c9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/get-data",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"get-data"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/get-data",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"get-data"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.25.4"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 29 Jun 2024 14:10:24 GMT"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data retrieved successfully\",\n    \"data\": {\n        \"cars\": null,\n        \"active_booking\": [],\n        \"upcoming_booking\": null\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://soaken.neuecode.com",
+			"type": "string"
+		}
+	]
+}

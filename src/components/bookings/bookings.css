@@ -1,0 +1,9 @@
+.money-details > p:not(:last-child)::after{
+    content: '';
+    position: absolute;
+    
+    width: 100%;
+    background-color: #E5E7EB;
+    height: 1px;
+    top: 40px;
+}

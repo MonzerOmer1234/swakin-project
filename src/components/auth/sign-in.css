@@ -1,0 +1,19 @@
+@media (max-width: 456px) {
+  .sign-in-container {
+    width: 300px;
+    margin-left: 70px !important;
+  }
+  .sign-in-container input {
+    width: 250px;
+  }
+  .header::after {
+    width: 250px;
+  }
+  .password {
+    width: 250px;
+  }
+  .error {
+    width: 250px;
+   margin-bottom: 10px;
+  }
+}

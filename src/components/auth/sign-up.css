@@ -1,0 +1,39 @@
+.header::after{
+    content: '';
+  position: absolute;
+  width: 388px;
+  height: 1px;
+  background-color: #F1F1F2;
+  margin-left: 20px;
+  bottom: -12px;
+}
+.react-international-phone-input{
+  width: 100%;
+}
+
+@media (max-width:422px) {
+ 
+  .sign-up-container{
+    width :300px;
+    margin-left: 70px  !important;
+
+  }
+  .sign-up-container input{
+    width: 250px;
+    
+  }
+  .phone-input{
+    width: 250px !important;
+  }
+  .phone-box{
+    width: 250px;
+  }
+  .header::after{
+    width: 250px;
+  }
+  h1.error{
+    width: 250px;
+   
+    margin-bottom: 10px;
+  }
+}

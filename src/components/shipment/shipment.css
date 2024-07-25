@@ -1,0 +1,25 @@
+@media (max-width: 457px) {
+  .shipment-details {
+    margin-left: -20px;
+    width: 100vw;
+   
+  }
+  .receipient-info{
+   border: none !important;
+  }
+  .receipt-info {
+    margin-left: 35px;
+    
+ 
+  }
+  .data{
+    width: 300px;
+    margin-left: 35px;
+  }
+  .input-data,
+  .phone-div {
+    position: relative;
+    left: 32px;
+    width: 273px !important;
+  }
+}
