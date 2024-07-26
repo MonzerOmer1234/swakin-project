@@ -143,8 +143,8 @@ export default function SignIn() {
         <form
           method="POST"
           onSubmit={handleSubmit}
-          className=" mt-[50px]"
-          style={{ marginLeft: "20px", width: "388px" }}
+          className=" mt-[50px] ms-[20px] w-[388px]"
+          style={{ }}
         >
           {error.message === "Request failed with status code 401" && (
             <h1 className=" text-red-500 text-center mb-4 error">{` ${error.response.data.error}, please check your credentials`}</h1>

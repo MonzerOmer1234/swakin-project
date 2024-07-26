@@ -13,7 +13,7 @@ import { getAuthToken } from "../util/auth";
 import { PhoneInput } from "react-international-phone";
 import { useTranslation } from "react-i18next";
 
-export default function Signup() {
+export default function Signup({changeLang}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -159,8 +159,8 @@ export default function Signup() {
         <form
           method="POST"
           onSubmit={handleSubmit}
-          className=" mt-[20px]"
-          style={{ marginLeft: "20px", width: "388px" }}
+          className=" mt-[20px] ms-[20px] w-[388px]"
+        
         >
           <div>
             <label

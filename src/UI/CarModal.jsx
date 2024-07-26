@@ -1,11 +1,19 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { getAuthToken } from "../components/util/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./modal.css";
+import { useTranslation } from "react-i18next";
 
-export default function CarModal({ setShowContent, setCarData, handleReset , showContent }) {
+export default function CarModal({
+  setShowContent,
+  setCarData,
+  handleReset,
+  showContent,
+  changeLang,
+}) {
   const [carName, setCarName] = useState("");
   const [carModel, setCarModel] = useState("");
   const [year, setYear] = useState("");
@@ -14,7 +22,9 @@ export default function CarModal({ setShowContent, setCarData, handleReset , sho
   const [carImage, setCarImage] = useState(null);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState({});
-  const navigate = useNavigate();
+  const [t] = useTranslation();
+
+  console.log(changeLang);
 
   const token = getAuthToken();
   const getCarData = useCallback(
@@ -86,15 +96,17 @@ export default function CarModal({ setShowContent, setCarData, handleReset , sho
 
   return (
     <>
- 
-    <ToastContainer/>
-      <div className="overlay" onClick={() => setShowContent(false)}></div>
-      <div className="modal-content">
+      <ToastContainer />
+      <div
+        className={`${changeLang ? "overlay-ar " : "overlay"}`}
+        onClick={() => setShowContent(false)}
+      ></div>
+      <div className={`${changeLang ? "modal-content-ar" : "modal-content"} `}>
         <h1 className=" text-center top-[30px] relative font-bold text-lg mb-[25px]">
-          Car Info
+          {t("Car Info")}
         </h1>
         <span
-          className=" absolute right-[20px] top-[20px] pe-3  text-xl cursor-pointer"
+          className=" absolute  right-[20px] top-[20px] pe-3  text-xl cursor-pointer"
           onClick={() => setShowContent(false)}
         >
           x
@@ -106,7 +118,7 @@ export default function CarModal({ setShowContent, setCarData, handleReset , sho
           className="flex flex-col gap-[2px]"
         >
           <div className="ms-[30px] mt-3 ">
-            <label htmlFor="">Car Name</label>
+            <label htmlFor="">{t("Car Name")}</label>
             <input
               name="car_name_ar"
               value={carName}
@@ -127,7 +139,7 @@ export default function CarModal({ setShowContent, setCarData, handleReset , sho
           </div>
 
           <div className="ms-[30px] mt-[20px]">
-            <label htmlFor="">Car Model</label>
+            <label htmlFor="">{t("Car Model")}</label>
             <input
               name="model_ar"
               required
@@ -148,7 +160,7 @@ export default function CarModal({ setShowContent, setCarData, handleReset , sho
 
           <div>
             <div className="ms-[30px] mt-[20px]">
-              <label htmlFor="">Model Year</label>
+              <label htmlFor="">{t("Model Year")}</label>
               <input
                 name="year"
                 type="text"
@@ -170,7 +182,7 @@ export default function CarModal({ setShowContent, setCarData, handleReset , sho
           <div>
             <div className="ms-[30px] mt-[20px]">
               <label htmlFor="" className="ms-1">
-                Color
+                {t("Color")}
               </label>
               <input
                 name="car_color"
@@ -193,7 +205,7 @@ export default function CarModal({ setShowContent, setCarData, handleReset , sho
           <div>
             <div className="ms-[30px] mt-[20px]">
               <label htmlFor="" className=" mb-2">
-                Chassis Number
+                {t("Chassis Number")}
               </label>
               <input
                 name="chassis_no"
@@ -218,7 +230,7 @@ export default function CarModal({ setShowContent, setCarData, handleReset , sho
             <div className="ms-[30px] mt-[20px]">
               <form className="max-w-sm">
                 <label for="file-input " className=" mb-2">
-                  Choose Image Upload
+                  {t("Choose Image Upload")}
                 </label>
                 <input
                   type="file"
@@ -243,7 +255,7 @@ export default function CarModal({ setShowContent, setCarData, handleReset , sho
                 <input
                   onClick={handleReset}
                   type="reset"
-                  value="Cancel"
+                  value={t("Cancel")}
                   className="p-3 cursor-pointer h-[45px]"
                   style={{
                     boxShadow: "0 0 10px #ddd",
@@ -253,7 +265,7 @@ export default function CarModal({ setShowContent, setCarData, handleReset , sho
                 />
                 <input
                   type="submit"
-                  value={sending ? 'Submitting ...' : 'Add car' }
+                  value={sending ? t("Submitting ...") : t("Add car")}
                   className="bg-[#04036B] text-white p-3 mb-2 text-center cursor-pointer"
                   style={{ lineHeight: "20px", borderRadius: "5px" }}
                 />

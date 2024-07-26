@@ -8,7 +8,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 
-const Bookings = ({ username , serialNumber }) => {
+const Bookings = ({ username , serialNumber , setBookingSerial }) => {
   const [loading, setLoading] = useState(false);
   const [bookings, setBookings] = useState([]);
   const [error, setError] = useState({});
@@ -131,7 +131,8 @@ const Bookings = ({ username , serialNumber }) => {
                           bookings.length > 0 &&
                           bookings.map((booking) => (
                             <BookRow
-                             bid= {booking.serial_no}
+                            setBookingSerial={setBookingSerial}
+                              bid= {booking.serial_no}
                               sid={booking.shipment.serial_no}
                               quantity={booking.car_qty}
                               discount={booking.discount}

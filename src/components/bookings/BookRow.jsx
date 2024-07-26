@@ -10,9 +10,16 @@ export default function BookRow({
   total,
   tax,
   status,
+  setBookingSerial
 }) {
   const [closeActions, setCloseActions] = useState(true);
   const [t] = useTranslation();
+
+  function handleClickDots(){
+    setCloseActions(!closeActions)
+    setBookingSerial(bid)
+
+  }
   return (
     <tr>
       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#1F2937] dark:text-neutral-200 text-center">
@@ -70,7 +77,7 @@ export default function BookRow({
         <div class="relative inline-block text-left">
           <div>
             <button
-              onClick={() => setCloseActions(!closeActions)}
+              onClick={handleClickDots}
               type="button"
               class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900   hover:bg-gray-50"
               id="menu-button"

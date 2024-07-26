@@ -160,7 +160,7 @@ const Cars = ({username , changeLang}) => {
       {showContent && (
         <div className="modal relative block" ref={ref}>
           <RegisterModal
-      
+            changeLang={changeLang}
             id={id}
             carDetails={carDetails}
             setShowContent={setShowContent}

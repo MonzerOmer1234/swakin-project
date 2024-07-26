@@ -1,10 +1,10 @@
 import axios from "axios";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuthToken } from "../components/util/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { useTranslation } from "react-i18next";
 
 export default function RegisterModal({
   setShowContent,
@@ -12,9 +12,8 @@ export default function RegisterModal({
   getCarData,
   id,
   carDetails,
+  changeLang,
 }) {
-
-
   const [mode, setMode] = useState("");
 
   const [sending, setSending] = useState(false);
@@ -38,6 +37,8 @@ export default function RegisterModal({
   const [carChassisNo, setCarChassisNo] = useState(
     carDetails ? carDetails.chassis_no : ""
   );
+
+  const [t] = useTranslation();
 
   console.log(carDetails);
 
@@ -122,11 +123,11 @@ export default function RegisterModal({
 
   useEffect(() => {
     if (Object.keys(carDetails).length === 0) {
-      setMode("Add car");
+      setMode(changeLang ? "اضافة عربة" : "Add car");
     } else {
-      setMode("Update car");
+      setMode(changeLang ? "تحديث السيارة" : "Update car");
     }
-  }, [carDetails, setMode]);
+  }, [carDetails, setMode, changeLang]);
 
   useEffect(() => {
     if (error) {
@@ -135,7 +136,7 @@ export default function RegisterModal({
 
       toast.error(error.image && error.image.toString());
     }
-  }, [error, error.chassis_no, error.image  ]);
+  }, [error, error.chassis_no, error.image]);
   useEffect(() => {
     if (updateError) {
       toast.error(updateError.year && updateError.year.toString());
@@ -149,10 +150,13 @@ export default function RegisterModal({
     <>
       <ToastContainer />
 
-      <div className="overlay" onClick={() => setShowContent(false)}></div>
-      <div className="modal-content">
+      <div
+        className={`${changeLang ? "overlay-ar" : "overlay"}`}
+        onClick={() => setShowContent(false)}
+      ></div>
+      <div className={`${changeLang ? "modal-content-ar" : "modal-content"}`}>
         <h1 className=" text-center top-[30px] relative font-bold text-lg mb-[25px]">
-          Car Info
+          {t("Car Info")}
         </h1>
         <span
           className=" absolute right-[20px] top-[20px] pe-3  text-xl cursor-pointer"
@@ -167,7 +171,7 @@ export default function RegisterModal({
           className="flex flex-col gap-[2px]"
         >
           <div className="ms-[30px] mt-3 ">
-            <label htmlFor="">Car Name</label>
+            <label htmlFor="">{t("Car Name")}</label>
             <input
               name="car_name_ar"
               value={carName}
@@ -188,7 +192,7 @@ export default function RegisterModal({
           </div>
 
           <div className="ms-[30px] mt-[20px]">
-            <label htmlFor="">Car Model</label>
+            <label htmlFor="">{t("Car Model")}</label>
             <input
               name="model_ar"
               value={carModel}
@@ -210,7 +214,7 @@ export default function RegisterModal({
 
           <div>
             <div className="ms-[30px] mt-[20px]">
-              <label htmlFor="">Model Year</label>
+              <label htmlFor="">{t("Model Year")}</label>
               <input
                 name="year"
                 type="text"
@@ -233,7 +237,7 @@ export default function RegisterModal({
           <div>
             <div className="ms-[30px] mt-[20px]">
               <label htmlFor="" className="ms-1">
-                Color
+                {t("Color")}
               </label>
               <input
                 name="car_color"
@@ -257,7 +261,7 @@ export default function RegisterModal({
           <div>
             <div className="ms-[30px] mt-[20px]">
               <label htmlFor="" className=" mb-2">
-                Chassis Number
+                {t("Chassis Number")}
               </label>
               <input
                 name="chassis_no"
@@ -283,7 +287,7 @@ export default function RegisterModal({
             <div className="ms-[30px] mt-[20px]">
               <form className="max-w-sm">
                 <label for="file-input " className=" mb-2">
-                  Choose Image Upload
+                  {t("Choose Image Upload")}
                 </label>
                 <input
                   type="file"
@@ -308,7 +312,7 @@ export default function RegisterModal({
                 <input
                   onClick={handleReset}
                   type="reset"
-                  value="Cancel"
+                  value={t("Cancel")}
                   className="p-3 cursor-pointer h-[45px]"
                   style={{
                     boxShadow: "0 0 10px #ddd",
@@ -318,7 +322,7 @@ export default function RegisterModal({
                 />
                 <input
                   type="submit"
-                  value={(sending || sendingUpdate) ? "Submitting..." : mode}
+                  value={sending || sendingUpdate ? t("Submitting ...") : mode}
                   className="bg-[#04036B] text-white p-3 mb-2 text-center cursor-pointer"
                   style={{ lineHeight: "20px", borderRadius: "5px" }}
                 />

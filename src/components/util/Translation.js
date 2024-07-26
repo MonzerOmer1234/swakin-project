@@ -66,13 +66,22 @@ export const engilshTranslation = {
   "Confirm Password": "Confirm Password",
   "write at least 8 characters": "write at least 8 characters",
   "repeat the password": "repeat the password",
-  "Don't have an account ?": "Don't have an account ?",
+  "Don't have an account?": "Don't have an account ?",
   "Forgot Password?": "Forgot Password?",
   "Write Your Password": "Write Your Paaword",
   Login: "Login",
   "Shipment Tracking" : "Shipment Tracking",
   "Show Booking details" : "Show Booking details",
-  "mybookings" : "mybookings"
+  "mybookings" : "mybookings",
+  "Car Info" : "Car Info",
+  "Car Name" : 'Car Name',
+  "Car Model" : 'Car Model',
+  "Model Year" : 'Model Year',
+  "Choose Image Upload" : 'Choose Image Upload',
+  "Cancel" : 'Cancel' ,
+  "Add car" : "Add car",
+  "Submitting ..." : 'Submitting ...',
+  "Update car" : 'Update car'
 };
 
 export const arabicTranslation = {
@@ -136,7 +145,7 @@ export const arabicTranslation = {
   TOTAL: "المجموع",
   ACTION: "الفعل",
   "Sign Up": "اشتراك",
-  "Already have an account ?": "هل لديك حساب؟",
+  "Already have an account?": "هل لديك حساب؟",
   "Sign In": "تسجيل الدخول",
   "Email Address": "عنوان البريد الإلكتروني",
   Password: "كلمة المرور",
@@ -149,5 +158,14 @@ export const arabicTranslation = {
   Login: "تسجيل الدخول",
   "Shipment Tracking" : "تتبع الشحنة",
   "Show Booking details" : "إظهار تفاصيل الحجز",
-  "mybookings" : "حجوزاتي"
+  "mybookings" : "حجوزاتي",
+  "Car Info" : 'بيانات السيارة',
+  "Car Name" : 'اسم السيارة',
+  "Car Model" : 'طراز السيارة',
+  "Model Year" : 'سنة الصنع',
+  "Choose Image Upload" : 'اختر تحميل الصورة',
+  "Cancel" : 'إلغاء' ,
+  "Add car" : "أضف سيارة",
+  "Submitting ..." : " ارسال...",
+  "Update car" : "تحديث السيارة"
 };

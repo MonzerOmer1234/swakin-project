@@ -130,7 +130,7 @@ export default function DashboardContentOne({changeLang}) {
               >
                 <span className={`relative top-[-12px] ${!changeLang ? 'start-[20px]' : 'end-[-20px]'} font-medium text-gray-800 dark:text-white`}>
                   <p style={{ color: "#1F2937" }} className="font-semibold">
-                   {t('stop')}: Jeddah Islamic Port
+                   {t('stop')}: 
                   </p>
                   <span
                     className="block text-xs font-semibold"

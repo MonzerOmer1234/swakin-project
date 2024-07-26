@@ -18,31 +18,35 @@ export default function SingleBookingDetail({
   travelDate,
   arrivalDate,
   changeLang,
-  setChangeLang
+  setChangeLang,
+  receipentName,
+  specifiedCars,
+  bookingSerial
 }) {
   const { sid } = useParams();
   const [carData, setCarData] = useState([]);
-  const [error , setError] = useState({})
-  const [loading , setLoading] = useState(false);
+  const [error, setError] = useState({});
+  
+  const [loading, setLoading] = useState(false);
   const [t] = useTranslation();
- 
+
   console.log(sid);
   const token = getAuthToken();
-  async function getCarData () {
-    try{
-      setLoading(true)
+  async function getCarData() {
+    try {
+      setLoading(true);
       const res = await axios.get("https://soaken.neuecode.com/api/get-cars", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       console.log(res);
-  
+
       setCarData(res.data.data);
-      setLoading(false)
-    } catch(error){
-      setError(error)
-      setLoading(false)
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
     }
   }
   useEffect(() => {
@@ -50,7 +54,8 @@ export default function SingleBookingDetail({
   }, []);
 
 
-  if ( error &&  error.message === "Network Error") {
+
+  if (error && error.message === "Network Error") {
     return (
       <>
         <div className=" flex flex-col justify-center items-center w-screen h-screen gap-4">
@@ -77,24 +82,35 @@ export default function SingleBookingDetail({
     );
   }
 
-
   return (
     <>
-
-    
-      <SideTabs sid={sid} changeLang={changeLang} setChangeLang={setChangeLang} />
+      <SideTabs
+        sid={sid}
+        changeLang={changeLang}
+        setChangeLang={setChangeLang}
+      />
       <div className="lg:col-span-12 lg:ms-[256px]">
-        <Navbar navName={  <p>
-              <span className="text-[#4B5563]">{t('Shipments')}  </span>{" "}
-              <span className="text-[#1F2937] font-medium" style={{fontFamily :'Inter , sans-serif'}}>/{t('mybookings')}/ {sid} </span>{" "}
-            </p>} username={username} />
+        <Navbar
+          navName={
+            <p>
+              <span className="text-[#4B5563]">{t("Shipments")} </span>{" "}
+              <span
+                className="text-[#1F2937] font-medium"
+                style={{ fontFamily: "Inter , sans-serif" }}
+              >
+                /{t("mybookings")}/ {sid}{" "}
+              </span>{" "}
+            </p>
+          }
+          username={username}
+        />
 
         <div className="content bg-[#E5E7EB] h-auto  p-5 ">
           <h1
             className="mb-[50px] font-bold text-[#353B47]"
             style={{ fontFamily: "Inter , sans-serif" }}
           >
-            {t('Booking')}
+            {t("Booking")}
           </h1>
 
           <div
@@ -106,12 +122,64 @@ export default function SingleBookingDetail({
               style={{ borderRadius: "8px" }}
             >
               <div className="flex flex-col lg:w-[50%]  gap-2">
+                <div class="flex m-3 flex-col h-[340px] md:h-[220px]   bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                  <h1
+                    className=" text-[#353B47] font-bold"
+                    style={{ fontFamily: "Inter , sans-serif" }}
+                  >
+                    {t("Booking Details")}
+                  </h1>
+                  <p className="flex flex-col md:flex-row text-center md:text-start justify-between top-5 relative w-full">
+                    <span className="mb-2">
+                      <span
+                        className=" block mb-2 text-[#4B5563] font-medium"
+                        style={{ fontFamily: "Inter,sans-serif" }}
+                      >
+                        Booking Serial
+                      </span>
+                      <span className=" text-[#1F2937] font-bold" style={{fontFamily : 'Inter , sans-serif'}}>{bookingSerial}</span>
+                    </span>
+                    <span className="mb-2">
+                      <span
+                        className=" block mb-2 text-[#4B5563] font-medium whitespace-nowrap"
+                        style={{ fontFamily: "Inter,sans-serif" }}
+                      >
+                        Booking For
+                      </span>
+                      <span className=" text-[#1F2937] font-bold" style={{fontFamily : 'Inter , sans-serif'}}>{receipentName}</span>
+                    </span>
+                  </p>
+                  <p className="flex justify-between top-5 relative w-full text-center md:text-start flex-col md:flex-row ">
+                    <span>
+                      <span
+                        className=" block mb-2 text-[#4B5563] font-medium"
+                        style={{
+                          fontFamily: "Inter,sans-serif",
+                        }}
+                      >
+                        Insurance Policy
+                      </span>
+                      <span className=" text-[#1F2937] font-bold" style={{fontFamily : 'Inter , sans-serif'}}>hi</span>
+                    </span>
+                    <span className=" relative md:end-[54px]">
+                      <span
+                        className=" block mb-2 text-[#4B5563] font-medium"
+                        style={{
+                          fontFamily: "Inter,sans-serif",
+                        }}
+                      >
+                        Cars
+                      </span>
+                      <span className=" text-[#1F2937] font-bold" style={{fontFamily : 'Inter , sans-serif'}}>{specifiedCars.length}</span>
+                    </span>
+                  </p>
+                </div>
                 <div class="flex m-3 flex-col   bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                   <h1
                     className=" text-[#353B47] font-bold"
                     style={{ fontFamily: "Inter , sans-serif" }}
                   >
-                    {t('Shipment Details')}
+                    {t("Shipment Details")}
                   </h1>
 
                   <p
@@ -120,7 +188,7 @@ export default function SingleBookingDetail({
                   >
                     <span>
                       <span className=" text-[#4B5563]">
-                        {t('start Location')} <br />{" "}
+                        {t("start Location")} <br />{" "}
                       </span>
                       <span
                         className="text-[#1F2937] font-bold"
@@ -133,7 +201,7 @@ export default function SingleBookingDetail({
                     <span className="lg:ms-[20px] hidden sm:block">{">"}</span>
                     <span className=" lg:ms-[20px]">
                       <span className=" text-[#4B5563]  ">
-                        {t('stop')} <br />{" "}
+                        {t("stop")} <br />{" "}
                       </span>
                       <span
                         className="text-[#1F2937] font-bold"
@@ -145,7 +213,7 @@ export default function SingleBookingDetail({
                     <span className=" ms-[10px] hidden sm:block">{">"}</span>
                     <span className=" ms-[30px]">
                       <span className=" text-[#4B5563]">
-                        {t('Destination')} <br />{" "}
+                        {t("Destination")} <br />{" "}
                       </span>
                       <span
                         className="text-[#1F2937] font-bold"
@@ -158,7 +226,7 @@ export default function SingleBookingDetail({
                   <p className=" flex flex-col gap-4 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
                     <span className="text-center sm:text-start">
                       <span className="text-[#4B5563] ">
-                        {t('Departure Date')} <br />
+                        {t("Departure Date")} <br />
                       </span>
                       <span
                         className=" text-[#1F2937] font-bold"
@@ -169,7 +237,7 @@ export default function SingleBookingDetail({
                     </span>
                     <span className="text-center sm:text-start">
                       <span className="text-[#4B5563]">
-                        {t('Arrival Date')} <br />
+                        {t("Arrival Date")} <br />
                       </span>
                       <span
                         className=" text-[#1F2937] font-bold "
@@ -180,19 +248,19 @@ export default function SingleBookingDetail({
                     </span>
                     <span className="text-center sm:text-start">
                       <span className="text-[#4B5563]">
-                        {t('Duration')} <br />
+                        {t("Duration")} <br />
                       </span>
                       <span
                         className=" text-[#1F2937] font-bold"
                         style={{ fontFamily: "Inter , sans-serif" }}
                       >
-                        {getDaysDiff(travelDate, arrivalDate)} {t('Days')}
+                        {getDaysDiff(travelDate, arrivalDate)} {t("Days")}
                       </span>
                     </span>
                   </p>
                   <p className=" mt-[20px] text-center sm:text-start">
                     <span className="text-[#4B5563]">
-                      {t('Number of cars')} <br />
+                      {t("Number of cars")} <br />
                     </span>
                     <span
                       className=" text-[#1F2937] font-bold relative end-7 sm:end-0"
@@ -216,7 +284,7 @@ export default function SingleBookingDetail({
                       className=" text-[#353B47] font-bold ms-[20px] my-[20px]"
                       style={{ fontFamily: "Inter , sans-serif" }}
                     >
-                     {t('Cars')}
+                      {t("Cars")}
                     </h1>
                   </div>
                   {carData &&
@@ -244,7 +312,7 @@ export default function SingleBookingDetail({
                               className="text-[#1F2937] font-bold "
                               style={{ fontFamily: "Inter , sans-serif" }}
                             >
-                              {t('Chassis Number')}
+                              {t("Chassis Number")}
                             </span>
                             <br />
                             <span className=" text-gray-500">
@@ -273,7 +341,7 @@ export default function SingleBookingDetail({
                       fontFamily: "Inter , sans-serif",
                     }}
                   >
-                    {t('Shipment Tracking')}
+                    {t("Shipment Tracking")}
                   </h1>
                   <a
                     className=" ms-10 h-[30px] rounded-full w-[80px] flex items-center justify-center "
@@ -288,7 +356,7 @@ export default function SingleBookingDetail({
                         backgroundColor: "#115E59",
                       }}
                     ></span>{" "}
-                    <span style={{ color: "#115E59" }}>{t('status')}</span>
+                    <span style={{ color: "#115E59" }}>{t("status")}</span>
                   </a>
                 </div>
                 <p
@@ -305,7 +373,7 @@ export default function SingleBookingDetail({
                           className="size-7 flex justify-center items-center flex-shrink-0  font-medium text-gray-800 rounded-full dark:bg-neutral-700 dark:text-white"
                           style={{ backgroundColor: "#CCFBF1" }}
                         >
-                          {t('A')}
+                          {t("A")}
                         </span>
                         <div className="mt-[0] ms-[13px] w-[1px]  h-[40px] flex-1 bg-[#E5E7EB] group-last:hidden dark:bg-neutral-700"></div>
                       </div>
@@ -318,7 +386,7 @@ export default function SingleBookingDetail({
                             style={{ color: "#1F2937" }}
                             className="font-semibold"
                           >
-                            {t('start')}: Jeddah Islamic Port
+                            {t("start")}: Jeddah Islamic Port
                           </p>
                           <span
                             className="block text-xs font-semibold"
@@ -347,7 +415,7 @@ export default function SingleBookingDetail({
                             style={{ color: "#1F2937" }}
                             className="font-semibold"
                           >
-                            {t('stop')}: Jeddah Islamic Port
+                            {t("stop")}: Jeddah Islamic Port
                           </p>
                           <span
                             className="block text-xs font-semibold"
@@ -358,7 +426,7 @@ export default function SingleBookingDetail({
                         </span>
                       </div>
                     </li>
-                  
+
                     <li
                       className=" flex "
                       style={{ borderBottom: "1px solid #80808030" }}
@@ -368,7 +436,7 @@ export default function SingleBookingDetail({
                           className="size-7 flex justify-center items-center flex-shrink-0  font-medium text-gray-800 rounded-full dark:bg-neutral-700 dark:text-white"
                           style={{ border: "1px solid #E5E7EB" }}
                         >
-                          {t('B')}
+                          {t("B")}
                         </span>
                         <div className="mt-[0] ms-[13px] w-[1px]  h-[30px] flex-1 bg-[#E5E7EB] group-last:hidden dark:bg-neutral-700"></div>
                       </div>
@@ -381,7 +449,7 @@ export default function SingleBookingDetail({
                             style={{ color: "#1F2937" }}
                             className="font-semibold"
                           >
-                            {t('Destination')}: Portsudan
+                            {t("Destination")}: Portsudan
                           </p>
                           <span
                             className="block text-xs font-semibold"
@@ -399,7 +467,7 @@ export default function SingleBookingDetail({
                     className=" ms-auto me-5 p-3 relative -top-2  text-[#1F2937] booking-btn"
                     style={{ border: "1px solid #1F2937", borderRadius: "8px" }}
                   >
-                    {t('Cancel Booking')}
+                    {t("Cancel Booking")}
                   </button>
                 </div>
               </div>

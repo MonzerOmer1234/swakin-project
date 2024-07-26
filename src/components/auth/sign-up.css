@@ -1,10 +1,10 @@
 .header::after{
-    content: '';
+  content: '';
   position: absolute;
   width: 388px;
   height: 1px;
   background-color: #F1F1F2;
-  margin-left: 20px;
+  margin: 0  20px;
   bottom: -12px;
 }
 .react-international-phone-input{

@@ -40,6 +40,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
   const [changeLang, setChangeLang] = useState(false);
+  const [bookingSerial , setBookingSerial] = useState("")
 
   // get user data
 
@@ -207,7 +208,7 @@ function App() {
                 <Route
                   path="/bookings"
                   element={
-                    <Bookings  changeLang={changeLang} username={newName} serialNumber={serialNumber} />
+                    <Bookings  changeLang={changeLang} username={newName} serialNumber={serialNumber} setBookingSerial={setBookingSerial} />
                   }
                 />
               </Route>
@@ -266,6 +267,9 @@ function App() {
                     travelDate={travelDate}
                     carsNums={carsNums}
                     setChangeLang={setChangeLang}
+                    receipentName={receipentName}
+                    specifiedCars={specifiedCars}
+                    bookingSerial={bookingSerial}
                   />
                 }
               />

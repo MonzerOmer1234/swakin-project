@@ -92,10 +92,7 @@ export default function BookingDetails({
       shipment_id: shipmentId,
       car_id: newCars,
     };
-    // bookingsData.append("recipient_name", receipentName);
-    // bookingsData.append("recipient_phone", receipentPhone);
-    // bookingsData.append("shipment_id", shipmentId);
-    // bookingsData.append("car_id", JSON.stringify());
+
 
     try {
       setLoading(true)

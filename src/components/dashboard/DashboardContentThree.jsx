@@ -25,6 +25,8 @@ export default function DashboardContentThree({ setData , changeLang }) {
   const [error , setError] = useState({})
   const {t} = useTranslation();
 
+
+
   useOutsideClickHook(ref, () => setShowContent(false));
 
   const [showContent, setShowContent] = useState(false);
@@ -115,6 +117,7 @@ export default function DashboardContentThree({ setData , changeLang }) {
       {showContent && (
         <div className="modal relative block" ref={ref}>
           <CarModal
+            changeLang={changeLang}
             setShowContent={setShowContent}
             showContent={showContent}
             setCarName={setCarName}
