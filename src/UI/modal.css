@@ -70,8 +70,9 @@ body.active-modal {
 }
 @media (max-width:767px) {
   .modal-content-ar{
+    top: 20px;
     width: 350px;
-    margin: 0 20px 0 ;
+    margin:0 ;
   }
   
 }

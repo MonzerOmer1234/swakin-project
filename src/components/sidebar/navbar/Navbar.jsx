@@ -1,8 +1,11 @@
 import "./navbar.css";
 import logoImage from "../../../imgs/logo.png";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-export default function Navbar({ navName, username , setChangeLang }) {
+export default function Navbar({ navName, username , setChangeLang  , changeLang}) {
+
+  const [t] = useTranslation();
   return (
     <>
       <header class="flex lg:hidden w-screen justify-start flex-nowrap  bg-white text-sm py-4">
@@ -41,33 +44,33 @@ export default function Navbar({ navName, username , setChangeLang }) {
           </Link>
           <div class="flex relative end-[20px] flex-row items-center gap-[20px]  ">
             <Link class="font-medium text-gray-600" to="/">
-              Dashboard
+             {t('Dashboard')}
             </Link>
             <Link
               class="font-medium text-gray-600 hover:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500"
               to="/cars"
             >
-              Cars
+              {t('Cars')}
             </Link>
             <Link
               class="font-medium text-gray-600 hover:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500"
               to="/shipments"
             >
-              Shipments
+              {t('Shipments')}
             </Link>
             <Link
               class="font-medium text-gray-600 hover:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500"
               to='/bookings'
             >
-              Bookings
+              {t('Bookings')}
             </Link>
             <Link
-             onClick={()=>setChangeLang(true)}
+             onClick={()=>setChangeLang(!changeLang)}
           
               class="font-medium  text-gray-600 hover:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500"
               
             >
-              العربية
+              {changeLang ? 'English' : '   العربية'}
             </Link>
           </div>
         </nav>
