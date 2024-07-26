@@ -137,7 +137,7 @@ export default function SingleBookingDetail({
                         className=" block mb-2 text-[#4B5563] font-medium"
                         style={{ fontFamily: "Inter,sans-serif" }}
                       >
-                        Booking Serial
+                        {t('Booking Serial')}
                       </span>
                       <span className=" text-[#1F2937] font-bold" style={{fontFamily : 'Inter , sans-serif'}}>{bookingSerial}</span>
                     </span>
@@ -146,7 +146,7 @@ export default function SingleBookingDetail({
                         className=" block mb-2 text-[#4B5563] font-medium whitespace-nowrap"
                         style={{ fontFamily: "Inter,sans-serif" }}
                       >
-                        Booking For
+                        {t('Booking For')}
                       </span>
                       <span className=" text-[#1F2937] font-bold" style={{fontFamily : 'Inter , sans-serif'}}>{receipentName}</span>
                     </span>
@@ -159,7 +159,7 @@ export default function SingleBookingDetail({
                           fontFamily: "Inter,sans-serif",
                         }}
                       >
-                        Insurance Policy
+                        {t('Insurance Policy')}
                       </span>
                       <span className=" text-[#1F2937] font-bold" style={{fontFamily : 'Inter , sans-serif'}}>hi</span>
                     </span>
@@ -170,7 +170,7 @@ export default function SingleBookingDetail({
                           fontFamily: "Inter,sans-serif",
                         }}
                       >
-                        Cars
+                        {t('Cars')}
                       </span>
                       <span className=" text-[#1F2937] font-bold" style={{fontFamily : 'Inter , sans-serif'}}>{specifiedCars.length}</span>
                     </span>
@@ -383,12 +383,12 @@ export default function SingleBookingDetail({
                         className="my-3 "
                         style={{ fontFamily: "Inter , sans-serif" }}
                       >
-                        <span className=" relative top-[-12px] left-[20px] font-medium text-gray-800 dark:text-white">
+                        <span className={` relative top-[-12px] ${changeLang ? 'left-[-20px]' : 'left-[20px]'} font-medium text-gray-800 dark:text-white`}>
                           <p
                             style={{ color: "#1F2937" }}
                             className="font-semibold"
                           >
-                            {t("start")}: Jeddah Islamic Port
+                            {t("start")}: 
                           </p>
                           <span
                             className="block text-xs font-semibold"
@@ -412,12 +412,12 @@ export default function SingleBookingDetail({
                         className="my-3"
                         style={{ fontFamily: "Inter , sans-serif" }}
                       >
-                        <span className=" relative top-[-12px] left-[20px] font-medium text-gray-800 dark:text-white">
+                        <span className={`relative top-[-12px] ${changeLang ? 'left-[-20px]' : 'left-[20px]'}  font-medium text-gray-800 dark:text-white`}>
                           <p
                             style={{ color: "#1F2937" }}
                             className="font-semibold"
                           >
-                            {t("stop")}: Jeddah Islamic Port
+                            {t("stop")}: 
                           </p>
                           <span
                             className="block text-xs font-semibold"
@@ -446,12 +446,12 @@ export default function SingleBookingDetail({
                         className="my-3 "
                         style={{ fontFamily: "Inter , sans-serif" }}
                       >
-                        <span className=" relative top-[-12px] left-[20px] font-medium text-gray-800 dark:text-white">
+                        <span className={`relative top-[-12px] ${changeLang ? 'left-[-20px]' : 'left-[20px]'}  font-medium text-gray-800 dark:text-white`}>
                           <p
                             style={{ color: "#1F2937" }}
                             className="font-semibold"
                           >
-                            {t("Destination")}: Portsudan
+                            {t("Destination")}: 
                           </p>
                           <span
                             className="block text-xs font-semibold"

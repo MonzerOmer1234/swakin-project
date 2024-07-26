@@ -35,6 +35,23 @@ body.active-modal {
 
 }
 
+.delete-overlay-ar{
+
+  width: 100vw;
+  height: 100vh;
+
+  left: 0;
+
+  bottom: 0;
+  position: fixed;
+  z-index: 100;
+  background-color: rgba(0,0,0,0.25);
+}
+
+.Toastify__toast-container.Toastify__toast-container--top-center{
+  left: 84% !important;
+  transform: translateX(0);
+}
 
 
 .overlay {
@@ -99,7 +116,8 @@ body.active-modal {
   }
   .delete-modal-content{
    
-    width: 400px !important;
+    width: 350px !important;
+    left: 50%;
   }
   .image-div{
     width: calc(100% - 30px);

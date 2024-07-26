@@ -95,6 +95,7 @@ export default function CarItem({
     <>
       {showDeleteModal && (
         <DeleteModal
+         changeLang={changeLang}
           setShowDeleteModal={setShowDeleteModal}
           id={id}
           getCarData={getCarData}
@@ -123,7 +124,7 @@ export default function CarItem({
             </div>
             <div className="ms-5">
               <h1 className=" text-center font-bold text-xl">{name}</h1>
-              {/* <h1 className=" text-center font-bold text-xl">مرسيدس بنز</h1> */}
+            
               <p className="text-center text-gray-500">{model}</p>
             </div>
           </div>
@@ -299,7 +300,7 @@ export default function CarItem({
               </span>
             </p>
           </div>
-          <div className="p-5 flex gap-2 whitespace-nowrap update items-center justify-between">
+          <div className={`p-5 flex gap-2 whitespace-nowrap update items-center ${changeLang ? 'justify-center' : 'justify-between'}`}>
             <button
               className={`justify-center flex bg-[#CCFBF1]`}
               style={{ borderRadius: "8px", width: changeLang  ? "180px" : "157px", height: "auto" }}

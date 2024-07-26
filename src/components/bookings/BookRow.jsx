@@ -10,7 +10,8 @@ export default function BookRow({
   total,
   tax,
   status,
-  setBookingSerial
+  setBookingSerial,
+  changeLang
 }) {
   const [closeActions, setCloseActions] = useState(true);
   const [t] = useTranslation();
@@ -91,7 +92,7 @@ export default function BookRow({
           </div>
 
           <div
-            class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg  ring-black ring-opacity-5 focus:outline-none"
+            className={`absolute ${changeLang ? 'right-[-77px]' : 'right-0'} z-10 mt-2 ${changeLang ?  ' w-40': 'w-56'} origin-top-right rounded-md bg-white shadow-lg  ring-black ring-opacity-5 focus:outline-none`}
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="menu-button"

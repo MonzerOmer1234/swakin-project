@@ -134,7 +134,8 @@ const Bookings = ({ username , serialNumber , setBookingSerial , changeLang , se
                           bookings.length > 0 &&
                           bookings.map((booking) => (
                             <BookRow
-                            setBookingSerial={setBookingSerial}
+                              changeLang={changeLang}
+                              setBookingSerial={setBookingSerial}
                               bid= {booking.serial_no}
                               sid={booking.shipment.serial_no}
                               quantity={booking.car_qty}

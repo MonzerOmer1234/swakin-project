@@ -7,9 +7,11 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-export default function DeleteModal({ setShowDeleteModal, id, getCarData }) {
+import { useTranslation } from "react-i18next";
+export default function DeleteModal({ setShowDeleteModal, id, getCarData , changeLang }) {
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState("");
+  const [t] = useTranslation();
 
   const token = getAuthToken();
 
@@ -84,7 +86,7 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData }) {
   return (
     <>
       {deleting ? (
-        <div className="overlay">
+        <div className={`${changeLang ? 'delete-overlay-ar' : 'overlay'}`}>
           <div className=" flex justify-center items-center relative top-2/4">
             <SkeletonTheme baseColor="gray" highlightColor="#444">
               <p>
@@ -96,8 +98,8 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData }) {
       ) : deleteError ? (
         <ToastContainer />
       ) : (
-        <div className="overlay">
-          <div className="delete-modal-content">
+        <div className={`${changeLang ? 'delete-overlay-ar' : 'overlay'}`}>
+          <div className={`delete-modal-content`}>
             <div className="  top-[30px] relative mb-[25px] flex justify-center  ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -160,8 +162,8 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData }) {
             >
               x
             </span>
-            <p className=" text-red-700 py-5 px-[10px] md:px-[80px] font-bold ">
-              Are you sure you want to delete this car ?
+            <p className={` text-red-700 py-5  md:px-[80px] font-bold  whitespace-nowrap `}>
+              {t('Are you sure you want to delete this car ?')}
             </p>
             <div className="flex mt-4 justify-center gap-3">
               <button
@@ -173,14 +175,14 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData }) {
                   fontFamily: "Inter , sans-serif",
                 }}
               >
-                Cancel
+                {t('Cancel')}
               </button>
               <button
                 onClick={() => handleDeleteCar(id)}
                 className="  p-3 relative -top-2  text-[white] bg-red-700  booking-btn"
                 style={{ border: "1px solid red", borderRadius: "8px" }}
               >
-                Delete
+               {t('Delete')}
               </button>
             </div>
           </div>

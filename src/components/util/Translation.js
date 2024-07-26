@@ -51,6 +51,7 @@ export const engilshTranslation = {
   "Complete Booking": "Complete Boooking",
   Booking: "Booking",
   "BOOKING SERIAL": "BOOKING SERIAL",
+  "BOOKING Serial": "BOOKING Serial",
   "SHIPMENT SERIAL": "SHIPMENT SERIAL",
   "CAR QUANTITY": "CAR QUANTITY",
   TAX: "TAX",
@@ -81,7 +82,12 @@ export const engilshTranslation = {
   "Cancel" : 'Cancel' ,
   "Add car" : "Add car",
   "Submitting ..." : 'Submitting ...',
-  "Update car" : 'Update car'
+  "Update car" : 'Update car',
+  "Are you sure you want to delete this car ?" : 'Are you sure you want to delete this car ?',
+  "Delete" : 'Delete',
+  "Booking Details" : 'Booking Details',
+  "Booking For" : 'Booking For',
+  'Insurance Policy' : 'Insurance Policy'
 };
 
 export const arabicTranslation = {
@@ -138,6 +144,7 @@ export const arabicTranslation = {
   "Complete Booking": "اكمال الشحن",
   Booking: "الحجز",
   "BOOKING SERIAL": "الرقم التسلسلي للحجز",
+  "BOOKING Serial": "الرقم التسلسلي للحجز",
   "SHIPMENT SERIAL": "الرقم التسلسلي للشحن",
   "CAR QUANTITY": "كمية العربات",
   TAX: "الضريبة",
@@ -167,5 +174,10 @@ export const arabicTranslation = {
   "Cancel" : 'إلغاء' ,
   "Add car" : "أضف سيارة",
   "Submitting ..." : " ارسال...",
-  "Update car" : "تحديث السيارة"
+  "Update car" : "تحديث السيارة",
+  "Are you sure you want to delete this car ?" : "هل أنت متأكد أنك تريد حذف هذه السيارة؟",
+  "Delete" : 'حذف',
+  "Booking Details" : 'تفاصيل الحجز',
+   "Booking For" : 'صاحب الحجز',
+  'Insurance Policy' : 'بوليصة التأمين'
 };

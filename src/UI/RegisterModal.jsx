@@ -148,7 +148,23 @@ export default function RegisterModal({
 
   return (
     <>
-      <ToastContainer />
+     {!changeLang && <ToastContainer /> } 
+     {
+          changeLang &&  (
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+          )
+        }
 
       <div
         className={`${changeLang ? "overlay-ar" : "overlay"}`}
@@ -158,6 +174,7 @@ export default function RegisterModal({
         <h1 className=" text-center top-[30px] relative font-bold text-lg mb-[25px]">
           {t("Car Info")}
         </h1>
+       
         <span
           className=" absolute right-[20px] top-[20px] pe-3  text-xl cursor-pointer"
           onClick={() => setShowContent(false)}
