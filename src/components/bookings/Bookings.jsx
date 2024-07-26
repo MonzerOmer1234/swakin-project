@@ -7,8 +7,9 @@ import { getAuthToken } from "../util/auth";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
+import { changeLanguage } from "i18next";
 
-const Bookings = ({ username , serialNumber , setBookingSerial }) => {
+const Bookings = ({ username , serialNumber , setBookingSerial , changeLang , setChangeLang }) => {
   const [loading, setLoading] = useState(false);
   const [bookings, setBookings] = useState([]);
   const [error, setError] = useState({});
@@ -42,7 +43,9 @@ const Bookings = ({ username , serialNumber , setBookingSerial }) => {
   return (
     <>
       <div className="lg:col-span-12 lg:ms-[255px]">
-        <Navbar
+        <Navbar 
+        setChangeLang={setChangeLang}
+        changeLang = {changeLang}
           navName={
             <p>
               {" "}

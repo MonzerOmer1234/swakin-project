@@ -91,6 +91,8 @@ export default function SingleBookingDetail({
       />
       <div className="lg:col-span-12 lg:ms-[256px]">
         <Navbar
+        setChangeLang={setChangeLang}
+         changeLang={changeLang}
           navName={
             <p>
               <span className="text-[#4B5563]">{t("Shipments")} </span>{" "}

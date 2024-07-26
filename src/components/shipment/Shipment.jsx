@@ -26,7 +26,8 @@ const Shipment = ({
   travelDate,
   shipName,
   serialNumber,
-  changeLang
+  changeLang,
+  setChangeLang
 }) => {
   const [shipmentsData, setShipmentsData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -129,7 +130,7 @@ const Shipment = ({
   return (
     <>
       <div className="lg:col-span-12 lg:ms-[255px]">
-        <Navbar navName={t(sideTabs[2]?.text)} username={username} />
+        <Navbar setChangeLang={setChangeLang} changeLang={changeLang} navName={t(sideTabs[2]?.text)} username={username} />
 
         <div className=" flex gap-3 md:gap-0 flex-col md:flex-row justify-between  items-center p-5 bg-[#E5E7EB]">
           <h1 className=" font-bold text-2xl">{t('Shipments')}</h1>

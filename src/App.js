@@ -164,6 +164,7 @@ function App() {
                   element={
                     <Dashboard
                       changeLang={changeLang}
+                      setChangeLang={setChangeLang}
                       setAvailableSeats={setAvailableSeats}
                       setSerialNumber={setSerialNumber}
                       setStartLocation={setStartLocation}
@@ -181,11 +182,12 @@ function App() {
                   }
                 />
 
-                <Route path="/cars" element={<Cars username={newName}  changeLang={changeLang}/>} />
+                <Route path="/cars" element={<Cars username={newName}  changeLang={changeLang}  setChangeLang={setChangeLang}/>} />
                 <Route
                   path="/shipments"
                   element={
                     <Shipment
+                    setChangeLang={setChangeLang}
                       changeLang={changeLang}
                       username={newName}
                       setAvailableSeats={setAvailableSeats}
@@ -208,7 +210,7 @@ function App() {
                 <Route
                   path="/bookings"
                   element={
-                    <Bookings  changeLang={changeLang} username={newName} serialNumber={serialNumber} setBookingSerial={setBookingSerial} />
+                    <Bookings  setChangeLang={setChangeLang}  changeLang={changeLang} username={newName} serialNumber={serialNumber} setBookingSerial={setBookingSerial} />
                   }
                 />
               </Route>
@@ -217,6 +219,7 @@ function App() {
                 path="/shipments/:id/booking"
                 element={
                   <ShipmentDetails
+                  
                     changeLang={changeLang}
                     username={newName}
                     availableSeats={availableSeats}

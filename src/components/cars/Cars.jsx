@@ -14,7 +14,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 
 
-const Cars = ({username , changeLang}) => {
+const Cars = ({username , changeLang , setChangeLang}) => {
   const ref = useRef();
 
 
@@ -102,7 +102,7 @@ const Cars = ({username , changeLang}) => {
     <>
 
     <div className="lg:col-span-12 lg:ms-[255px] me-[10px]">
-      <Navbar navName={t(sideTabs[1]?.text)} username={username} />
+      <Navbar setChangeLang={setChangeLang} changeLang={changeLang} navName={t(sideTabs[1]?.text)} username={username} />
         <div className="m bg-[#E5E7EB]  p-5 font-bold text-2xl flex justify-between">
           <h1>{t('Cars')}</h1>
           <button

@@ -2,7 +2,7 @@ import "./navbar.css";
 import logoImage from "../../../imgs/logo.png";
 import { Link } from "react-router-dom";
 
-export default function Navbar({ navName, username }) {
+export default function Navbar({ navName, username , setChangeLang }) {
   return (
     <>
       <header class="flex lg:hidden w-screen justify-start flex-nowrap  bg-white text-sm py-4">
@@ -62,6 +62,7 @@ export default function Navbar({ navName, username }) {
               Bookings
             </Link>
             <Link
+             onClick={()=>setChangeLang(true)}
           
               class="font-medium  text-gray-600 hover:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500"
               

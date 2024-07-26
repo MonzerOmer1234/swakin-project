@@ -113,7 +113,7 @@ console.log(carData)
             
       <SideTabs id={id}  changeLang={changeLang} setChangeLang={setChangeLang} />
       <div className="lg:col-span-12 lg:ms-[255px]">
-        <Navbar navName={ <p>
+        <Navbar setChangeLang={setChangeLang} changeLang={changeLang} navName={ <p>
               <span className="text-[#4B5563]"> {t('Shipments')} </span>{" "}
               <span className="text-[#1F2937] font-medium" style={{fontFamily: 'Inter , sans-serif'}}>/ {id} / {t('booking')} </span>{" "}
             </p>} username={username} />

@@ -28,6 +28,7 @@ const Dashboard = ({
   setShipName,
   setShipmentId,
   changeLang,
+  setChangeLang
 }) => {
   const [shipmentsData, setShipmentsData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -99,7 +100,7 @@ const Dashboard = ({
   return (
     <>
       <div className="lg:col-span-12 lg:ms-[255px]">
-        <Navbar  navName={t(sideTabs[0].text)} username={username} />
+        <Navbar setChangeLang={setChangeLang} changeLang={changeLang}  navName={t(sideTabs[0].text)} username={username} />
         <div
           style={{
             backgroundColor: "#E5E7EB",
