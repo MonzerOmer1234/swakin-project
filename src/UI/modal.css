@@ -87,7 +87,7 @@ body.active-modal {
 }
 @media (max-width:767px) {
   .modal-content-ar{
-    top: 20px;
+    top: 60px;
     width: 350px;
     margin:0 ;
   }
