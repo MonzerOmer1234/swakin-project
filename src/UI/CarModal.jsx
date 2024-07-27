@@ -103,7 +103,7 @@ export default function CarModal({
        {
           changeLang &&  (
             <ToastContainer
-              position="top-center"
+              position="top-left"
               
               autoClose={5000}
               hideProgressBar={false}

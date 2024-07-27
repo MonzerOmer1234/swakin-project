@@ -48,10 +48,13 @@ body.active-modal {
   background-color: rgba(0,0,0,0.25);
 }
 
-.Toastify__toast-container.Toastify__toast-container--top-center{
-  left: 70% !important;
-  transform: translateX(0);
+@media only screen and (max-width: 480px){
+  .Toastify__toast{
+
+    margin-right : 100px;
+  }
 }
+
 
 
 .overlay {
@@ -109,9 +112,10 @@ body.active-modal {
 }
 @media (max-width:767px) {
   .modal-content {
-    top: 70px;
+    top: 100px;
     width: 400px;
     height: 750px;
+    
 
   }
   .delete-modal-content{
