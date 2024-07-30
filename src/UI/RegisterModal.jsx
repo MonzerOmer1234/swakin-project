@@ -5,6 +5,7 @@ import { getAuthToken } from "../components/util/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
+import "./modal.css";
 
 export default function RegisterModal({
   setShowContent,
@@ -64,7 +65,6 @@ export default function RegisterModal({
     formdata.append("year", year);
     formdata.append("car_color", carColor);
     carImage && formdata.append("image", carImage);
-
     formdata.append("chassis_no", carChassisNo);
     if (Object.keys(carDetails).length === 0) {
       try {
@@ -90,17 +90,17 @@ export default function RegisterModal({
         setShowContent(true);
       }
     } else {
-      carImage && formdata.append("image", carImage);
+      formdata.append("car_id", id);
+
       try {
         setSendngUpdate(true);
-        const res = await axios.patch(
-          `https://soaken.neuecode.com/api/update-cars/${id}`,
+        const res = await axios.post(
+          `https://soaken.neuecode.com/api/update-cars`,
 
           formdata,
 
           {
             headers: {
-              "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
             },
           }
@@ -148,6 +148,23 @@ export default function RegisterModal({
 
   return (
     <>
+      {!changeLang && <ToastContainer />}
+
+      {changeLang && (
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      )}
+
       <div
         className={`${changeLang ? "overlay-ar" : "overlay"}`}
         onClick={() => setShowContent(false)}
@@ -329,22 +346,6 @@ export default function RegisterModal({
             </div>
           </div>
         </form>
-        {!changeLang ? (
-          <ToastContainer />
-        ) : (
-          <ToastContainer
-            position="top-left"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
-        )}
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import "./App.css";
 import axios from "axios";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import SideTabs, { sideTabs } from "./components/sidebar/SideTabs";
+import SideTabs from "./components/sidebar/SideTabs";
 import Dashboard from "./components/dashboard/Dashboard";
 import Cars from "./components/cars/Cars";
 import Shipment from "./components/shipment/Shipment";
@@ -17,6 +17,10 @@ import ShipmentDetails from "./components/shipment/ShipmentDetails";
 import BookingDetails from "./components/bookings/BookingDetails";
 import SingleBookingDetail from "./components/bookings/SingleBookingDetail";
 import i18n from "./i18n";
+import ForgotPassword from "./components/auth/ForgotPassword";
+import ResetPassword from "./components/auth/ResetPassword";
+import { mainpulateUserName } from "./components/util/user";
+import Profile from "./components/profile/Profile";
 
 function App() {
   // share the data across the entire application
@@ -26,12 +30,16 @@ function App() {
   const [serialNumber, setSerialNumber] = useState("");
   const [startLocation, setStartLocation] = useState("");
   const [endLocation, setEndLocation] = useState("");
-  const [stop, setStop] = useState("");
+  const [stop, setStop] = useState([]);
   const [travelDate, setTravelDate] = useState("");
   const [arrivalDate, setArrivalDate] = useState("");
   const [carsNums, setCarsNums] = useState("");
   const [price, setPrice] = useState(0);
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password , setPassword] = useState('')
+  const [profilePic , setProfilePic] = useState(null)
   const [shipName, setShipName] = useState("");
   const [receipentName, setReceipentName] = useState("");
   const [receipentPhone, setReceipentPhone] = useState("");
@@ -40,22 +48,22 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
   const [changeLang, setChangeLang] = useState(false);
-  const [bookingSerial , setBookingSerial] = useState("")
+  const [bookingSerial, setBookingSerial] = useState("");
 
   // get user data
 
   console.log(changeLang);
   console.log(typeof setChangeLang);
 
- 
   useEffect(() => {
     if (changeLang) {
       i18n.changeLanguage("ar");
-      
+
       document.body.style.direction = "rtl";
+      document.body.style.fontFamily = "Almarai !important";
     } else {
       i18n.changeLanguage("en");
-     
+
       document.body.style.direction = "ltr";
     }
   }, [changeLang]);
@@ -67,10 +75,17 @@ function App() {
         setLoading(true);
         const res = await axios.get("https://soaken.neuecode.com/api/user", {
           headers: {
-            Authorization: ` Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
-        setUsername(res.data.name);
+        console.log(res);
+        setUsername(res.data.data.name);
+        setEmail(res.data.data.email);
+        setPhone(res.data.data.phone);
+        setProfilePic(res.data.data.profile_pic);
+        setPassword(res.data.data.password)
+        
+
         setLoading(false);
 
         console.log(res);
@@ -83,26 +98,13 @@ function App() {
     [token]
   );
 
+  console.log(username);
+
   useEffect(() => {
     if (token) {
       getUserData();
     }
   }, [token, getUserData]);
-
-  function mainpulateUserName(name) {
-    const newNameArray = name.split(" ");
-    let newName = "";
-    for (let i = 0; i < newNameArray.length; i++) {
-      newName += newNameArray[i].charAt(0) + " ";
-      newName = newName.toUpperCase();
-    }
-
-    return newName;
-  }
-  
-
- 
-
 
   const newName = mainpulateUserName(username);
 
@@ -151,11 +153,13 @@ function App() {
 
   return (
     <>
-      {path !== "/sign-up" && path !== "/sign-in" ? (
+      {path !== "/sign-up" &&
+      path !== "/sign-in" &&
+      path !== "/forgot-password" &&
+      path !== "/reset-password" ? (
         <>
-          <div className=" lg:grid w-full lg:grid-cols-12 h-screen bg-[#E5E7EB] ">
-
-            <SideTabs changeLang={changeLang} setChangeLang= {setChangeLang} />
+          <div className={`lg:grid w-full lg:grid-cols-12  ${path === '/profile' ? 'h-[800px] ' : 'h-screen'} bg-[#E5E7EB]`}>
+            <SideTabs changeLang={changeLang} setChangeLang={setChangeLang} />
             <Routes>
               <Route element={<ProtectedRoutes />}>
                 <Route
@@ -182,12 +186,21 @@ function App() {
                   }
                 />
 
-                <Route path="/cars" element={<Cars username={newName}  changeLang={changeLang}  setChangeLang={setChangeLang}/>} />
+                <Route
+                  path="/cars"
+                  element={
+                    <Cars
+                      username={newName}
+                      changeLang={changeLang}
+                      setChangeLang={setChangeLang}
+                    />
+                  }
+                />
                 <Route
                   path="/shipments"
                   element={
                     <Shipment
-                    setChangeLang={setChangeLang}
+                      setChangeLang={setChangeLang}
                       changeLang={changeLang}
                       username={newName}
                       setAvailableSeats={setAvailableSeats}
@@ -210,7 +223,31 @@ function App() {
                 <Route
                   path="/bookings"
                   element={
-                    <Bookings  setChangeLang={setChangeLang}  changeLang={changeLang} username={newName} serialNumber={serialNumber} setBookingSerial={setBookingSerial} />
+                    <Bookings
+                      setChangeLang={setChangeLang}
+                      changeLang={changeLang}
+                      username={newName}
+                      serialNumber={serialNumber}
+                      setBookingSerial={setBookingSerial}
+                    />
+                  }
+                />
+                <Route
+                  path="/profile"
+                  element={
+                    <Profile
+                      getUserData={getUserData}
+                      setChangeLang={setChangeLang}
+                      changeLang={changeLang}
+                      name={username}
+                      email={email}
+                      phone={phone}
+                      password={password}
+                      profileImage={profilePic}
+                      username={newName}
+                      serialNumber={serialNumber}
+                      setBookingSerial={setBookingSerial}
+                    />
                   }
                 />
               </Route>
@@ -219,7 +256,6 @@ function App() {
                 path="/shipments/:id/booking"
                 element={
                   <ShipmentDetails
-                  
                     changeLang={changeLang}
                     username={newName}
                     availableSeats={availableSeats}
@@ -230,7 +266,7 @@ function App() {
                     setReceipentName={setReceipentName}
                     setReceipentPhone={setReceipentPhone}
                     setSpecifiedCars={setSpecifiedCars}
-                    setChangeLang= {setChangeLang} 
+                    setChangeLang={setChangeLang}
                   />
                 }
               />
@@ -238,8 +274,8 @@ function App() {
                 path="/bookings/:serial/booking"
                 element={
                   <BookingDetails
-                   changeLang={changeLang}
-                   setChangeLang= {setChangeLang} 
+                    changeLang={changeLang}
+                    setChangeLang={setChangeLang}
                     username={newName}
                     availableSeats={availableSeats}
                     serialNumber={serialNumber}
@@ -261,7 +297,7 @@ function App() {
                 path="/shipments/mybookings/:sid"
                 element={
                   <SingleBookingDetail
-                  changeLang={changeLang}
+                    changeLang={changeLang}
                     username={newName}
                     startLocation={startLocation}
                     endLocation={endLocation}
@@ -281,8 +317,16 @@ function App() {
         </>
       ) : (
         <Routes>
-          <Route path="/sign-up" element={<Signup  changeLang={changeLang}/>} />
-          <Route path="/sign-in" element={<SignIn  changeLang={changeLang}/>} />
+          <Route path="/sign-up" element={<Signup changeLang={changeLang} />} />
+          <Route path="/sign-in" element={<SignIn changeLang={changeLang} />} />
+          <Route
+            path="/forgot-password"
+            element={<ForgotPassword changeLang={changeLang} />}
+          />
+          <Route
+            path="/reset-password"
+            element={<ResetPassword changeLang={changeLang} />}
+          />
         </Routes>
       )}
     </>

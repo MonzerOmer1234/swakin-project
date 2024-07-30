@@ -10,53 +10,46 @@ import "./sign-up.css";
 import "./sign-in.css";
 import { useTranslation } from "react-i18next";
 
-export default function SignIn({changeLang}) {
+export default function ForgotPassword({changeLang}) {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
   const [loading, setLoading] = useState("");
   const [info, setInfo] = useState({});
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const [t] = useTranslation();
 
-
-  function handleForgotPassword(){
-    navigate('/forgot-password')
-  }
-
   // get the token from the local storage to access the protected routes
   const returnedToken = getAuthToken();
   // handling the submission of the form
   async function handleSubmit(event) {
     event.preventDefault();
-    const formdata = { email, password };
+    const formData = new FormData();
+
+    formData.append('email' , email);
 
     //  get the data from the submission of  sign in form
 
     try {
       setLoading(true);
       const res = await axios.post(
-        "https://soaken.neuecode.com/api/login",
-        formdata,
-        {
-          auth: "Bearer " + returnedToken,
-        }
+        "https://soaken.neuecode.com/api/forget-password",
+        formData,
+        
       );
       console.log(res);
-
-      const token = res.data.data.token;
-      localStorage.setItem("token", token);
+       
 
       setInfo(res);
       setLoading(false);
 
-      navigate("/");
+      navigate("/reset-password");
     } catch (error) {
       //  catching errors of sign in form
 
-      setLoading(false);
-
+      
       setError(error);
+      setLoading(false);
     }
     console.log(error);
   }
@@ -128,23 +121,7 @@ export default function SignIn({changeLang}) {
         className=" flex flex-col sign-in-container  w-[436px]  mx-auto    bg-[white] relative top-[150px]"
         style={{ borderRadius: "15px" }}
       >
-        <div className="pt-[20px] relative header">
-          <h1
-            className="text-center text-[#1F2937] font-bold text-[24px] mb-2"
-            style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
-          >
-            {t('Sign In')}
-          </h1>
-          <p
-            className=" text-[#515661] text-center font-normal text-[14px]"
-            style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
-          >
-            {t("Don't have an account ?")}
-            <Link to={"/sign-up"} className=" text-[#2A2981] font-medium">
-              {t('Sign Up')}
-            </Link>
-          </p>
-        </div>
+      
         <form
           method="POST"
           onSubmit={handleSubmit}
@@ -167,6 +144,7 @@ export default function SignIn({changeLang}) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 name="email"
+                placeholder={t('write your email here')}
                 type="text"
                 required
                 class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-white"
@@ -178,38 +156,12 @@ export default function SignIn({changeLang}) {
             </div>
           </div>
 
-          <div>
-            <label
-              htmlFor=""
-              className=" text-[#1F2937] font-normal text-[14px] "
-              style={{fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif"}}
-            >
-              <p className=" flex justify-between items-center password">
-                <span>{t('Password')}</span>
-                <span className=" text-[#2A2981] cursor-pointer" onClick={handleForgotPassword}>{t('Forgot Password?')}</span>
-              </p>
-            </label>
-            <div class="my-[10px] space-y-3">
-              <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                name="password"
-                required
-                placeholder={t("Write Your Password")}
-                class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-white"
-                style={{ boxShadow: " 0 0 1px 0 gray" }}
-              />
-               {error.message === "Request failed with status code 422" && (
-                <h1 className=" text-red-500 error">{error.response.data.error.password}</h1>
-              )}
-            </div>
-          </div>
+       
 
           <div class="my-[20px] space-y-3">
             <input
               type="submit"
-              value={t("Login")}
+              value={t("Submit")}
               class="py-3 px-4 block w-full font-semibold  text-[15px] rounded-lg text-sm bg-[#04036B] text-white"
               style={{
                 boxShadow: " 0 0 1px 0 gray",

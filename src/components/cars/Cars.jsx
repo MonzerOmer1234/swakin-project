@@ -103,7 +103,7 @@ const Cars = ({username , changeLang , setChangeLang}) => {
 
     <div className="lg:col-span-12 lg:ms-[255px] me-[10px]">
       <Navbar setChangeLang={setChangeLang} changeLang={changeLang} navName={t(sideTabs[1]?.text)} username={username} />
-        <div className="m bg-[#E5E7EB]  p-5 font-bold text-2xl flex justify-between">
+        <div className="m bg-[#E5E7EB]  p-5 font-bold text-2xl flex justify-between" style={{fontFamily : changeLang ? 'Alamrai' : 'Inter , sans-serif'}}>
           <h1>{t('Cars')}</h1>
           <button
             onClick={() => {

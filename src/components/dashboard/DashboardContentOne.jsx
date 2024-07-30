@@ -11,7 +11,10 @@ export default function DashboardContentOne({changeLang}) {
   const [loading , setLoading] = useState(false)
   const [error , setError] = useState({})
   const [activeBooking, setActiveBooking] = useState([])
+
   const [t] = useTranslation();
+
+
 
  const token = getAuthToken();
   async function getData(){
@@ -42,7 +45,7 @@ export default function DashboardContentOne({changeLang}) {
   } , [])
   return (
     <>
-      <div
+     <div
         style={{
           height: "auto",
           backgroundColor: "white",
@@ -52,12 +55,12 @@ export default function DashboardContentOne({changeLang}) {
           
           
         }}
-        className="me-[20px] lg:me-0"
+        className="me-[20px] lg:me-0 "
       >
         <div className="flex p-4 ">
           <h1
             className="font-semibold "
-            style={{ color: "#353B47", fontFamily: "Inter , sans-serif" }}
+            style={{ color: "#353B47", fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
           >
             {
               t('Active Booking')
@@ -76,7 +79,7 @@ export default function DashboardContentOne({changeLang}) {
                 backgroundColor: "#115E59",
               }}
             ></span>{" "}
-            <span style={{ color: "#115E59" }}>{t('status')}</span>
+            <span style={{ color: "#115E59" , fontFamily : 'Almarai' }}>{t('status')}</span>
           </a>
         </div>
         <p
@@ -102,7 +105,7 @@ export default function DashboardContentOne({changeLang}) {
                 style={{ fontFamily: "Inter , sans-serif" }}
               >
                 <span className={`relative top-[-12px] ${!changeLang ? 'start-[20px]' : 'end-[-20px]'} font-medium text-gray-800 dark:text-white`}>
-                  <p style={{ color: "#1F2937" }} className="font-semibold">
+                  <p style={{ color: "#1F2937" , fontFamily : 'Almarai' }} className="font-semibold">
                   {t('start')}  : {activeBooking.toString().start_location}
                   </p>
                   
@@ -129,7 +132,7 @@ export default function DashboardContentOne({changeLang}) {
                 style={{ fontFamily: "Inter , sans-serif" }}
               >
                 <span className={`relative top-[-12px] ${!changeLang ? 'start-[20px]' : 'end-[-20px]'} font-medium text-gray-800 dark:text-white`}>
-                  <p style={{ color: "#1F2937" }} className="font-semibold">
+                  <p style={{ color: "#1F2937" , fontFamily : 'Almarai' }} className="font-semibold">
                    {t('stop')}: 
                   </p>
                   <span
@@ -160,7 +163,7 @@ export default function DashboardContentOne({changeLang}) {
                 style={{ fontFamily: "Inter , sans-serif" }}
               >
                 <span className={` relative top-[-12px] ${!changeLang ? 'start-[20px]' : 'end-[-20px]'} font-medium text-gray-800 dark:text-white`}>
-                  <p style={{ color: "#1F2937" }} className="font-semibold">
+                  <p style={{ color: "#1F2937" , fontFamily : 'Almarai' }} className="font-semibold">
                     {t('Destination')}:{activeBooking.toString().end_location}
 
                   </p>
@@ -176,14 +179,10 @@ export default function DashboardContentOne({changeLang}) {
           </ul>
         </div>
         <div className="flex booking">
-          <button
-            className=" ms-auto me-5 p-3 relative -top-2  text-[#1F2937] booking-btn"
-            style={{ border: "1px solid #1F2937", borderRadius: "8px" }}
-          >
-                 {t('Cancel Booking')}
-          </button>
+       
         </div>
-      </div>
+      </div>   
+ 
     </>
   );
 }

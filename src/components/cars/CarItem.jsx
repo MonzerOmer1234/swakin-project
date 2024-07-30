@@ -242,7 +242,7 @@ export default function CarItem({
                 </g>
               </svg>
 
-              <span className="ms-3 text-[#6B7280]">{t('Color')} : {color}</span>
+              <span className="ms-3 text-[#6B7280]" style={{fontFamily : changeLang ? 'Almarai' : 'Inter ,sans-serif'}}>{t('Color')} : {color}</span>
             </p>
           </div>
           <div>
@@ -295,7 +295,7 @@ export default function CarItem({
                 </g>
               </svg>
 
-              <span className="ms-3 text-[#6B7280] text-sm">
+              <span className="ms-3 text-[#6B7280] text-sm whitespace-nowrap" style={{fontFamily : changeLang ? 'Almarai' : 'Inter ,sans-serif'}}>
                 {t('Chassis Number')} : {chassisNo}
               </span>
             </p>
@@ -333,7 +333,7 @@ export default function CarItem({
                   stroke-linejoin="round"
                 />{" "}
               </svg>
-              <span className={`ms-2 text-[#115E59] ${changeLang ? 'text-sm ps-2' : ''}  font-semibold`}>
+              <span className={`ms-2 text-[#115E59] ${changeLang ? 'text-sm ps-2' : ''}  font-semibold `} style={{fontFamily : changeLang ? 'Almarai' : 'Inter ,sans-serif'}}>
                 {t('Edit Car Info')}
               </span>
             </button>
@@ -385,7 +385,7 @@ export default function CarItem({
                   stroke-linejoin="round"
                 />
               </svg>
-              <span className=" ms-2 text-[#991B1B]">{t('Delete Car')}</span>
+              <span className=" ms-2 text-[#991B1B]" style={{fontFamily : changeLang ? 'Almarai' : 'Inter ,sans-serif'}}>{t('Delete Car')}</span>
             </button>
           </div>
         </div>

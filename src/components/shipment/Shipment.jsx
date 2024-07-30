@@ -56,6 +56,7 @@ const Shipment = ({
       console.log(res.data.data);
 
       setShipmentDetail(res.data.data)
+      
       setShipmentLoading(false)
     } catch (error) {
       console.log(error);
@@ -132,7 +133,7 @@ const Shipment = ({
       <div className="lg:col-span-12 lg:ms-[255px]">
         <Navbar setChangeLang={setChangeLang} changeLang={changeLang} navName={t(sideTabs[2]?.text)} username={username} />
 
-        <div className=" flex gap-3 md:gap-0 flex-col md:flex-row justify-between  items-center p-5 bg-[#E5E7EB]">
+        <div style={{fontFamily : changeLang ? 'Almarai' : 'Inter , sans-serif '}} className=" flex gap-3 md:gap-0 flex-col md:flex-row justify-between  items-center p-5 bg-[#E5E7EB]">
           <h1 className=" font-bold text-2xl">{t('Shipments')}</h1>
 
           <form class="md:ms-auto" onSubmit={handleSubmit}>
@@ -226,6 +227,7 @@ const Shipment = ({
                   stopPoints={shipmentDetail[0].shipment_location_point}
                   setShipmentId={setShipmentId}
                   shipmentId={shipmentDetail[0].id}
+                  changeLang={changeLang}
                 />
               ))}
         </div>

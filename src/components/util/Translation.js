@@ -1,5 +1,5 @@
 export const engilshTranslation = {
-  "Welcome back": "welcome back",
+  "Welcome back": "Welcome",
   Dashboard: "Dashboard",
   Cars: "Cars",
   Shipments: "Shipments",
@@ -26,6 +26,7 @@ export const engilshTranslation = {
   SAR: "SAR",
   "Ship Name": "Ship Name",
   "Departure Date": "Departure Date",
+  "Arrival At": "Arrival At",
   "Arrival Date": "Arrival Date",
   Duration: "Duration",
   "Number of cars": "Number of cars",
@@ -51,7 +52,7 @@ export const engilshTranslation = {
   "Complete Booking": "Complete Boooking",
   Booking: "Booking",
   "BOOKING SERIAL": "BOOKING SERIAL",
-  "BOOKING Serial": "BOOKING Serial",
+  "Booking Serial": "BOOKING Serial",
   "SHIPMENT SERIAL": "SHIPMENT SERIAL",
   "CAR QUANTITY": "CAR QUANTITY",
   TAX: "TAX",
@@ -63,13 +64,16 @@ export const engilshTranslation = {
   "Sign In": "Sign In",
 
   "Email Address": "Email Address",
+
+  Email : 'Email',
   Password: "Password",
+  Otp : 'Otp',
   "Confirm Password": "Confirm Password",
   "write at least 8 characters": "write at least 8 characters",
   "repeat the password": "repeat the password",
   "Don't have an account?": "Don't have an account ?",
   "Forgot Password?": "Forgot Password?",
-  "Write Your Password": "Write Your Paaword",
+  "Write Your Password": "Write Your Password",
   Login: "Login",
   "Shipment Tracking" : "Shipment Tracking",
   "Show Booking details" : "Show Booking details",
@@ -87,11 +91,18 @@ export const engilshTranslation = {
   "Delete" : 'Delete',
   "Booking Details" : 'Booking Details',
   "Booking For" : 'Booking For',
-  'Insurance Policy' : 'Insurance Policy'
+  'Insurance Policy' : 'Insurance Policy',
+  'write your email here' : 'write your email here',
+  'Submit' : 'Submit',
+  "write the code you received in your mail" : "write the code you received in your mail",
+  'Reset Password' : 'Reset Password',
+  'Basic Details' : 'Basic Details',
+  'change' : 'change',
+  "update profile" : "update profile"
 };
 
 export const arabicTranslation = {
-  "Welcome back": "مرحبا بعودتك",
+  "Welcome back": "مرحبا ",
   Dashboard: "لوحة التحكم",
   Cars: "السيارات",
   Shipments: "الشحنات",
@@ -119,6 +130,7 @@ export const arabicTranslation = {
   SAR: "ريال",
   "Ship Name": "اسم الباخرة",
   "Departure Date": "زمن المغادرة",
+  "Arrival At": "زمن الوصول",
   "Arrival Date": "زمن الوصول",
   Duration: "المدة",
   "Number of cars": "عدد السيارات",
@@ -144,7 +156,7 @@ export const arabicTranslation = {
   "Complete Booking": "اكمال الشحن",
   Booking: "الحجز",
   "BOOKING SERIAL": "الرقم التسلسلي للحجز",
-  "BOOKING Serial": "الرقم التسلسلي للحجز",
+  "Booking Serial": "الرقم التسلسلي للحجز",
   "SHIPMENT SERIAL": "الرقم التسلسلي للشحن",
   "CAR QUANTITY": "كمية العربات",
   TAX: "الضريبة",
@@ -155,7 +167,9 @@ export const arabicTranslation = {
   "Already have an account?": "هل لديك حساب؟",
   "Sign In": "تسجيل الدخول",
   "Email Address": "عنوان البريد الإلكتروني",
+  'Email' : 'البريد الإلكتروني',
   Password: "كلمة المرور",
+  Otp : 'كلمةالمرور',
   "Confirm Password": "تأكيد كلمة المرور",
   "write at least 8 characters": "اكتب 8 أحرف على الأقل",
   "repeat the password": "كرر كلمة المرور",
@@ -179,5 +193,12 @@ export const arabicTranslation = {
   "Delete" : 'حذف',
   "Booking Details" : 'تفاصيل الحجز',
    "Booking For" : 'صاحب الحجز',
-  'Insurance Policy' : 'بوليصة التأمين'
+  'Insurance Policy' : 'بوليصة التأمين',
+  'write your email here' :  'اكتب بريدك الإلكتروني هنا',
+  'Submit' : 'ارسال',
+  'write the code you received in your mail' : 'اكتب الرمز الذي تلقيته في بريدك',
+  'Reset Password' : 'إعادة تعيين كلمة المرور',
+  'Basic Details' : 'التفاصيل الأساسية',
+  'change' : 'تغيير',
+  "update profile"  :'تحديث الملف الشخصي'
 };

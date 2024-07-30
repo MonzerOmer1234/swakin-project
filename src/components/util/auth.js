@@ -5,10 +5,7 @@ export function getAuthToken() {
   return token;
 }
 
-export function logout() {
-  localStorage.removeItem("token");
 
-}
 export default function ProtectedRoutes() {
   const token = getAuthToken();
   return <>{token ? <Outlet /> : <Navigate to={"/sign-up"} />}</>;

@@ -144,6 +144,7 @@ export default function DashboardContentThree({ setData , changeLang }) {
           backgroundColor: "white",
           borderRadius: "8px",
           border: "1px solid #E5E7EB",
+          fontFamily : changeLang ? 'Almarai' : 'Inter , sans-serif'
        
         }}
         className=" p-6 lg:me-0 me-[20px]"
@@ -178,7 +179,7 @@ export default function DashboardContentThree({ setData , changeLang }) {
         {carData &&
           carData.length > 0 &&
           carData.map((car) => (
-            <div className="flex mt-5 text-sm justify-between gap-2 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+            <div className="flex mt-5 text-sm justify-between items-center gap-2 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
               <p className=" text-gray-500">
                 <div className="flex items-center">
                   <img
@@ -186,6 +187,7 @@ export default function DashboardContentThree({ setData , changeLang }) {
                     alt={`${car.car_name_ar}`}
                     width={"53px"}
                     height={"53px"}
+                    style={{objectFit : 'cover'}}
                   />
                   <span className=" font-bold text-[#1F2937] ms-3">
                     {car.car_name_ar}
@@ -197,7 +199,7 @@ export default function DashboardContentThree({ setData , changeLang }) {
               <div className=" text-sm">
                 <span
                   className={`text-[#1F2937] font-bold ${changeLang ? 'text-center w-full block':""} `}
-                  style={{ fontFamily: "Inter , sans-serif" }}
+                  style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
                 >
                  {t('Chassis No')}
                 </span>

@@ -1,6 +1,8 @@
-import { useState } from "react";
+import axios from "axios";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { getAuthToken } from "../util/auth";
 
 export default function BookRow({
   bid,
@@ -11,16 +13,46 @@ export default function BookRow({
   tax,
   status,
   setBookingSerial,
-  changeLang
+  changeLang,
+  bSId,
+  getBookings,
 }) {
   const [closeActions, setCloseActions] = useState(true);
   const [t] = useTranslation();
-
-  function handleClickDots(){
-    setCloseActions(!closeActions)
-    setBookingSerial(bid)
-
+  const [bookingData, setBookingData] = useState({});
+  console.log(status);
+  function handleClickDots() {
+    setCloseActions(!closeActions);
+    setBookingSerial(bid);
   }
+
+  const handleCancelBooking = useCallback(
+    async function () {
+      setCloseActions(true);
+      const formData = { serial_no: bid };
+      const token = getAuthToken();
+      const res = await axios.post(
+        "https://soaken.neuecode.com/api/cancel-bookings",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setBookingData(res);
+      getBookings();
+
+      console.log(res);
+      console.log(status);
+      console.log(bSId);
+      console.log(bookingData);
+    },
+    [status, bSId, bookingData, bid, getBookings]
+  );
+
+  useEffect(() => {}, []);
+
   return (
     <tr>
       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#1F2937] dark:text-neutral-200 text-center">
@@ -85,42 +117,65 @@ export default function BookRow({
               aria-expanded="true"
               aria-haspopup="true"
             >
-           <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
-<path d="M12 12H12.01M12 6H12.01M12 18H12.01M13 12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12C11 11.4477 11.4477 11 12 11C12.5523 11 13 11.4477 13 12ZM13 18C13 18.5523 12.5523 19 12 19C11.4477 19 11 18.5523 11 18C11 17.4477 11.4477 17 12 17C12.5523 17 13 17.4477 13 18ZM13 6C13 6.55228 12.5523 7 12 7C11.4477 7 11 6.55228 11 6C11 5.44772 11.4477 5 12 5C12.5523 5 13 5.44772 13 6Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24px"
+                height="24px"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M12 12H12.01M12 6H12.01M12 18H12.01M13 12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12C11 11.4477 11.4477 11 12 11C12.5523 11 13 11.4477 13 12ZM13 18C13 18.5523 12.5523 19 12 19C11.4477 19 11 18.5523 11 18C11 17.4477 11.4477 17 12 17C12.5523 17 13 17.4477 13 18ZM13 6C13 6.55228 12.5523 7 12 7C11.4477 7 11 6.55228 11 6C11 5.44772 11.4477 5 12 5C12.5523 5 13 5.44772 13 6Z"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
             </button>
           </div>
 
           <div
-            className={`absolute ${changeLang ? 'right-[-77px]' : 'right-0'} z-10 mt-2 ${changeLang ?  ' w-40': 'w-56'} origin-top-right rounded-md bg-white shadow-lg  ring-black ring-opacity-5 focus:outline-none`}
+            className={`absolute ${
+              changeLang ? "right-[-77px]" : "right-0"
+            } z-10 mt-2 ${
+              changeLang ? " w-40" : "w-56"
+            } origin-top-right rounded-md bg-white shadow-lg  ring-black ring-opacity-5 focus:outline-none`}
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="menu-button"
             tabindex="-1"
           >
-            {
-              !closeActions &&  <div class="py-1" role="none">
-              <Link
-                to={`/shipments/mybookings/${sid}`}
-                class="block px-4 py-2 text-sm text-gray-700"
-                role="menuitem"
-                tabindex="-1"
-                id="menu-item-0"
-              >
-                {t('Show Booking details')}
-              </Link>
-              <Link
-                href="#"
-                class="block px-4 py-2 text-sm text-gray-700"
-                role="menuitem"
-                tabindex="-1"
-                id="menu-item-1"
-              >
-                {t('Cancel Booking')}
-              </Link>
-           
-            </div>
-            }
+            {!closeActions && (
+              <div class="py-1" role="none">
+                <Link
+                  to={`/shipments/mybookings/${sid}`}
+                  class="block px-4 py-2 text-sm text-gray-700"
+                  role="menuitem"
+                  tabindex="-1"
+                  id="menu-item-0"
+                  onClick={() => setCloseActions(true)}
+                  style={{
+                    fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                  }}
+                >
+                  {t("Show Booking details")}
+                </Link>
+                <Link
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700"
+                  role="menuitem"
+                  tabindex="-1"
+                  id="menu-item-1"
+                  style={{
+                    fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                  }}
+                  onClick={handleCancelBooking}
+                >
+                  {t("Cancel Booking")}
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </td>

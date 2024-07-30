@@ -11,7 +11,6 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 
-
 export default function ShipmentDetails({
   availableSeats,
   serialNumber,
@@ -24,42 +23,38 @@ export default function ShipmentDetails({
   setSpecifiedCars,
   changeLang,
   setChangeLang,
- 
 }) {
   console.log(availableSeats);
   const [carData, setCarData] = useState([]);
-  const [loading , setLoading] = useState(false)
-  const [error , setError] = useState({})
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
   const [t] = useTranslation();
   const navigate = useNavigate();
- 
-    async function getCarData () {
-      const token = getAuthToken();
-      try{
-      setLoading(true)
-        const res = await axios.get("https://soaken.neuecode.com/api/get-cars", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log(res);
-        setCarData(res.data.data);
-        setLoading(false)
-      }catch(error){
-        setError(error)
-        setLoading(false)
-      }
-      }
 
+  async function getCarData() {
+    const token = getAuthToken();
+    try {
+      setLoading(true);
+      const res = await axios.get("https://soaken.neuecode.com/api/get-cars", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(res);
+      setCarData(res.data.data);
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     getCarData();
   }, []);
   const { id } = useParams();
 
-
-
-console.log(carData)
+  console.log(carData);
   function handleCars(e) {
     console.log(e.target.options);
     const updatedOptions = [...e.target.options]
@@ -78,8 +73,8 @@ console.log(carData)
 
     navigate(`/bookings/${serialNumber}/booking`);
   }
- 
-  if ( error &&  error.message === "Network Error") {
+
+  if (error && error.message === "Network Error") {
     return (
       <>
         <div className=" flex flex-col justify-center items-center w-screen h-screen gap-4">
@@ -109,21 +104,31 @@ console.log(carData)
   console.log(id);
   return (
     <>
-     
-            
-      <SideTabs id={id}  changeLang={changeLang} setChangeLang={setChangeLang} />
+      <SideTabs id={id} changeLang={changeLang} setChangeLang={setChangeLang} />
       <div className="lg:col-span-12 lg:ms-[255px]">
-        <Navbar setChangeLang={setChangeLang} changeLang={changeLang} navName={ <p>
-              <span className="text-[#4B5563]"> {t('Shipments')} </span>{" "}
-              <span className="text-[#1F2937] font-medium" style={{fontFamily: 'Inter , sans-serif'}}>/ {id} / {t('booking')} </span>{" "}
-            </p>} username={username} />
+        <Navbar
+          setChangeLang={setChangeLang}
+          changeLang={changeLang}
+          navName={
+            <p>
+              <span className="text-[#4B5563]" style={{fontFamily : changeLang ? 'Almarai' : 'Inter , sans-serif'}}> {t("Shipments")} </span>{" "}
+              <span
+                className="text-[#1F2937] font-medium"
+                style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif",}}
+              >
+                / {id} / {t("booking")}{" "}
+              </span>{" "}
+            </p>
+          }
+          username={username}
+        />
 
         <div className="content bg-[#E5E7EB] p-5 h-[850px]">
           <h1
             className="mb-[50px] font-bold text-[#353B47]"
             style={{ fontFamily: "Inter , sans-serif" }}
           >
-           {}
+            {}
           </h1>
 
           <div
@@ -182,18 +187,26 @@ console.log(carData)
             </ul>
           </div>
 
-          <div className={`flex justify-center mt-3 ${changeLang ? 'ms-[-92px]' : 'ms-[-55px]'}  `}>
+          <div
+            className={`flex justify-center mt-3 ${
+              changeLang ? "ms-[-92px]" : "ms-[-55px]"
+            }  `}
+          >
             <span
               className="font-bold  text-[#353B47]"
-              style={{ fontFamily: "Inter , sans-serif" }}
+              style={{
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              }}
             >
-             {t('Car Details')}
+              {t("Car Details")}
             </span>
             <span
               className="font-bold text-[#353B47] relative start-[85px]"
-              style={{ fontFamily: "Inter , sans-serif" }}
+              style={{
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              }}
             >
-             {t('Checkout')}
+              {t("Checkout")}
             </span>
           </div>
 
@@ -205,38 +218,48 @@ console.log(carData)
               <h1
                 className=" p-4 font-bold text-[#353B47] relative shipment-header"
                 style={{
-                  fontFamily: "Inter , sans-serif",
+                  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
                 }}
               >
-              {t('Shipment Details')}
+                {t("Shipment Details")}
               </h1>
 
               <div className="  flex justify-center items-center relative info">
-                <div className=" mt-[48px] flex flex-col shipment-info justify-center items-center">
+                <div className=" mt-[48px] flex flex-col shipment-info justify-start md:justify-center items-center">
                   <div
                     className="receipient-info  h-[236px]"
                     style={{ border: "1px solid #F1F1F2" }}
                   >
                     <h1
-                      className=" p-4 font-bold text-[#353B47] receipt-info"
+                      className={`p-4 font-bold text-[#353B47] ${changeLang ? 'receipt-info-ar' : 'receipt-info'}`}
                       style={{
-                        fontFamily: "Inter , sans-serif",
+                        fontFamily: changeLang
+                          ? "Almarai"
+                          : "Inter , sans-serif",
                       }}
                     >
-                     {t('Shipment Receipent info')}
+                      {t("Shipment Receipent info")}
                     </h1>
 
                     <label
                       htmlFor=""
-                      className=" text-[#1F2937] data flex justify-between font-normal text-[14px] ps-3 "
-                      style={{ fontFamily: "Inter , sans-serif" }}
+                      className={`text-[#1F2937]  flex justify-between font-normal text-[14px] ps-3 ${changeLang ? 'data-ar' : 'data'}`}
+                      style={{
+                        fontFamily: changeLang
+                          ? "Almarai"
+                          : "Inter , sans-serif",
+                      }}
                     >
-                      <span>{t('Full Name')}</span>
+                      <span>{t("Full Name")}</span>
                       <span
                         className=" me-[20px] text-[#6B7280] font-medium"
-                        style={{ fontFamily: "Inter , sans-serif" }}
+                        style={{
+                          fontFamily: changeLang
+                            ? "Almarai"
+                            : "Inter , sans-serif",
+                        }}
                       >
-                        {t('Required')}
+                        {t("Required")}
                       </span>
                     </label>
                     <div class="my-[10px] space-y-3 ps-3">
@@ -248,24 +271,32 @@ console.log(carData)
                           setReceipentName((prev) => e.target.value)
                         }
                         required
-                        class="py-3 input-data px-4 block w-[380px] me-[20px] border-[#E5E7EB] rounded-lg text-sm bg-[#FFFFFF]"
+                        class={`py-3 ${changeLang ? 'input-data-ar' : 'input-data'} px-4 block w-[380px] me-[20px] border-[#E5E7EB] rounded-lg text-sm bg-[#FFFFFF]`}
                         style={{ boxShadow: " 0 0 1px 0 gray" }}
                       />
                     </div>
                     <label
                       htmlFor=""
-                      className=" text-[#1F2937] data flex justify-between font-normal text-[14px] ps-3 "
-                      style={{ fontFamily: "Inter , sans-serif" }}
+                      className={`text-[#1F2937] ${changeLang ? 'data-ar' : 'data'} flex justify-between font-normal text-[14px] ps-3`}
+                      style={{
+                        fontFamily: changeLang
+                          ? "Almarai"
+                          : "Inter , sans-serif",
+                      }}
                     >
-                      <span>{t('Phone Number')}</span>
+                      <span>{t("Phone Number")}</span>
                       <span
                         className=" me-[20px] text-[#6B7280] font-medium"
-                        style={{ fontFamily: "Inter , sans-serif" }}
+                        style={{
+                          fontFamily: changeLang
+                            ? "Almarai"
+                            : "Inter , sans-serif",
+                        }}
                       >
-                         {t('Required')}
+                        {t("Required")}
                       </span>
                     </label>
-                    <div class="relative my-[10px] w-[380px] .phone-div h-[44px] ps-3">
+                    <div class={`relative my-[10px] w-[380px]  h-[44px] ps-3 ${changeLang ? 'phone-div-ar' : 'phone-div'}`}>
                       <PhoneInput
                         style={{ width: "380px" }}
                         type="text"
@@ -275,16 +306,20 @@ console.log(carData)
                         onChange={(e) =>
                           setReceipentPhone((prev) => e.substring(1))
                         }
-                        className="input-data"
+                        className={`${changeLang ? 'input-data-ar' : 'input-data'}`}
                       />
                     </div>
                   </div>
                   <div className=" mt-3">
                     <p
                       className=" text-[#1F2937] font-semibold "
-                      style={{ fontFamily: "Inter , sans-serif" }}
+                      style={{
+                        fontFamily: changeLang
+                          ? "Almarai"
+                          : "Inter , sans-serif",
+                      }}
                     >
-                      {t('Select Cars to be shiped')}
+                      {t("Select Cars to be shiped")}
                     </p>
                     <select
                       onChange={handleCars}
@@ -310,12 +345,13 @@ console.log(carData)
                 </div>
               </div>
               <div className="flex flex-col items-center  md:flex-row gap-5 md:gap-0  justify-between p-5 mt-[50px]">
-                <p>
-                  {t('Available Seats')}
-                  <span
-                    className=" text-[#1F2937] font-bold ms-2"
-                    style={{ fontFamily: "Inter , sans-serif" }}
-                  >
+                <p
+                  style={{
+                    fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                  }}
+                >
+                  {t("Available Seats")}
+                  <span className=" text-[#1F2937] font-bold ms-2">
                     {availableSeats}
                   </span>
                 </p>
@@ -326,19 +362,23 @@ console.log(carData)
                     style={{
                       border: "1px solid #1F2937",
                       borderRadius: "8px",
-                      fontFamily: "Inter , sans-serif",
+                      fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
                     }}
                     to="/shipments"
                   >
-                    {t('Cancel Booking')}
+                    {t("Cancel Booking")}
                   </Link>
                   <button
                     onSubmit={handleSubmit}
                     type="submit"
                     className=" md:ms-auto me-5 p-3 relative -top-2  text-[white] bg-[#04036B] booking-btn"
-                    style={{ border: "1px solid #1F2937", borderRadius: "8px" }}
+                    style={{
+                      border: "1px solid #1F2937",
+                      borderRadius: "8px",
+                      fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                    }}
                   >
-                    {t('Next')}
+                    {t("Next")}
                   </button>
                 </div>
               </div>

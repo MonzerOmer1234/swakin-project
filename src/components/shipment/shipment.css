@@ -2,24 +2,56 @@
   .shipment-details {
     margin-left: -20px;
     width: 100vw;
-   
   }
-  .receipient-info{
-   border: none !important;
+  .receipient-info {
+    border: none !important;
+  }
+  .receipt-info-ar {
+    margin-right: -2px;
   }
   .receipt-info {
-    margin-left: 35px;
-    
- 
+    margin-left: 0;
   }
-  .data{
-    width: 300px;
-    margin-left: 35px;
+  .data {
+    width: 300px !important;
+    margin-left: 0;
+  }
+  .data-ar {
+    margin-right: 0;
+    width: 340px  !important;
+  }
+  .input-data-ar , .phone-div-ar{
+    width: 310px !important;
+    margin-right: 5px;
   }
   .input-data,
   .phone-div {
     position: relative;
-    left: 32px;
+    left: 0;
     width: 273px !important;
+  }
+}
+
+@media (max-width : 464px) {
+  .basic-details{
+    width: 420px !important;
+  }
+  .input-flex{
+    flex-direction: column;
+    align-items: flex-start;
+    width: 323px;
+  }
+  .img{
+    margin-left: 20px;
+  }
+ 
+  .change{
+    margin-left: 0;
+  }
+  .update-profile{
+    margin: 20px 100px 0;
+  }
+  .input-profile{
+    width: 323px;
   }
 }

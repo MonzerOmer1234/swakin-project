@@ -3,12 +3,23 @@
         display: none;
     }
 }
-@media(max-width:639px){
-    .nav{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+@media(max-width:816px){
+    .burger-icon{
+        display: block !important;
     }
+    .links-first{
+        display: none !important;
+    }
+    .nav , .links{
+       
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .links{
+        width: 100%;
+     
+    }
+   
     .nav > div{
         margin-right: 0 !important;
     }

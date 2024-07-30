@@ -10,6 +10,11 @@
 .react-international-phone-input{
   width: 100%;
 }
+@media (max-width:457px) {
+  .react-international-phone-input{
+    width: 350px;
+  }
+}
 
 @media (max-width:422px) {
  

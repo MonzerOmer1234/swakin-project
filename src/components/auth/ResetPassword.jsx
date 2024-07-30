@@ -13,10 +13,11 @@ import { getAuthToken } from "../util/auth";
 import { PhoneInput } from "react-international-phone";
 import { useTranslation } from "react-i18next";
 
-export default function Signup({changeLang}) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+export default function ResetPasssword({changeLang}) {
+
+
+  const [otp, setotp] = useState('');
+  const [email , setEmail] = useState('');
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [loading, setLoading] = useState("");
@@ -35,10 +36,11 @@ export default function Signup({changeLang}) {
   async function handleSubmit(event) {
     event.preventDefault();
     const formdata = {
-      name,
+      otp,
       email,
+    
       password,
-      phone,
+  
       password_confirmation: passwordConfirmation,
     };
     console.log(formdata);
@@ -46,13 +48,9 @@ export default function Signup({changeLang}) {
     try {
       setLoading(true);
       const res = await axios.post(
-        "https://soaken.neuecode.com/api/register",
+        "https://soaken.neuecode.com/api/reset-password",
         formdata,
-        {
-          headers: {
-            Authorization : `Bearer ${returnedToken}`
-          }
-        }
+        
       );
 
       console.log(res);
@@ -61,7 +59,7 @@ export default function Signup({changeLang}) {
 
       setInfo(res);
       setLoading(false);
-      navigate("/");
+      navigate("/sign-in");
 
       console.log(res);
     } catch (error) {
@@ -113,7 +111,7 @@ export default function Signup({changeLang}) {
   }
 
   return (
-    <div className={`sign-up-box   h-[900px]  bg-[#E5E7EB]`} style={{fontFamily : changeLang ? 'Almarai' : ''}}>
+    <div className={`sign-up-box   h-[800px]  bg-[#E5E7EB]`} style={{fontFamily : changeLang ? 'Almarai' : ''}}>
       <div className=" flex justify-center items-start relative  top-[50px] ">
         <img src={logo} style={{ width: "30px", height: "30px" }} alt="logo" />
         <p className="ms-2 flex flex-col justify-center items-start">
@@ -139,23 +137,16 @@ export default function Signup({changeLang}) {
         className=" flex flex-col sign-up-container  w-[436px] mx-auto top-[100px]   bg-[white] relative"
         style={{ borderRadius: "15px" }}
       >
-        <div className=" pt-[20px]  relative header">
+           <div className=" pt-[20px]  relative header">
           <h1
             className="text-center text-[#1F2937] font-bold text-[24px] mb-2"
             style={{ fontFamily: changeLang ? 'Almarai' : 'Inter,sans-serif' }}
           >
-            {t('Sign Up')}
+            {t('Reset Password')}
           </h1>
-          <p
-            className=" text-[#515661] text-center font-normal text-[14px]"
-            style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
-          >
-            {t('Already have an account?')} {" "}
-            <Link to={"/sign-in"} className=" text-[#2A2981] font-medium">
-              {t('Sign In')}
-            </Link>
-          </p>
+       
         </div>
+    
         <form
           method="POST"
           onSubmit={handleSubmit}
@@ -168,41 +159,17 @@ export default function Signup({changeLang}) {
               className=" text-[#1F2937] font-normal text-[14px] "
               style={{ fontFamily: changeLang ? 'Almarai' :"Inter , sans-serif" }}
             >
-              {t('Full Name')}
+              {t('Email')}
             </label>
             <div class="my-[10px] space-y-3">
               <input
                 type="text"
-                name="name"
-                value={name}
-                required
-                onChange={(e) => setName(e.target.value)}
-                class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-[#FFFFFF]"
-                style={{ boxShadow: " 0 0 1px 0 gray" }}
-              />
-              {error.message === "Request failed with status code 422" && (
-                <h1 className=" text-red-500 error">
-                  {error.response.data.error.name}
-                </h1>
-              )}
-            </div>
-          </div>
-          <div>
-            <label
-              htmlFor=""
-              className=" text-[#1F2937] font-normal text-[14px] "
-              style={{ fontFamily: changeLang ? "Almarai" : "Inter , sans-serif" }}
-            >
-              {t('Email Address')}
-            </label>
-            <div class="my-[10px] space-y-3">
-              <input
                 name="email"
-                type="text"
+                placeholder= {t('write your email here')}
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
-                class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-white"
+                class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-[#FFFFFF]"
                 style={{ boxShadow: " 0 0 1px 0 gray" }}
               />
               {error.message === "Request failed with status code 422" && (
@@ -212,32 +179,36 @@ export default function Signup({changeLang}) {
               )}
             </div>
           </div>
-
-          <label
-            htmlFor=""
-            className=" text-[#1F2937] font-normal text-[14px] "
-            style={{ fontFamily: changeLang  ? "Almarai" : "Inter , sans-serif" }}
-          >
-            <div className=" flex justify-between phone-box">
-              <span>{t('Phone Number')}</span>
-              <span className="text-[#6B7280]">{t('Required')}</span>
+          <div>
+            <label
+              htmlFor=""
+              className=" text-[#1F2937] font-normal text-[14px] "
+              style={{ fontFamily: changeLang ? 'Almarai' :"Inter , sans-serif" }}
+            >
+              {t('Otp')}
+            </label>
+            <div class="my-[10px] space-y-3">
+              <input
+                type="text"
+                name="otp"
+                placeholder={t("write the code you received in your mail")}
+                value={otp}
+                required
+                onChange={(e) => setotp(e.target.value)}
+                class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-[#FFFFFF]"
+                style={{ boxShadow: " 0 0 1px 0 gray" }}
+              />
+              {error.message === "Request failed with status code 422" && (
+                <h1 className=" text-red-500 error">
+                  {error.response.data.error.otp}
+                </h1>
+              )}
             </div>
-          </label>
-          <div class="relative my-[10px]  .phone-div h-[44px]">
-            <PhoneInput
-              defaultCountry="sa"
-              style={{ width: "388px" }}
-              value={phone}
-              onChange={(e) => setPhone(e.substring(1))}
-              className="phone-input"
-            />
-            {error.message === "Request failed with status code 422" && (
-              <h1 className=" text-red-500 error">
-                {error.response.data.error.phone}
-              </h1>
-            )}
           </div>
-          <div className={`${!error ? 'mt-[40px]' : ''}`}>
+  
+
+         
+          <div>
             <label
               htmlFor=""
               className={`text-[#1F2937] font-normal text-[14px] `}
@@ -292,7 +263,7 @@ export default function Signup({changeLang}) {
           <div class="my-[20px] space-y-3">
             <input
               type="submit"
-              value={t("Sign Up")}
+              value={t("Reset Password")}
               class={`py-3 px-4 block w-full font-semibold  text-[15px] rounded-lg text-sm bg-[#04036B] text-white`}
               style={{
                 boxShadow: " 0 0 1px 0 gray",

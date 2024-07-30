@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../sidebar/navbar/Navbar";
-import { Circles } from "react-loader-spinner";
+
 import "./dashboard.css";
 
 import { sideTabs } from "../sidebar/SideTabs";
@@ -28,7 +28,7 @@ const Dashboard = ({
   setShipName,
   setShipmentId,
   changeLang,
-  setChangeLang
+  setChangeLang,
 }) => {
   const [shipmentsData, setShipmentsData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -39,16 +39,14 @@ const Dashboard = ({
   async function getShipmentsData() {
     const token = getAuthToken();
     try {
-      const res = await axios.get(
-        "https://soaken.neuecode.com/api/get-shipments",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.get("https://soaken.neuecode.com/api/get-data", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-      setShipmentsData(res.data.data);
+      console.log(res);
+      setShipmentsData(res.data.data.upcoming_shipments);
       console.log(res.data.data);
     } catch (error) {
       console.log(error);
@@ -100,7 +98,12 @@ const Dashboard = ({
   return (
     <>
       <div className="lg:col-span-12 lg:ms-[255px]">
-        <Navbar setChangeLang={setChangeLang} changeLang={changeLang}  navName={t(sideTabs[0].text)} username={username} />
+        <Navbar
+          setChangeLang={setChangeLang}
+          changeLang={changeLang}
+          navName={t(sideTabs[0].text)}
+          username={username}
+        />
         <div
           style={{
             backgroundColor: "#E5E7EB",
@@ -113,7 +116,7 @@ const Dashboard = ({
             style={{
               fontSize: "20px",
               color: "#353B47",
-              fontFamily: "Inter , sans-serif",
+              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {t("Welcome back")} , <br />{" "}
@@ -131,9 +134,11 @@ const Dashboard = ({
             >
               <h1
                 className=" p-[20px] text-[#353B47] font-bold"
-                style={{ fontFamily: "Inter , sans-serif" }}
+                style={{
+                  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                }}
               >
-                {t('Upcoming Shipments')}
+                {t("Upcoming Shipments")}
               </h1>
               {shipmentsData &&
                 shipmentsData.length > 0 &&
@@ -145,16 +150,16 @@ const Dashboard = ({
                     price={shipment.price}
                     shipmentName={shipment.ship_name}
                     startLocation={shipment.start_location}
+                    stopPoints={shipment.shipment_location_point}
                     endLocation={shipment.end_location}
                     travelDate={shipment.travel_date}
                     arrivalDate={shipment.arrival_date}
                     carNumbers={shipment.cars_no}
-                    stopPoints={shipment.shipment_location_point}
+
                     setSerialNumber={setSerialNumber}
                     setAvailableSeats={setAvailableSeats}
                     setStartLocation={setStartLocation}
                     setEndLocation={setEndLocation}
-                    setStop={setStop}
                     setPrice={setPrice}
                     setShipmentId={setShipmentId}
                     shipmentId={shipment.id}
@@ -162,6 +167,7 @@ const Dashboard = ({
                     setArrivalDate={setArrivalDate}
                     setCarsNums={setCarsNums}
                     setShipName={setShipName}
+                   
                   />
                 ))}
             </div>
