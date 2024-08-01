@@ -27,7 +27,9 @@ const Shipment = ({
   shipName,
   serialNumber,
   changeLang,
-  setChangeLang
+  setChangeLang,
+  setLat,
+  setLong
 }) => {
   const [shipmentsData, setShipmentsData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -92,7 +94,7 @@ const Shipment = ({
   }, []);
   if (loading) {
     return (
-      <div className=" flex h-screen bg-[#E5E7EB] justify-center items-center relative lg:left-[200px] top-[100px] w-screen">
+      <div className={`flex h-screen bg-[#E5E7EB] justify-center items-center relative ${changeLang ? 'lg:right-[200px]' : 'lg:left-[200px]'} top-[100px] w-screen`}>
         <SkeletonTheme baseColor="gray" highlightColor="#444">
           <p>
             <Skeleton count={10} width={"200px"} />
@@ -193,6 +195,8 @@ const Shipment = ({
                   shipmentId={shipment.id}
                   serialNo={shipment.serial_no}
                   price={shipment.price}
+                  lat={shipment.lat}
+                  long = {shipment.long}
                   shipmentName={shipment.ship_name}
                   startLocation={shipment.start_location}
                   endLocation={shipment.end_location}
@@ -200,6 +204,10 @@ const Shipment = ({
                   arrivalDate={shipment.arrival_date}
                   carNumbers={shipment.cars_no}
                   stopPoints={shipment.shipment_location_point}
+                  setLat={setLat}
+                  setLong={setLong}
+                  status={shipment.status.name_en}
+                  changeLang={changeLang}
                   
                 />
               ))
@@ -218,6 +226,8 @@ const Shipment = ({
                   key={shipmentDetail[0].id}
                   serialNo={shipmentDetail[0].serial_no}
                   price={shipmentDetail[0].price}
+                  lat={shipmentDetail[0].lat}
+                  long = {shipmentDetail[0].long}
                   shipmentName={shipmentDetail[0].ship_name}
                   startLocation={shipmentDetail[0].start_location}
                   endLocation={shipmentDetail[0].end_location}
@@ -228,6 +238,8 @@ const Shipment = ({
                   setShipmentId={setShipmentId}
                   shipmentId={shipmentDetail[0].id}
                   changeLang={changeLang}
+                  setLat={setLat}
+                  setLong={setLong}
                 />
               ))}
         </div>

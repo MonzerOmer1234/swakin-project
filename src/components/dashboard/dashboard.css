@@ -24,6 +24,16 @@
     width: 95%;
   }
 }
+@media ((min-width : 1024px) and (max-width: 1370)) {
+  .journey{
+    flex-direction: column !important;
+  }
+}
+@media (min-width : 1371px) {
+  .journey{
+    flex-direction: row !important;
+  }
+}
 @media (max-width: 640px) {
   .journey::after {
     width: 80%;
@@ -34,11 +44,4 @@
     left: 1.75rem;
   }
 }
-@media (max-width: 640px) {
-  .journey::after {
-    width: 80%;
-  }
-  .journey-date::after{
-    width: 80%;
-  }
-}
+

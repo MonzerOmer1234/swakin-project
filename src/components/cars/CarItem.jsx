@@ -300,7 +300,7 @@ export default function CarItem({
               </span>
             </p>
           </div>
-          <div className={`p-5 flex gap-2 whitespace-nowrap update items-center ${changeLang ? 'justify-center' : 'justify-between'}`}>
+          <div className={`p-5 flex lg:flex-col gap-4  whitespace-nowrap update items-center ${changeLang ? 'justify-center' : 'justify-between'}`}>
             <button
               className={`justify-center flex bg-[#CCFBF1]`}
               style={{ borderRadius: "8px", width: changeLang  ? "180px" : "157px", height: "auto" }}

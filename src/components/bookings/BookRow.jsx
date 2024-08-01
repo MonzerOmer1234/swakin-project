@@ -16,6 +16,9 @@ export default function BookRow({
   changeLang,
   bSId,
   getBookings,
+  setBookingState,
+  setPolicy,
+  policy,
 }) {
   const [closeActions, setCloseActions] = useState(true);
   const [t] = useTranslation();
@@ -24,6 +27,8 @@ export default function BookRow({
   function handleClickDots() {
     setCloseActions(!closeActions);
     setBookingSerial(bid);
+    setBookingState(status);
+    setPolicy(policy);
   }
 
   const handleCancelBooking = useCallback(
@@ -50,8 +55,6 @@ export default function BookRow({
     },
     [status, bSId, bookingData, bid, getBookings]
   );
-
-  useEffect(() => {}, []);
 
   return (
     <tr>
@@ -102,7 +105,7 @@ export default function BookRow({
                 : "text-[#EF4444]"
             }`}
           >
-            {status}
+            {t(status)}
           </span>
         </div>
       </td>
@@ -161,19 +164,21 @@ export default function BookRow({
                 >
                   {t("Show Booking details")}
                 </Link>
-                <Link
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="menu-item-1"
-                  style={{
-                    fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
-                  }}
-                  onClick={handleCancelBooking}
-                >
-                  {t("Cancel Booking")}
-                </Link>
+                {status !== "Canceled" && (
+                  <Link
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabindex="-1"
+                    id="menu-item-1"
+                    style={{
+                      fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                    }}
+                    onClick={handleCancelBooking}
+                  >
+                    {t("Cancel Booking")}
+                  </Link>
+                )}
               </div>
             )}
           </div>

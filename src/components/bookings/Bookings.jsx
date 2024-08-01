@@ -15,6 +15,8 @@ const Bookings = ({
   setBookingSerial,
   changeLang,
   setChangeLang,
+  setBookingState,
+  setPolicy
 }) => {
   const [loading, setLoading] = useState(false);
   const [bookings, setBookings] = useState([]);
@@ -160,7 +162,7 @@ const Bookings = ({
                           bookings.length > 0 &&
                           bookings.map((booking) => (
                             <BookRow
-                            getBookings = {getBookings}
+                              getBookings = {getBookings}
                               changeLang={changeLang}
                               setBookingSerial={setBookingSerial}
                               bid={booking.serial_no}
@@ -171,6 +173,9 @@ const Bookings = ({
                               tax={booking.tax}
                               status={booking.status.name_en}
                               bSId = {booking.booking_status_id}
+                              policy={booking.policy}
+                              setPolicy={setPolicy}
+                              setBookingState={setBookingState}
                             />
                           ))}
                       </tbody>

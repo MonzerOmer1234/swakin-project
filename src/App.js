@@ -21,6 +21,8 @@ import ForgotPassword from "./components/auth/ForgotPassword";
 import ResetPassword from "./components/auth/ResetPassword";
 import { mainpulateUserName } from "./components/util/user";
 import Profile from "./components/profile/Profile";
+import Map from "./components/Map/Map";
+
 
 function App() {
   // share the data across the entire application
@@ -38,8 +40,8 @@ function App() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [password , setPassword] = useState('')
-  const [profilePic , setProfilePic] = useState(null)
+  const [password, setPassword] = useState("");
+  const [profilePic, setProfilePic] = useState(null);
   const [shipName, setShipName] = useState("");
   const [receipentName, setReceipentName] = useState("");
   const [receipentPhone, setReceipentPhone] = useState("");
@@ -49,6 +51,11 @@ function App() {
   const [error, setError] = useState({});
   const [changeLang, setChangeLang] = useState(false);
   const [bookingSerial, setBookingSerial] = useState("");
+  const [bookingState, setBookingState] = useState("");
+  const [lat , setLat] = useState(null);
+  const [long , setLong] = useState(null);
+  const [policy , setPolicy] = useState(null);
+  const [showCancelBookingModal , setShowCancelBookingModal] =  useState(false);
 
   // get user data
 
@@ -69,7 +76,7 @@ function App() {
   }, [changeLang]);
 
   const token = getAuthToken();
-  const getUserData = useCallback(
+   const getUserData = useCallback(
     async function () {
       try {
         setLoading(true);
@@ -83,8 +90,7 @@ function App() {
         setEmail(res.data.data.email);
         setPhone(res.data.data.phone);
         setProfilePic(res.data.data.profile_pic);
-        setPassword(res.data.data.password)
-        
+        setPassword(res.data.data.password);
 
         setLoading(false);
 
@@ -158,7 +164,11 @@ function App() {
       path !== "/forgot-password" &&
       path !== "/reset-password" ? (
         <>
-          <div className={`lg:grid w-full lg:grid-cols-12  ${path === '/profile' ? 'h-[800px] ' : 'h-screen'} bg-[#E5E7EB]`}>
+          <div
+            className={`lg:grid w-full lg:grid-cols-12  ${
+              path === "/profile" ? "h-[800px] " : "h-screen"
+            } bg-[#E5E7EB]`}
+          >
             <SideTabs changeLang={changeLang} setChangeLang={setChangeLang} />
             <Routes>
               <Route element={<ProtectedRoutes />}>
@@ -182,6 +192,9 @@ function App() {
                       setShipmentId={setShipmentId}
                       fullName={username}
                       username={newName}
+                      setLat={setLat}
+                      setLong={setLong}
+             
                     />
                   }
                 />
@@ -217,6 +230,9 @@ function App() {
                       travelDate={travelDate}
                       serialNumber={serialNumber}
                       shipName={shipName}
+                      setLat={setLat}
+                      setLong={setLong}
+                 
                     />
                   }
                 />
@@ -229,6 +245,8 @@ function App() {
                       username={newName}
                       serialNumber={serialNumber}
                       setBookingSerial={setBookingSerial}
+                      setBookingState={setBookingState}
+                      setPolicy={setPolicy}
                     />
                   }
                 />
@@ -290,6 +308,7 @@ function App() {
                     receipentPhone={receipentPhone}
                     specifiedCars={specifiedCars}
                     shipmentId={shipmentId}
+                    
                   />
                 }
               />
@@ -309,9 +328,18 @@ function App() {
                     receipentName={receipentName}
                     specifiedCars={specifiedCars}
                     bookingSerial={bookingSerial}
+                    bookingState={bookingState}
+                    setBookingState={setBookingState}
+                    policy={policy}
+                 
+                    lat={lat}
+                    long={long}
+                    showCancelBookingModal={showCancelBookingModal}
+                    setShowCancelBookingModal={setShowCancelBookingModal}
                   />
                 }
               />
+              
             </Routes>
           </div>
         </>

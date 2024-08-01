@@ -9,7 +9,10 @@ import "./bookings.css";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
+import "../../UI/modal.css";
 
 export default function BookingDetails({
   serialNumber,
@@ -36,8 +39,7 @@ export default function BookingDetails({
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-
-  console.log(stop)
+  console.log(stop);
 
   const newCars = specifiedCars.map((car) => Number(car));
 
@@ -111,10 +113,20 @@ export default function BookingDetails({
       setLoading(false);
     } catch (error) {
       console.log(error);
-      setError(error);
+      setError(error.response.data.error);
       setLoading(false);
     }
   }
+
+ useEffect(()=>{
+
+   if (error) {
+     toast.error(error.recipient_phone && error.recipient_phone.toString());
+      error.recipient_phone && toast.warning('please go to the previous page and fix the recipient phone number')
+     
+   }
+ } , [error])
+
   if (error && error.message === "Network Error") {
     return (
       <>
@@ -144,6 +156,22 @@ export default function BookingDetails({
 
   return (
     <>
+      {!changeLang && <ToastContainer />}
+
+      {changeLang && (
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      )}
       <SideTabs
         serial={serial}
         changeLang={changeLang}
@@ -155,7 +183,14 @@ export default function BookingDetails({
           changeLang={changeLang}
           navName={
             <p>
-              <span className="text-[#4B5563]" style={{fontFamily : changeLang ? 'Almarai' : 'Inter , sans-serif'}}>{t("Shipments")} </span>{" "}
+              <span
+                className="text-[#4B5563]"
+                style={{
+                  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                }}
+              >
+                {t("Shipments")}{" "}
+              </span>{" "}
               <span
                 className="text-[#1F2937] font-medium"
                 style={{
@@ -287,7 +322,7 @@ export default function BookingDetails({
                     </h1>
 
                     <p
-                      className=" flex flex-col sm:flex-row gap-4 sm:gap-0 lg:ps-[20px]  mt-[50px] pt-[10px]  items-center justify-around"
+                      className=" flex flex-col  sm:flex-row gap-4 sm:gap-0 lg:ps-[20px]  mt-[50px] pt-[10px]  items-center justify-around"
                       style={{
                         border: "1px solid #E5E7EB",
                         borderRadius: "8px",
@@ -297,7 +332,7 @@ export default function BookingDetails({
                       }}
                     >
                       <span>
-                        <span className=" text-[#4B5563]">
+                        <span className=" text-[#4B5563] block text-center">
                           {t("start Location")} <br />{" "}
                         </span>
                         <span
@@ -323,27 +358,23 @@ export default function BookingDetails({
                             : "Inter , sans-serif",
                         }}
                       >
-                        {
-                          stop.map(point => <>
-                          
-                          
-                          
-                        <span className=" text-[#4B5563]  ">
-                          {t("stop")} <br />{" "}
-                        </span>
-                        <span
-                          className="text-[#1F2937] font-bold"
-                          style={{
-                            fontFamily: changeLang
-                              ? "Almarai"
-                              : "Cairo , sans-serif",
-                          }}
-                        >
-                          {point.location_point.name_en}
-                        </span>
-                          </>)
-                        }
-                        
+                        {stop.map((point) => (
+                          <>
+                            <span className=" text-[#4B5563] block text-center ">
+                              {t("stop")} <br />{" "}
+                            </span>
+                            <span
+                              className="text-[#1F2937] font-bold"
+                              style={{
+                                fontFamily: changeLang
+                                  ? "Almarai"
+                                  : "Cairo , sans-serif",
+                              }}
+                            >
+                              {point.location_point.name_en}
+                            </span>
+                          </>
+                        ))}
                       </span>
                       <span className=" ms-[10px] hidden sm:block">{">"}</span>
                       <span
@@ -354,7 +385,7 @@ export default function BookingDetails({
                             : "Inter , sans-serif",
                         }}
                       >
-                        <span className=" text-[#4B5563]">
+                        <span className={`text-[#4B5563] block text-center ${changeLang ? 'ms-[-40px]' : 'ms-0'}`}>
                           {t("Destination")} <br />{" "}
                         </span>
                         <span
@@ -365,7 +396,7 @@ export default function BookingDetails({
                         </span>
                       </span>
                     </p>
-                    <p className=" flex flex-col gap-4 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
+                    <p className=" flex flex-col items-center ms-[40px] sm:ms-0 gap-4 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
                       <span
                         className="text-center sm:text-start"
                         style={{
@@ -414,7 +445,7 @@ export default function BookingDetails({
                       </span>
                     </p>
                     <p
-                      className=" mt-[20px] text-center sm:text-start"
+                      className=" mt-[20px] ms-[80px] sm:ms-0 text-center sm:text-start"
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
@@ -441,7 +472,11 @@ export default function BookingDetails({
                     <div className="flex items-center justify-between car-header mb-[20px]">
                       <h1
                         className=" text-[#353B47] font-bold ms-[20px] my-[20px]"
-                        style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
+                        style={{
+                          fontFamily: changeLang
+                            ? "Almarai"
+                            : "Inter , sans-serif",
+                        }}
                       >
                         {t("Cars")}
                       </h1>
@@ -454,7 +489,11 @@ export default function BookingDetails({
                             <p className=" text-gray-500">
                               <div
                                 className="flex items-center"
-                                style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
+                                style={{
+                                  fontFamily: changeLang
+                                    ? "Almarai"
+                                    : "Inter , sans-serif",
+                                }}
                               >
                                 <img
                                   src={`https://soaken.neuecode.com/storage/${car.image}`}
@@ -472,7 +511,11 @@ export default function BookingDetails({
                             <div className=" text-sm">
                               <span
                                 className="text-[#1F2937] font-bold "
-                                style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
+                                style={{
+                                  fontFamily: changeLang
+                                    ? "Almarai"
+                                    : "Inter , sans-serif",
+                                }}
                               >
                                 {t("Chassis Number")}
                               </span>
@@ -488,34 +531,42 @@ export default function BookingDetails({
                 </div>
 
                 <div class="flex money-details lg:w-[50%]  flex-col m-3 h-fit bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
-                  <p className=" flex justify-between my-3 relative" style={{ fontFamily: changeLang ? 'Almarai ' : "Cairo , sans-serif" }}>
+                  <p
+                    className=" flex justify-between my-3 relative"
+                    style={{
+                      fontFamily: changeLang
+                        ? "Almarai "
+                        : "Cairo , sans-serif",
+                    }}
+                  >
                     <span className=" text-[#4B5563] ">{t("Tax")}</span>
                     <span
                       className="text-[#1F2937] font-bold"
-                      
                       required
                       name="tax"
                     >
                       0
                     </span>
                   </p>
-                  <p className=" flex justify-between my-3 relative"      style={{ fontFamily: changeLang ? 'Almarai' :  "Cairo , sans-serif" }}>
+                  <p
+                    className=" flex justify-between my-3 relative"
+                    style={{
+                      fontFamily: changeLang ? "Almarai" : "Cairo , sans-serif",
+                    }}
+                  >
                     <span className=" text-[#4B5563] ">{t("Discount")}</span>
-                    <span
-                      className="text-[#1F2937] font-bold"
-                 
-                      name="discount"
-                    >
+                    <span className="text-[#1F2937] font-bold" name="discount">
                       0
                     </span>
                   </p>
-                  <p className=" flex justify-between my-3 relative" style={{ fontFamily: changeLang ? 'Almarai' :  "Cairo , sans-serif" }}>
+                  <p
+                    className=" flex justify-between my-3 relative"
+                    style={{
+                      fontFamily: changeLang ? "Almarai" : "Cairo , sans-serif",
+                    }}
+                  >
                     <span className=" text-[#4B5563] ">{t("Total")}</span>
-                    <span
-                      className="text-[#1F2937] font-bold"
-                    
-                      name="total"
-                    >
+                    <span className="text-[#1F2937] font-bold" name="total">
                       {price * specifiedCars.length} {t("SAR")}
                     </span>
                   </p>
@@ -532,9 +583,11 @@ export default function BookingDetails({
                         type="submit"
                         style={{
                           borderRadius: "8px",
-                         
+
                           cursor: "pointer",
-                           fontFamily: changeLang ? 'Almarai' :  "  Inter , sans-serif" ,
+                          fontFamily: changeLang
+                            ? "Almarai"
+                            : "  Inter , sans-serif",
                         }}
                         className="py-3 text-center px-4 block w-full bg-[#04036B] text-white font-semibold"
                       >

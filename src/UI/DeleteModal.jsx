@@ -1,5 +1,5 @@
 import { getAuthToken } from "../components/util/auth";
-import { useCallback, useEffect } from "react";
+import {  useEffect } from "react";
 import "./modal.css";
 import axios from "axios";
 import { useState } from "react";
@@ -162,7 +162,7 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData , chang
             >
               x
             </span>
-            <p className={` text-red-700 py-5  md:px-[80px] font-bold  whitespace-nowrap `}>
+            <p className={` text-red-700 py-5  md:px-[80px] font-bold delete-text whitespace-nowrap `}>
               {t('Are you sure you want to delete this car ?')}
             </p>
             <div className="flex mt-4 justify-center gap-3">

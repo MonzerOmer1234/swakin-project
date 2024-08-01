@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import "./dashboard.css";
 import { getDaysDiff } from "../util/calculate-days-diff";
 import { useTranslation } from "react-i18next";
-
+import axios from "axios";
+import { getAuthToken } from "../util/auth";
+import { useEffect } from "react";
 
 export default function DashboardContentTwo({
   serialNo,
@@ -10,13 +12,15 @@ export default function DashboardContentTwo({
   changeLang,
   startLocation,
   endLocation,
-  
+  status,
   shipmentName,
   travelDate,
   arrivalDate,
   setAvailableSeats,
   setSerialNumber,
   carNumbers,
+  lat,
+  long,
   setStartLocation,
   setEndLocation,
   setTravelDate,
@@ -26,8 +30,10 @@ export default function DashboardContentTwo({
   setShipName,
   setShipmentId,
   setStop,
-  shipmentId, 
+  shipmentId,
   stopPoints,
+  setLat,
+  setLong,
 }) {
   console.log(changeLang);
   const [t] = useTranslation();
@@ -36,6 +42,8 @@ export default function DashboardContentTwo({
     setSerialNumber(serialNo);
     setArrivalDate(arrivalDate);
     setTravelDate(travelDate);
+    setLat(lat);
+    setLong(long);
     setStartLocation(startLocation);
     setEndLocation(endLocation);
     setStop(stopPoints);
@@ -54,6 +62,7 @@ export default function DashboardContentTwo({
   const diff = getDaysDiff(travelDate, arrivalDate);
 
   console.log(diff);
+  console.log(changeLang);
 
   return (
     <>
@@ -67,7 +76,7 @@ export default function DashboardContentTwo({
         }}
         className=" col-span-12  md:col-span-6 lg:col-span-6"
       >
-        <div className=" ms-1   p-6 journey relative  flex flex-col sm:flex-row  gap-4 items-center">
+        <div className=" ms-1   p-6 journey relative  flex flex-col   gap-4 items-center">
           <div className="bg-[#F1F1F2]  h-[20px] w-[20px]">
             <svg
               className="size-4 my-[0.5px] ms-[0.5px]"
@@ -96,25 +105,22 @@ export default function DashboardContentTwo({
             {" "}
             {t("Journey")} {serialNo}
           </span>
-          <a
-            href="#status"
-            className="  h-[30px] bg-[#CCFBF1] rounded-full w-[100px] flex items-center justify-center "
-          >
+          <a className="  bg-[#CCFBF1] rounded-full  flex items-center justify-center ">
             <span
-              className="block bg-[#115E59] rounded-full me-[5px] mt-[4px]"
+              className="block bg-[#115E59] rounded-full mx-[5px] mt-[4px]"
               style={{ width: "5px", height: "5px", borderRadius: "50%" }}
             ></span>{" "}
             <span
-              className="text-[#115E59]"
+              className="text-[#115E59] whitespace-nowrap p-2"
               style={{
                 fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
               }}
             >
-              {t("status")}
+              {t(status)}
             </span>
           </a>
           <span
-            className=" sm:ms-auto  font-bold text-[#1F2937] text-sm whitespace-nowrap"
+            className="  font-bold text-[#1F2937] text-sm whitespace-nowrap"
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
@@ -181,53 +187,30 @@ export default function DashboardContentTwo({
               </span>
             </a>
           </li>
-          <svg
-            className="flex-shrink-0 mx-2 hidden sm:block overflow-visible size-4 text-gray-400 dark:text-neutral-600"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="m9 18 6-6-6-6"></path>
-          </svg>
+
+          <span className="hidden sm:inline"> {t(">")}</span>
           <li
             className=" items-center"
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
-            { 
-              stopPoints.map(point => <> 
-            <a
-              className="inline-flex flex-col items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
-              href="#"
-            >
-              {t("stop")}
-              <br /> <span className=" font-bold text-[#1F2937]">{point.location_point.name_ar}</span> 
-            </a>
-
-             </>) 
-            } 
+            {stopPoints.map((point) => (
+              <>
+                <a
+                  className="inline-flex flex-col items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
+                  href="#"
+                >
+                  {t("stop")}
+                  <br />{" "}
+                  <span className=" font-bold text-[#1F2937]">
+                    {point.location_point.name_ar}
+                  </span>
+                </a>
+              </>
+            ))}
           </li>
-          <svg
-            className="flex-shrink-0 hidden sm:block mx-2 overflow-visible size-4 text-gray-400 dark:text-neutral-600"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="m9 18 6-6-6-6"></path>
-          </svg>
+          <span className="hidden sm:inline"> {t(">")}</span>
           <li
             className=" flex-col items-center text-sm font-semibold text-gray-500 truncate dark:text-neutral-200"
             aria-current="page"
@@ -236,8 +219,8 @@ export default function DashboardContentTwo({
             }}
           >
             <span
-              className={`relative ms-5 sm:ms-0 ${
-                changeLang ? "ms-[2.25rem]" : ""
+              className={`relative  sm:ms-0 ${
+                changeLang ? "ms-[35px]" : "ms-5"
               }`}
             >
               {t("Destination")}{" "}

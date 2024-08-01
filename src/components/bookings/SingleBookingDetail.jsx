@@ -8,6 +8,9 @@ import { getAuthToken } from "../util/auth";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
+import Map from "../Map/Map";
+import DeleteModal from "../../UI/DeleteModal";
+import CancelBookingModal from "../../UI/CancelBookingModal";
 
 export default function SingleBookingDetail({
   username,
@@ -22,26 +25,42 @@ export default function SingleBookingDetail({
   receipentName,
   specifiedCars,
   bookingSerial,
+  bookingState,
+  setBookingState,
+  lat,
+  long,
+  showCancelBookingModal,
+  setShowCancelBookingModal,
+  policy,
 }) {
   const { sid } = useParams();
   const [carData, setCarData] = useState([]);
   const [error, setError] = useState({});
 
+  const [bookings, setBookings] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [t] = useTranslation();
+  const [bookingData, setBookingData] = useState({});
 
-  const carIds = specifiedCars.join(',')
+  const carIds = specifiedCars.join(",");
+
+  console.log(bookingState);
+  console.log(policy);
 
   console.log(sid);
   const token = getAuthToken();
   async function getCarData() {
     try {
       setLoading(true);
-      const res = await axios.get(`https://soaken.neuecode.com/api/get-cars?cars=${carIds}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.get(
+        `https://soaken.neuecode.com/api/get-cars?cars=${carIds}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       console.log(res);
 
       setCarData(res.data.data);
@@ -53,6 +72,61 @@ export default function SingleBookingDetail({
   }
   useEffect(() => {
     getCarData();
+  }, []);
+
+  const getBookings = useCallback(
+    async function () {
+      try {
+        setLoading(true);
+        const res = await axios.get(
+          "https://soaken.neuecode.com/api/get-bookings",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        console.log(res);
+        setBookings(res.data.data);
+        console.log(bookings);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        // you have to write code here
+      }
+    },
+    [bookings, token]
+  );
+
+  const handleCancelBooking = useCallback(
+    async function () {
+      const formData = { serial_no: bookingSerial };
+      const token = getAuthToken();
+      const res = await axios.post(
+        "https://soaken.neuecode.com/api/cancel-bookings",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(res);
+      setBookingData(res.data.data);
+      setBookingState("Canceled");
+      console.log(bookingState);
+      getBookings();
+      console.log(bookingData);
+
+      console.log(bookingData.booking_status_id);
+    },
+    [bookingData, bookingSerial, getBookings, bookingState]
+  );
+
+  useEffect(() => {
+    getBookings();
   }, []);
 
   if (error && error.message === "Network Error") {
@@ -84,6 +158,19 @@ export default function SingleBookingDetail({
 
   return (
     <>
+      {showCancelBookingModal && (
+        <CancelBookingModal
+          bookings={bookings}
+          setBookings={setBookings}
+          setShowCancelBookingModal={setShowCancelBookingModal}
+          bookingData={bookingData}
+          setBookingData={setBookingData}
+          bookingState={bookingState}
+          setBookingState={setBookingState}
+          bookingSerial={bookingSerial}
+          changeLang={changeLang}
+        />
+      )}
       <SideTabs
         sid={sid}
         changeLang={changeLang}
@@ -123,7 +210,7 @@ export default function SingleBookingDetail({
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
-            {t("Booking")}
+            {t("Booking Details")}
           </h1>
 
           <div
@@ -198,7 +285,7 @@ export default function SingleBookingDetail({
                         className=" text-[#1F2937] font-bold"
                         style={{ fontFamily: "Inter , sans-serif" }}
                       >
-                        hi
+                        {policy}
                       </span>
                     </span>
                     <span className=" relative md:end-[54px]">
@@ -262,19 +349,27 @@ export default function SingleBookingDetail({
                           : "Inter , sans-serif",
                       }}
                     >
-                      <span className=" text-[#4B5563]  ">
-                        {t("stop")} <br />{" "}
-                      </span>
-                      <span
-                        className="text-[#1F2937] font-bold"
-                        style={{
-                          fontFamily: changeLang
-                            ? "Almarai"
-                            : "Inter , sans-serif",
-                        }}
-                      >
-                        {stop}
-                      </span>
+                      {stop.map((point) => (
+                        <>
+                          <span
+                            className={`text-[#4B5563]  ${
+                              changeLang ? "ms-[39px]" : "ms-[73px]"
+                            } sm:ms-[70px] lg:ms-[20px]`}
+                          >
+                            {t("stop")} <br />{" "}
+                          </span>
+                          <span
+                            className="text-[#1F2937] font-bold"
+                            style={{
+                              fontFamily: changeLang
+                                ? "Almarai"
+                                : "Inter , sans-serif",
+                            }}
+                          >
+                            {point.location_point.name_en}
+                          </span>
+                        </>
+                      ))}
                     </span>
                     <span className=" ms-[10px] hidden sm:block">{">"}</span>
                     <span
@@ -450,20 +545,42 @@ export default function SingleBookingDetail({
                   >
                     {t("Shipment Tracking")}
                   </h1>
-                  <a
-                    className=" ms-10 h-[30px] rounded-full w-[80px] flex items-center justify-center "
-                    style={{ backgroundColor: "#CCFBF1" }}
-                  >
+                  <a className=" ms-10 h-[30px] rounded-full w-[80px] flex items-center justify-center ">
                     <span
-                      className="block  rounded-full me-[5px] mt-[4px]"
+                      className={`block  rounded-full me-[5px] mt-[4px]`}
                       style={{
                         width: "5px",
                         height: "5px",
                         borderRadius: "50%",
-                        backgroundColor: "#115E59",
                       }}
                     ></span>{" "}
-                    <span style={{ color: "#115E59" ,  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif" }} >{t("status")}</span>
+                    <span
+                      className={`p-3 ${
+                        changeLang
+                          ? 'w-[100px] h-[55px] rounded-[50px] whitespace-nowrap'
+                          : 'rounded-[50px]'
+                      } `}
+                      style={{
+                        color:
+                          bookingState === "Pending"
+                            ? "#1F2937"
+                            : bookingState === "Completed"
+                            ? "#115E59"
+                            : "#EF4444",
+                        fontFamily: changeLang
+                          ? "Almarai"
+                          : "Inter , sans-serif",
+                        backgroundColor:
+                          bookingState === "Pending"
+                            ? " #E5E7EB"
+                            : bookingState === "Completed"
+                            ? "#CCFBF1"
+                            : "#FECACA",
+                      }}
+                    >
+                      {" "}
+                      {t(bookingState)}
+                    </span>
                   </a>
                 </div>
                 <p
@@ -494,10 +611,15 @@ export default function SingleBookingDetail({
                           } font-medium text-gray-800 dark:text-white`}
                         >
                           <p
-                            style={{ color: "#1F2937" , fontFamily: changeLang ? "Almarai" : "Inter , sans-serif" }}
+                            style={{
+                              color: "#1F2937",
+                              fontFamily: changeLang
+                                ? "Almarai"
+                                : "Inter , sans-serif",
+                            }}
                             className="font-semibold"
                           >
-                            {t("start")}:
+                            {t("start")}: {startLocation}
                           </p>
                           <span
                             className="block text-xs font-semibold"
@@ -519,7 +641,11 @@ export default function SingleBookingDetail({
                       </div>
                       <div
                         className="my-3"
-                        style={{ fontFamily: changeLang ? "Almarai" : "Inter , sans-serif" }}
+                        style={{
+                          fontFamily: changeLang
+                            ? "Almarai"
+                            : "Inter , sans-serif",
+                        }}
                       >
                         <span
                           className={`relative top-[-12px] ${
@@ -528,9 +654,12 @@ export default function SingleBookingDetail({
                         >
                           <p
                             style={{ color: "#1F2937" }}
-                            className="font-semibold"
+                            className="font-semibold "
                           >
-                            {t("stop")}:
+                            {t("stop")}:{" "}
+                            {stop.map((point) => (
+                              <>{point.location_point.name_en}</>
+                            ))}
                           </p>
                           <span
                             className="block text-xs font-semibold"
@@ -565,10 +694,15 @@ export default function SingleBookingDetail({
                           }  font-medium text-gray-800 dark:text-white`}
                         >
                           <p
-                            style={{ color: "#1F2937" , fontFamily: changeLang ? "Almarai" : "Inter , sans-serif"  }}
+                            style={{
+                              color: "#1F2937",
+                              fontFamily: changeLang
+                                ? "Almarai"
+                                : "Inter , sans-serif",
+                            }}
                             className="font-semibold"
                           >
-                            {t("Destination")}:
+                            {t("Destination")}: {endLocation}
                           </p>
                           <span
                             className="block text-xs font-semibold"
@@ -581,19 +715,29 @@ export default function SingleBookingDetail({
                     </li>
                   </ul>
                 </div>
-                <div className="flex booking">
-                  <button
-                    className=" ms-auto me-5 p-3 relative -top-2  text-[#1F2937] booking-btn"
-                    style={{ border: "1px solid #1F2937", borderRadius: "8px", fontFamily: changeLang ? "Almarai" : "Inter , sans-serif" }} 
-                  >
-                    {t("Cancel Booking")}
-                  </button>
-                </div>
+                {bookingState !== "Canceled" && (
+                  <div className="flex booking">
+                    <button
+                      onClick={() => setShowCancelBookingModal(true)}
+                      className=" ms-auto me-5 p-3 relative -top-2  text-[#1F2937] booking-btn"
+                      style={{
+                        border: "1px solid #1F2937",
+                        borderRadius: "8px",
+                        fontFamily: changeLang
+                          ? "Almarai"
+                          : "Inter , sans-serif",
+                      }}
+                    >
+                      {t("Cancel Booking")}
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
+      <Map lat={lat} long={long} />
     </>
   );
 }

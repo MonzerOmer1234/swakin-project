@@ -29,6 +29,8 @@ const Dashboard = ({
   setShipmentId,
   changeLang,
   setChangeLang,
+  setLat,
+  setLong
 }) => {
   const [shipmentsData, setShipmentsData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -46,6 +48,7 @@ const Dashboard = ({
       });
 
       console.log(res);
+      
       setShipmentsData(res.data.data.upcoming_shipments);
       console.log(res.data.data);
     } catch (error) {
@@ -149,13 +152,16 @@ const Dashboard = ({
                     serialNo={shipment.serial_no}
                     price={shipment.price}
                     shipmentName={shipment.ship_name}
+                    status = {shipment.status.name_en}
                     startLocation={shipment.start_location}
                     stopPoints={shipment.shipment_location_point}
                     endLocation={shipment.end_location}
                     travelDate={shipment.travel_date}
                     arrivalDate={shipment.arrival_date}
                     carNumbers={shipment.cars_no}
-
+                    lat={shipment.lat}
+                    long = {shipment.long}
+                    setStop={setStop}
                     setSerialNumber={setSerialNumber}
                     setAvailableSeats={setAvailableSeats}
                     setStartLocation={setStartLocation}
@@ -167,6 +173,8 @@ const Dashboard = ({
                     setArrivalDate={setArrivalDate}
                     setCarsNums={setCarsNums}
                     setShipName={setShipName}
+                    setLat={setLat}
+                    setLong={setLong}
                    
                   />
                 ))}

@@ -1,5 +1,5 @@
 body.active-modal {
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .btn-modal {
@@ -22,7 +22,7 @@ body.active-modal {
   z-index: 100;
 }
 
-.overlay-ar{
+.overlay-ar {
   width: 100vw;
   height: 100vh;
 
@@ -31,34 +31,28 @@ body.active-modal {
   bottom: 0;
   position: fixed;
   z-index: 100;
-  background-color: rgba(0,0,0,0.25);
-
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
-.delete-overlay-ar{
-
+.delete-overlay-ar {
   width: 100vw;
   height: 100vh;
-
   left: 0;
-
   bottom: 0;
   position: fixed;
   z-index: 100;
-  background-color: rgba(0,0,0,0.25);
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
-@media only screen and (max-width: 480px){
-  .Toastify__toast{
 
-    margin-left : 250px !important;
+@media only screen and (max-width: 480px) {
+  .Toastify__toast {
+    margin-left: 250px !important;
   }
 }
 
-
-
 .overlay {
-  background-color: rgba(0,0,0,0.25);
+  background-color: rgba(0, 0, 0, 0.25);
   z-index: 100;
 }
 .modal-content {
@@ -75,7 +69,7 @@ body.active-modal {
   height: 700px;
 }
 
-.modal-content-ar{
+.modal-content-ar {
   position: absolute;
   top: 20px;
   left: 100%;
@@ -88,46 +82,44 @@ body.active-modal {
   width: 512px;
   height: 700px;
 }
-@media (max-width:767px) {
-  .modal-content-ar{
+@media (max-width: 767px) {
+  .modal-content-ar {
     top: 10px;
     width: 350px;
-    margin:0 ;
+    margin: 0;
   }
-  
 }
-.delete-modal-content , .error-modal-content{
+.delete-modal-content,
+.error-modal-content , .cancel-booking-modal-content {
   height: 200px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50% , -50% );
+  transform: translate(-50%, -50%);
   line-height: 0.4;
   background-color: white;
   padding: 14px 28px;
   border-radius: 15px;
   z-index: 100;
   width: 512px;
- 
 }
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .modal-content {
     top: 20px;
     width: 350px;
     height: 700px;
-    
-
   }
-  .delete-modal-content{
-   
-    width: 320px !important;
+  .delete-modal-content {
+    width: 350px !important;
     left: 50%;
   }
-  .image-div{
+  .cancel-booking-modal-content{
+    width: 392px !important;
+    left: 50%;
+  }
+  .image-div {
     width: calc(100% - 30px);
   }
- 
-
 }
 
 .close-modal {
@@ -136,19 +128,16 @@ body.active-modal {
   right: 10px;
   padding: 5px 7px;
 }
-.progress{
-  
+.progress {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50% , -50% );
+  transform: translate(-50%, -50%);
   line-height: 0.4;
 
   padding: 14px 28px;
   border-radius: 15px;
   z-index: 100;
-
-
 }
 div input:focus {
   outline: none;
@@ -158,5 +147,3 @@ div input:focus {
     left: 60%;
   }
 }
-
-
