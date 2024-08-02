@@ -53,6 +53,9 @@ export default function Profile({
   userPasswordConfirmation &&
     formData.append("password_confirmation", userPasswordConfirmation);
 
+
+    // handling the update profile
+
   async function handleUpdateProfile() {
     try {
       setLoading(true);
@@ -79,6 +82,9 @@ export default function Profile({
 
   const token = getAuthToken();
 
+
+  // laoding
+
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-end items-center">
@@ -90,6 +96,8 @@ export default function Profile({
       </div>
     );
   }
+
+  // network error
   if (updateError && updateError.message === "Network Error") {
     return (
       <>
@@ -112,10 +120,10 @@ export default function Profile({
             </g>
           </svg>
           <h1 className="text-red-500 font-semibold  ">
-            {updateError.message}
+            {t(updateError.message)}
           </h1>
           <p className=" text-red-500 font-semibold">
-            please check your connection !!!
+            {t('please check your connection !!!')}
           </p>
         </div>
       </>
@@ -134,7 +142,7 @@ export default function Profile({
         <div className="  flex justify-start mx-[20px] items-center relative info">
           <div className=" mt-[10px] w-full   flex flex-col shipment-info justify-start ">
             <div
-              className={`receipient-info basic-details h-[700px] bg-white w-[95%]`}
+              className={`receipient-info basic-details h-auto bg-white w-[95%]`}
               style={{ border: "1px solid #F1F1F2", borderRadius: "8px" }}
             >
               <h1
@@ -174,7 +182,7 @@ export default function Profile({
                     {updateError.message ===
                       "Request failed with status code 422" && (
                       <h1 className=" text-red-500 error">
-                        {updateError.response.data.error.profile_pic}
+                        {t(updateError.response.data.error.profile_pic)}
                       </h1>
                     )}
                   </form>
@@ -215,7 +223,7 @@ export default function Profile({
                     {updateError.message ===
                       "Request failed with status code 422" && (
                       <h1 className=" text-red-500 error">
-                        {updateError.response.data.error.name}
+                        {t(updateError.response.data.error.name)}
                       </h1>
                     )}
                   </div>
@@ -253,7 +261,7 @@ export default function Profile({
                     {updateError.message ===
                       "Request failed with status code 422" && (
                       <h1 className=" text-red-500 error">
-                        {updateError.response.data.error.email}
+                        {t(updateError.response.data.error.email)}
                       </h1>
                     )}
                   </div>
@@ -280,7 +288,7 @@ export default function Profile({
                     {updateError.message ===
                       "Request failed with status code 422" && (
                       <h1 className=" text-red-500 error">
-                        {updateError.response.data.error.phone}
+                        {t(updateError.response.data.error.phone)}
                       </h1>
                     )}
                   </div>
@@ -311,7 +319,7 @@ export default function Profile({
                     {updateError.message ===
                       "Request failed with status code 422" && (
                       <h1 className=" text-red-500 error">
-                        {updateError.response.data.error.password}
+                        {t(updateError.response.data.error.password)}
                       </h1>
                     )}
                   </div>
@@ -343,7 +351,7 @@ export default function Profile({
                     {updateError.message ===
                       "Request failed with status code 422" && (
                       <h1 className=" text-red-500 error">
-                        {updateError.response.data.error.password_confirmation}
+                        {t(updateError.response.data.error.password_confirmation)}
                       </h1>
                     )}
                   </div>

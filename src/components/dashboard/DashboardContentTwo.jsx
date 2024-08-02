@@ -37,6 +37,8 @@ export default function DashboardContentTwo({
 }) {
   console.log(changeLang);
   const [t] = useTranslation();
+
+  // set all shipment credentials with clicking book now button
   function handleBooking() {
     setAvailableSeats(carNumbers);
     setSerialNumber(serialNo);
@@ -104,13 +106,13 @@ export default function DashboardContentTwo({
             {" "}
             {t("Journey")} {serialNo}
           </span>
-          <a className="  bg-[#CCFBF1] rounded-full  flex items-center justify-center ">
+          <a className="  bg-[#E5E7EB] rounded-full  flex items-center justify-center ">
             <span
-              className="block bg-[#115E59] rounded-full mx-[5px] mt-[4px]"
+              className="block bg-[#E5E7EB] rounded-full mx-[5px] mt-[4px]"
               style={{ width: "5px", height: "5px", borderRadius: "50%" }}
             ></span>{" "}
             <span
-              className="text-[#115E59] whitespace-nowrap p-2"
+              className="text-[#1F2937] whitespace-nowrap p-2"
               style={{
                 fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
               }}

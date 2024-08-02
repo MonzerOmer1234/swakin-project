@@ -15,7 +15,7 @@ export default function Map({ bookingSerial }) {
 
   const [map, setMap] = useState(null);
   const [t] = useTranslation();
-
+// function to get all shipment details
   async function getBookingsDetails() {
     const token = getAuthToken();
     try {
@@ -42,6 +42,7 @@ export default function Map({ bookingSerial }) {
     }
   }
 
+  // sending request with every 3 seconds with new longitude and latitude of the ship
 
   useEffect(() => {
     const interval = setInterval(function () {
@@ -53,6 +54,8 @@ export default function Map({ bookingSerial }) {
 
   console.log(lat, long);
 
+  // make position for marker and map
+
   const center = { lat: lat, lng: long };
 
   const { isLoaded } = useJsApiLoader({
@@ -61,6 +64,8 @@ export default function Map({ bookingSerial }) {
   });
 
   console.log(isLoaded);
+
+  // network error
 
   if (error && error.message === "Network Error") {
     return (

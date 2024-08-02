@@ -17,6 +17,8 @@ export default function Navbar({
   const [loading , setLoading] = useState(false);
   const [error , setError] = useState({})
   const token = getAuthToken();
+
+  // logout functionality
   const auth = {headers : {Authorization : `Bearer ${token}`}};
   async function handleLogout() {
     localStorage.removeItem('token')
@@ -29,13 +31,13 @@ export default function Navbar({
         setLoading(false)
     }
   }
-      
+      // toggling burger icon
   function handleBurgerIcon(){
     setOpenBurgerIcon(!openBurgerIcon)
   }
      
    
-  
+  // network error
   if ( error &&  error.message === "Network Error") {
     return (
       <>
@@ -54,9 +56,9 @@ export default function Navbar({
               <path d="m 11 10 c -0.265625 0 -0.519531 0.105469 -0.707031 0.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 l 1.292969 1.292969 l -1.292969 1.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 s 1.023437 0.390625 1.414062 0 l 1.292969 -1.292969 l 1.292969 1.292969 c 0.390625 0.390625 1.023437 0.390625 1.414062 0 s 0.390625 -1.023437 0 -1.414062 l -1.292969 -1.292969 l 1.292969 -1.292969 c 0.390625 -0.390625 0.390625 -1.023437 0 -1.414062 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 s -0.519531 0.105469 -0.707031 0.292969 l -1.292969 1.292969 l -1.292969 -1.292969 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 z m 0 0" />
             </g>
           </svg>
-          <h1 className="text-red-500 font-semibold  ">{error.message}</h1>
+          <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            please check your connection !!!
+            {t('please check your connection !!!')}
           </p>
         </div>
       </>

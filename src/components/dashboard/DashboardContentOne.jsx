@@ -16,6 +16,8 @@ export default function DashboardContentOne({ changeLang }) {
   const [t] = useTranslation();
 
   const token = getAuthToken();
+
+  // get all data to get the active booking
   async function getData() {
     try {
       setLoading(true);
@@ -42,7 +44,7 @@ export default function DashboardContentOne({ changeLang }) {
   useEffect(() => {
     getData();
   }, []);
-
+  // loading
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
@@ -54,6 +56,8 @@ export default function DashboardContentOne({ changeLang }) {
       </div>
     );
   }
+
+  // error of network
   if (error && error.message === "Network Error") {
     return (
       <>
@@ -110,7 +114,7 @@ export default function DashboardContentOne({ changeLang }) {
             </h1>
             <a
               className=" ms-10 h-[30px] rounded-full w-[161px] flex items-center justify-center "
-              style={{ backgroundColor: "#CCFBF1" }}
+              style={{ backgroundColor: "#E5E7EB" }}
             >
               <span
                 className="block  rounded-full me-[5px] mt-[4px]"
@@ -118,12 +122,12 @@ export default function DashboardContentOne({ changeLang }) {
                   width: "5px",
                   height: "5px",
                   borderRadius: "50%",
-                  backgroundColor: "#115E59",
+                  backgroundColor: "#1F2937",
                 }}
               ></span>{" "}
               <span
                 style={{
-                  color: "#115E59",
+                  color: "#1F2937",
                   fontFamily: "Almarai",
                   whiteSpace: "nowrap",
                 }}

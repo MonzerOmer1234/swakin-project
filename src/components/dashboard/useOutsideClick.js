@@ -1,5 +1,8 @@
 import { useEffect } from "react";
 
+
+// custom hook to handle clicking  outside of container
+
 export default function useOutsideClickHook(ref , handler){
 
     useEffect(()=>{

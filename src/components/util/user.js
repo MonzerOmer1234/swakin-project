@@ -1,3 +1,5 @@
+
+// function that takes the first letter in first and last names to be displayed in navbar
 export function mainpulateUserName(name) {
     const newNameArray = name.split(" ");
     let newName = "";

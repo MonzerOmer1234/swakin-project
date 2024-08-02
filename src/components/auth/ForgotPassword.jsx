@@ -28,7 +28,7 @@ export default function ForgotPassword({changeLang}) {
 
     formData.append('email' , email);
 
-    //  get the data from the submission of  sign in form
+    //  submit the email to receive a code to reset your forgotten password
 
     try {
       setLoading(true);
@@ -45,7 +45,7 @@ export default function ForgotPassword({changeLang}) {
 
       navigate("/reset-password");
     } catch (error) {
-      //  catching errors of sign in form
+      //  catching form errors
 
       
       setError(error);

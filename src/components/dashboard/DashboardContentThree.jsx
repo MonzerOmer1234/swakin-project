@@ -48,6 +48,8 @@ export default function DashboardContentThree({ setData , changeLang }) {
     setShowContent(false);
   }
 
+
+  // get all cars
   const getCarData = useCallback(async function () {
     try{
 
@@ -73,7 +75,7 @@ export default function DashboardContentThree({ setData , changeLang }) {
     getCarData();
   }, [getCarData]);
 
-
+  // loading
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
@@ -85,6 +87,8 @@ export default function DashboardContentThree({ setData , changeLang }) {
       </div>
     );
   }
+
+  // error of network
   if (error && error.message === "Network Error") {
     return (
       <>

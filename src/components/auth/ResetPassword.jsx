@@ -44,7 +44,7 @@ export default function ResetPasssword({changeLang}) {
       password_confirmation: passwordConfirmation,
     };
     console.log(formdata);
-    // get the data
+    // get the data to reset password based on email , password and one time password given in the mail (OTP).
     try {
       setLoading(true);
       const res = await axios.post(

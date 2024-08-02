@@ -52,6 +52,10 @@ export default function CarModal({
     document.body.classList.remove("active-modal");
   }
 
+
+
+  // handling the add of cars in dashboard
+
   const formdata = new FormData();
   async function handleSubmit(event) {
     event.preventDefault();
@@ -95,6 +99,8 @@ export default function CarModal({
       setShowContent(true);
     }
   }
+
+  // toaster errors
   useEffect(() => {
     if (error) {
       toast.error(error.year && t(error.year.toString()))
@@ -104,6 +110,8 @@ export default function CarModal({
       toast.error(error.image && t(error.image.toString()));
     }
   }, [error, error.chassis_no, error.image, changeLang]);
+
+// network errors
 
 
   if (networkError && networkError.message === "Network Error") {

@@ -1,3 +1,5 @@
+
+
 export const engilshTranslation = {
   "Welcome back": "Welcome",
   "Available For Booking": "Available For Booking",
@@ -133,9 +135,11 @@ export const engilshTranslation = {
   "No cars available": "No cars available",
   "No shipments available": "No shipments available",
   "No Bookings available": "No Bookings available",
-  
   "Network Error": "Network Error",
   "please check your connection !!!": "please check your connection !!!",
+  "The name field is required.": "The name field is required.",
+  "The profile pic field must be a file of type: jpg, jpeg, png, gif.":
+    "The profile pic field must be a file of type: jpg, jpeg, png, gif.",
 };
 
 export const arabicTranslation = {
@@ -273,4 +277,7 @@ export const arabicTranslation = {
   "No Bookings available": "لا توجد حجوزات متاحة",
   "Network Error": "خطأ في الشبكة",
   "please check your connection !!!": "يرجى التحقق من اتصالك !!!",
+  "The name field is required.": "حقل الاسم مطلوب.",
+  "The profile pic field must be a file of type: jpg, jpeg, png, gif.":
+    "يجب أن يكون حقل صورة الملف الشخصي ملفًا من النوع: jpg، jpeg، png، gif.",
 };

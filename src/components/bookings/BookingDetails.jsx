@@ -90,6 +90,8 @@ export default function BookingDetails({
 
     console.log(newCars);
 
+    // functionality of add booking.
+
     const bookingsData = {
       recipient_name: receipentName,
       recipient_phone: receipentPhone,
@@ -117,7 +119,7 @@ export default function BookingDetails({
       setLoading(false);
     }
   }
-
+// toaster error and warning
  useEffect(()=>{
 
    if (error) {
@@ -126,6 +128,9 @@ export default function BookingDetails({
      
    }
  } , [error])
+
+
+//  network error
 
   if (error && error.message === "Network Error") {
     return (

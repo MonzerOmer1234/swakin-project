@@ -1,6 +1,8 @@
 
 import Sidebar from "./Sidebar";
 import { useParams } from "react-router-dom";
+
+// defining tabs in sidebar
 export const sideTabs = [
   {
     icon: (
@@ -212,6 +214,9 @@ export const sideTabs = [
   },
 
 ];
+
+
+
 
 export default function SideTabs({ id, serial , sid , changeLang , setChangeLang }) {
    console.log(typeof setChangeLang)

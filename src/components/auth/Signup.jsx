@@ -42,7 +42,7 @@ export default function Signup({ changeLang }) {
       password_confirmation: passwordConfirmation,
     };
     console.log(formdata);
-    // get the data
+    // get the users data to be registered
     try {
       setLoading(true);
       const res = await axios.post(

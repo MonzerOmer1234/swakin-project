@@ -29,6 +29,8 @@ const Bookings = ({
   const [status, setStatus] = useState("");
   const [t] = useTranslation();
   const token = getAuthToken();
+
+  // get all bookings
   async function getBookings() {
     try {
       setLoading(true);

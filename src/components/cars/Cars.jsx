@@ -34,6 +34,8 @@ const Cars = ({ username, changeLang, setChangeLang }) => {
     document.body.classList.remove("active-modal");
   }
 
+  // get all cars
+
   async function getCarData() {
     const token = getAuthToken();
     try {

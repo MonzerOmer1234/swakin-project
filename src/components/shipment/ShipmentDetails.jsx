@@ -31,6 +31,9 @@ export default function ShipmentDetails({
   const [t] = useTranslation();
   const navigate = useNavigate();
 
+
+  // get all cars
+
   async function getCarData() {
     const token = getAuthToken();
     try {
@@ -55,6 +58,7 @@ export default function ShipmentDetails({
   const { id } = useParams();
 
   console.log(carData);
+  // get the selected cars
   function handleCars(e) {
     console.log(e.target.options);
     const updatedOptions = [...e.target.options]
@@ -65,6 +69,9 @@ export default function ShipmentDetails({
     setSpecifiedCars(newUpdatedOptions);
   }
 
+
+  // handling the submit of car
+
   function handleSubmit() {
     console.log(receipentName);
     console.log(receipentPhone);
@@ -73,7 +80,7 @@ export default function ShipmentDetails({
 
     navigate(`/bookings/${serialNumber}/booking`);
   }
-
+  // network error
   if (error && error.message === "Network Error") {
     return (
       <>

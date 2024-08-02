@@ -17,11 +17,9 @@ export default function RegisterModal({
 }) {
   const [mode, setMode] = useState("");
 
-
-
   const [sending, setSending] = useState(false);
   const [error, setError] = useState({});
-  const [networkError , setNetworkError] = useState({})
+  const [networkError, setNetworkError] = useState({});
 
   const [sendingUpdate, setSendngUpdate] = useState(false);
 
@@ -57,6 +55,8 @@ export default function RegisterModal({
 
     setShowContent(false);
   }
+
+  // functionality of sending new car  and updating car based on the details and send to the server
   const token = getAuthToken();
 
   const formdata = new FormData();
@@ -87,11 +87,11 @@ export default function RegisterModal({
         setShowContent(false);
         getCarData();
       } catch (error) {
-        console.log(error)
-        setNetworkError(error)
+        console.log(error);
+        setNetworkError(error);
         setSending(false);
-        if(networkError){
-          return ;
+        if (networkError) {
+          return;
         }
         setError(error.response.data.error);
         console.log(error);
@@ -130,6 +130,8 @@ export default function RegisterModal({
 
   console.log(carDetails.data);
 
+  // changing modes depending on details of car
+
   useEffect(() => {
     if (Object.keys(carDetails).length === 0) {
       setMode(changeLang ? "اضافة عربة" : "Add car");
@@ -137,6 +139,8 @@ export default function RegisterModal({
       setMode(changeLang ? "تحديث السيارة" : "Update car");
     }
   }, [carDetails, setMode, changeLang]);
+
+  // making error toasters
 
   useEffect(() => {
     if (error) {
@@ -149,13 +153,17 @@ export default function RegisterModal({
   useEffect(() => {
     if (updateError) {
       toast.error(updateError.year && t(updateError.year.toString()));
-      toast.error(updateError.chassis_no && t(updateError.chassis_no.toString()));
+      toast.error(
+        updateError.chassis_no && t(updateError.chassis_no.toString())
+      );
 
       toast.error(updateError.image && t(updateError.image.toString()));
     }
   }, [updateError, updateError.chassis_no, updateError.image]);
 
 
+  
+// handling network errors.
   if (networkError && networkError.message === "Network Error") {
     return (
       <>
@@ -174,9 +182,11 @@ export default function RegisterModal({
               <path d="m 11 10 c -0.265625 0 -0.519531 0.105469 -0.707031 0.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 l 1.292969 1.292969 l -1.292969 1.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 s 1.023437 0.390625 1.414062 0 l 1.292969 -1.292969 l 1.292969 1.292969 c 0.390625 0.390625 1.023437 0.390625 1.414062 0 s 0.390625 -1.023437 0 -1.414062 l -1.292969 -1.292969 l 1.292969 -1.292969 c 0.390625 -0.390625 0.390625 -1.023437 0 -1.414062 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 s -0.519531 0.105469 -0.707031 0.292969 l -1.292969 1.292969 l -1.292969 -1.292969 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 z m 0 0" />
             </g>
           </svg>
-          <h1 className="text-red-500 font-semibold  ">{t(networkError.message)}</h1>
+          <h1 className="text-red-500 font-semibold  ">
+            {t(networkError.message)}
+          </h1>
           <p className=" text-red-500 font-semibold">
-            {t('please check your connection !!!')}
+            {t("please check your connection !!!")}
           </p>
         </div>
       </>

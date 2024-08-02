@@ -97,7 +97,7 @@ export default function SingleBookingDetail({
     },
     [bookings, token]
   );
-
+  // cancel booking and get the latest booking statuses.
   const handleCancelBooking = useCallback(
     async function () {
       const formData = { serial_no: bookingSerial };
@@ -127,7 +127,7 @@ export default function SingleBookingDetail({
   useEffect(() => {
     getBookings();
   }, []);
-
+  // handing network errors
   if (error && error.message === "Network Error") {
     return (
       <>
@@ -561,18 +561,18 @@ export default function SingleBookingDetail({
                       } `}
                       style={{
                         color:
-                          bookingState === "Pending"
+                          bookingState === "Pending" || bookingState === "On Progress"
                             ? "#1F2937"
-                            : bookingState === "Completed" || bookingState === "On Progress"
+                            : bookingState === "Completed" || bookingState === "Confirmed" 
                             ? "#115E59"
                             : "#EF4444",
                         fontFamily: changeLang
                           ? "Almarai"
                           : "Inter , sans-serif",
                         backgroundColor:
-                          bookingState === "Pending"
+                          bookingState === "Pending" || bookingState === "On Progress"
                             ? " #E5E7EB"
-                            : bookingState === "Completed" || bookingState === "On Progress"
+                            : bookingState === "Completed" || bookingState === "Confirmed"
                             ? "#CCFBF1"
                             : "#FECACA",
                       }}

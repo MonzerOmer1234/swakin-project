@@ -32,6 +32,8 @@ export default function CarItem({
 
   const token = getAuthToken();
 
+  // handling the edit and delete of cars
+
   function handleDelete() {
     setShowDeleteModal(true);
   }

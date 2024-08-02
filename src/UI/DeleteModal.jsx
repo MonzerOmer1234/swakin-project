@@ -1,5 +1,5 @@
 import { getAuthToken } from "../components/util/auth";
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import "./modal.css";
 import axios from "axios";
 import { useState } from "react";
@@ -8,12 +8,19 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
-export default function DeleteModal({ setShowDeleteModal, id, getCarData , changeLang }) {
+export default function DeleteModal({
+  setShowDeleteModal,
+  id,
+  getCarData,
+  changeLang,
+}) {
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState("");
   const [t] = useTranslation();
 
   const token = getAuthToken();
+
+  // functionality of deleting car after taking confirmation of the user
 
   async function handleDeleteCar(id) {
     try {
@@ -28,18 +35,16 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData , chang
       setShowDeleteModal(false);
       getCarData();
     } catch (error) {
+      console.log(error);
 
-      console.log(error)
+      // handling network error
 
-      if(error.message === "Network Error"){
-        setDeleteError(error.message)
+      if (error.message === "Network Error") {
+        setDeleteError(error.message);
         return;
       }
-      
 
       setDeleteError(error.response.data);
-    
-      
 
       setDeleting(false);
     }
@@ -48,13 +53,13 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData , chang
     if (deleteError) {
       toast.error(deleteError && deleteError.message);
     }
-  
   }, [deleteError]);
 
-  console.log(deleteError)
+  console.log(deleteError);
 
-  if ( deleteError &&  deleteError === "Network Error") {
+  // network error
 
+  if (deleteError && deleteError === "Network Error") {
     return (
       <>
         <div className=" flex flex-col justify-center items-center w-screen h-screen gap-4">
@@ -73,10 +78,10 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData , chang
             </g>
           </svg>
           <h1 className="text-red-500 font-semibold  ">
-            {deleteError.message}
+            {t(deleteError.message)}
           </h1>
           <p className=" text-red-500 font-semibold">
-            please check your connection !!!
+            {t('please check your connection !!!')}
           </p>
         </div>
       </>
@@ -86,7 +91,7 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData , chang
   return (
     <>
       {deleting ? (
-        <div className={`${changeLang ? 'delete-overlay-ar' : 'overlay'}`}>
+        <div className={`${changeLang ? "delete-overlay-ar" : "overlay"}`}>
           <div className=" flex justify-center items-center relative top-2/4">
             <SkeletonTheme baseColor="gray" highlightColor="#444">
               <p>
@@ -98,7 +103,7 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData , chang
       ) : deleteError ? (
         <ToastContainer />
       ) : (
-        <div className={`${changeLang ? 'delete-overlay-ar' : 'overlay'}`}>
+        <div className={`${changeLang ? "delete-overlay-ar" : "overlay"}`}>
           <div className={`delete-modal-content`}>
             <div className="  top-[30px] relative mb-[25px] flex justify-center  ">
               <svg
@@ -162,8 +167,10 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData , chang
             >
               x
             </span>
-            <p className={` text-red-700 py-5  md:px-[80px] font-bold delete-text whitespace-nowrap `}>
-              {t('Are you sure you want to delete this car ?')}
+            <p
+              className={` text-red-700 py-5  md:px-[80px] font-bold delete-text whitespace-nowrap `}
+            >
+              {t("Are you sure you want to delete this car ?")}
             </p>
             <div className="flex mt-4 justify-center gap-3">
               <button
@@ -175,14 +182,14 @@ export default function DeleteModal({ setShowDeleteModal, id, getCarData , chang
                   fontFamily: "Inter , sans-serif",
                 }}
               >
-                {t('Cancel')}
+                {t("Cancel")}
               </button>
               <button
                 onClick={() => handleDeleteCar(id)}
                 className="  p-3 relative -top-2  text-[white] bg-red-700  booking-btn"
                 style={{ border: "1px solid red", borderRadius: "8px" }}
               >
-               {t('Delete')}
+                {t("Delete")}
               </button>
             </div>
           </div>

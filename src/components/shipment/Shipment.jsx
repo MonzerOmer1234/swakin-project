@@ -42,6 +42,8 @@ const Shipment = ({
 
   const token = getAuthToken();
 
+  // filtering shipments based on ship name
+
   const handleSubmit = async function (event) {
     event.preventDefault();
     try {
@@ -65,7 +67,7 @@ const Shipment = ({
       setShipmentLoading(false);
     }
   };
-
+  // get all shipments
   async function getShipmentsData() {
     const token = getAuthToken();
     try {
@@ -92,6 +94,8 @@ const Shipment = ({
   useEffect(() => {
     getShipmentsData();
   }, []);
+
+  // loading
   if (loading) {
     return (
       <div
@@ -107,6 +111,7 @@ const Shipment = ({
       </div>
     );
   }
+  // network error
   if (error && error.message === "Network Error") {
     return (
       <>

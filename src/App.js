@@ -55,10 +55,11 @@ function App() {
   const [showCancelBookingModal, setShowCancelBookingModal] = useState(false);
   const [bookingStatusId , setBookingStatusId] = useState(0);
 
-  // get user data
 
-  console.log(changeLang);
-  console.log(typeof setChangeLang);
+
+
+
+  // handling of switching between arabic and english
 
   useEffect(() => {
     if (changeLang) {
@@ -72,6 +73,8 @@ function App() {
       document.body.style.direction = "ltr";
     }
   }, [changeLang]);
+
+  // Consume the user api and get data 
 
   const token = getAuthToken();
   const getUserData = useCallback(
@@ -112,10 +115,16 @@ function App() {
 
   const newName = mainpulateUserName(username);
 
+
+  // Checking of the path of routes to conditionally render the sidebar
+
   const location = useLocation();
   useEffect(() => {
     setPath(location.pathname);
   }, [path, location.pathname]);
+
+
+  // loading skeleton
 
   if (loading) {
     return (
@@ -128,6 +137,8 @@ function App() {
       </div>
     );
   }
+
+  // handing the network error
   if (error && error.message === "Network Error") {
     return (
       <>

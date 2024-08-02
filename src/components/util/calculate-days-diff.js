@@ -1,3 +1,8 @@
+
+
+// function that calcualtes the difference between two dates.
+
+
 export function getDaysDiff(start , end){
     const date1 = new Date(start)
     const date2 = new Date(end)
