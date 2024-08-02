@@ -19,6 +19,8 @@ export default function BookRow({
   setBookingState,
   setPolicy,
   policy,
+  setBookingStatusId,
+  statusId
 }) {
   const [closeActions, setCloseActions] = useState(true);
   const [t] = useTranslation();
@@ -28,6 +30,7 @@ export default function BookRow({
     setCloseActions(!closeActions);
     setBookingSerial(bid);
     setBookingState(status);
+    setBookingStatusId(statusId)
     setPolicy(policy);
   }
 
@@ -81,17 +84,17 @@ export default function BookRow({
           className={`${
             status === "Pending"
               ? " bg-[#E5E7EB]"
-              : status === "Completed"
+              : status === "Completed" || status === "On Progress"
               ? " bg-[#CCFBF1]"
               : "bg-[#FECACA]"
-          } flex items-center w-[120px] h-[28px]  py-5 ps-5 rounded-full ms-2`}
+          } flex items-center w-fit p-[15px] h-[28px]   rounded-full ms-2`}
         >
           <span
             style={{ width: "5px", height: "5px", borderRadius: "50%" }}
             className={` block mt-[3px]  ${
               status === "Pending"
                 ? " bg-[#1F2937]"
-                : status === "Completed"
+                : status === "Completed" || status === "On Progress"
                 ? " bg-[#115E59]"
                 : "bg-[#EF4444]"
             }`}
@@ -100,7 +103,7 @@ export default function BookRow({
             className={` block mt-[3px] ms-3 font-medium ${
               status === "Pending"
                 ? " text-[#1F2937]"
-                : status === "Completed"
+                : status === "Completed" || status === "On Progress"
                 ? " text-[#115E59]"
                 : "text-[#EF4444]"
             }`}

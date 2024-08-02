@@ -1,0 +1,5 @@
+@media ((min-width : 1020px) and (max-width : 1440)) {
+    .justify-map{
+        width: 75vw !important;
+    }
+}

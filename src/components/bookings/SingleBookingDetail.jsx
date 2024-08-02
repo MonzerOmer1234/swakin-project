@@ -27,8 +27,7 @@ export default function SingleBookingDetail({
   bookingSerial,
   bookingState,
   setBookingState,
-  lat,
-  long,
+  bookingStatusId,
   showCancelBookingModal,
   setShowCancelBookingModal,
   policy,
@@ -122,7 +121,7 @@ export default function SingleBookingDetail({
 
       console.log(bookingData.booking_status_id);
     },
-    [bookingData, bookingSerial, getBookings, bookingState]
+    [bookingData, bookingSerial, getBookings, bookingState , setBookingState]
   );
 
   useEffect(() => {
@@ -147,9 +146,9 @@ export default function SingleBookingDetail({
               <path d="m 11 10 c -0.265625 0 -0.519531 0.105469 -0.707031 0.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 l 1.292969 1.292969 l -1.292969 1.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 s 1.023437 0.390625 1.414062 0 l 1.292969 -1.292969 l 1.292969 1.292969 c 0.390625 0.390625 1.023437 0.390625 1.414062 0 s 0.390625 -1.023437 0 -1.414062 l -1.292969 -1.292969 l 1.292969 -1.292969 c 0.390625 -0.390625 0.390625 -1.023437 0 -1.414062 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 s -0.519531 0.105469 -0.707031 0.292969 l -1.292969 1.292969 l -1.292969 -1.292969 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 z m 0 0" />
             </g>
           </svg>
-          <h1 className="text-red-500 font-semibold  ">{error.message}</h1>
+          <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            please check your connection !!!
+            {t('please check your connection !!!')}
           </p>
         </div>
       </>
@@ -555,16 +554,16 @@ export default function SingleBookingDetail({
                       }}
                     ></span>{" "}
                     <span
-                      className={`p-3 ${
+                      className={`p-3 ms-10 ${
                         changeLang
-                          ? 'w-[100px] h-[55px] rounded-[50px] whitespace-nowrap'
-                          : 'rounded-[50px]'
+                          ? "w-fit h-[55px]  rounded-[50px] whitespace-nowrap"
+                          : "rounded-[50px] whitespace-nowrap"
                       } `}
                       style={{
                         color:
                           bookingState === "Pending"
                             ? "#1F2937"
-                            : bookingState === "Completed"
+                            : bookingState === "Completed" || bookingState === "On Progress"
                             ? "#115E59"
                             : "#EF4444",
                         fontFamily: changeLang
@@ -573,7 +572,7 @@ export default function SingleBookingDetail({
                         backgroundColor:
                           bookingState === "Pending"
                             ? " #E5E7EB"
-                            : bookingState === "Completed"
+                            : bookingState === "Completed" || bookingState === "On Progress"
                             ? "#CCFBF1"
                             : "#FECACA",
                       }}
@@ -630,46 +629,48 @@ export default function SingleBookingDetail({
                         </span>
                       </div>
                     </li>
-
-                    <li className=" flex ">
-                      <div className="min-w-7 min-h-7 text-xs ">
-                        <span
-                          className="size-2 mt-[10px] ms-[10px] flex justify-center items-center flex-shrink-0  font-medium text-gray-800 rounded-full dark:bg-neutral-700 dark:text-white"
-                          style={{ backgroundColor: "#14B8A6" }}
-                        ></span>
-                        <div className="mt-[4px] ms-[13px] w-[1px]  h-[44px] flex-1 bg-[#E5E7EB] group-last:hidden dark:bg-neutral-700"></div>
-                      </div>
-                      <div
-                        className="my-3"
-                        style={{
-                          fontFamily: changeLang
-                            ? "Almarai"
-                            : "Inter , sans-serif",
-                        }}
-                      >
-                        <span
-                          className={`relative top-[-12px] ${
-                            changeLang ? "left-[-20px]" : "left-[20px]"
-                          }  font-medium text-gray-800 dark:text-white`}
-                        >
-                          <p
-                            style={{ color: "#1F2937" }}
-                            className="font-semibold "
-                          >
-                            {t("stop")}:{" "}
-                            {stop.map((point) => (
-                              <>{point.location_point.name_en}</>
+                    {stop.map((point) => (
+                           <li className=" flex ">
+                           <div className="min-w-7 min-h-7 text-xs ">
+                             <span
+                               className="size-2 mt-[10px] ms-[10px] flex justify-center items-center flex-shrink-0  font-medium text-gray-800 rounded-full dark:bg-neutral-700 dark:text-white"
+                               style={{ backgroundColor: point.is_stop === 0 ? '#9CA3AF' : "#14B8A6" }}
+                             ></span>
+                             <div className="mt-[4px] ms-[13px] w-[1px]  h-[44px] flex-1 bg-[#E5E7EB] group-last:hidden dark:bg-neutral-700"></div>
+                           </div>
+                           <div
+                             className="my-3"
+                             style={{
+                               fontFamily: changeLang
+                                 ? "Almarai"
+                                 : "Inter , sans-serif",
+                             }}
+                           >
+                             <span
+                               className={`relative top-[-12px] ${
+                                 changeLang ? "left-[-20px]" : "left-[20px]"
+                               }  font-medium text-gray-800 dark:text-white`}
+                             >
+                               <p
+                                 style={{ color: "#1F2937" }}
+                                 className="font-semibold "
+                               >
+                                 {t("stop")}:{point.location_point.name_en}
+                              
+                               </p>
+                               <span
+                                 className="block text-xs font-semibold"
+                                 style={{ color: "#6B7280" }}
+                               >
+                                 3 AuG , 2024
+                               </span>
+                             </span>
+                           </div>
+                         </li>
+                       
                             ))}
-                          </p>
-                          <span
-                            className="block text-xs font-semibold"
-                            style={{ color: "#6B7280" }}
-                          >
-                            3 AuG , 2024
-                          </span>
-                        </span>
-                      </div>
-                    </li>
+
+               
 
                     <li
                       className=" flex "
@@ -735,9 +736,12 @@ export default function SingleBookingDetail({
               </div>
             </div>
           </div>
+
         </div>
       </div>
-      <Map lat={lat} long={long} />
+          <div className=" ms-[-80px] lg:ms-[20px]" style={{width : '80vw'}}>
+       {bookingStatusId === 3 && <Map bookingSerial={bookingSerial} /> } 
+      </div>
     </>
   );
 }

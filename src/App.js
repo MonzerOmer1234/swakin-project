@@ -23,7 +23,6 @@ import { mainpulateUserName } from "./components/util/user";
 import Profile from "./components/profile/Profile";
 import Map from "./components/Map/Map";
 
-
 function App() {
   // share the data across the entire application
 
@@ -52,10 +51,9 @@ function App() {
   const [changeLang, setChangeLang] = useState(false);
   const [bookingSerial, setBookingSerial] = useState("");
   const [bookingState, setBookingState] = useState("");
-  const [lat , setLat] = useState(null);
-  const [long , setLong] = useState(null);
-  const [policy , setPolicy] = useState(null);
-  const [showCancelBookingModal , setShowCancelBookingModal] =  useState(false);
+  const [policy, setPolicy] = useState(null);
+  const [showCancelBookingModal, setShowCancelBookingModal] = useState(false);
+  const [bookingStatusId , setBookingStatusId] = useState(0);
 
   // get user data
 
@@ -76,7 +74,7 @@ function App() {
   }, [changeLang]);
 
   const token = getAuthToken();
-   const getUserData = useCallback(
+  const getUserData = useCallback(
     async function () {
       try {
         setLoading(true);
@@ -192,9 +190,6 @@ function App() {
                       setShipmentId={setShipmentId}
                       fullName={username}
                       username={newName}
-                      setLat={setLat}
-                      setLong={setLong}
-             
                     />
                   }
                 />
@@ -230,9 +225,6 @@ function App() {
                       travelDate={travelDate}
                       serialNumber={serialNumber}
                       shipName={shipName}
-                      setLat={setLat}
-                      setLong={setLong}
-                 
                     />
                   }
                 />
@@ -247,6 +239,7 @@ function App() {
                       setBookingSerial={setBookingSerial}
                       setBookingState={setBookingState}
                       setPolicy={setPolicy}
+                      setBookingStatusId={setBookingStatusId}
                     />
                   }
                 />
@@ -308,7 +301,6 @@ function App() {
                     receipentPhone={receipentPhone}
                     specifiedCars={specifiedCars}
                     shipmentId={shipmentId}
-                    
                   />
                 }
               />
@@ -331,15 +323,12 @@ function App() {
                     bookingState={bookingState}
                     setBookingState={setBookingState}
                     policy={policy}
-                 
-                    lat={lat}
-                    long={long}
                     showCancelBookingModal={showCancelBookingModal}
                     setShowCancelBookingModal={setShowCancelBookingModal}
+                    bookingStatusId={bookingStatusId}
                   />
                 }
               />
-              
             </Routes>
           </div>
         </>

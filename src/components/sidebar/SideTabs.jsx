@@ -201,7 +201,7 @@ export const sideTabs = [
       </svg>
     ),
     text: "Logout",
-    to : '/sign-up'
+    
   },
 
 

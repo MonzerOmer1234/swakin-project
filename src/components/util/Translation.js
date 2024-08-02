@@ -105,11 +105,38 @@ export const engilshTranslation = {
   ">": ">",
   Canceled: "Canceled",
   Pending: "Pending",
-  Completed  : 'Completed',
- "Are you sure you want to cancel this booking?" : "Are you sure you want to cancel this booking?",
- No : 'No',
- Yes : 'Yes'
- };
+  Completed: "Completed",
+  "On Progress": "On Progress",
+  "Are you sure you want to cancel this booking?":
+    "Are you sure you want to cancel this booking?",
+  No: "No",
+  Yes: "Yes",
+  "The phone field must be between 9 and 15 digits.":
+    "The phone field must be between 9 and 15 digits.",
+  "The email field must be a valid email address.":
+    "The email field must be a valid email address",
+  "The password field must be at least 8 characters.":
+    "The password field must be at least 8 characters",
+  "The password field confirmation does not match.":
+    "The password field confirmation does not match",
+  Unauthorized: "Unauthorized",
+  "please check your credentials": "please check your credentials",
+  "The code you entered is incorrect": "The code you entered is incorrect",
+  "The code you entered has expired": "The code you entered has expired",
+  "The year field must be a number.,The year field must be 4 digits":
+    "The year field must be a number.,The year field must be 4 digits",
+  "The chassis no field must be a number":
+    "The chassis no field must be a number",
+  "The image field must be a file of type:jpg,jpeg,png.":
+    "The image field must be a file of type:jpg,jpeg,png.",
+  "No active Booking Available": "No active Booking Available",
+  "No cars available": "No cars available",
+  "No shipments available": "No shipments available",
+  "No Bookings available": "No Bookings available",
+  
+  "Network Error": "Network Error",
+  "please check your connection !!!": "please check your connection !!!",
+};
 
 export const arabicTranslation = {
   "Welcome back": "مرحبا ",
@@ -217,7 +244,33 @@ export const arabicTranslation = {
   Canceled: "تم الالغاء",
   Pending: "في الانتظار",
   Completed: "تم التاكيد",
-  "Are you sure you want to cancel this booking?" : 'هل أنت متأكد أنك تريد إلغاء هذا الحجز؟',
-  "No" : 'لا',
-  'Yes' : 'نعم'
+  "On Progress": "في الطريق الى الوجهة",
+  "Are you sure you want to cancel this booking?":
+    "هل أنت متأكد أنك تريد إلغاء هذا الحجز؟",
+  No: "لا",
+  Yes: "نعم",
+  "The phone field must be between 9 and 15 digits.":
+    "يجب أن يتراوح حقل الهاتف بين 9 و15 رقما",
+  "The email field must be a valid email address.":
+    "يجب أن يكون حقل البريد الإلكتروني عنوان بريد إلكتروني صالحًا",
+  "The password field must be at least 8 characters.":
+    "يجب أن يتكون حقل كلمة المرور من 8 أحرف على الأقل",
+  "The password field confirmation does not match.":
+    "تأكيد حقل كلمة المرور غير متطابق",
+  Unauthorized: "غير مصرح",
+  "please check your credentials": "يرجى التحقق من بيانات الاعتماد الخاصة بك",
+  "The code you entered is incorrect": "الرمز الذي أدخلته غير صحيح",
+  "The code you entered has expired": "لقد انتهت صلاحية الرمز الذي أدخلته",
+  "The year field must be a number.,The year field must be 4 digits":
+    "يجب أن يكون حقل السنة رقمًا.,يجب أن يتكون حقل السنة من 4 أرقام",
+  "The chassis no field must be a number":
+    "يجب أن يكون الهيكل الذي لا يحتوي على حقل رقمًا",
+  "The image field must be a file of type:jpg,jpeg,png.":
+    "يجب أن يكون حقل الصورة ملفًا من النوع: jpg,jpeg,png.",
+  "No active Booking Available": "لا يوجد حجز نشط متاح",
+  "No cars available": "لا يوجد سيارات متاحة",
+  "No shipments available": "لا توجد شحنات متاحة",
+  "No Bookings available": "لا توجد حجوزات متاحة",
+  "Network Error": "خطأ في الشبكة",
+  "please check your connection !!!": "يرجى التحقق من اتصالك !!!",
 };

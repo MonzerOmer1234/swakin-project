@@ -13,18 +13,13 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 
-
-const Cars = ({username , changeLang , setChangeLang}) => {
+const Cars = ({ username, changeLang, setChangeLang }) => {
   const ref = useRef();
 
+  const [loading, setLoading] = useState(false);
 
-
-
-  
-  const[loading , setLoading] = useState(false)
-
-  const [error , setError] = useState('')
-  const [t] = useTranslation()
+  const [error, setError] = useState("");
+  const [t] = useTranslation();
   const [id, setId] = useState(0);
   const [carDetails, setCarDetails] = useState({});
   const [carData, setCarData] = useState([]);
@@ -38,38 +33,43 @@ const Cars = ({username , changeLang , setChangeLang}) => {
   } else {
     document.body.classList.remove("active-modal");
   }
-  
 
   async function getCarData() {
-    
     const token = getAuthToken();
-    try{
-
-      setLoading(true)
+    try {
+      setLoading(true);
       const res = await axios.get("https://soaken.neuecode.com/api/get-cars", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-       console.log(res)
+      console.log(res);
       setCarData(res.data.data);
-      setLoading(false)
-    } catch(error){
-      console.log(error)
-      console.log(carData)
-      setError(error)
-      setLoading(false)
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      console.log(carData);
+      setError(error);
+      setLoading(false);
     }
+  }
 
-    
-  } 
-  
   useEffect(() => {
     getCarData();
   }, []);
-  
+  if(loading){
+    return (
+      <div className="min-h-screen w-full lg:ms-[800px] flex justify-center items-center">
+        <SkeletonTheme baseColor="gray" highlightColor="#444">
+          <p>
+            <Skeleton count={10} width={"400px"} />
+          </p>
+        </SkeletonTheme>
+      </div>
+    )
+  }
 
-  if ( error &&  error.message === "Network Error") {
+  if (error && error.message === "Network Error") {
     return (
       <>
         <div className=" flex flex-col justify-center items-center w-screen h-screen gap-4">
@@ -87,24 +87,29 @@ const Cars = ({username , changeLang , setChangeLang}) => {
               <path d="m 11 10 c -0.265625 0 -0.519531 0.105469 -0.707031 0.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 l 1.292969 1.292969 l -1.292969 1.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 s 1.023437 0.390625 1.414062 0 l 1.292969 -1.292969 l 1.292969 1.292969 c 0.390625 0.390625 1.023437 0.390625 1.414062 0 s 0.390625 -1.023437 0 -1.414062 l -1.292969 -1.292969 l 1.292969 -1.292969 c 0.390625 -0.390625 0.390625 -1.023437 0 -1.414062 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 s -0.519531 0.105469 -0.707031 0.292969 l -1.292969 1.292969 l -1.292969 -1.292969 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 z m 0 0" />
             </g>
           </svg>
-          <h1 className="text-red-500 font-semibold  ">{error.message}</h1>
+          <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            please check your connection !!!
+            {t('please check your connection !!!')}
           </p>
         </div>
       </>
     );
   }
- 
-
 
   return (
     <>
-
-    <div className="lg:col-span-12 lg:ms-[255px] me-[10px]">
-      <Navbar setChangeLang={setChangeLang} changeLang={changeLang} navName={t(sideTabs[1]?.text)} username={username} />
-        <div className="m bg-[#E5E7EB]  p-5 font-bold text-2xl flex justify-between" style={{fontFamily : changeLang ? 'Alamrai' : 'Inter , sans-serif'}}>
-          <h1>{t('Cars')}</h1>
+      <div className="lg:col-span-12 lg:ms-[255px] me-[10px]">
+        <Navbar
+          setChangeLang={setChangeLang}
+          changeLang={changeLang}
+          navName={t(sideTabs[1]?.text)}
+          username={username}
+        />
+        <div
+          className="m bg-[#E5E7EB]  p-5 font-bold text-2xl flex justify-between"
+          style={{ fontFamily: changeLang ? "Alamrai" : "Inter , sans-serif" }}
+        >
+          <h1>{t("Cars")}</h1>
           <button
             onClick={() => {
               setShowContent(true);
@@ -128,13 +133,14 @@ const Cars = ({username , changeLang , setChangeLang}) => {
                 fill="white"
               />
             </svg>
-            <span className=" ms-2 text-white text-sm">{t('Add a new car')}</span>
+            <span className=" ms-2 text-white text-sm">
+              {t("Add a new car")}
+            </span>
           </button>
         </div>
         <div className="bg-[#E5E7EB]   h-screen">
           <div class=" md:grid md:grid-cols-2 bg-[#E5E7EB] lg:grid lg:grid-cols-3 h-auto">
-            {carData &&
-              carData.length > 0 &&
+            {carData && carData.length > 0 ? (
               carData.map((car) => (
                 <li key={car.id} className=" list-none">
                   <CarItem
@@ -152,26 +158,64 @@ const Cars = ({username , changeLang , setChangeLang}) => {
                     setCarDetails={setCarDetails}
                   />
                 </li>
-              ))}
+              ))
+            ) : (
+              <div
+                style={{
+                  height: "auto",
+                  backgroundColor: "white",
+                  borderRadius: "8px",
+                  border: "1px solid #E5E7EB",
+                  marginBottom: "20px",
+                  transform : 'translateY(-50%)'
+            
+              
+                }}
+                className="mx-[20px] lg:me-0 flex justify-center relative top-[200px] md:start-[200px] lg:start-[400px]  items-center"
+              >
+                <div className="block p-4 ">
+                  <div class="fi-ta-empty-state-content mx-auto grid max-w-lg justify-items-center text-center">
+                    <div class="fi-ta-empty-state-icon-ctn mb-4 rounded-full bg-gray-100 p-3 dark:bg-gray-500/20">
+                      <svg
+                        class="fi-ta-empty-state-icon h-6 w-6 text-gray-500 dark:text-gray-400"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M6 18 18 6M6 6l12 12"
+                        ></path>
+                      </svg>
+                    </div>
+
+                    <h4 class="fi-ta-empty-state-heading text-base font-semibold leading-6 text-gray-950 dark:text-white">
+                      {t("No cars available")}
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
-
-      {showContent && (
-        <div className="modal relative block" ref={ref}>
-          <RegisterModal
-            changeLang={changeLang}
-            id={id}
-            carDetails={carDetails}
-            setShowContent={setShowContent}
-            getCarData={getCarData}
-            
-          />
-        </div>
-      )}
-    </div>
-     
-     
+        {showContent && (
+          <div className="modal relative block" ref={ref}>
+            <RegisterModal
+              changeLang={changeLang}
+              id={id}
+              carDetails={carDetails}
+              setShowContent={setShowContent}
+              getCarData={getCarData}
+            />
+          </div>
+        )}
+      </div>
     </>
   );
 };

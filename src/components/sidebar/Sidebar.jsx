@@ -29,9 +29,13 @@ export default function Sidebar({
   function handleClick(index) {
     setCurrentIndex(index);
 
-    if (index === 4) {
+    if (index === 5) {
+     console.log(currentIndex)
+      logout();
       const token = getAuthToken();
+         
       async function handleLogout() {
+       
         try{
           setLoading(true)
           const res = await axios.post('https://soaken.neuecode.com/api/logout' , {
@@ -39,6 +43,7 @@ export default function Sidebar({
               Authorization : `Bearer ${token}`
              }
           })
+          console.log(res)
           setLoading(false)
         } catch(error){
             setError(error)

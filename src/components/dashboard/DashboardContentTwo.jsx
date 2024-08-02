@@ -42,8 +42,7 @@ export default function DashboardContentTwo({
     setSerialNumber(serialNo);
     setArrivalDate(arrivalDate);
     setTravelDate(travelDate);
-    setLat(lat);
-    setLong(long);
+
     setStartLocation(startLocation);
     setEndLocation(endLocation);
     setStop(stopPoints);
@@ -206,6 +205,7 @@ export default function DashboardContentTwo({
                   <span className=" font-bold text-[#1F2937]">
                     {point.location_point.name_ar}
                   </span>
+            
                 </a>
               </>
             ))}

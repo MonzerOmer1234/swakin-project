@@ -29,7 +29,7 @@ const Shipment = ({
   changeLang,
   setChangeLang,
   setLat,
-  setLong
+  setLong,
 }) => {
   const [shipmentsData, setShipmentsData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -57,12 +57,12 @@ const Shipment = ({
 
       console.log(res.data.data);
 
-      setShipmentDetail(res.data.data)
-      
-      setShipmentLoading(false)
+      setShipmentDetail(res.data.data);
+
+      setShipmentLoading(false);
     } catch (error) {
       console.log(error);
-      setShipmentLoading(false)
+      setShipmentLoading(false);
     }
   };
 
@@ -94,7 +94,11 @@ const Shipment = ({
   }, []);
   if (loading) {
     return (
-      <div className={`flex h-screen bg-[#E5E7EB] justify-center items-center relative ${changeLang ? 'lg:right-[200px]' : 'lg:left-[200px]'} top-[100px] w-screen`}>
+      <div
+        className={`flex h-screen bg-[#E5E7EB] justify-center items-center relative ${
+          changeLang ? "lg:right-[200px]" : "lg:left-[200px]"
+        } top-[100px] w-screen`}
+      >
         <SkeletonTheme baseColor="gray" highlightColor="#444">
           <p>
             <Skeleton count={10} width={"200px"} />
@@ -103,7 +107,7 @@ const Shipment = ({
       </div>
     );
   }
-  if ( error &&  error.message === "Network Error") {
+  if (error && error.message === "Network Error") {
     return (
       <>
         <div className=" flex flex-col justify-center items-center w-screen h-screen gap-4">
@@ -121,9 +125,9 @@ const Shipment = ({
               <path d="m 11 10 c -0.265625 0 -0.519531 0.105469 -0.707031 0.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 l 1.292969 1.292969 l -1.292969 1.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 s 1.023437 0.390625 1.414062 0 l 1.292969 -1.292969 l 1.292969 1.292969 c 0.390625 0.390625 1.023437 0.390625 1.414062 0 s 0.390625 -1.023437 0 -1.414062 l -1.292969 -1.292969 l 1.292969 -1.292969 c 0.390625 -0.390625 0.390625 -1.023437 0 -1.414062 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 s -0.519531 0.105469 -0.707031 0.292969 l -1.292969 1.292969 l -1.292969 -1.292969 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 z m 0 0" />
             </g>
           </svg>
-          <h1 className="text-red-500 font-semibold  ">{error.message}</h1>
+          <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            please check your connection !!!
+            {t('please check your connection !!!')}
           </p>
         </div>
       </>
@@ -133,10 +137,18 @@ const Shipment = ({
   return (
     <>
       <div className="lg:col-span-12 lg:ms-[255px]">
-        <Navbar setChangeLang={setChangeLang} changeLang={changeLang} navName={t(sideTabs[2]?.text)} username={username} />
+        <Navbar
+          setChangeLang={setChangeLang}
+          changeLang={changeLang}
+          navName={t(sideTabs[2]?.text)}
+          username={username}
+        />
 
-        <div style={{fontFamily : changeLang ? 'Almarai' : 'Inter , sans-serif '}} className=" flex gap-3 md:gap-0 flex-col md:flex-row justify-between  items-center p-5 bg-[#E5E7EB]">
-          <h1 className=" font-bold text-2xl">{t('Shipments')}</h1>
+        <div
+          style={{ fontFamily: changeLang ? "Almarai" : "Inter , sans-serif " }}
+          className=" flex gap-3 md:gap-0 flex-col md:flex-row justify-between  items-center p-5 bg-[#E5E7EB]"
+        >
+          <h1 className=" font-bold text-2xl">{t("Shipments")}</h1>
 
           <form class="md:ms-auto" onSubmit={handleSubmit}>
             <label
@@ -167,17 +179,17 @@ const Shipment = ({
                 type="search"
                 id="default-search"
                 class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder={t('Search with ship name')}
+                placeholder={t("Search with ship name")}
                 required
                 value={shName}
-                onChange={(e)=>setShName(e.target.value)}
+                onChange={(e) => setShName(e.target.value)}
               />
             </div>
           </form>
         </div>
 
         <div className="lg:p-5  parent grid grid-cols-12 gap-[20px] bg-[#E5E7EB] ">
-          {(shName.length === 0 || shipmentDetail.length === 0)
+          {shName.length === 0 || shipmentDetail.length === 0
             ? shipmentsData.map((shipment) => (
                 <DashboardContentTwo
                   setSerialNumber={setSerialNumber}
@@ -195,8 +207,6 @@ const Shipment = ({
                   shipmentId={shipment.id}
                   serialNo={shipment.serial_no}
                   price={shipment.price}
-                  lat={shipment.lat}
-                  long = {shipment.long}
                   shipmentName={shipment.ship_name}
                   startLocation={shipment.start_location}
                   endLocation={shipment.end_location}
@@ -204,11 +214,8 @@ const Shipment = ({
                   arrivalDate={shipment.arrival_date}
                   carNumbers={shipment.cars_no}
                   stopPoints={shipment.shipment_location_point}
-                  setLat={setLat}
-                  setLong={setLong}
                   status={shipment.status.name_en}
                   changeLang={changeLang}
-                  
                 />
               ))
             : shipmentDetail.map((detail) => (
@@ -226,8 +233,6 @@ const Shipment = ({
                   key={shipmentDetail[0].id}
                   serialNo={shipmentDetail[0].serial_no}
                   price={shipmentDetail[0].price}
-                  lat={shipmentDetail[0].lat}
-                  long = {shipmentDetail[0].long}
                   shipmentName={shipmentDetail[0].ship_name}
                   startLocation={shipmentDetail[0].start_location}
                   endLocation={shipmentDetail[0].end_location}
@@ -238,10 +243,49 @@ const Shipment = ({
                   setShipmentId={setShipmentId}
                   shipmentId={shipmentDetail[0].id}
                   changeLang={changeLang}
-                  setLat={setLat}
-                  setLong={setLong}
                 />
               ))}
+
+          {!shipmentDetail && !shipmentsData && (
+            <div
+              style={{
+                height: "auto",
+                backgroundColor: "white",
+                borderRadius: "8px",
+                border: "1px solid #E5E7EB",
+                marginBottom: "20px",
+                transform: "translateY(-50%)",
+              }}
+              className="mx-[60px] flex justify-center items-center lg:me-[225px] relative top-[200px] lg:block lg:w-[400px] lg:start-56 "
+            >
+              <div className="p-4 ">
+                <div class="fi-ta-empty-state-content mx-auto grid max-w-lg justify-items-center text-center">
+                  <div class="fi-ta-empty-state-icon-ctn mb-4 rounded-full bg-gray-100 p-3 dark:bg-gray-500/20">
+                    <svg
+                      class="fi-ta-empty-state-icon h-6 w-6 text-gray-500 dark:text-gray-400"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                      data-slot="icon"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18 18 6M6 6l12 12"
+                      ></path>
+                    </svg>
+                  </div>
+
+                  <h4 class="fi-ta-empty-state-heading text-base font-semibold leading-6 text-gray-950 dark:text-white">
+                    {t("No shipments available")}
+                  </h4>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>

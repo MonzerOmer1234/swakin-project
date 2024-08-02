@@ -13,7 +13,7 @@ import { getAuthToken } from "../util/auth";
 import { PhoneInput } from "react-international-phone";
 import { useTranslation } from "react-i18next";
 
-export default function Signup({changeLang}) {
+export default function Signup({ changeLang }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -50,8 +50,8 @@ export default function Signup({changeLang}) {
         formdata,
         {
           headers: {
-            Authorization : `Bearer ${returnedToken}`
-          }
+            Authorization: `Bearer ${returnedToken}`,
+          },
         }
       );
 
@@ -69,7 +69,6 @@ export default function Signup({changeLang}) {
       console.log(error);
       setError(error);
       setLoading(false);
-
     }
     console.log(error);
   }
@@ -85,7 +84,7 @@ export default function Signup({changeLang}) {
       </div>
     );
   }
-  if ( error &&  error.message === "Network Error") {
+  if (error && error.message === "Network Error") {
     return (
       <>
         <div className=" flex flex-col justify-center items-center w-screen h-screen gap-4">
@@ -103,9 +102,9 @@ export default function Signup({changeLang}) {
               <path d="m 11 10 c -0.265625 0 -0.519531 0.105469 -0.707031 0.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 l 1.292969 1.292969 l -1.292969 1.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 s 1.023437 0.390625 1.414062 0 l 1.292969 -1.292969 l 1.292969 1.292969 c 0.390625 0.390625 1.023437 0.390625 1.414062 0 s 0.390625 -1.023437 0 -1.414062 l -1.292969 -1.292969 l 1.292969 -1.292969 c 0.390625 -0.390625 0.390625 -1.023437 0 -1.414062 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 s -0.519531 0.105469 -0.707031 0.292969 l -1.292969 1.292969 l -1.292969 -1.292969 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 z m 0 0" />
             </g>
           </svg>
-          <h1 className="text-red-500 font-semibold  ">{error.message}</h1>
+          <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            please check your connection !!!
+            {t('please check your connection !!!')}
           </p>
         </div>
       </>
@@ -113,20 +112,26 @@ export default function Signup({changeLang}) {
   }
 
   return (
-    <div className={`sign-up-box   h-[900px]  bg-[#E5E7EB]`} style={{fontFamily : changeLang ? 'Almarai' : ''}}>
+    <div
+      className={`sign-up-box   h-[900px]  bg-[#E5E7EB]`}
+      style={{ fontFamily: changeLang ? "Almarai" : "" }}
+    >
       <div className=" flex justify-center items-start relative  top-[50px] ">
         <img src={logo} style={{ width: "30px", height: "30px" }} alt="logo" />
         <p className="ms-2 flex flex-col justify-center items-start">
           <span
             className=" font-bold text-xl relative mb-1"
-            style={{ color: "#04036B", fontFamily : changeLang ? 'Almarai' : 'Cairo ExtraLight'}}
+            style={{
+              color: "#04036B",
+              fontFamily: changeLang ? "Almarai" : "Cairo ExtraLight",
+            }}
           >
             سواكن للنقل و التجارة
           </span>
           <span
             className="text-[7px]   uppercase font-normal"
             style={{
-              fontFamily : changeLang ? 'Almarai' : 'Inter, sans-serif',
+              fontFamily: changeLang ? "Almarai" : "Inter, sans-serif",
               width: "128px",
               whiteSpace: "nowrap",
             }}
@@ -142,17 +147,19 @@ export default function Signup({changeLang}) {
         <div className=" pt-[20px]  relative header">
           <h1
             className="text-center text-[#1F2937] font-bold text-[24px] mb-2"
-            style={{ fontFamily: changeLang ? 'Almarai' : 'Inter,sans-serif' }}
+            style={{ fontFamily: changeLang ? "Almarai" : "Inter,sans-serif" }}
           >
-            {t('Sign Up')}
+            {t("Sign Up")}
           </h1>
           <p
             className=" text-[#515661] text-center font-normal text-[14px]"
-            style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
+            style={{
+              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+            }}
           >
-            {t('Already have an account?')} {" "}
+            {t("Already have an account?")}{" "}
             <Link to={"/sign-in"} className=" text-[#2A2981] font-medium">
-              {t('Sign In')}
+              {t("Sign In")}
             </Link>
           </p>
         </div>
@@ -160,15 +167,16 @@ export default function Signup({changeLang}) {
           method="POST"
           onSubmit={handleSubmit}
           className=" mt-[20px] ms-[20px] w-[388px]"
-        
         >
           <div>
             <label
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
-              style={{ fontFamily: changeLang ? 'Almarai' :"Inter , sans-serif" }}
+              style={{
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              }}
             >
-              {t('Full Name')}
+              {t("Full Name")}
             </label>
             <div class="my-[10px] space-y-3">
               <input
@@ -191,9 +199,11 @@ export default function Signup({changeLang}) {
             <label
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
-              style={{ fontFamily: changeLang ? "Almarai" : "Inter , sans-serif" }}
+              style={{
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              }}
             >
-              {t('Email Address')}
+              {t("Email Address")}
             </label>
             <div class="my-[10px] space-y-3">
               <input
@@ -207,7 +217,7 @@ export default function Signup({changeLang}) {
               />
               {error.message === "Request failed with status code 422" && (
                 <h1 className=" text-red-500 error">
-                  {error.response.data.error.email}
+                  {t(error.response.data.error.email)}
                 </h1>
               )}
             </div>
@@ -216,11 +226,13 @@ export default function Signup({changeLang}) {
           <label
             htmlFor=""
             className=" text-[#1F2937] font-normal text-[14px] "
-            style={{ fontFamily: changeLang  ? "Almarai" : "Inter , sans-serif" }}
+            style={{
+              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+            }}
           >
             <div className=" flex justify-between phone-box">
-              <span>{t('Phone Number')}</span>
-              <span className="text-[#6B7280]">{t('Required')}</span>
+              <span>{t("Phone Number")}</span>
+              <span className="text-[#6B7280]">{t("Required")}</span>
             </div>
           </label>
           <div class="relative my-[10px]  .phone-div h-[44px]">
@@ -233,17 +245,19 @@ export default function Signup({changeLang}) {
             />
             {error.message === "Request failed with status code 422" && (
               <h1 className=" text-red-500 error">
-                {error.response.data.error.phone}
+                {t(error.response.data.error.phone)}
               </h1>
             )}
           </div>
-          <div className={`${!error ? 'mt-[40px]' : ''}`}>
+          <div className={`${!error ? "mt-[40px]" : ""}`}>
             <label
               htmlFor=""
               className={`text-[#1F2937] font-normal text-[14px] `}
-              style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
+              style={{
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              }}
             >
-              {t('Password')}
+              {t("Password")}
             </label>
             <div class={`my-[10px] space-y-3 `}>
               <input
@@ -258,7 +272,7 @@ export default function Signup({changeLang}) {
               />
               {error.message === "Request failed with status code 422" && (
                 <h1 className=" text-red-500 error">
-                  {error.response.data.error.password}
+                  {t(error.response.data.error.password)}
                 </h1>
               )}
             </div>
@@ -267,13 +281,15 @@ export default function Signup({changeLang}) {
             <label
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
-              style={{ fontFamily: changeLang ? "Almarai" :  "Inter , sans-serif"}}
+              style={{
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              }}
             >
-              {t('Confirm Password')}
+              {t("Confirm Password")}
             </label>
             <div class="my-[10px] space-y-3">
               <input
-                placeholder={t('repeat the password')}
+                placeholder={t("repeat the password")}
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                 required
@@ -284,7 +300,7 @@ export default function Signup({changeLang}) {
               />
               {error.message === "Request failed with status code 422" && (
                 <h1 className=" text-red-500 error">
-                  {error.response.data.error.password_confirmation}
+                  {t(error.response.data.error.password_confirmation)}
                 </h1>
               )}
             </div>
@@ -296,7 +312,7 @@ export default function Signup({changeLang}) {
               class={`py-3 px-4 block w-full font-semibold  text-[15px] rounded-lg text-sm bg-[#04036B] text-white`}
               style={{
                 boxShadow: " 0 0 1px 0 gray",
-                fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif",
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
                 cursor: "pointer",
               }}
             />

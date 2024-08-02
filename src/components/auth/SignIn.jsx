@@ -93,9 +93,9 @@ export default function SignIn({changeLang}) {
               <path d="m 11 10 c -0.265625 0 -0.519531 0.105469 -0.707031 0.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 l 1.292969 1.292969 l -1.292969 1.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 s 1.023437 0.390625 1.414062 0 l 1.292969 -1.292969 l 1.292969 1.292969 c 0.390625 0.390625 1.023437 0.390625 1.414062 0 s 0.390625 -1.023437 0 -1.414062 l -1.292969 -1.292969 l 1.292969 -1.292969 c 0.390625 -0.390625 0.390625 -1.023437 0 -1.414062 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 s -0.519531 0.105469 -0.707031 0.292969 l -1.292969 1.292969 l -1.292969 -1.292969 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 z m 0 0" />
             </g>
           </svg>
-          <h1 className="text-red-500 font-semibold  ">{error.message}</h1>
+          <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            please check your connection !!!
+            {t('please check your connection !!!')}
           </p>
         </div>
       </>
@@ -152,7 +152,7 @@ export default function SignIn({changeLang}) {
           style={{ }}
         >
           {error.message === "Request failed with status code 401" && (
-            <h1 className=" text-red-500 text-center mb-4 error">{` ${error.response.data.error}, please check your credentials`}</h1>
+            <h1 className=" text-red-500 text-center mb-4 error">{`${t(error.response.data.error)}`} ,  {t('please check your credentials')}</h1>
           )}
           <div>
             <label
@@ -173,7 +173,7 @@ export default function SignIn({changeLang}) {
                 style={{ boxShadow: " 0 0 1px 0 gray" }}
               />
               {error.message === "Request failed with status code 422" && (
-                <h1 className=" text-red-500 error">{error.response.data.error.email}</h1>
+                <h1 className=" text-red-500 error">{t(error.response.data.error.email)}</h1>
               )}
             </div>
           </div>
@@ -201,7 +201,7 @@ export default function SignIn({changeLang}) {
                 style={{ boxShadow: " 0 0 1px 0 gray" }}
               />
                {error.message === "Request failed with status code 422" && (
-                <h1 className=" text-red-500 error">{error.response.data.error.password}</h1>
+                <h1 className=" text-red-500 error">{t(error.response.data.error.password)}</h1>
               )}
             </div>
           </div>
