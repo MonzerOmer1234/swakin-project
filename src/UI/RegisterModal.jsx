@@ -88,15 +88,15 @@ export default function RegisterModal({
         getCarData();
       } catch (error) {
         console.log(error);
-        setNetworkError(error);
-        setSending(false);
-        if (networkError) {
-          return;
-        }
         setError(error.response.data.error);
         console.log(error);
         setSending(false);
         setShowContent(true);
+        if (networkError) {
+          setNetworkError(error);
+          setSending(false);
+          return;
+        }
       }
     } else {
       formdata.append("car_id", id);
@@ -124,6 +124,11 @@ export default function RegisterModal({
         setSendngUpdate(false);
         setShowContent(true);
         console.log(updateError);
+        if (networkError) {
+          setNetworkError(error);
+          setSendngUpdate(false);
+          return;
+        }
       }
     }
   }
