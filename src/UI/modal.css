@@ -105,7 +105,7 @@ body.active-modal {
 }
 @media (max-width: 767px) {
   .modal-content {
-    top: 20px;
+    
     width: 350px;
     height: 700px;
   }
