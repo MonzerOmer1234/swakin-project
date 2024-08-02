@@ -89,14 +89,16 @@ export default function CarModal({
 
       setNetworkError(error)
       setSending(false);
-      if(networkError){
-        return ;
-      }
+  
       
       console.log(error.response.data.error);
       setError(error.response.data.error);
       setSending(false);
       setShowContent(true);
+      if(networkError){
+        return ;
+      }
+
     }
   }
 

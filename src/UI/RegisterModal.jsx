@@ -144,20 +144,19 @@ export default function RegisterModal({
 
   useEffect(() => {
     if (error) {
-      toast.error(error.year && t(error.year.toString()));
-      toast.error(error.chassis_no && t(error.chassis_no.toString()));
+      toast.error(error.year && error.year.toString());
+      toast.error(error.chassis_no && error.chassis_no.toString());
 
-      toast.error(error.image && t(error.image.toString()));
+      toast.error(error.image && error.image.toString());
     }
   }, [error, error.chassis_no, error.image]);
   useEffect(() => {
     if (updateError) {
-      toast.error(updateError.year && t(updateError.year.toString()));
+      toast.error(updateError.year && updateError.year.toString());
       toast.error(
-        updateError.chassis_no && t(updateError.chassis_no.toString())
-      );
+        updateError.chassis_no && updateError.chassis_no.toString());
 
-      toast.error(updateError.image && t(updateError.image.toString()));
+      toast.error(updateError.image && updateError.image.toString());
     }
   }, [updateError, updateError.chassis_no, updateError.image]);
 
