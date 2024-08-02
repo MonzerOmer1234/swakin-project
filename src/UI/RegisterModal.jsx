@@ -220,7 +220,7 @@ export default function RegisterModal({
         className={`${changeLang ? "overlay-ar" : "overlay"}`}
         onClick={() => setShowContent(false)}
       ></div>
-      <div className={`${changeLang ? "modal-content-ar" : "modal-content"}`}>
+      <div className={`${changeLang ? "modal-content-ar " : "modal-content"}`}>
         <h1 className=" text-center top-[30px] relative font-bold text-lg mb-[25px]">
           {t("Car Info")}
         </h1>
