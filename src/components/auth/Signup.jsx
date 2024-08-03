@@ -76,7 +76,7 @@ export default function Signup({ changeLang }) {
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
-     <ReactLoading type="spin" color="blue"/>
+     <ReactLoading type="spin" color="#1D4ED8"/>
       </div>
     );
   }

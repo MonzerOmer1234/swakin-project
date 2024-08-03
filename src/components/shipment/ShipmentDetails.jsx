@@ -64,22 +64,29 @@ export default function ShipmentDetails({
   const { id } = useParams();
 
   console.log(carData);
+  const data = [];
+
+  for(let i = 0 ; i < carData.length ; i++){
+    data.push({label : i.car_name_en , value : i.car_id})
+  };
+
+  console.log(data)
   // get the selected cars
-  function handleCars(e) {
-    console.log(e.target.options);
-    const updatedOptions = [...e.target.options]
-      .filter((option) => option.selected)
-      .map((x) => x.value);
-    console.log("updatedOptions", updatedOptions);
-    const newUpdatedOptions = updatedOptions.map((option) => Number(option));
-    setSpecifiedCars(newUpdatedOptions);
-  }
+  // function handleCars(e) {
+  //   console.log(e.target.options);
+  //   const updatedOptions = [...e.target.options]
+  //     .filter((option) => option.selected)
+  //     .map((x) => x.value);
+  //   console.log("updatedOptions", updatedOptions);
+  //   const newUpdatedOptions = updatedOptions.map((option) => Number(option));
+  //   setSpecifiedCars(newUpdatedOptions);
+  // }
 
   function handleCars(val){
   setSpecifiedCars([...val])
   }
 
-  console.log(specifiedCars)
+  console.log(data)
 
   // handling the submit of car
 
@@ -386,9 +393,11 @@ export default function ShipmentDetails({
                              
          
       <MultiSelect
+       required 
         onChange={handleCars}
         options={carData.map(car => {
           return {label : car.car_name_ar, value : car.id }
+
         })}
       />
     

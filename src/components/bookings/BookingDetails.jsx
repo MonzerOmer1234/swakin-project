@@ -224,7 +224,7 @@ export default function BookingDetails({
 
         {loading ? (
           <div className="min-h-screen w-full flex justify-center items-center">
-           <ReactLoading type="spin" color="blue"/>
+           <ReactLoading type="spin" color="#1D4ED8"/>
           </div>
         ) : (
           <div className="content bg-[#E5E7EB] h-auto  p-5 ">

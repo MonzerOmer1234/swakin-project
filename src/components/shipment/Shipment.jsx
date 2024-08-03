@@ -107,7 +107,7 @@ const Shipment = ({
           changeLang ? "lg:right-[200px]" : "lg:left-[200px]"
         } top-[100px] w-screen`}
       >
-      <ReactLoading type="spin" color="blue"/>
+      <ReactLoading type="spin" color="#1D4ED8"/>
       </div>
     );
   }

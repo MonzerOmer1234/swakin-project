@@ -105,7 +105,7 @@ export default function CancelBookingModal({
     return (
       <div className={`${changeLang ? "delete-overlay-ar" : "overlay"}`}>
         <div className=" flex justify-center items-center relative top-2/4">
-        <ReactLoading type="spin" color="blue"/>
+        <ReactLoading type="spin" color="#1D4ED8"/>
         </div>
       </div>
     );
