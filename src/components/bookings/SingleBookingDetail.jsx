@@ -46,6 +46,7 @@ export default function SingleBookingDetail({
   const [stop, setStop] = useState([]);
   const [lat, setLat] = useState(29.6);
   const [long, setLong] = useState(32.4);
+  const [status , setStatus] = useState({})
   const carIds = specifiedCars.join(",");
    
 
@@ -123,6 +124,7 @@ export default function SingleBookingDetail({
       setBookingData(res.data.data);
       console.log(res.data.data.shipment);
       setShipmentData(res.data.data.shipment);
+      setStatus(res.data.data.status)
       setStop(res.data.data.shipment.shipment_location_point);
 
       setLat(res.data.data.shipment.lat);
@@ -440,7 +442,7 @@ export default function SingleBookingDetail({
                       </span>
                     </li>
                   </ol>
-                  <p className=" flex flex-col gap-4 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
+                  <p className=" flex flex-col gap-4 ms-[40px] sm:ms-0 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
                     <span
                       className="text-center sm:text-start"
                       style={{
@@ -501,7 +503,7 @@ export default function SingleBookingDetail({
                     </span>
                   </p>
                   <p
-                    className=" mt-[20px] text-center sm:text-start"
+                    className=" mt-[20px] ms-[40px] sm:ms-0 text-center sm:text-start"
                     style={{
                       fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
                     }}
@@ -510,7 +512,7 @@ export default function SingleBookingDetail({
                       {t("Number of cars")} <br />
                     </span>
                     <span
-                      className=" text-[#1F2937] font-bold relative end-7 sm:end-0"
+                      className=" text-[#1F2937] ms-[40px] sm:ms-0 font-bold relative end-7 sm:end-0"
                       style={{ fontFamily: "Inter , sans-serif" }}
                     >
                       {shipmentData.cars_no}
@@ -615,28 +617,28 @@ export default function SingleBookingDetail({
                       } `}
                       style={{
                         color:
-                          bookingState === "Pending" ||
-                          bookingState === "On Progress"
+                          status.name_en === "Pending" ||
+                          status.name_en === "On Progress"
                             ? "#1F2937"
-                            : bookingState === "Completed" ||
-                              bookingState === "Confirmed"
+                            : status.name_en === "Completed" ||
+                              status.name_en === "Confirmed"
                             ? "#115E59"
                             : "#EF4444",
                         fontFamily: changeLang
                           ? "Almarai"
                           : "Inter , sans-serif",
                         backgroundColor:
-                          bookingState === "Pending" ||
-                          bookingState === "On Progress"
+                          status.name_en === "Pending" ||
+                          status.name_en === "On Progress"
                             ? " #E5E7EB"
-                            : bookingState === "Completed" ||
-                              bookingState === "Confirmed"
+                            : status.name_en === "Completed" ||
+                              status.name_en === "Confirmed"
                             ? "#CCFBF1"
                             : "#FECACA",
                       }}
                     >
                       {" "}
-                      {t(bookingState)}
+                      {t(status.name_en)}
                     </span>
                   </a>
                 </div>

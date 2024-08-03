@@ -179,7 +179,7 @@ export default function DashboardContentTwo({
             }}
           >
             <a
-              className="flex  flex-col   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
+              className="flex  flex-col   items-center text-sm text-gray-500"
               href="#"
             >
               {t("start Location")} <br />{" "}
@@ -188,35 +188,35 @@ export default function DashboardContentTwo({
               </span>
             </a>
           </li>
+          <span className="hidden sm:inline dest sm:ms-[-40px] md:ms-0">
+            {" "}
+            {t(">")}
+          </span>
 
-          <span className="hidden sm:inline dest"> {t(">")}</span>
           <li
-            className=" flex flex-col places sm:flex-row  lg:ms-0" 
+            className=" flex flex-col places sm:flex-row  lg:ms-0 sm:relative sm:end-[40px] md:end-0 "
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {stopPoints.map((point) => (
               <>
-              
-                <a
-                  className="inline-flex flex-col ps-3   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
-                
-                >
+                <a className="inline-flex flex-col ps-3   items-center text-sm text-gray-500  ">
                   {t("stop")}
                   <br />{" "}
                   <span className=" font-bold text-[#1F2937]">
                     {point.location_point.name_ar}
                   </span>
-            
                 </a>
-                <span className="hidden sm:inline relative top-3 ms-[10px] dest"> {t(">")}</span>
-                
+                <span className="hidden sm:inline relative top-3 ms-[10px] dest">
+                  {" "}
+                  {t(">")}
+                </span>
               </>
             ))}
           </li>
           <li
-            className=" flex-col items-center text-sm font-semibold text-gray-500 truncate dark:text-neutral-200"
+            className=" flex-col sm:relative sm:end-[40px] md:end-0 items-center text-sm font-semibold text-gray-500 truncate "
             aria-current="page"
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
@@ -237,7 +237,7 @@ export default function DashboardContentTwo({
         <div className="ms-2 journey-date relative mt-4">
           <div className="flex gap-3 ms-5 items-center mt-10 ">
             <p
-              className=" text-gray-600 font-bold bg-[#F5F6F6] p-2 "
+              className=" text-gray-600 font-bold bg-[#F5F6F6] p-2  "
               style={{
                 borderRadius: "5px",
                 fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",

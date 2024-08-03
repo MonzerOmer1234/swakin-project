@@ -1,7 +1,7 @@
 import { sideTabs } from "../sidebar/SideTabs";
 import "../sidebar/sidebar.css";
 import Navbar from "../sidebar/navbar/Navbar";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import "react-loading-skeleton/dist/skeleton.css";
 import "../shipment/shipment.css";
 
@@ -37,7 +37,6 @@ export default function Profile({
     useState(null);
   const [changeName, setChangeName] = useState(false);
   const [changeEmail, setChangeEmail] = useState(false);
-  const [changePassword, setChangePassword] = useState(false);
 
   console.log(profileImage);
   console.log(name);
@@ -53,8 +52,7 @@ export default function Profile({
   userPasswordConfirmation &&
     formData.append("password_confirmation", userPasswordConfirmation);
 
-
-    // handling the update profile
+  // handling the update profile
 
   async function handleUpdateProfile() {
     try {
@@ -82,16 +80,8 @@ export default function Profile({
 
   const token = getAuthToken();
 
-
   // laoding
 
-  if (loading) {
-    return (
-      <div className="min-h-screen w-full flex justify-end items-center">
-      <ReactLoading type="spin" color="blue"/>
-      </div>
-    );
-  }
 
   // network error
   if (updateError && updateError.message === "Network Error") {
@@ -119,7 +109,7 @@ export default function Profile({
             {t(updateError.message)}
           </h1>
           <p className=" text-red-500 font-semibold">
-            {t('please check your connection !!!')}
+            {t("please check your connection !!!")}
           </p>
         </div>
       </>
@@ -347,7 +337,9 @@ export default function Profile({
                     {updateError.message ===
                       "Request failed with status code 422" && (
                       <h1 className=" text-red-500 error">
-                        {t(updateError.response.data.error.password_confirmation)}
+                        {t(
+                          updateError.response.data.error.password_confirmation
+                        )}
                       </h1>
                     )}
                   </div>
