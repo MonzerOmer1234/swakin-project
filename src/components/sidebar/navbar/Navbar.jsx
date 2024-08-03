@@ -247,8 +247,8 @@ export default function Navbar({
                 {navName}
               </span>
               <span
-                className=" text-[#BFDBFE] bg-[#1D4ED8] block w-[30px] h-[30px] py-3 text-center  "
-                style={{ borderRadius: "50%", lineHeight: "5px" }}
+                className=" text-[#BFDBFE] whitespace-nowrap bg-[#1D4ED8] me-7 block w-[40px] h-[40px] py-3 text-center  "
+                style={{ borderRadius: "50%", lineHeight: "15px" }}
               >
                 {username}
               </span>

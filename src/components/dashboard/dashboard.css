@@ -45,3 +45,16 @@
   }
 }
 
+@media ((min-width : 768px) and (max-width : 1286px)) {
+  
+  ol.places , li.places{
+   flex-direction: column;
+  }
+  span.dest{
+    display: none;
+  }
+  .final-place{
+    margin-left: 20px;
+  }
+}
+

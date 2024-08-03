@@ -146,8 +146,8 @@ const Dashboard = ({
               >
                 {t("Upcoming Shipments")}
               </h1>
-              {shipmentsData &&
-                shipmentsData.length > 0 &&
+              {(shipmentsData &&
+                shipmentsData.length > 0 )?
                 shipmentsData.map((shipment) => (
                   <DashboardContentTwo
                     changeLang={changeLang}
@@ -177,7 +177,36 @@ const Dashboard = ({
                     setShipName={setShipName}
                 
                   />
-                ))}
+                )) :      <div
+                style={{
+                  height: "auto",
+                  backgroundColor: "white",
+                  borderRadius: "8px",
+                  border: "1px solid #E5E7EB",
+                  marginBottom: "20px",
+                  
+                }}
+                className=" w-[60%] mx-[100px] md:mx-[150px] lg:mx-[40px] lg:me-0 lg:w-[80%]  "
+              >
+                <div className="flex p-4 justify-center items-center ">
+                <div class="fi-ta-empty-state-content mx-auto grid max-w-lg justify-items-center text-center">
+              <div class="fi-ta-empty-state-icon-ctn mb-4 rounded-full bg-gray-100 p-3 dark:bg-gray-500/20">
+                    <svg class="fi-ta-empty-state-icon h-6 w-6 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+      </svg>
+              </div>
+      
+              <h4 class="fi-ta-empty-state-heading text-base font-semibold leading-6 text-gray-950 dark:text-white">
+              {t('No upcoming shipments Available')}
+      </h4>
+      
+           
+      
+          </div>
+                </div>
+      
+                
+              </div>}
             </div>
           </div>
         </div>

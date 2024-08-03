@@ -39,6 +39,10 @@ export default function BookingDetails({
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+
+
+
+
   console.log(stop);
 
   const newCars = specifiedCars.map((car) => Number(car));
@@ -46,6 +50,9 @@ export default function BookingDetails({
   const carIds = specifiedCars.join(",");
 
   const token = getAuthToken();
+
+
+ 
   const getCarData = useCallback(
     async function () {
       try {
@@ -326,81 +333,74 @@ export default function BookingDetails({
                       {t("Shipment Details")}
                     </h1>
 
-                    <p
-                      className=" flex flex-col  sm:flex-row gap-4 sm:gap-0 lg:ps-[20px]  mt-[50px] pt-[10px]  items-center justify-around"
-                      style={{
-                        border: "1px solid #E5E7EB",
-                        borderRadius: "8px",
-                        fontFamily: changeLang
-                          ? "Almarai"
-                          : "Inter , sans-serif",
-                      }}
-                    >
-                      <span>
-                        <span className=" text-[#4B5563] block text-center">
-                          {t("start Location")} <br />{" "}
-                        </span>
-                        <span
-                          className="text-[#1F2937] font-bold"
-                          style={{
-                            fontFamily: changeLang
-                              ? "Almarai"
-                              : "Inter , sans-serif",
-                          }}
-                        >
-                          {startLocation}
-                        </span>
-                      </span>
+                    <ol
+          className="flex flex-col places sm:flex-row  justify-between sm:gap-0 items-center journey-details whitespace-nowrap py-3 ps-6 mt-5 mx-7  lg:me-0  lg:w-[91%]"
+          style={{
+            border: "1px solid rgba(128, 128, 128, 0.19)",
+            borderRadius: "8px",
+          }}
+        >
+          <li
+            className="places"
+            style={{
+              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+            }}
+          >
+            <a
+              className="flex  flex-col   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
+              href="#"
+            >
+              {t("start Location")} <br />{" "}
+              <span className=" font-bold block text-[#1F2937]">
+                {startLocation}
+              </span>
+            </a>
+          </li>
 
-                      <span className="lg:ms-[20px] hidden sm:block">
-                        {">"}
-                      </span>
-                      <span
-                        className=" lg:ms-[20px]"
-                        style={{
-                          fontFamily: changeLang
-                            ? "Almarai"
-                            : "Inter , sans-serif",
-                        }}
-                      >
-                        {stop.map((point) => (
-                          <>
-                            <span className=" text-[#4B5563] block text-center ">
-                              {t("stop")} <br />{" "}
-                            </span>
-                            <span
-                              className="text-[#1F2937] font-bold"
-                              style={{
-                                fontFamily: changeLang
-                                  ? "Almarai"
-                                  : "Cairo , sans-serif",
-                              }}
-                            >
-                              {point.location_point.name_en}
-                            </span>
-                          </>
-                        ))}
-                      </span>
-                      <span className=" ms-[10px] hidden sm:block">{">"}</span>
-                      <span
-                        className=" ms-[30px]"
-                        style={{
-                          fontFamily: changeLang
-                            ? "Almarai"
-                            : "Inter , sans-serif",
-                        }}
-                      >
-                        <span className={`text-[#4B5563] block text-center ${changeLang ? 'ms-[-40px]' : 'ms-0'}`}>
-                          {t("Destination")} <br />{" "}
-                        </span>
-                        <span
-                          className="text-[#1F2937] font-bold"
-                          style={{ fontFamily: "Cairo , sans-serif" }}
-                        >
-                          {endLocation}
-                        </span>
-                      </span>
-                    </p>
+          <span className="hidden sm:inline dest"> {t(">")}</span>
+          <li
+            className=" flex flex-col places sm:flex-row  lg:ms-0" 
+            style={{
+              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+            }}
+          >
+            {stop.map((point) => (
+              <>
+              
+                <a
+                  className="inline-flex flex-col ps-3   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
+                
+                >
+                  {t("stop")}
+                  <br />{" "}
+                  <span className=" font-bold text-[#1F2937]">
+                    {point.location_point.name_ar}
+                  </span>
+            
+                </a>
+                <span className="hidden sm:inline relative top-3 ms-[10px] dest"> {t(">")}</span>
+                
+              </>
+            ))}
+          </li>
+          <li
+            className=" flex-col items-center text-sm font-semibold text-gray-500 truncate dark:text-neutral-200"
+            aria-current="page"
+            style={{
+              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+            }}
+          >
+            <span
+              className={`relative final-place  sm:ms-0 ${
+                changeLang ? "ms-[35px]" : "ms-5"
+              }`}
+            >
+              {t("Destination")}{" "}
+            </span>{" "}
+            <br />
+            <span className=" font-bold text-[#1F2937]">{endLocation}</span>
+          </li>
+        </ol>
                     <p className=" flex flex-col items-center ms-[40px] sm:ms-0 gap-4 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
                       <span
                         className="text-center sm:text-start"

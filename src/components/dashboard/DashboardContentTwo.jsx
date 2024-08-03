@@ -166,20 +166,20 @@ export default function DashboardContentTwo({
         </div>
 
         <ol
-          className="flex flex-col sm:flex-row gap-3 justify-between sm:gap-0 items-center journey-details whitespace-nowrap py-3 ps-6 mt-5 mx-7 sm:me-[10px] lg:me-0  lg:w-[91%]"
+          className="flex flex-col places sm:flex-row  justify-between sm:gap-0 items-center journey-details whitespace-nowrap py-3 ps-6 mt-5 mx-7  lg:me-0  lg:w-[91%]"
           style={{
             border: "1px solid rgba(128, 128, 128, 0.19)",
             borderRadius: "8px",
           }}
         >
           <li
-            className=" items-center"
+            className="places"
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
             <a
-              className="flex  flex-col  items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
+              className="flex  flex-col   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
               href="#"
             >
               {t("start Location")} <br />{" "}
@@ -189,18 +189,19 @@ export default function DashboardContentTwo({
             </a>
           </li>
 
-          <span className="hidden sm:inline"> {t(">")}</span>
+          <span className="hidden sm:inline dest"> {t(">")}</span>
           <li
-            className=" items-center"
+            className=" flex flex-col places sm:flex-row  lg:ms-0" 
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {stopPoints.map((point) => (
               <>
+              
                 <a
-                  className="inline-flex flex-col items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
-                  href="#"
+                  className="inline-flex flex-col ps-3   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
+                
                 >
                   {t("stop")}
                   <br />{" "}
@@ -209,10 +210,11 @@ export default function DashboardContentTwo({
                   </span>
             
                 </a>
+                <span className="hidden sm:inline relative top-3 ms-[10px] dest"> {t(">")}</span>
+                
               </>
             ))}
           </li>
-          <span className="hidden sm:inline"> {t(">")}</span>
           <li
             className=" flex-col items-center text-sm font-semibold text-gray-500 truncate dark:text-neutral-200"
             aria-current="page"
@@ -221,7 +223,7 @@ export default function DashboardContentTwo({
             }}
           >
             <span
-              className={`relative  sm:ms-0 ${
+              className={`relative final-place  sm:ms-0 ${
                 changeLang ? "ms-[35px]" : "ms-5"
               }`}
             >

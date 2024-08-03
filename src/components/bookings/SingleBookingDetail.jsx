@@ -16,7 +16,7 @@ export default function SingleBookingDetail({
   username,
   startLocation,
   endLocation,
-  stop,
+
   carsNums,
   travelDate,
   arrivalDate,
@@ -41,6 +41,12 @@ export default function SingleBookingDetail({
   const [loading, setLoading] = useState(false);
   const [t] = useTranslation();
   const [bookingData, setBookingData] = useState({});
+  const [bookingsData, setBookingsData] = useState({});
+  const [shipmentData, setShipmentData] = useState({});
+  const [stop , setStop] = useState([])
+
+  const [lat, setLat] = useState(29.6);
+  const [long, setLong] = useState(32.4);
 
   const carIds = specifiedCars.join(",");
 
@@ -72,6 +78,42 @@ export default function SingleBookingDetail({
   useEffect(() => {
     getCarData();
   }, []);
+  async function getBookingsDetails() {
+    const token = getAuthToken();
+    try {
+      setLoading(true);
+      const res = await axios.get(
+        `https://soaken.neuecode.com/api/get-bookings/${bookingSerial}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(res);
+      setBookingData(res.data.data);
+      console.log(res.data.data.shipment);
+      setShipmentData(res.data.data.shipment);
+      setStop(res.data.data.shipment.shipment_location_point)
+
+      setLat(res.data.data.shipment.lat);
+      setLong(res.data.data.shipment.long);
+
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setError(error);
+    }
+  }
+  useEffect(() => {
+    const interval = setInterval(function () {
+      getBookingsDetails();
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  console.log(bookingData, shipmentData);
 
   const getBookings = useCallback(
     async function () {
@@ -121,7 +163,7 @@ export default function SingleBookingDetail({
 
       console.log(bookingData.booking_status_id);
     },
-    [bookingData, bookingSerial, getBookings, bookingState , setBookingState]
+    [bookingData, bookingSerial, getBookings, bookingState, setBookingState]
   );
 
   useEffect(() => {
@@ -148,7 +190,7 @@ export default function SingleBookingDetail({
           </svg>
           <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            {t('please check your connection !!!')}
+            {t("please check your connection !!!")}
           </p>
         </div>
       </>
@@ -246,7 +288,7 @@ export default function SingleBookingDetail({
                         className=" text-[#1F2937] font-bold"
                         style={{ fontFamily: "Inter , sans-serif" }}
                       >
-                        {bookingSerial}
+                        {bookingData.serial_no}
                       </span>
                     </span>
                     <span className="mb-2">
@@ -264,7 +306,7 @@ export default function SingleBookingDetail({
                         className=" text-[#1F2937] font-bold"
                         style={{ fontFamily: "Inter , sans-serif" }}
                       >
-                        {receipentName}
+                        {bookingData.receipient_name}
                       </span>
                     </span>
                   </p>
@@ -284,7 +326,7 @@ export default function SingleBookingDetail({
                         className=" text-[#1F2937] font-bold"
                         style={{ fontFamily: "Inter , sans-serif" }}
                       >
-                        {policy}
+                        {bookingData.policy}
                       </span>
                     </span>
                     <span className=" relative md:end-[54px]">
@@ -302,7 +344,7 @@ export default function SingleBookingDetail({
                         className=" text-[#1F2937] font-bold"
                         style={{ fontFamily: "Inter , sans-serif" }}
                       >
-                        {specifiedCars.length}
+                        {bookingData.car_qty}
                       </span>
                     </span>
                   </p>
@@ -317,31 +359,35 @@ export default function SingleBookingDetail({
                     {t("Shipment Details")}
                   </h1>
 
-                  <p
-                    className=" flex flex-col sm:flex-row gap-4 sm:gap-0 lg:ps-[20px]  mt-[50px] pt-[10px]  items-center justify-around"
-                    style={{ border: "1px solid #E5E7EB", borderRadius: "8px" }}
+                  <ol
+                    className="flex flex-col places sm:flex-row  justify-between sm:gap-0 items-center journey-details whitespace-nowrap py-3 ps-6 mt-5 mx-7  lg:me-0  lg:w-[91%]"
+                    style={{
+                      border: "1px solid rgba(128, 128, 128, 0.19)",
+                      borderRadius: "8px",
+                    }}
                   >
-                    <span
+                    <li
+                      className="places"
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
                     >
-                      <span className=" text-[#4B5563]">
-                        {t("start Location")} <br />{" "}
-                      </span>
-                      <span
-                        className="text-[#1F2937] font-bold"
-                        style={{ fontFamily: "Cairo , sans-serif" }}
+                      <a
+                        className="flex  flex-col   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
+                        href="#"
                       >
-                        {startLocation}
-                      </span>
-                    </span>
+                        {t("start Location")} <br />{" "}
+                        <span className=" font-bold block text-[#1F2937]">
+                          {startLocation}
+                        </span>
+                      </a>
+                    </li>
 
-                    <span className="lg:ms-[20px] hidden sm:block">{">"}</span>
-                    <span
-                      className=" lg:ms-[20px]"
+                    <span className="hidden sm:inline dest"> {t(">")}</span>
+                    <li
+                      className=" flex flex-col places sm:flex-row  lg:ms-0"
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
@@ -350,46 +396,42 @@ export default function SingleBookingDetail({
                     >
                       {stop.map((point) => (
                         <>
-                          <span
-                            className={`text-[#4B5563]  ${
-                              changeLang ? "ms-[39px]" : "ms-[73px]"
-                            } sm:ms-[70px] lg:ms-[20px]`}
-                          >
-                            {t("stop")} <br />{" "}
-                          </span>
-                          <span
-                            className="text-[#1F2937] font-bold"
-                            style={{
-                              fontFamily: changeLang
-                                ? "Almarai"
-                                : "Inter , sans-serif",
-                            }}
-                          >
-                            {point.location_point.name_en}
+                          <a className="inline-flex flex-col ps-3   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500">
+                            {t("stop")}
+                            <br />{" "}
+                            <span className=" font-bold text-[#1F2937]">
+                              {point.location_point.name_ar}
+                            </span>
+                          </a>
+                          <span className="hidden sm:inline relative top-3 ms-[10px] dest">
+                            {" "}
+                            {t(">")}
                           </span>
                         </>
                       ))}
-                    </span>
-                    <span className=" ms-[10px] hidden sm:block">{">"}</span>
-                    <span
-                      className=" ms-[30px]"
+                    </li>
+                    <li
+                      className=" flex-col items-center text-sm font-semibold text-gray-500 truncate dark:text-neutral-200"
+                      aria-current="page"
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
                     >
-                      <span className=" text-[#4B5563]">
-                        {t("Destination")} <br />{" "}
-                      </span>
                       <span
-                        className="text-[#1F2937] font-bold"
-                        style={{ fontFamily: "Cairo , sans-serif" }}
+                        className={`relative final-place  sm:ms-0 ${
+                          changeLang ? "ms-[35px]" : "ms-5"
+                        }`}
                       >
+                        {t("Destination")}{" "}
+                      </span>{" "}
+                      <br />
+                      <span className=" font-bold text-[#1F2937]">
                         {endLocation}
                       </span>
-                    </span>
-                  </p>
+                    </li>
+                  </ol>
                   <p className=" flex flex-col gap-4 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
                     <span
                       className="text-center sm:text-start"
@@ -561,18 +603,22 @@ export default function SingleBookingDetail({
                       } `}
                       style={{
                         color:
-                          bookingState === "Pending" || bookingState === "On Progress"
+                          bookingState === "Pending" ||
+                          bookingState === "On Progress"
                             ? "#1F2937"
-                            : bookingState === "Completed" || bookingState === "Confirmed" 
+                            : bookingState === "Completed" ||
+                              bookingState === "Confirmed"
                             ? "#115E59"
                             : "#EF4444",
                         fontFamily: changeLang
                           ? "Almarai"
                           : "Inter , sans-serif",
                         backgroundColor:
-                          bookingState === "Pending" || bookingState === "On Progress"
+                          bookingState === "Pending" ||
+                          bookingState === "On Progress"
                             ? " #E5E7EB"
-                            : bookingState === "Completed" || bookingState === "Confirmed"
+                            : bookingState === "Completed" ||
+                              bookingState === "Confirmed"
                             ? "#CCFBF1"
                             : "#FECACA",
                       }}
@@ -630,47 +676,46 @@ export default function SingleBookingDetail({
                       </div>
                     </li>
                     {stop.map((point) => (
-                           <li className=" flex ">
-                           <div className="min-w-7 min-h-7 text-xs ">
-                             <span
-                               className="size-2 mt-[10px] ms-[10px] flex justify-center items-center flex-shrink-0  font-medium text-gray-800 rounded-full dark:bg-neutral-700 dark:text-white"
-                               style={{ backgroundColor: point.is_stop === 0 ? '#9CA3AF' : "#14B8A6" }}
-                             ></span>
-                             <div className="mt-[4px] ms-[13px] w-[1px]  h-[44px] flex-1 bg-[#E5E7EB] group-last:hidden dark:bg-neutral-700"></div>
-                           </div>
-                           <div
-                             className="my-3"
-                             style={{
-                               fontFamily: changeLang
-                                 ? "Almarai"
-                                 : "Inter , sans-serif",
-                             }}
-                           >
-                             <span
-                               className={`relative top-[-12px] ${
-                                 changeLang ? "left-[-20px]" : "left-[20px]"
-                               }  font-medium text-gray-800 dark:text-white`}
-                             >
-                               <p
-                                 style={{ color: "#1F2937" }}
-                                 className="font-semibold "
-                               >
-                                 {t("stop")}:{point.location_point.name_en}
-                              
-                               </p>
-                               <span
-                                 className="block text-xs font-semibold"
-                                 style={{ color: "#6B7280" }}
-                               >
-                                 3 AuG , 2024
-                               </span>
-                             </span>
-                           </div>
-                         </li>
-                       
-                            ))}
-
-               
+                      <li className=" flex ">
+                        <div className="min-w-7 min-h-7 text-xs ">
+                          <span
+                            className="size-2 mt-[10px] ms-[10px] flex justify-center items-center flex-shrink-0  font-medium text-gray-800 rounded-full dark:bg-neutral-700 dark:text-white"
+                            style={{
+                              backgroundColor:
+                                point.is_stop === 0 ? "#9CA3AF" : "#14B8A6",
+                            }}
+                          ></span>
+                          <div className="mt-[4px] ms-[13px] w-[1px]  h-[44px] flex-1 bg-[#E5E7EB] group-last:hidden dark:bg-neutral-700"></div>
+                        </div>
+                        <div
+                          className="my-3"
+                          style={{
+                            fontFamily: changeLang
+                              ? "Almarai"
+                              : "Inter , sans-serif",
+                          }}
+                        >
+                          <span
+                            className={`relative top-[-12px] ${
+                              changeLang ? "left-[-20px]" : "left-[20px]"
+                            }  font-medium text-gray-800 dark:text-white`}
+                          >
+                            <p
+                              style={{ color: "#1F2937" }}
+                              className="font-semibold "
+                            >
+                              {t("stop")}:{point.location_point.name_en}
+                            </p>
+                            <span
+                              className="block text-xs font-semibold"
+                              style={{ color: "#6B7280" }}
+                            >
+                              3 AuG , 2024
+                            </span>
+                          </span>
+                        </div>
+                      </li>
+                    ))}
 
                     <li
                       className=" flex "
@@ -736,11 +781,10 @@ export default function SingleBookingDetail({
               </div>
             </div>
           </div>
-
         </div>
       </div>
-          <div className=" ms-[-80px] lg:ms-[20px]" style={{width : '80vw'}}>
-       {bookingStatusId === 3 && <Map bookingSerial={bookingSerial} /> } 
+      <div className=" ms-[-80px] lg:ms-[20px]" style={{ width: "80vw" }}>
+        {bookingStatusId === 3 && <Map lat={lat} long={long} />}
       </div>
     </>
   );

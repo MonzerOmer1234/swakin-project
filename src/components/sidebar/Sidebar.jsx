@@ -120,7 +120,7 @@ export default function Sidebar({
             style={{ width: "30px", height: "30px" }}
             alt="logo"
           />
-          <p className="ms-2 flex flex-col justify-center items-start">
+          <p className="ms-2 -mt-5 flex flex-col justify-center items-start">
             <span
               className=" font-semibold text-xl relative top-1"
               style={{ color: "#04036B", fontFamily: "Cairo ExtraLight" }}

@@ -251,7 +251,7 @@ const Shipment = ({
                 />
               ))}
 
-          {!shipmentDetail && !shipmentsData && (
+          {(!shipmentDetail || !shipmentsData) && (
             <div
               style={{
                 height: "auto",
