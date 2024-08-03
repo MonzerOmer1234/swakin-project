@@ -44,10 +44,15 @@ export default function BookingDetails({
 
 
   console.log(stop);
+  console.log(specifiedCars)
 
-  const newCars = specifiedCars.map((car) => Number(car));
+  // const newCars = specifiedCars.map((car) => Number(car));
 
-  const carIds = specifiedCars.join(",");
+  const carIds = specifiedCars.join("");
+
+  const newCars = [...carIds.split(',')]
+
+  console.log(carIds)
 
   const token = getAuthToken();
 
@@ -95,7 +100,7 @@ export default function BookingDetails({
     console.log(receipentPhone);
     console.log(shipmentId);
 
-    console.log(newCars);
+  
 
     // functionality of add booking.
 
@@ -105,6 +110,7 @@ export default function BookingDetails({
       shipment_id: shipmentId,
       car_id: newCars,
     };
+    console.log(carIds)
 
     try {
       setLoading(true);

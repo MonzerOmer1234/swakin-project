@@ -183,7 +183,7 @@ const Dashboard = ({
                   marginBottom: "20px",
                   
                 }}
-                className=" w-[60%] mx-[100px] md:mx-[150px] lg:mx-[40px] lg:me-0 lg:w-[80%]  "
+                className=" w-[60%] mx-[85px] sm:mx-[100px] md:mx-[150px] lg:mx-[40px] lg:me-0 lg:w-[80%]  "
               >
                 <div className="flex p-4 justify-center items-center ">
                 <div class="fi-ta-empty-state-content mx-auto grid max-w-lg justify-items-center text-center">

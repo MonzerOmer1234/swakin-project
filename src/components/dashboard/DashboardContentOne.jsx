@@ -109,7 +109,7 @@ export default function DashboardContentOne({ changeLang }) {
             </h1>
             <a
               className=" ms-10 h-[30px] rounded-full w-[161px] flex items-center justify-center "
-              style={{ backgroundColor: "#E5E7EB" }}
+              style={{ backgroundColor: "#CCFBF1" , color : '#115E59' }}
             >
               <span
                 className="block  rounded-full me-[5px] mt-[4px]"
@@ -117,7 +117,7 @@ export default function DashboardContentOne({ changeLang }) {
                   width: "5px",
                   height: "5px",
                   borderRadius: "50%",
-                  backgroundColor: "#1F2937",
+                  backgroundColor: "#115E59",
                 }}
               ></span>{" "}
               <span

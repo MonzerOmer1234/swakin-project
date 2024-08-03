@@ -10,6 +10,8 @@ import { getAuthToken } from "../util/auth";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
+import MultiSelect from  'react-multiple-select-dropdown-lite'
+import  'react-multiple-select-dropdown-lite/dist/index.css'
 
 export default function ShipmentDetails({
   availableSeats,
@@ -30,6 +32,10 @@ export default function ShipmentDetails({
   const [error, setError] = useState({});
   const [t] = useTranslation();
   const navigate = useNavigate();
+
+
+
+
 
 
   // get all cars
@@ -69,6 +75,11 @@ export default function ShipmentDetails({
     setSpecifiedCars(newUpdatedOptions);
   }
 
+  function handleCars(val){
+  setSpecifiedCars([...val])
+  }
+
+  console.log(specifiedCars)
 
   // handling the submit of car
 
@@ -101,7 +112,7 @@ export default function ShipmentDetails({
           </svg>
           <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            {t('please check your connection !!!')}
+            {t("please check your connection !!!")}
           </p>
         </div>
       </>
@@ -118,10 +129,20 @@ export default function ShipmentDetails({
           changeLang={changeLang}
           navName={
             <p>
-              <span className="text-[#4B5563]" style={{fontFamily : changeLang ? 'Almarai' : 'Inter , sans-serif'}}> {t("Shipments")} </span>{" "}
+              <span
+                className="text-[#4B5563]"
+                style={{
+                  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                }}
+              >
+                {" "}
+                {t("Shipments")}{" "}
+              </span>{" "}
               <span
                 className="text-[#1F2937] font-medium"
-                style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif",}}
+                style={{
+                  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                }}
               >
                 / {id} / {t("booking")}{" "}
               </span>{" "}
@@ -238,7 +259,9 @@ export default function ShipmentDetails({
                     style={{ border: "1px solid #F1F1F2" }}
                   >
                     <h1
-                      className={`p-4 font-bold text-[#353B47] ${changeLang ? 'receipt-info-ar' : 'receipt-info'}`}
+                      className={`p-4 font-bold text-[#353B47] ${
+                        changeLang ? "receipt-info-ar" : "receipt-info"
+                      }`}
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
@@ -250,7 +273,9 @@ export default function ShipmentDetails({
 
                     <label
                       htmlFor=""
-                      className={`text-[#1F2937]  flex justify-between font-normal text-[14px] ps-3 ${changeLang ? 'data-ar' : 'data'}`}
+                      className={`text-[#1F2937]  flex justify-between font-normal text-[14px] ps-3 ${
+                        changeLang ? "data-ar" : "data"
+                      }`}
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
@@ -278,13 +303,17 @@ export default function ShipmentDetails({
                           setReceipentName((prev) => e.target.value)
                         }
                         required
-                        class={`py-3 ${changeLang ? 'input-data-ar' : 'input-data'} px-4 block w-[380px] me-[20px] border-[#E5E7EB] rounded-lg text-sm bg-[#FFFFFF]`}
+                        class={`py-3 ${
+                          changeLang ? "input-data-ar" : "input-data"
+                        } px-4 block w-[380px] me-[20px] border-[#E5E7EB] rounded-lg text-sm bg-[#FFFFFF]`}
                         style={{ boxShadow: " 0 0 1px 0 gray" }}
                       />
                     </div>
                     <label
                       htmlFor=""
-                      className={`text-[#1F2937] ${changeLang ? 'data-ar' : 'data'} flex justify-between font-normal text-[14px] ps-3`}
+                      className={`text-[#1F2937] ${
+                        changeLang ? "data-ar" : "data"
+                      } flex justify-between font-normal text-[14px] ps-3`}
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
@@ -303,7 +332,11 @@ export default function ShipmentDetails({
                         {t("Required")}
                       </span>
                     </label>
-                    <div class={`relative my-[10px] w-[380px]  h-[44px] ps-3 ${changeLang ? 'phone-div-ar' : 'phone-div'}`}>
+                    <div
+                      class={`relative my-[10px] w-[380px]  h-[44px] ps-3 ${
+                        changeLang ? "phone-div-ar" : "phone-div"
+                      }`}
+                    >
                       <PhoneInput
                         style={{ width: "380px" }}
                         type="text"
@@ -313,7 +346,9 @@ export default function ShipmentDetails({
                         onChange={(e) =>
                           setReceipentPhone((prev) => e.substring(1))
                         }
-                        className={`${changeLang ? 'input-data-ar' : 'input-data'}`}
+                        className={`${
+                          changeLang ? "input-data-ar" : "input-data"
+                        }`}
                       />
                     </div>
                   </div>
@@ -328,7 +363,7 @@ export default function ShipmentDetails({
                     >
                       {t("Select Cars to be shiped")}
                     </p>
-                    <select
+                    {/* <select
                       onChange={handleCars}
                       multiple
                       required
@@ -347,7 +382,19 @@ export default function ShipmentDetails({
                             {car.car_name_ar}
                           </option>
                         ))}
-                    </select>
+                    </select> */}
+                             
+         
+      <MultiSelect
+        onChange={handleCars}
+        options={carData.map(car => {
+          return {label : car.car_name_ar, value : car.id }
+        })}
+      />
+    
+           
+
+                   
                   </div>
                 </div>
               </div>

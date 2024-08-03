@@ -104,9 +104,10 @@ export default function CarItem({
         />
       )}
       {pending ? (
-        <div className=" flex justify-center items-center relative top-[-10px] md:top-10">
-            <ReactLoading type="spin" color="blue"/>
-        </div>
+        // <div className=" flex justify-center items-center relative top-[-10px] md:top-10">
+        //     <ReactLoading type="spin" color="blue"/>
+        // </div>
+        <></>
       ) : (
         <div
           class=" details mb-5 ms-3"

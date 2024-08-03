@@ -34,8 +34,10 @@ export default function DashboardContentTwo({
   stopPoints,
   setLat,
   setLong,
+
 }) {
   console.log(changeLang);
+ 
   const [t] = useTranslation();
 
   // set all shipment credentials with clicking book now button
@@ -166,7 +168,7 @@ export default function DashboardContentTwo({
         </div>
 
         <ol
-          className="flex flex-col places sm:flex-row  justify-between sm:gap-0 items-center journey-details whitespace-nowrap py-3 ps-6 mt-5 mx-7  lg:me-0  lg:w-[91%]"
+          className={`flex flex-col sm:flex-row gap-4 places   sm:gap-[44px] sm:ps-[2px] md:ps-0 md:gap-4 lg:ps-[20px] lg:gap-4 xl:gap-0  ps-4  justify-center  items-center journey-details whitespace-nowrap py-3  mt-5 mx-7  lg:me-0  lg:w-[91%]`}
           style={{
             border: "1px solid rgba(128, 128, 128, 0.19)",
             borderRadius: "8px",
@@ -178,17 +180,14 @@ export default function DashboardContentTwo({
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
-            <a
-              className="flex  flex-col   items-center text-sm text-gray-500"
-              href="#"
-            >
+            <a className="flex  flex-col   items-center text-sm text-gray-500">
               {t("start Location")} <br />{" "}
-              <span className=" font-bold block text-[#1F2937]">
+              <span className=" font-bold block text-[#1F2937] text-xl">
                 {startLocation}
               </span>
             </a>
           </li>
-          <span className="hidden sm:inline dest sm:ms-[-40px] md:ms-0">
+          <span className="hidden sm:inline dest sm:ms-[-40px] md:ms-0 lg:ms-3">
             {" "}
             {t(">")}
           </span>
@@ -204,7 +203,7 @@ export default function DashboardContentTwo({
                 <a className="inline-flex flex-col ps-3   items-center text-sm text-gray-500  ">
                   {t("stop")}
                   <br />{" "}
-                  <span className=" font-bold text-[#1F2937]">
+                  <span className=" font-bold text-[#1F2937] text-xl">
                     {point.location_point.name_ar}
                   </span>
                 </a>
@@ -216,15 +215,15 @@ export default function DashboardContentTwo({
             ))}
           </li>
           <li
-            className=" flex-col sm:relative sm:end-[40px] md:end-0 items-center text-sm font-semibold text-gray-500 truncate "
+            className=" flex-col  sm:relative sm:ms-[-26px] md:ms-0 lg:ms-3 md:end-0 items-center text-sm font-semibold text-gray-500 truncate "
             aria-current="page"
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
             <span
-              className={`relative final-place  sm:ms-0 ${
-                changeLang ? "ms-[35px]" : "ms-5"
+              className={`relative final-place   ${
+                changeLang ? 'ms-[41px] lg:ms-[32px]': "ms-[31px] xl:ms-[2.25rem]"
               }`}
             >
               {t("Destination")}{" "}

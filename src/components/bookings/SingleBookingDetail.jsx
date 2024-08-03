@@ -23,14 +23,12 @@ export default function SingleBookingDetail({
   setChangeLang,
 
   specifiedCars,
-   
+
   bookingState,
   setBookingState,
   bookingStatusId,
   showCancelBookingModal,
   setShowCancelBookingModal,
-
-
 }) {
   const { bid } = useParams();
   const [carData, setCarData] = useState([]);
@@ -46,21 +44,24 @@ export default function SingleBookingDetail({
   const [stop, setStop] = useState([]);
   const [lat, setLat] = useState(29.6);
   const [long, setLong] = useState(32.4);
-  const [status , setStatus] = useState({})
-  const carIds = specifiedCars.join(",");
-   
+  const [status, setStatus] = useState({});
+  const carIds = specifiedCars.join("");
+
+
+
+  const newCars = [...carIds.split(',')] ; 
+
+  
 
   console.log(bid);
 
-
-
   const token = getAuthToken();
 
-  async function getCarData() {
+   const getCarData = useCallback(async function () {
     try {
       setLoading(true);
       const res = await axios.get(
-        `https://soaken.neuecode.com/api/get-cars?cars=${carIds}`,
+        `https://soaken.neuecode.com/api/get-cars?cars=${newCars}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -75,7 +76,7 @@ export default function SingleBookingDetail({
       setError(error);
       setLoading(false);
     }
-  }
+  } , [newCars , token])
   const getBookings = useCallback(
     async function () {
       try {
@@ -91,8 +92,7 @@ export default function SingleBookingDetail({
 
         console.log(res);
         setBookings(res.data.data);
-      
-     
+
         console.log(bookings);
         setLoading(false);
       } catch (error) {
@@ -100,46 +100,53 @@ export default function SingleBookingDetail({
         // you have to write code here
       }
     },
-    [bookings, token]
+    [bookings, token ]
   );
 
   useEffect(() => {
     getBookings();
 
     getCarData();
+   
   }, []);
 
-  const getBookingsDetails = useCallback(async function () {
-    const token = getAuthToken();
-    try {
-      const res = await axios.get(
-        `https://soaken.neuecode.com/api/get-bookings/${bid}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log(res);
-      setBookingData(res.data.data);
-      console.log(res.data.data.shipment);
-      setShipmentData(res.data.data.shipment);
-      setStatus(res.data.data.status)
-      setStop(res.data.data.shipment.shipment_location_point);
 
-      setLat(res.data.data.shipment.lat);
-      setLong(res.data.data.shipment.long);
-    } catch (error) {
-      console.log(error);
-      setError(error);
-    }
-  }, [bid]);
+
+  const getBookingsDetails = useCallback(
+    async function () {
+      const token = getAuthToken();
+      try {
+        const res = await axios.get(
+          `https://soaken.neuecode.com/api/get-bookings/${bid}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log(res);
+        setBookingData(res.data.data);
+        console.log(res.data.data.shipment);
+        setShipmentData(res.data.data.shipment);
+        setStatus(res.data.data.status);
+        setStop(res.data.data.shipment.shipment_location_point);
+
+        setLat(res.data.data.shipment.lat);
+        setLong(res.data.data.shipment.long);
+      } catch (error) {
+        console.log(error);
+        setError(error);
+      }
+    },
+    [bid]
+  );
 
   // cancel booking and get the latest booking statuses.
   const handleCancelBooking = useCallback(
     async function () {
       const formData = { serial_no: bid };
       const token = getAuthToken();
+
       const res = await axios.post(
         "https://soaken.neuecode.com/api/cancel-bookings",
         formData,
@@ -180,32 +187,32 @@ export default function SingleBookingDetail({
     );
   }
   // handing network errors
-  // if (error && error.message === "Network Error") {
-  //   return (
-  //     <>
-  //       <div className=" flex flex-col justify-center items-center w-screen h-screen gap-4">
-  //         <svg
-  //           xmlns="http://www.w3.org/2000/svg"
-  //           width="100px"
-  //           height="100px"
-  //           viewBox="0 0 16 16"
-  //         >
-  //           <g fill="#2e3436">
-  //             <path
-  //               d="m 8 1.992188 c -2.617188 0 -5.238281 0.933593 -7.195312 2.808593 l -0.496094 0.480469 c -0.3984378 0.378906 -0.410156 1.011719 -0.03125 1.410156 c 0.382812 0.398438 1.015625 0.410156 1.414062 0.027344 l 0.5 -0.476562 c 3.085938 -2.953126 8.53125 -2.953126 11.617188 0 l 0.5 0.476562 c 0.398437 0.382812 1.03125 0.371094 1.414062 -0.027344 c 0.378906 -0.398437 0.367188 -1.03125 -0.03125 -1.410156 l -0.496094 -0.480469 c -1.957031 -1.875 -4.578124 -2.808593 -7.195312 -2.808593 z m -0.03125 4.007812 c -1.570312 0.011719 -3.128906 0.628906 -4.207031 1.8125 l -0.5 0.550781 c -0.375 0.40625 -0.347657 1.042969 0.0625 1.414063 c 0.410156 0.371094 1.042969 0.339844 1.414062 -0.070313 l 0.5 -0.542969 c 1.242188 -1.363281 3.992188 -1.492187 5.398438 -0.128906 c 0.121093 -0.023437 0.242187 -0.035156 0.363281 -0.035156 c 0.53125 0 1.039062 0.210938 1.414062 0.585938 l 0.222657 0.222656 c 0.011719 -0.011719 0.023437 -0.019532 0.039062 -0.03125 c 0.40625 -0.371094 0.4375 -1.007813 0.0625 -1.414063 l -0.5 -0.550781 c -1.125 -1.230469 -2.703125 -1.824219 -4.269531 -1.8125 z m 0.03125 4 c -0.511719 0 -1.023438 0.195312 -1.414062 0.585938 c -0.78125 0.78125 -0.78125 2.046874 0 2.828124 s 2.046874 0.78125 2.828124 0 c 0.210938 -0.210937 0.359376 -0.453124 0.457032 -0.714843 l -0.285156 -0.285157 c -0.554688 -0.554687 -0.707032 -1.367187 -0.46875 -2.070312 c -0.335938 -0.226562 -0.726563 -0.34375 -1.117188 -0.34375 z m 0 0"
-  //               fill-opacity="0.34902"
-  //             />
-  //             <path d="m 11 10 c -0.265625 0 -0.519531 0.105469 -0.707031 0.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 l 1.292969 1.292969 l -1.292969 1.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 s 1.023437 0.390625 1.414062 0 l 1.292969 -1.292969 l 1.292969 1.292969 c 0.390625 0.390625 1.023437 0.390625 1.414062 0 s 0.390625 -1.023437 0 -1.414062 l -1.292969 -1.292969 l 1.292969 -1.292969 c 0.390625 -0.390625 0.390625 -1.023437 0 -1.414062 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 s -0.519531 0.105469 -0.707031 0.292969 l -1.292969 1.292969 l -1.292969 -1.292969 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 z m 0 0" />
-  //           </g>
-  //         </svg>
-  //         <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
-  //         <p className=" text-red-500 font-semibold">
-  //           {t("please check your connection !!!")}
-  //         </p>
-  //       </div>
-  //     </>
-  //   );
-  // }
+  if (error && error.message === "Network Error") {
+    return (
+      <>
+        <div className=" flex flex-col justify-center items-center w-screen h-screen gap-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100px"
+            height="100px"
+            viewBox="0 0 16 16"
+          >
+            <g fill="#2e3436">
+              <path
+                d="m 8 1.992188 c -2.617188 0 -5.238281 0.933593 -7.195312 2.808593 l -0.496094 0.480469 c -0.3984378 0.378906 -0.410156 1.011719 -0.03125 1.410156 c 0.382812 0.398438 1.015625 0.410156 1.414062 0.027344 l 0.5 -0.476562 c 3.085938 -2.953126 8.53125 -2.953126 11.617188 0 l 0.5 0.476562 c 0.398437 0.382812 1.03125 0.371094 1.414062 -0.027344 c 0.378906 -0.398437 0.367188 -1.03125 -0.03125 -1.410156 l -0.496094 -0.480469 c -1.957031 -1.875 -4.578124 -2.808593 -7.195312 -2.808593 z m -0.03125 4.007812 c -1.570312 0.011719 -3.128906 0.628906 -4.207031 1.8125 l -0.5 0.550781 c -0.375 0.40625 -0.347657 1.042969 0.0625 1.414063 c 0.410156 0.371094 1.042969 0.339844 1.414062 -0.070313 l 0.5 -0.542969 c 1.242188 -1.363281 3.992188 -1.492187 5.398438 -0.128906 c 0.121093 -0.023437 0.242187 -0.035156 0.363281 -0.035156 c 0.53125 0 1.039062 0.210938 1.414062 0.585938 l 0.222657 0.222656 c 0.011719 -0.011719 0.023437 -0.019532 0.039062 -0.03125 c 0.40625 -0.371094 0.4375 -1.007813 0.0625 -1.414063 l -0.5 -0.550781 c -1.125 -1.230469 -2.703125 -1.824219 -4.269531 -1.8125 z m 0.03125 4 c -0.511719 0 -1.023438 0.195312 -1.414062 0.585938 c -0.78125 0.78125 -0.78125 2.046874 0 2.828124 s 2.046874 0.78125 2.828124 0 c 0.210938 -0.210937 0.359376 -0.453124 0.457032 -0.714843 l -0.285156 -0.285157 c -0.554688 -0.554687 -0.707032 -1.367187 -0.46875 -2.070312 c -0.335938 -0.226562 -0.726563 -0.34375 -1.117188 -0.34375 z m 0 0"
+                fill-opacity="0.34902"
+              />
+              <path d="m 11 10 c -0.265625 0 -0.519531 0.105469 -0.707031 0.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 l 1.292969 1.292969 l -1.292969 1.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 s 1.023437 0.390625 1.414062 0 l 1.292969 -1.292969 l 1.292969 1.292969 c 0.390625 0.390625 1.023437 0.390625 1.414062 0 s 0.390625 -1.023437 0 -1.414062 l -1.292969 -1.292969 l 1.292969 -1.292969 c 0.390625 -0.390625 0.390625 -1.023437 0 -1.414062 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 s -0.519531 0.105469 -0.707031 0.292969 l -1.292969 1.292969 l -1.292969 -1.292969 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 z m 0 0" />
+            </g>
+          </svg>
+          <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
+          <p className=" text-red-500 font-semibold">
+            {t("please check your connection !!!")}
+          </p>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -370,7 +377,7 @@ export default function SingleBookingDetail({
                   </h1>
 
                   <ol
-                    className="flex flex-col places sm:flex-row  justify-between sm:gap-0 items-center journey-details whitespace-nowrap py-3 ps-6 mt-5 mx-7  lg:me-0  lg:w-[91%]"
+                    className="flex flex-col places sm:flex-row gap-[20px] sm:ps-[25px] md:ps-0 md:gap-[15px] lg:ps-[9px]  ps-4  justify-center  items-center journey-details whitespace-nowrap py-3  mt-5 mx-7  lg:me-[15px] lg:w-[91%]"
                     style={{
                       border: "1px solid rgba(128, 128, 128, 0.19)",
                       borderRadius: "8px",
@@ -384,10 +391,7 @@ export default function SingleBookingDetail({
                           : "Inter , sans-serif",
                       }}
                     >
-                      <a
-                        className="flex  flex-col   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
-                        href="#"
-                      >
+                      <a className="flex  flex-col   items-center text-sm text-gray-500">
                         {t("start Location")} <br />{" "}
                         <span className=" font-bold block text-[#1F2937]">
                           {shipmentData.start_location}
@@ -397,7 +401,7 @@ export default function SingleBookingDetail({
 
                     <span className="hidden sm:inline dest"> {t(">")}</span>
                     <li
-                      className=" flex flex-col places sm:flex-row  lg:ms-0"
+                      className=" flex flex-col places sm:flex-row  lg:ms-0 sm:relative sm:end-[23px] md:end-0"
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
@@ -406,7 +410,7 @@ export default function SingleBookingDetail({
                     >
                       {stop.map((point) => (
                         <>
-                          <a className="inline-flex flex-col ps-3   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500">
+                          <a className="inline-flex flex-col ps-3   items-center text-sm text-gray-500 ">
                             {t("stop")}
                             <br />{" "}
                             <span className=" font-bold text-[#1F2937]">
@@ -430,14 +434,14 @@ export default function SingleBookingDetail({
                       }}
                     >
                       <span
-                        className={`relative final-place  sm:ms-0 ${
-                          changeLang ? "ms-[35px]" : "ms-5"
+                        className={`relative final-place  ms-[40px] ${
+                          changeLang ? "ms-[35px]" : ""
                         }`}
                       >
                         {t("Destination")}{" "}
                       </span>{" "}
                       <br />
-                      <span className=" font-bold text-[#1F2937]">
+                      <span className=" font-bold text-[#1F2937] w-[84px] ms-[20px] sm:ms-0 md:ms-[20px] xl:ms-0">
                         {shipmentData.end_location}
                       </span>
                     </li>
@@ -738,7 +742,11 @@ export default function SingleBookingDetail({
                       <div className="min-w-7 min-h-7  text-xs">
                         <span
                           className="size-7 flex justify-center items-center flex-shrink-0  font-medium text-gray-800 rounded-full dark:bg-neutral-700 dark:text-white"
-                          style={{ border: "1px solid #E5E7EB" }}
+                          style={{
+                            border: "1px solid #E5E7EB",
+                            backgroundColor:
+                              bookingStatusId === 2 ? "#CCFBF1" : "",
+                          }}
                         >
                           {t("B")}
                         </span>
@@ -775,7 +783,8 @@ export default function SingleBookingDetail({
                     </li>
                   </ul>
                 </div>
-                {bookingState !== "Canceled" && (
+                {(bookingState === "Pending" ||
+                  bookingState === "Confirmed") && (
                   <div className="flex booking">
                     <button
                       onClick={() => setShowCancelBookingModal(true)}

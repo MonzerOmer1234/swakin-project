@@ -10,6 +10,7 @@ import "./shipment.css";
 import { getAuthToken } from "../util/auth";
 import DashboardContentTwo from "../dashboard/DashboardContentTwo";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 const Shipment = ({
   setAvailableSeats,
   setSerialNumber,
@@ -39,6 +40,9 @@ const Shipment = ({
   const [shName, setShName] = useState("");
   const [shipmentDetail, setShipmentDetail] = useState([]);
   const [t] = useTranslation();
+  const location = useLocation();
+
+  console.log(location.pathname)
 
   const token = getAuthToken();
 
@@ -193,6 +197,7 @@ const Shipment = ({
           {shName.length === 0 || shipmentDetail.length === 0
             ? shipmentsData.map((shipment) => (
                 <DashboardContentTwo
+               
                   setSerialNumber={setSerialNumber}
                   setAvailableSeats={setAvailableSeats}
                   setStartLocation={setStartLocation}
@@ -221,6 +226,7 @@ const Shipment = ({
               ))
             : shipmentDetail.map((detail) => (
                 <DashboardContentTwo
+                 
                   setSerialNumber={setSerialNumber}
                   setAvailableSeats={setAvailableSeats}
                   setStartLocation={setStartLocation}
@@ -250,6 +256,7 @@ const Shipment = ({
           {(!shipmentDetail || !shipmentsData) && (
             <div
               style={{
+
                 height: "auto",
                 backgroundColor: "white",
                 borderRadius: "8px",

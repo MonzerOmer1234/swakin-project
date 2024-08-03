@@ -88,9 +88,9 @@ export default function BookRow({
       <td class="px-6 py-4 flex justify-center whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 text-center">
         <div
           className={`${
-            status === "Pending" || status === "On Progress"
+            status === "Pending" 
               ? " bg-[#E5E7EB]"
-              : status === "Completed"  || status === "Confirmed"
+              : status === "Completed"  || status === "Confirmed" || status === "On Progress"
               ? " bg-[#CCFBF1]"
               : "bg-[#FECACA]"
           } flex items-center w-fit p-[15px] h-[28px]   rounded-full ms-2`}
@@ -98,18 +98,18 @@ export default function BookRow({
           <span
             style={{ width: "5px", height: "5px", borderRadius: "50%" }}
             className={` block mt-[3px]  ${
-              status === "Pending" || status === "On Progress"
+              status === "Pending" 
                 ? " bg-[#1F2937]"
-                : status === "Completed"  || status === "Confirmed"
+                : status === "Completed"  || status === "Confirmed" || status === "On Progress"
                 ? " bg-[#115E59]"
                 : "bg-[#EF4444]"
             }`}
           ></span>
           <span
             className={` block mt-[3px] ms-3 font-medium ${
-              status === "Pending" || status === "On Progress"
+              status === "Pending" 
                 ? " text-[#1F2937]"
-                : status === "Completed" || status === "Confirmed"
+                : status === "Completed" || status === "Confirmed" || status === "On Progress"
                 ? " text-[#115E59]"
                 : "text-[#EF4444]"
             }`}
