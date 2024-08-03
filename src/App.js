@@ -2,7 +2,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import React from "react";
 import "./App.css";
 import axios from "axios";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import ReactLoading from 'react-loading';
 import "react-loading-skeleton/dist/skeleton.css";
 import SideTabs from "./components/sidebar/SideTabs";
 import Dashboard from "./components/dashboard/Dashboard";
@@ -129,11 +129,7 @@ function App() {
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
-        <SkeletonTheme baseColor="gray" highlightColor="#444">
-          <p>
-            <Skeleton count={10} width={"400px"} />
-          </p>
-        </SkeletonTheme>
+        <ReactLoading type="spin" color="blue"/>
       </div>
     );
   }

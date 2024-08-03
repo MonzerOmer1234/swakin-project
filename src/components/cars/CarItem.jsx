@@ -3,7 +3,7 @@ import axios from "axios";
 import { getAuthToken } from "../util/auth";
 import { useState } from "react";
 
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import ReactLoading from 'react-loading';
 import "react-loading-skeleton/dist/skeleton.css";
 import DeleteModal from "../../UI/DeleteModal";
 import { useTranslation } from "react-i18next";
@@ -105,11 +105,7 @@ export default function CarItem({
       )}
       {pending ? (
         <div className=" flex justify-center items-center relative top-[-10px] md:top-10">
-          <SkeletonTheme baseColor="gray" highlightColor="#444">
-            <p>
-              <Skeleton count={10} width={"200px"} />
-            </p>
-          </SkeletonTheme>
+            <ReactLoading type="spin" color="blue"/>
         </div>
       ) : (
         <div

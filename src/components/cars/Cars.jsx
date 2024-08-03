@@ -8,8 +8,7 @@ import "../../UI/modal.css";
 import RegisterModal from "../../UI/RegisterModal";
 import axios from "axios";
 import { getAuthToken } from "../util/auth";
-
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import ReactLoading from 'react-loading';
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 
@@ -62,11 +61,7 @@ const Cars = ({ username, changeLang, setChangeLang }) => {
   if(loading){
     return (
       <div className="min-h-screen w-full lg:ms-[800px] flex justify-center items-center">
-        <SkeletonTheme baseColor="gray" highlightColor="#444">
-          <p>
-            <Skeleton count={10} width={"400px"} />
-          </p>
-        </SkeletonTheme>
+     <ReactLoading type="spin" color="blue"/>
       </div>
     )
   }

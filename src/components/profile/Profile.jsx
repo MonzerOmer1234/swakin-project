@@ -1,7 +1,7 @@
 import { sideTabs } from "../sidebar/SideTabs";
 import "../sidebar/sidebar.css";
 import Navbar from "../sidebar/navbar/Navbar";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import ReactLoading from 'react-loading';
 import "react-loading-skeleton/dist/skeleton.css";
 import "../shipment/shipment.css";
 
@@ -88,11 +88,7 @@ export default function Profile({
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-end items-center">
-        <SkeletonTheme baseColor="gray" highlightColor="#444">
-          <p>
-            <Skeleton count={10} width={"400px"} />
-          </p>
-        </SkeletonTheme>
+      <ReactLoading type="spin" color="blue"/>
       </div>
     );
   }

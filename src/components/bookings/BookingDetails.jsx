@@ -7,7 +7,7 @@ import Navbar from "../sidebar/navbar/Navbar";
 import { getDaysDiff } from "../util/calculate-days-diff";
 import "./bookings.css";
 import { Link } from "react-router-dom";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import ReactLoading from 'react-loading';
 import "react-loading-skeleton/dist/skeleton.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -218,11 +218,7 @@ export default function BookingDetails({
 
         {loading ? (
           <div className="min-h-screen w-full flex justify-center items-center">
-            <SkeletonTheme baseColor="gray" highlightColor="#444">
-              <p>
-                <Skeleton count={10} width={"400px"} />
-              </p>
-            </SkeletonTheme>
+           <ReactLoading type="spin" color="blue"/>
           </div>
         ) : (
           <div className="content bg-[#E5E7EB] h-auto  p-5 ">

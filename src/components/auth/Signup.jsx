@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import "react-international-phone/style.css";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+
+import ReactLoading from "react-loading";
 
 import logo from "../../imgs/logo.png";
 
@@ -76,11 +76,7 @@ export default function Signup({ changeLang }) {
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
-        <SkeletonTheme baseColor="gray" highlightColor="#444">
-          <p>
-            <Skeleton count={10} width={"400px"} />
-          </p>
-        </SkeletonTheme>
+     <ReactLoading type="spin" color="blue"/>
       </div>
     );
   }

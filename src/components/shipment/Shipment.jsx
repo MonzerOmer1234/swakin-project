@@ -3,7 +3,7 @@ import Navbar from "../sidebar/navbar/Navbar";
 import { sideTabs } from "../sidebar/SideTabs";
 import axios from "axios";
 
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import ReactLoading from 'react-loading';
 import "react-loading-skeleton/dist/skeleton.css";
 
 import "./shipment.css";
@@ -103,11 +103,7 @@ const Shipment = ({
           changeLang ? "lg:right-[200px]" : "lg:left-[200px]"
         } top-[100px] w-screen`}
       >
-        <SkeletonTheme baseColor="gray" highlightColor="#444">
-          <p>
-            <Skeleton count={10} width={"200px"} />
-          </p>
-        </SkeletonTheme>
+      <ReactLoading type="spin" color="blue"/>
       </div>
     );
   }

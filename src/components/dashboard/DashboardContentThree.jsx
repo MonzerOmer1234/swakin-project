@@ -5,7 +5,7 @@ import useOutsideClickHook from "./useOutsideClick";
 import "../../UI/modal.css";
 
 import CarModal from "../../UI/CarModal";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+ import ReactLoading from 'react-loading';
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 
@@ -79,11 +79,7 @@ export default function DashboardContentThree({ setData , changeLang }) {
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
-        <SkeletonTheme baseColor="gray" highlightColor="#444">
-          <p>
-            <Skeleton count={10} width={"400px"} />
-          </p>
-        </SkeletonTheme>
+        <ReactLoading type="spin" color="blue"/>
       </div>
     );
   }

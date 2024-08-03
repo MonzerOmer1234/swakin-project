@@ -306,7 +306,7 @@ export default function SingleBookingDetail({
                         className=" text-[#1F2937] font-bold"
                         style={{ fontFamily: "Inter , sans-serif" }}
                       >
-                        {bookingData.receipient_name}
+                        {bookingData.recipient_name}
                       </span>
                     </span>
                   </p>
@@ -380,7 +380,7 @@ export default function SingleBookingDetail({
                       >
                         {t("start Location")} <br />{" "}
                         <span className=" font-bold block text-[#1F2937]">
-                          {startLocation}
+                          {shipmentData.start_location}
                         </span>
                       </a>
                     </li>
@@ -428,7 +428,7 @@ export default function SingleBookingDetail({
                       </span>{" "}
                       <br />
                       <span className=" font-bold text-[#1F2937]">
-                        {endLocation}
+                        {shipmentData.end_location}
                       </span>
                     </li>
                   </ol>

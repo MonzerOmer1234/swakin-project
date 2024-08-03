@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import "./modal.css";
 import axios from "axios";
 import { useState } from "react";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import ReactLoading from 'react-loading';
 import "react-loading-skeleton/dist/skeleton.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -93,11 +93,7 @@ export default function DeleteModal({
       {deleting ? (
         <div className={`${changeLang ? "delete-overlay-ar" : "overlay"}`}>
           <div className=" flex justify-center items-center relative top-2/4">
-            <SkeletonTheme baseColor="gray" highlightColor="#444">
-              <p>
-                <Skeleton count={10} width={"200px"} />
-              </p>
-            </SkeletonTheme>
+          <ReactLoading type="spin" color="blue"/>
           </div>
         </div>
       ) : deleteError ? (

@@ -1,8 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import "react-international-phone/style.css";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import ReactLoading from "react-loading";
 
 import logo from "../../imgs/logo.png";
 
@@ -13,11 +12,9 @@ import { getAuthToken } from "../util/auth";
 import { PhoneInput } from "react-international-phone";
 import { useTranslation } from "react-i18next";
 
-export default function ResetPasssword({changeLang}) {
-
-
-  const [otp, setotp] = useState('');
-  const [email , setEmail] = useState('');
+export default function ResetPasssword({ changeLang }) {
+  const [otp, setotp] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [loading, setLoading] = useState("");
@@ -38,9 +35,9 @@ export default function ResetPasssword({changeLang}) {
     const formdata = {
       otp,
       email,
-    
+
       password,
-  
+
       password_confirmation: passwordConfirmation,
     };
     console.log(formdata);
@@ -49,8 +46,7 @@ export default function ResetPasssword({changeLang}) {
       setLoading(true);
       const res = await axios.post(
         "https://soaken.neuecode.com/api/reset-password",
-        formdata,
-        
+        formdata
       );
 
       console.log(res);
@@ -67,25 +63,18 @@ export default function ResetPasssword({changeLang}) {
       console.log(error);
       setError(error);
       setLoading(false);
-
     }
     console.log(error);
   }
 
-
-
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
-        <SkeletonTheme baseColor="gray" highlightColor="#444">
-          <p>
-            <Skeleton count={10} width={"400px"} />
-          </p>
-        </SkeletonTheme>
+        <ReactLoading type="spin" color="#fff" />
       </div>
     );
   }
-  if ( error &&  error.message === "Network Error") {
+  if (error && error.message === "Network Error") {
     return (
       <>
         <div className=" flex flex-col justify-center items-center w-screen h-screen gap-4">
@@ -105,7 +94,7 @@ export default function ResetPasssword({changeLang}) {
           </svg>
           <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            {t('please check your connection !!!')}
+            {t("please check your connection !!!")}
           </p>
         </div>
       </>
@@ -113,20 +102,26 @@ export default function ResetPasssword({changeLang}) {
   }
 
   return (
-    <div className={`sign-up-box   h-[800px]  bg-[#E5E7EB]`} style={{fontFamily : changeLang ? 'Almarai' : ''}}>
+    <div
+      className={`sign-up-box   h-[800px]  bg-[#E5E7EB]`}
+      style={{ fontFamily: changeLang ? "Almarai" : "" }}
+    >
       <div className=" flex justify-center items-start relative  top-[50px] ">
         <img src={logo} style={{ width: "30px", height: "30px" }} alt="logo" />
         <p className="ms-2 flex flex-col justify-center items-start">
           <span
             className=" font-bold text-xl relative mb-1"
-            style={{ color: "#04036B", fontFamily : changeLang ? 'Almarai' : 'Cairo ExtraLight'}}
+            style={{
+              color: "#04036B",
+              fontFamily: changeLang ? "Almarai" : "Cairo ExtraLight",
+            }}
           >
             سواكن للنقل و التجارة
           </span>
           <span
             className="text-[7px]   uppercase font-normal"
             style={{
-              fontFamily : changeLang ? 'Almarai' : 'Inter, sans-serif',
+              fontFamily: changeLang ? "Almarai" : "Inter, sans-serif",
               width: "128px",
               whiteSpace: "nowrap",
             }}
@@ -139,35 +134,35 @@ export default function ResetPasssword({changeLang}) {
         className=" flex flex-col sign-up-container  w-[436px] mx-auto top-[100px]   bg-[white] relative"
         style={{ borderRadius: "15px" }}
       >
-           <div className=" pt-[20px]  relative header">
+        <div className=" pt-[20px]  relative header">
           <h1
             className="text-center text-[#1F2937] font-bold text-[24px] mb-2"
-            style={{ fontFamily: changeLang ? 'Almarai' : 'Inter,sans-serif' }}
+            style={{ fontFamily: changeLang ? "Almarai" : "Inter,sans-serif" }}
           >
-            {t('Reset Password')}
+            {t("Reset Password")}
           </h1>
-       
         </div>
-    
+
         <form
           method="POST"
           onSubmit={handleSubmit}
           className=" mt-[20px] ms-[20px] w-[388px]"
-        
         >
           <div>
             <label
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
-              style={{ fontFamily: changeLang ? 'Almarai' :"Inter , sans-serif" }}
+              style={{
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              }}
             >
-              {t('Email')}
+              {t("Email")}
             </label>
             <div class="my-[10px] space-y-3">
               <input
                 type="text"
                 name="email"
-                placeholder= {t('write your email here')}
+                placeholder={t("write your email here")}
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
@@ -185,9 +180,11 @@ export default function ResetPasssword({changeLang}) {
             <label
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
-              style={{ fontFamily: changeLang ? 'Almarai' :"Inter , sans-serif" }}
+              style={{
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              }}
             >
-              {t('Otp')}
+              {t("Otp")}
             </label>
             <div class="my-[10px] space-y-3">
               <input
@@ -212,16 +209,16 @@ export default function ResetPasssword({changeLang}) {
               )}
             </div>
           </div>
-  
 
-         
           <div>
             <label
               htmlFor=""
               className={`text-[#1F2937] font-normal text-[14px] `}
-              style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
+              style={{
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              }}
             >
-              {t('Password')}
+              {t("Password")}
             </label>
             <div class={`my-[10px] space-y-3 `}>
               <input
@@ -245,13 +242,15 @@ export default function ResetPasssword({changeLang}) {
             <label
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
-              style={{ fontFamily: changeLang ? "Almarai" :  "Inter , sans-serif"}}
+              style={{
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              }}
             >
-              {t('Confirm Password')}
+              {t("Confirm Password")}
             </label>
             <div class="my-[10px] space-y-3">
               <input
-                placeholder={t('repeat the password')}
+                placeholder={t("repeat the password")}
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                 required
@@ -274,7 +273,7 @@ export default function ResetPasssword({changeLang}) {
               class={`py-3 px-4 block w-full font-semibold  text-[15px] rounded-lg text-sm bg-[#04036B] text-white`}
               style={{
                 boxShadow: " 0 0 1px 0 gray",
-                fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif",
+                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
                 cursor: "pointer",
               }}
             />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../sidebar/navbar/Navbar";
 
 import "./dashboard.css";
+import ReactLoading from 'react-loading'
 
 import { sideTabs } from "../sidebar/SideTabs";
 import DashboardContentOne from "./DashboardContentOne";
@@ -66,11 +67,7 @@ const Dashboard = ({
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
-        <SkeletonTheme baseColor="gray" highlightColor="#444">
-          <p>
-            <Skeleton count={10} width={"400px"} />
-          </p>
-        </SkeletonTheme>
+        <ReactLoading type="spin" color="blue"/>
       </div>
     );
   }

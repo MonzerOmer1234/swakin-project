@@ -2,8 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { getAuthToken } from "../util/auth";
 import { useTranslation } from "react-i18next";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import ReactLoading from 'react-loading'
 
 export default function DashboardContentOne({ changeLang }) {
   const [loading, setLoading] = useState(false);
@@ -48,11 +47,7 @@ export default function DashboardContentOne({ changeLang }) {
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
-        <SkeletonTheme baseColor="gray" highlightColor="#444">
-          <p>
-            <Skeleton count={10} width={"400px"} />
-          </p>
-        </SkeletonTheme>
+     <ReactLoading type="spin" color="blue"/>
       </div>
     );
   }

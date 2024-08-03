@@ -4,8 +4,8 @@ import { getAuthToken } from "../util/auth";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+
+import ReactLoading from "react-loading";
 import "./sign-up.css";
 import "./sign-in.css";
 import { useTranslation } from "react-i18next";
@@ -63,11 +63,7 @@ export default function SignIn({changeLang}) {
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
-        <SkeletonTheme baseColor="gray" highlightColor="#444">
-          <p>
-            <Skeleton count={10} width={"400px"} />
-          </p>
-        </SkeletonTheme>
+     <ReactLoading type="spin" color="blue"/>
       </div>
     );
   }

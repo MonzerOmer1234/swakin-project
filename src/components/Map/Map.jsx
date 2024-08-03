@@ -22,7 +22,7 @@ export default function Map({ lat , long }) {
 
   console.log(isLoaded);
 
-  // network error
+
 
   return (
      <>
