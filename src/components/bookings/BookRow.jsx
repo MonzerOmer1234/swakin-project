@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { getAuthToken } from "../util/auth";
+import SingleBookingDetail from "./SingleBookingDetail";
 
 export default function BookRow({
   bid,
@@ -160,7 +161,8 @@ export default function BookRow({
             {!closeActions && (
               <div class="py-1" role="none">
                 <Link
-                  to={`/shipments/mybookings/${sid}`}
+                  
+                  to={`/shipments/mybookings/${bid}` }
                   class="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabindex="-1"
@@ -170,6 +172,7 @@ export default function BookRow({
                     fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
                   }}
                 >
+                 
                   {t("Show Booking details")}
                 </Link>
                 {status !== "Canceled" && (

@@ -11,7 +11,7 @@ export default function Sidebar({
   tabs,
   id,
   serial,
-  sid,
+  bid,
   setChangeLang,
   changeLang,
 }) {
@@ -69,13 +69,13 @@ export default function Sidebar({
       setCurrentIndex(2);
     } else if (
       location.pathname === "/bookings" ||
-      location.pathname === `/shipments/mybookings/${sid}`
+      location.pathname === `/shipments/mybookings/${bid}`
     ) {
       setCurrentIndex(3);
     } else {
       setCurrentIndex(4);
     }
-  }, [location.pathname, id, serial, sid]);
+  }, [location.pathname, id, serial, bid]);
   // network error
   if ( error &&  error.message === "Network Error") {
     return (

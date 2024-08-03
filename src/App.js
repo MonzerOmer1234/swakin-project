@@ -312,7 +312,7 @@ function App() {
                 }
               />
               <Route
-                path="/shipments/mybookings/:sid"
+                path="/shipments/mybookings/:bid"
                 element={
                   <SingleBookingDetail
                     changeLang={changeLang}
@@ -333,6 +333,7 @@ function App() {
                     showCancelBookingModal={showCancelBookingModal}
                     setShowCancelBookingModal={setShowCancelBookingModal}
                     bookingStatusId={bookingStatusId}
+                    setBookingSerial={setBookingSerial}
                   />
                 }
               />
