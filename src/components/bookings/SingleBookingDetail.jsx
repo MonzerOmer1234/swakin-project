@@ -45,11 +45,18 @@ export default function SingleBookingDetail({
   const [lat, setLat] = useState(29.6);
   const [long, setLong] = useState(32.4);
   const [status, setStatus] = useState({});
+
+  console.log(specifiedCars)
   const carIds = specifiedCars.join("");
 
+  console.log(carIds)
 
 
-  const newCars = [...carIds.split(',')] ; 
+
+
+
+
+
 
   
 
@@ -61,7 +68,7 @@ export default function SingleBookingDetail({
     try {
       setLoading(true);
       const res = await axios.get(
-        `https://soaken.neuecode.com/api/get-cars?cars=${newCars}`,
+        `https://soaken.neuecode.com/api/get-cars?cars=${carIds}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -76,7 +83,7 @@ export default function SingleBookingDetail({
       setError(error);
       setLoading(false);
     }
-  } , [newCars , token])
+  } , [ token , carIds])
   const getBookings = useCallback(
     async function () {
       try {

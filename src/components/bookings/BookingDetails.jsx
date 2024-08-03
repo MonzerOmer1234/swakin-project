@@ -48,9 +48,12 @@ export default function BookingDetails({
 
   // const newCars = specifiedCars.map((car) => Number(car));
 
-  const carIds = specifiedCars.join("");
+  const carIds = specifiedCars.join(",");
 
-  const newCars = [...carIds.split(',')]
+  
+  
+
+ 
 
   console.log(carIds)
 
@@ -91,6 +94,7 @@ export default function BookingDetails({
   console.log(shipmentId);
 
   async function handleBooking(e) {
+    
     e.preventDefault();
     console.log("booked");
 
@@ -108,7 +112,7 @@ export default function BookingDetails({
       recipient_name: receipentName,
       recipient_phone: receipentPhone,
       shipment_id: shipmentId,
-      car_id: newCars,
+      car_id: specifiedCars,
     };
     console.log(carIds)
 
