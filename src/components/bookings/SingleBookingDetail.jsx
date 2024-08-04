@@ -393,7 +393,7 @@ export default function SingleBookingDetail({
                           : "Inter , sans-serif",
                       }}
                     >
-                      <a className="flex  flex-col lg:text-[10px] xl:text-[sm]   items-center text-sm text-gray-500">
+                      <a className="flex  flex-col lg:text-[10px] xl:text-[15px]   items-center text-sm text-gray-500">
                         {t("start Location")} <br />{" "}
                         <span className=" font-bold block text-[#1F2937]">
                           {shipmentData.start_location}
@@ -412,7 +412,7 @@ export default function SingleBookingDetail({
                     >
                       {stop.map((point) => (
                         <>
-                          <a className="flex flex-col lg:text-[10px] xl:text-[sm] items-center text-sm text-gray-500 ">
+                          <a className="flex flex-col lg:text-[10px] xl:text-[15px] items-center text-sm text-gray-500 ">
                             {t("stop")}
                             <br />{" "}
                             <span className=" font-bold text-[#1F2937]">
@@ -427,7 +427,7 @@ export default function SingleBookingDetail({
                       ))}
                     </li>
                     <li
-            className={`flex-col ${changeLang ? 'ms-0' : 'ms-[40px]'} md:ms-0  sm:relative items-center lg:text-[10px] xl:text-[sm]  font-semibold text-gray-500 `}
+            className={`flex-col ${changeLang ? 'ms-0' : 'ms-[40px]'} md:ms-0  sm:relative items-center lg:text-[10px] xl:text-[15px]  font-semibold text-gray-500 `}
             aria-current="page"
                       style={{
                         fontFamily: changeLang
