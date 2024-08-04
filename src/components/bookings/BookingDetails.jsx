@@ -7,7 +7,7 @@ import Navbar from "../sidebar/navbar/Navbar";
 import { getDaysDiff } from "../util/calculate-days-diff";
 import "./bookings.css";
 import { Link } from "react-router-dom";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import "react-loading-skeleton/dist/skeleton.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,8 +16,6 @@ import "../../UI/modal.css";
 
 export default function BookingDetails({
   serialNumber,
-
-
 
   username,
   receipentName,
@@ -33,68 +31,58 @@ export default function BookingDetails({
   const { serial } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [startLocation , setStartLocation] = useState('')
-  const [endLocation , setEndLocation] = useState('')
-  const [stop , setStop] = useState([])
-  const [arrivalDate , setArrivalDate] = useState('')
-  const [travelDate , setTravelDate] = useState('')
-  const [carNums , setCarNums] = useState(0)
-  const [availableSeats , setAvailableSeats] = useState(0)
+  const [startLocation, setStartLocation] = useState("");
+  const [endLocation, setEndLocation] = useState("");
+  const [stop, setStop] = useState([]);
+  const [arrivalDate, setArrivalDate] = useState("");
+  const [travelDate, setTravelDate] = useState("");
+  const [carNums, setCarNums] = useState(0);
+  const [availableSeats, setAvailableSeats] = useState(0);
 
-  const [price , setPrice] = useState(0)
-
-  
-
-
-
-
+  const [price, setPrice] = useState(0);
 
   console.log(stop);
-  console.log(specifiedCars)
+  console.log(specifiedCars);
 
-
-  async function getShipmentDetails(){
+  async function getShipmentDetails() {
     const token = getAuthToken();
-    try{
+    try {
       setLoading(true);
-      const res = await axios.get(`https://soaken.neuecode.com/api/get-shipments-details/${serial}` , {
-        headers : {
-          Authorization : `Bearer ${token}`
+      const res = await axios.get(
+        `https://soaken.neuecode.com/api/get-shipments-details/${serial}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      })
+      );
 
-      console.log(res)
-      setAvailableSeats(res.data.data.availableSeats)
-      setStartLocation(res.data.data.start_location)
-      setEndLocation(res.data.data.end_location)
-      setArrivalDate(res.data.data.arrival_date)
-      setTravelDate(res.data.data.travel_date)
-      setStop(res.data.data.shipment_location_point)
-      setCarNums(res.data.data.cars_no)
-      setPrice(res.data.data.price)
-      setLoading(false)
-    } catch(error){
+      console.log(res);
+      setAvailableSeats(res.data.data.availableSeats);
+      setStartLocation(res.data.data.start_location);
+      setEndLocation(res.data.data.end_location);
+      setArrivalDate(res.data.data.arrival_date);
+      setTravelDate(res.data.data.travel_date);
+      setStop(res.data.data.shipment_location_point);
+      setCarNums(res.data.data.cars_no);
+      setPrice(res.data.data.price);
+      setLoading(false);
+    } catch (error) {
       console.log(error);
-      setError(error)
+      setError(error);
       setLoading(false);
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getShipmentDetails();
-  } , [serial])
+  }, [serial]);
 
-  console.log(price)
-  console.log(specifiedCars)
-
-
-
- 
+  console.log(price);
+  console.log(specifiedCars);
 
   const token = getAuthToken();
 
-
- 
   const getCarData = useCallback(
     async function () {
       try {
@@ -116,7 +104,7 @@ export default function BookingDetails({
         setLoading(false);
       }
     },
-    [specifiedCars ,  token]
+    [specifiedCars, token]
   );
 
   console.log(carData);
@@ -128,7 +116,6 @@ export default function BookingDetails({
   console.log(shipmentId);
 
   async function handleBooking(e) {
-    
     e.preventDefault();
     console.log("booked");
 
@@ -138,8 +125,6 @@ export default function BookingDetails({
     console.log(receipentPhone);
     console.log(shipmentId);
 
-  
-
     // functionality of add booking.
 
     const bookingsData = {
@@ -148,7 +133,6 @@ export default function BookingDetails({
       shipment_id: shipmentId,
       car_id: specifiedCars,
     };
-  
 
     try {
       setLoading(true);
@@ -170,18 +154,18 @@ export default function BookingDetails({
       setLoading(false);
     }
   }
-// toaster error and warning
- useEffect(()=>{
+  // toaster error and warning
+  useEffect(() => {
+    if (error) {
+      toast.error(error.recipient_phone && error.recipient_phone.toString());
+      error.recipient_phone &&
+        toast.warning(
+          "please go to the previous page and fix the recipient phone number"
+        );
+    }
+  }, [error]);
 
-   if (error) {
-     toast.error(error.recipient_phone && error.recipient_phone.toString());
-      error.recipient_phone && toast.warning('please go to the previous page and fix the recipient phone number')
-     
-   }
- } , [error])
-
-
-//  network error
+  //  network error
 
   if (error && error.message === "Network Error") {
     return (
@@ -203,7 +187,7 @@ export default function BookingDetails({
           </svg>
           <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            {t('please check your connection !!!')}
+            {t("please check your connection !!!")}
           </p>
         </div>
       </>
@@ -262,7 +246,7 @@ export default function BookingDetails({
 
         {loading ? (
           <div className="min-h-screen w-full flex justify-center items-center">
-           <ReactLoading type="spin" color="#1D4ED8"/>
+            <ReactLoading type="spin" color="#1D4ED8" />
           </div>
         ) : (
           <div className="content bg-[#E5E7EB] h-auto  p-5 ">
@@ -374,73 +358,74 @@ export default function BookingDetails({
                     </h1>
 
                     <ol
-          className="flex flex-col places sm:flex-row  justify-between sm:gap-0 items-center journey-details whitespace-nowrap py-3 ps-6 mt-5 mx-7  lg:me-0  lg:w-[91%]"
-          style={{
-            border: "1px solid rgba(128, 128, 128, 0.19)",
-            borderRadius: "8px",
-          }}
-        >
-          <li
-            className="places"
-            style={{
-              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
-            }}
-          >
-            <a
-              className="flex  flex-col   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
-              href="#"
-            >
-              {t("start Location")} <br />{" "}
-              <span className=" font-bold block text-[#1F2937]">
-                {startLocation}
-              </span>
-            </a>
-          </li>
+                      className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4       justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
+                      style={{
+                        border: "1px solid rgba(128, 128, 128, 0.19)",
+                        borderRadius: "8px",
+                      }}
+                    >
+                      <li
+                        style={{
+                          fontFamily: changeLang
+                            ? "Almarai"
+                            : "Inter , sans-serif",
+                        }}
+                      >
+                        <a className="flex  flex-col md:text-[12px] xl:text-[sm]   items-center text-sm text-gray-500">
+                          {t("start Location")} <br />{" "}
+                          <span className=" font-bold block text-[#1F2937] ">
+                            {startLocation}
+                          </span>
+                        </a>
+                      </li>
+                      <span className="hidden sm:inline "> {t(">")}</span>
 
-          <span className="hidden sm:inline dest"> {t(">")}</span>
-          <li
-            className=" flex flex-col places sm:flex-row  lg:ms-0" 
-            style={{
-              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
-            }}
-          >
-            {stop.map((point) => (
-              <>
-              
-                <a
-                  className="inline-flex flex-col ps-3   items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
-                
-                >
-                  {t("stop")}
-                  <br />{" "}
-                  <span className=" font-bold text-[#1F2937]">
-                    {point.location_point.name_ar}
-                  </span>
-            
-                </a>
-                <span className="hidden sm:inline relative top-3 ms-[10px] dest"> {t(">")}</span>
-                
-              </>
-            ))}
-          </li>
-          <li
-            className=" flex-col items-center text-sm font-semibold text-gray-500 truncate dark:text-neutral-200"
-            aria-current="page"
-            style={{
-              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
-            }}
-          >
-            <span
-              className={`relative final-place  sm:ms-0 ${
-                changeLang ? "ms-[35px]" : "ms-5"
-              }`}
-            >
-              {t("Destination")}{" "}
-            </span>{" "}
-            <br />
-            <span className=" font-bold text-[#1F2937]">{endLocation}</span>
-          </li>
-        </ol>
+                      <li
+                        className=" flex flex-col  sm:flex-row gap-4  sm:relative "
+                        style={{
+                          fontFamily: changeLang
+                            ? "Almarai"
+                            : "Inter , sans-serif",
+                        }}
+                      >
+                        {stop.map((point) => (
+                          <>
+                            <a className="flex flex-col md:text-[12px] xl:text-[sm]      items-center text-sm text-gray-500  ">
+                              {t("stop")}
+                              <br />{" "}
+                              <span className=" font-bold text-[#1F2937] ">
+                                {point.location_point.name_ar}
+                              </span>
+                            </a>
+                            <span className="hidden sm:inline relative top-3 ">
+                              {" "}
+                              {t(">")}
+                            </span>
+                          </>
+                        ))}
+                      </li>
+                      <li
+                        className=" flex-col  sm:relative items-center md:text-[12px] xl:text-[sm]  font-semibold text-gray-500  "
+                        aria-current="page"
+                        style={{
+                          fontFamily: changeLang
+                            ? "Almarai"
+                            : "Inter , sans-serif",
+                        }}
+                      >
+                        <span
+                          className={`relative final-place   ${
+                            changeLang ? "ms-[13px] lg:ms-[32px]" : ""
+                          }`}
+                        >
+                          {t("Destination")}{" "}
+                        </span>{" "}
+                        <br />
+                        <span className=" font-bold text-[#1F2937]">
+                          {endLocation}
+                        </span>
+                      </li>
+                    </ol>
                     <p className=" flex flex-col items-center ms-[40px] sm:ms-0 gap-4 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
                       <span
                         className="text-center sm:text-start"
@@ -527,7 +512,7 @@ export default function BookingDetails({
                       </h1>
                     </div>
                     {carData &&
-                      carData.length > 0  &&
+                      carData.length > 0 &&
                       carData.map((car) => (
                         <div className="container mb-[20px]">
                           <div className="flex w-[95%]  ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
@@ -576,8 +561,6 @@ export default function BookingDetails({
                 </div>
 
                 <div class="flex money-details lg:w-[50%]  flex-col m-3 h-fit bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
-                 
-               
                   <p
                     className=" flex justify-between my-3 relative"
                     style={{
