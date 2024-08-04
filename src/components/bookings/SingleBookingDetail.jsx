@@ -23,7 +23,7 @@ export default function SingleBookingDetail({
   setChangeLang,
 
   specifiedCars,
-
+  
   bookingState,
   setBookingState,
   bookingStatusId,
@@ -68,7 +68,7 @@ export default function SingleBookingDetail({
     try {
       setLoading(true);
       const res = await axios.get(
-        `https://soaken.neuecode.com/api/get-cars?cars=${carIds}`,
+        `https://soaken.neuecode.com/api/get-cars?cars=${specifiedCars.toString()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

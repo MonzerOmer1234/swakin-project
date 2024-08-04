@@ -16,14 +16,9 @@ import "../../UI/modal.css";
 
 export default function BookingDetails({
   serialNumber,
-  startLocation,
-  endLocation,
-  stop,
-  travelDate,
-  arrivalDate,
-  carsNums,
-  availableSeats,
-  price,
+
+
+
   username,
   receipentName,
   receipentPhone,
@@ -38,6 +33,17 @@ export default function BookingDetails({
   const { serial } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [startLocation , setStartLocation] = useState('')
+  const [endLocation , setEndLocation] = useState('')
+  const [stop , setStop] = useState([])
+  const [arrivalDate , setArrivalDate] = useState('')
+  const [travelDate , setTravelDate] = useState('')
+  const [carNums , setCarNums] = useState(0)
+  const [availableSeats , setAvailableSeats] = useState(0)
+
+  const [price , setPrice] = useState(0)
+
+  
 
 
 
@@ -46,16 +52,44 @@ export default function BookingDetails({
   console.log(stop);
   console.log(specifiedCars)
 
-  // const newCars = specifiedCars.map((car) => Number(car));
 
-  const carIds = specifiedCars.join(",");
+  async function getShipmentDetails(){
+    const token = getAuthToken();
+    try{
+      setLoading(true);
+      const res = await axios.get(`https://soaken.neuecode.com/api/get-shipments-details/${serial}` , {
+        headers : {
+          Authorization : `Bearer ${token}`
+        }
+      })
 
-  
-  
+      console.log(res)
+      setAvailableSeats(res.data.data.availableSeats)
+      setStartLocation(res.data.data.start_location)
+      setEndLocation(res.data.data.end_location)
+      setArrivalDate(res.data.data.arrival_date)
+      setTravelDate(res.data.data.travel_date)
+      setStop(res.data.data.shipment_location_point)
+      setCarNums(res.data.data.cars_no)
+      setPrice(res.data.data.price)
+      setLoading(false)
+    } catch(error){
+      console.log(error);
+      setError(error)
+      setLoading(false);
+    }
+  }
+
+  useEffect(()=>{
+    getShipmentDetails();
+  } , [serial])
+
+  console.log(price)
+  console.log(specifiedCars)
+
+
 
  
-
-  console.log(carIds)
 
   const token = getAuthToken();
 
@@ -66,7 +100,7 @@ export default function BookingDetails({
       try {
         setLoading(true);
         const res = await axios.get(
-          `https://soaken.neuecode.com/api/get-cars?cars=${carIds}`,
+          `https://soaken.neuecode.com/api/get-cars?cars=${specifiedCars.toString()}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -82,7 +116,7 @@ export default function BookingDetails({
         setLoading(false);
       }
     },
-    [carIds, token]
+    [specifiedCars ,  token]
   );
 
   console.log(carData);
@@ -114,7 +148,7 @@ export default function BookingDetails({
       shipment_id: shipmentId,
       car_id: specifiedCars,
     };
-    console.log(carIds)
+  
 
     try {
       setLoading(true);
@@ -467,7 +501,7 @@ export default function BookingDetails({
                         {t("Number of cars")} <br />
                       </span>
                       <span className=" text-[#1F2937] font-bold relative end-7 sm:end-0">
-                        {carsNums}
+                        {carNums}
                       </span>
                     </p>
                   </div>
@@ -493,7 +527,7 @@ export default function BookingDetails({
                       </h1>
                     </div>
                     {carData &&
-                      carData.length > 0 &&
+                      carData.length > 0  &&
                       carData.map((car) => (
                         <div className="container mb-[20px]">
                           <div className="flex w-[95%]  ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
@@ -542,34 +576,8 @@ export default function BookingDetails({
                 </div>
 
                 <div class="flex money-details lg:w-[50%]  flex-col m-3 h-fit bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
-                  <p
-                    className=" flex justify-between my-3 relative"
-                    style={{
-                      fontFamily: changeLang
-                        ? "Almarai "
-                        : "Cairo , sans-serif",
-                    }}
-                  >
-                    <span className=" text-[#4B5563] ">{t("Tax")}</span>
-                    <span
-                      className="text-[#1F2937] font-bold"
-                      required
-                      name="tax"
-                    >
-                      0
-                    </span>
-                  </p>
-                  <p
-                    className=" flex justify-between my-3 relative"
-                    style={{
-                      fontFamily: changeLang ? "Almarai" : "Cairo , sans-serif",
-                    }}
-                  >
-                    <span className=" text-[#4B5563] ">{t("Discount")}</span>
-                    <span className="text-[#1F2937] font-bold" name="discount">
-                      0
-                    </span>
-                  </p>
+                 
+               
                   <p
                     className=" flex justify-between my-3 relative"
                     style={{

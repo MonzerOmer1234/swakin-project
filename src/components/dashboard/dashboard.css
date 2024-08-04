@@ -45,14 +45,3 @@
   }
 }
 
-@media ((min-width : 767px)) {
-  
-  ol.places , li.places{
-   flex-direction: column;
-  }
-  span.dest{
-    display: none;
-  }
-
-}
-

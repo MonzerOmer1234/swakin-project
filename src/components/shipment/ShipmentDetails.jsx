@@ -10,11 +10,11 @@ import { getAuthToken } from "../util/auth";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
-import MultiSelect from  'react-multiple-select-dropdown-lite'
-import  'react-multiple-select-dropdown-lite/dist/index.css'
+import MultiSelect from "react-multiple-select-dropdown-lite";
+import "react-multiple-select-dropdown-lite/dist/index.css";
 
 export default function ShipmentDetails({
-  availableSeats,
+
   serialNumber,
   username,
   receipentName,
@@ -26,17 +26,13 @@ export default function ShipmentDetails({
   changeLang,
   setChangeLang,
 }) {
-  console.log(availableSeats);
+  // console.log(availableSeats);
   const [carData, setCarData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
   const [t] = useTranslation();
   const navigate = useNavigate();
-
-
-
-
-
+  const [availableSeats , setAvailableSeats] = useState(0)
 
   // get all cars
 
@@ -48,6 +44,7 @@ export default function ShipmentDetails({
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        
       });
       console.log(res);
       setCarData(res.data.data);
@@ -63,30 +60,43 @@ export default function ShipmentDetails({
   }, []);
   const { id } = useParams();
 
+  console.log(id);
+
   console.log(carData);
-  const data = [];
 
-  for(let i = 0 ; i < carData.length ; i++){
-    data.push({label : i.car_name_en , value : i.car_id})
-  };
 
-  console.log(data)
-  // get the selected cars
-  function handleCars(e) {
-    console.log(e.target.options);
-    const updatedOptions = [...e.target.options]
-      .filter((option) => option.selected)
-      .map((x) => x.value);
-    console.log("updatedOptions", updatedOptions);
-    const newUpdatedOptions = updatedOptions.map((option) => Number(option));
-    setSpecifiedCars(newUpdatedOptions);
+  async function getShipmentDetails(){
+    const token = getAuthToken();
+    try{
+      setLoading(true);
+      const res = await axios.get(`https://soaken.neuecode.com/api/get-shipments-details/${id}` , {
+        headers : {
+          Authorization : `Bearer ${token}`
+        }
+      })
+
+      console.log(res)
+      setAvailableSeats(res.data.data.availableSeats);
+      setLoading(false)
+    } catch(error){
+      console.log(error);
+      setError(error)
+      setLoading(false);
+    }
   }
 
-  // function handleCars(val){
-  // setSpecifiedCars([...val])
-  // }
+  useEffect(()=>{
+    getShipmentDetails();
+  } , [id])
 
 
+  function handleCars(val) {
+    
+    console.log(val);
+    const cars = val.map(car => car.value);
+   
+    setSpecifiedCars(cars);
+  }
 
   // handling the submit of car
 
@@ -96,7 +106,7 @@ export default function ShipmentDetails({
     console.log(specifiedCars);
     console.log("submitted");
 
-    navigate(`/bookings/${serialNumber}/booking`);
+    navigate(`/bookings/${id}/booking`);
   }
   // network error
   if (error && error.message === "Network Error") {
@@ -370,32 +380,17 @@ export default function ShipmentDetails({
                     >
                       {t("Select Cars to be shiped")}
                     </p>
-                    <select
-                      onChange={handleCars}
-                      multiple
-                      required
-                      value={specifiedCars}
-                      options={carData}
-                      class="py-2 px-3 pe-9 block w-full  rounded-lg text-sm "
-                      style={{
-                        borderRadius: "8px",
-                        border: "1px solid #E5E7EB",
-                      }}
-                    >
-                      {carData &&
-                        carData.length > 0 &&
-                        carData.map((car) => (
-                          <option value={car.id} key={car.id}>
-                            {car.car_name_ar}
-                          </option>
-                        ))}
-                    </select>
-                             
-
-    
-           
-
                    
+
+                    <MultiSelect
+                      onChange={handleCars}
+                      options={carData.map((car) => {
+                        return { label: car.car_name_ar, value: car.id };
+                      
+
+                      })}
+                      jsonValue
+                    />
                   </div>
                 </div>
               </div>

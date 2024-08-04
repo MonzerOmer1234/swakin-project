@@ -40,13 +40,15 @@ const Shipment = ({
   const [shName, setShName] = useState("");
   const [shipmentDetail, setShipmentDetail] = useState([]);
   const [t] = useTranslation();
-  const location = useLocation();
+ 
 
-  console.log(location.pathname)
+
 
   const token = getAuthToken();
 
   // filtering shipments based on ship name
+
+
 
   const handleSubmit = async function (event) {
     event.preventDefault();
