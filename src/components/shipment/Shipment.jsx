@@ -31,6 +31,7 @@ const Shipment = ({
   setChangeLang,
   setLat,
   setLong,
+  
 }) => {
   const [shipmentsData, setShipmentsData] = useState([]);
   const [loading, setLoading] = useState(false);

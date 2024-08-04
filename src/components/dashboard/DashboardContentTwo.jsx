@@ -180,7 +180,7 @@ export default function DashboardContentTwo({
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
-            <a className="flex  flex-col md:text-[12px] xl:text-[sm]   items-center text-sm text-gray-500">
+            <a className="flex  flex-col lg:text-[10px] xl:text-[sm]   items-center text-sm text-gray-500">
               {t("start Location")} <br />{" "}
               <span className=" font-bold block text-[#1F2937] ">
                 {startLocation}
@@ -200,7 +200,7 @@ export default function DashboardContentTwo({
           >
             {stopPoints.map((point) => (
               <>
-                <a className="flex flex-col md:text-[12px] xl:text-[sm]      items-center text-sm text-gray-500  ">
+                <a className="flex flex-col lg:text-[10px] xl:text-[sm]      items-center text-sm text-gray-500  ">
                   {t("stop")}
                   <br />{" "}
                   <span className=" font-bold text-[#1F2937] ">
@@ -215,7 +215,7 @@ export default function DashboardContentTwo({
             ))}
           </li>
           <li
-            className=" flex-col  sm:relative items-center md:text-[12px] xl:text-[sm]  font-semibold text-gray-500  "
+            className={`flex-col ${changeLang ? 'ms-0' : 'ms-[40px]'} md:ms-0  sm:relative items-center lg:text-[10px] xl:text-[sm]  font-semibold text-gray-500 `}
             aria-current="page"
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
@@ -223,13 +223,13 @@ export default function DashboardContentTwo({
           >
             <span
               className={`relative final-place   ${
-                changeLang ? 'ms-[13px] lg:ms-[32px]': ""
+                changeLang ? 'ms-[13px] lg:ms-[9px]': ""
               }`}
             >
               {t("Destination")}{" "}
             </span>{" "}
             <br />
-            <span className=" font-bold text-[#1F2937]">{endLocation}</span>
+            <span className=" font-bold text-[#1F2937] w-[84px] ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">{endLocation}</span>
           </li>
         </ol>
 

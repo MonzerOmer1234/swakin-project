@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import SideTabs from "../sidebar/SideTabs";
 import Navbar from "../sidebar/navbar/Navbar";
 import { getDaysDiff } from "../util/calculate-days-diff";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useContext } from "react";
 import axios from "axios";
 import { getAuthToken } from "../util/auth";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
@@ -13,6 +13,7 @@ import DeleteModal from "../../UI/DeleteModal";
 import CancelBookingModal from "../../UI/CancelBookingModal";
 import ReactLoading from "react-loading";
 import { useRef } from "react";
+import { SpecifedCarsContext } from "../../App";
 
 export default function SingleBookingDetail({
   username,
@@ -23,6 +24,8 @@ export default function SingleBookingDetail({
   setChangeLang,
 
   specifiedCars,
+
+
 
   bookingState,
   setBookingState,
@@ -45,6 +48,8 @@ export default function SingleBookingDetail({
   const [lat, setLat] = useState(29.6);
   const [long, setLong] = useState(32.4);
   const [status, setStatus] = useState({});
+
+
 
   console.log(specifiedCars);
   const carIds = specifiedCars.join("");
@@ -388,7 +393,7 @@ export default function SingleBookingDetail({
                           : "Inter , sans-serif",
                       }}
                     >
-                      <a className="flex  flex-col md:text-[12px] xl:text-[sm]   items-center text-sm text-gray-500">
+                      <a className="flex  flex-col lg:text-[10px] xl:text-[sm]   items-center text-sm text-gray-500">
                         {t("start Location")} <br />{" "}
                         <span className=" font-bold block text-[#1F2937]">
                           {shipmentData.start_location}
@@ -407,7 +412,7 @@ export default function SingleBookingDetail({
                     >
                       {stop.map((point) => (
                         <>
-                          <a className="flex flex-col md:text-[12px] xl:text-[sm] items-center text-sm text-gray-500 ">
+                          <a className="flex flex-col lg:text-[10px] xl:text-[sm] items-center text-sm text-gray-500 ">
                             {t("stop")}
                             <br />{" "}
                             <span className=" font-bold text-[#1F2937]">
@@ -422,8 +427,8 @@ export default function SingleBookingDetail({
                       ))}
                     </li>
                     <li
-                      className=" flex-col md:text-[12px] xl:text-[sm]  sm:relative items-center text-sm font-semibold text-gray-500  "
-                      aria-current="page"
+            className={`flex-col ${changeLang ? 'ms-0' : 'ms-[40px]'} md:ms-0  sm:relative items-center lg:text-[10px] xl:text-[sm]  font-semibold text-gray-500 `}
+            aria-current="page"
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
@@ -432,13 +437,13 @@ export default function SingleBookingDetail({
                     >
                       <span
                         className={`relative final-place  ${
-                           changeLang ? 'ms-[13px] lg:ms-[32px]': ""
+                           changeLang ? 'ms-[13px] lg:ms-[9px]': ""
                         }`}
                       >
                         {t("Destination")}{" "}
                       </span>{" "}
                       <br />
-                      <span className=" font-bold text-[#1F2937] w-[84px] ms-[20px] sm:ms-0 md:ms-[20px] xl:ms-0">
+                      <span className=" font-bold text-[#1F2937] w-[84px] ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
                         {shipmentData.end_location}
                       </span>
                     </li>

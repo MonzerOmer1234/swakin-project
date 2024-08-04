@@ -1,5 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import React from "react";
+import React, { createContext } from "react";
 import "./App.css";
 import axios from "axios";
 import ReactLoading from 'react-loading';
@@ -22,6 +22,10 @@ import ResetPassword from "./components/auth/ResetPassword";
 import { mainpulateUserName } from "./components/util/user";
 import Profile from "./components/profile/Profile";
 import Map from "./components/Map/Map";
+
+export const SpecifedCarsContext = createContext(null)
+
+
 
 function App() {
   // share the data across the entire application
@@ -54,6 +58,10 @@ function App() {
   const [policy, setPolicy] = useState(null);
   const [showCancelBookingModal, setShowCancelBookingModal] = useState(false);
   const [bookingStatusId , setBookingStatusId] = useState(0);
+
+
+
+
 
 
 
@@ -164,6 +172,7 @@ function App() {
 
   return (
     <>
+    
       {path !== "/sign-up" &&
       path !== "/sign-in" &&
       path !== "/forgot-password" &&
@@ -232,6 +241,8 @@ function App() {
                       travelDate={travelDate}
                       serialNumber={serialNumber}
                       shipName={shipName}
+                     
+                      
                     />
                   }
                 />
@@ -308,6 +319,7 @@ function App() {
                     receipentPhone={receipentPhone}
                     specifiedCars={specifiedCars}
                     shipmentId={shipmentId}
+                    setSpecifiedCars={setSpecifiedCars}
                    
                   />
                 }
@@ -335,6 +347,7 @@ function App() {
                     setShowCancelBookingModal={setShowCancelBookingModal}
                     bookingStatusId={bookingStatusId}
                     setBookingSerial={setBookingSerial}
+                    setSpecifiedCars={setSpecifiedCars}
                   />
                 }
               />
@@ -355,6 +368,7 @@ function App() {
           />
         </Routes>
       )}
+
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { getAuthToken } from "../util/auth";
 import axios from "axios";
 import SideTabs from "../sidebar/SideTabs";
@@ -13,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
 import "../../UI/modal.css";
+import { SpecifedCarsContext } from "../../App";
 
 export default function BookingDetails({
   serialNumber,
@@ -21,6 +22,7 @@ export default function BookingDetails({
   receipentName,
   receipentPhone,
   specifiedCars,
+  setSpecifiedCars,
   shipmentId,
   changeLang,
   setChangeLang,
@@ -38,6 +40,9 @@ export default function BookingDetails({
   const [travelDate, setTravelDate] = useState("");
   const [carNums, setCarNums] = useState(0);
   const [availableSeats, setAvailableSeats] = useState(0);
+
+
+
 
   const [price, setPrice] = useState(0);
 
@@ -405,8 +410,8 @@ export default function BookingDetails({
                         ))}
                       </li>
                       <li
-                        className=" flex-col  sm:relative items-center md:text-[12px] xl:text-[sm]  font-semibold text-gray-500  "
-                        aria-current="page"
+            className={`flex-col ${changeLang ? 'ms-0' : 'ms-[40px]'} md:ms-0  sm:relative items-center md:text-[12px] xl:text-[sm]  font-semibold text-gray-500 `}
+            aria-current="page"
                         style={{
                           fontFamily: changeLang
                             ? "Almarai"
@@ -415,13 +420,13 @@ export default function BookingDetails({
                       >
                         <span
                           className={`relative final-place   ${
-                            changeLang ? "ms-[13px] lg:ms-[32px]" : ""
+                            changeLang ? "ms-[13px] lg:ms-[9px]" : ""
                           }`}
                         >
                           {t("Destination")}{" "}
                         </span>{" "}
                         <br />
-                        <span className=" font-bold text-[#1F2937]">
+                        <span className=" font-bold text-[#1F2937] w-[84px] ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
                           {endLocation}
                         </span>
                       </li>

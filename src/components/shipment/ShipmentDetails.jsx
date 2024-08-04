@@ -4,7 +4,7 @@ import "../sidebar/sidebar.css";
 import Navbar from "../sidebar/navbar/Navbar";
 import "./shipment.css";
 import { PhoneInput } from "react-international-phone";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useContext } from "react";
 import axios from "axios";
 import { getAuthToken } from "../util/auth";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
@@ -12,6 +12,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 import MultiSelect from "react-multiple-select-dropdown-lite";
 import "react-multiple-select-dropdown-lite/dist/index.css";
+import { SpecifedCarsContext } from "../../App";
 
 export default function ShipmentDetails({
 
@@ -34,7 +35,13 @@ export default function ShipmentDetails({
   const navigate = useNavigate();
   const [availableSeats , setAvailableSeats] = useState(0)
 
+
+ 
+
+ 
   // get all cars
+
+
 
   async function getCarData() {
     const token = getAuthToken();

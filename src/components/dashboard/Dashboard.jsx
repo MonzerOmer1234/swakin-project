@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../sidebar/navbar/Navbar";
 
 import "./dashboard.css";
-import ReactLoading from 'react-loading'
+import ReactLoading from "react-loading";
 
 import { sideTabs } from "../sidebar/SideTabs";
 import DashboardContentOne from "./DashboardContentOne";
@@ -10,8 +10,6 @@ import DashboardContentTwo from "./DashboardContentTwo";
 import DashboardContentThree from "./DashboardContentThree";
 import axios from "axios";
 import { getAuthToken } from "../util/auth";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 
 const Dashboard = ({
@@ -31,14 +29,13 @@ const Dashboard = ({
   changeLang,
   setChangeLang,
   setLat,
-  setLong
+  setLong,
 }) => {
   const [shipmentsData, setShipmentsData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
 
   const [t] = useTranslation();
-
 
   // calling api to get upcoming shipments
 
@@ -52,7 +49,7 @@ const Dashboard = ({
       });
 
       console.log(res);
-      
+
       setShipmentsData(res.data.data.upcoming_shipments);
       console.log(res.data.data);
     } catch (error) {
@@ -67,7 +64,7 @@ const Dashboard = ({
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
-        <ReactLoading type="spin" color="#1D4ED8"/>
+        <ReactLoading type="spin" color="#1D4ED8" />
       </div>
     );
   }
@@ -91,7 +88,7 @@ const Dashboard = ({
           </svg>
           <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            {t('please check your connection !!!')}
+            {t("please check your connection !!!")}
           </p>
         </div>
       </>
@@ -143,8 +140,7 @@ const Dashboard = ({
               >
                 {t("Upcoming Shipments")}
               </h1>
-              {(shipmentsData &&
-                shipmentsData.length > 0 )?
+              {shipmentsData && shipmentsData.length > 0 ? (
                 shipmentsData.map((shipment) => (
                   <DashboardContentTwo
                     changeLang={changeLang}
@@ -152,14 +148,13 @@ const Dashboard = ({
                     serialNo={shipment.serial_no}
                     price={shipment.price}
                     shipmentName={shipment.ship_name}
-                    status = {shipment.status.name_en}
+                    status={shipment.status.name_en}
                     startLocation={shipment.start_location}
                     stopPoints={shipment.shipment_location_point}
                     endLocation={shipment.end_location}
                     travelDate={shipment.travel_date}
                     arrivalDate={shipment.arrival_date}
                     carNumbers={shipment.cars_no}
-                 
                     setStop={setStop}
                     setSerialNumber={setSerialNumber}
                     setAvailableSeats={setAvailableSeats}
@@ -172,38 +167,47 @@ const Dashboard = ({
                     setArrivalDate={setArrivalDate}
                     setCarsNums={setCarsNums}
                     setShipName={setShipName}
-                
                   />
-                )) :      <div
-                style={{
-                  height: "auto",
-                  backgroundColor: "white",
-                  borderRadius: "8px",
-                  border: "1px solid #E5E7EB",
-                  marginBottom: "20px",
-                  
-                }}
-                className=" w-[60%] mx-[85px] sm:mx-[100px] md:mx-[150px] lg:mx-[40px] lg:me-0 lg:w-[80%]  "
-              >
-                <div className="flex p-4 justify-center items-center ">
-                <div class="fi-ta-empty-state-content mx-auto grid max-w-lg justify-items-center text-center">
-              <div class="fi-ta-empty-state-icon-ctn mb-4 rounded-full bg-gray-100 p-3 dark:bg-gray-500/20">
-                    <svg class="fi-ta-empty-state-icon h-6 w-6 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
-      </svg>
-              </div>
-      
-              <h4 class="fi-ta-empty-state-heading text-base font-semibold leading-6 text-gray-950 dark:text-white">
-              {t('No upcoming shipments Available')}
-      </h4>
-      
-           
-      
-          </div>
+                ))
+              ) : (
+                <div
+                  style={{
+                    height: "auto",
+                    backgroundColor: "white",
+                    borderRadius: "8px",
+                    border: "1px solid #E5E7EB",
+                    marginBottom: "20px",
+                  }}
+                  className=" w-[60%] mx-[85px] sm:mx-[100px] md:mx-[150px] lg:mx-[40px] lg:me-0 lg:w-[80%]  "
+                >
+                  <div className="flex p-4 justify-center items-center ">
+                    <div class="fi-ta-empty-state-content mx-auto grid max-w-lg justify-items-center text-center">
+                      <div class="fi-ta-empty-state-icon-ctn mb-4 rounded-full bg-gray-100 p-3 dark:bg-gray-500/20">
+                        <svg
+                          class="fi-ta-empty-state-icon h-6 w-6 text-gray-500 dark:text-gray-400"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                          data-slot="icon"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18 18 6M6 6l12 12"
+                          ></path>
+                        </svg>
+                      </div>
+
+                      <h4 class="fi-ta-empty-state-heading text-base font-semibold leading-6 text-gray-950 dark:text-white">
+                        {t("No upcoming shipments Available")}
+                      </h4>
+                    </div>
+                  </div>
                 </div>
-      
-                
-              </div>}
+              )}
             </div>
           </div>
         </div>
