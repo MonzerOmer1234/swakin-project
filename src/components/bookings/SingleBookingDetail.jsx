@@ -522,19 +522,19 @@ export default function SingleBookingDetail({
                    
                     bookingDetail.map((car) => (
                       <div className="container mb-[20px]">
-                        <div className="flex w-[95%]   ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                        <div className="flex w-[95%] items-center  ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                           <p className=" text-gray-500">
                             <div className="flex items-center">
                               <img
-                                // src={`https://soaken.neuecode.com/storage/${car.image}`}
+                                src={`https://soaken.neuecode.com/storage/${car.car.image}`}
                                 alt={`${car.car_name_ar}`}
                                 width={"53px"}
                                 height={"53px"}
                               />
                               <span className=" font-bold text-[#1F2937] ms-3">
-                                {/* {car.car.car_name_en || car.car.car_name_ar} */}
+                                {car.car.car_name_en || car.car.car_name_ar}
                                 <br />
-                                {/* {car.car.model_en || car.car.model_ar} */}
+                                {car.car.model_en || car.car.model_ar}
                               </span>
                             </div>
                           </p>
@@ -551,7 +551,7 @@ export default function SingleBookingDetail({
                             </span>
                             <br />
                             <span className=" text-gray-500">
-                              {/* {car.car.chassis_no} */}
+                              {car.car.chassis_no}
                             </span>
                           </div>
                         </div>
