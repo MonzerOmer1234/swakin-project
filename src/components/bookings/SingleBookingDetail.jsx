@@ -400,7 +400,7 @@ export default function SingleBookingDetail({
                           : "Inter , sans-serif",
                       }}
                     >
-                      <a className="flex  flex-col text-[17px] lg:ms-[130px] xl:ms-0  items-center text-sm text-gray-500">
+                      <a className="flex  flex-col text-[17px] lg:ms-[130px]  items-center text-sm text-gray-500">
                         {t("start Location")} <br />{" "}
                         <span className=" font-bold block text-[#1F2937] ">
                           {shipmentData.start_location}
@@ -452,7 +452,7 @@ export default function SingleBookingDetail({
                         {t("Destination")}{" "}
                       </span>{" "}
                       <br />
-                      <span className=" font-bold text-[#1F2937]  ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
+                      <span className=" font-bold text-[#1F2937] relative -top-1 ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
                         {shipmentData.end_location}
                       </span>
                     </li>

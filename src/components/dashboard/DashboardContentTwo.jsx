@@ -232,7 +232,7 @@ export default function DashboardContentTwo({
               {t("Destination")}{" "}
             </span>{" "}
             <br />
-            <span className=" font-bold text-[#1F2937]  ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
+            <span className=" font-bold text-[#1F2937] relative -top-1  ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
               {endLocation}
             </span>
           </li>
