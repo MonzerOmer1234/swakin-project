@@ -263,23 +263,12 @@ const Shipment = ({
               ))}
 
           {(shipmentsData.length === 0) && (
-            <div
-              style={{
-
-                height: "auto",
-                backgroundColor: "white",
-                borderRadius: "8px",
-                border: "1px solid #E5E7EB",
-                marginBottom: "20px",
-                transform: "translateY(-50%)",
-              }}
-              className="mx-[60px] flex justify-center items-center lg:me-[225px] relative top-[200px] lg:block lg:w-[400px] lg:start-56 "
-            >
-              <div className="p-4 ">
-                <div class="fi-ta-empty-state-content mx-auto grid max-w-lg justify-items-center text-center">
-                  <div class="fi-ta-empty-state-icon-ctn mb-4 rounded-full bg-gray-100 p-3 dark:bg-gray-500/20">
+          
+            
+                <div class="fi-ta-empty-state-content w-screen lg:ms-[255px]   mx-auto mt-[100px]  lg:max-w-lg flex flex-col gap-3 items-center text-center">
+                  <div class="fi-ta-empty-state-icon-ctn mb-4 w-[40px] h-[40px] rounded-full bg-gray-100 p-3 dark:bg-gray-500/20">
                     <svg
-                      class="fi-ta-empty-state-icon h-6 w-6 text-gray-500 dark:text-gray-400"
+                      class="fi-ta-empty-state-icon h-6 w-6 text-gray-500 dark:text-gray-400 ms-[-4px] mt-[-4px]"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -296,12 +285,12 @@ const Shipment = ({
                     </svg>
                   </div>
 
-                  <h4 class="fi-ta-empty-state-heading text-base font-semibold leading-6 text-gray-950 dark:text-white">
+                  <h4 class="fi-ta-empty-state-heading  text-base whitespace-nowrap font-semibold leading-6 text-gray-950 dark:text-white">
                     {t("No shipments available")}
                   </h4>
                 </div>
-              </div>
-            </div>
+           
+         
           )}
         </div>
       </div>
