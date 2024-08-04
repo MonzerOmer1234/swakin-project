@@ -419,7 +419,7 @@ export default function SingleBookingDetail({
             </span>
           </li>
         </ol>
-                  <p className=" flex flex-col gap-4 ms-[40px] sm:ms-0 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
+                  <p className=" flex flex-col gap-4 ms-[23px] sm:ms-0 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
                     <span
                       className="text-center sm:text-start"
                       style={{

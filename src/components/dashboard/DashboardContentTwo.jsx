@@ -210,7 +210,7 @@ export default function DashboardContentTwo({
           >
             {stopPoints.map((point) => (
               <>
-                <a className="flex flex-col text-[17px]      items-center text-sm text-gray-500  ">
+                <a className="flex flex-col text-[17px] me-0    items-center text-sm text-gray-500  ">
                   {t("stop")}
                   <br />{" "}
                   <span className=" font-bold text-[#1F2937] ">
