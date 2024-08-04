@@ -140,6 +140,7 @@ export const engilshTranslation = {
   "The name field is required.": "The name field is required.",
   "The profile pic field must be a file of type: jpg, jpeg, png, gif.":
     "The profile pic field must be a file of type: jpg, jpeg, png, gif.",
+    "Please select a car" : 'Please select a car'
 };
 
 export const arabicTranslation = {
@@ -280,4 +281,5 @@ export const arabicTranslation = {
   "The name field is required.": "حقل الاسم مطلوب.",
   "The profile pic field must be a file of type: jpg, jpeg, png, gif.":
     "يجب أن يكون حقل صورة الملف الشخصي ملفًا من النوع: jpg، jpeg، png، gif.",
+    "Please select a car" : 'رجاء اختر سيارة'
 };

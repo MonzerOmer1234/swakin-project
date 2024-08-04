@@ -41,6 +41,7 @@ export default function BookingDetails({
   const [carNums, setCarNums] = useState(0);
   const [availableSeats, setAvailableSeats] = useState(0);
   const [shipemntId, setShipmentId] = useState(0);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const data = window.localStorage.getItem("specified_cars");
@@ -130,6 +131,8 @@ export default function BookingDetails({
 
     // const bookingsData = new FormData();
 
+    console.log(specifiedCars.length);
+
     console.log(receipentName);
     console.log(receipentPhone);
     console.log(shipmentId);
@@ -140,7 +143,7 @@ export default function BookingDetails({
       recipient_name: receipentName,
       recipient_phone: receipentPhone,
       shipment_id: shipemntId,
-      car_id: specifiedCars,
+      car_id: specifiedCars.length === 0 ? null : specifiedCars,
     };
 
     try {
@@ -160,9 +163,12 @@ export default function BookingDetails({
     } catch (error) {
       console.log(error);
       setError(error.response.data.error);
+      setMessage(error.response.data.message);
       setLoading(false);
     }
   }
+
+  console.log(message);
   // toaster error and warning
   useEffect(() => {
     if (error) {
@@ -173,6 +179,10 @@ export default function BookingDetails({
         );
     }
   }, [error]);
+
+  if(message){
+    toast.error(t('Please select a car'))
+  }
 
   //  network error
 

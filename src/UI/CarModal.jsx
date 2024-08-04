@@ -111,7 +111,7 @@ export default function CarModal({
 
       toast.error(error.image && t(error.image.toString()));
     }
-  }, [error, error.chassis_no, error.image, changeLang]);
+  }, [error, error.chassis_no, error.image, changeLang , t]);
 
 // network errors
 
