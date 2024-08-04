@@ -375,7 +375,7 @@ export default function SingleBookingDetail({
                   </h1>
 
                   <ol
-                    className={`flex flex-col sm:flex-row gap-4       justify-center  items-center journey-details whitespace-nowrap py-3  mt-5 mx-7  lg:me-0  lg:w-[91%]`}
+                    className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4 justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
                     style={{
                       border: "1px solid rgba(128, 128, 128, 0.19)",
                       borderRadius: "8px",
@@ -388,7 +388,7 @@ export default function SingleBookingDetail({
                           : "Inter , sans-serif",
                       }}
                     >
-                      <a className="flex  flex-col   items-center text-sm text-gray-500">
+                      <a className="flex  flex-col md:text-[12px] xl:text-[sm]   items-center text-sm text-gray-500">
                         {t("start Location")} <br />{" "}
                         <span className=" font-bold block text-[#1F2937]">
                           {shipmentData.start_location}
@@ -407,7 +407,7 @@ export default function SingleBookingDetail({
                     >
                       {stop.map((point) => (
                         <>
-                          <a className="flex flex-col  items-center text-sm text-gray-500 ">
+                          <a className="flex flex-col md:text-[12px] xl:text-[sm] items-center text-sm text-gray-500 ">
                             {t("stop")}
                             <br />{" "}
                             <span className=" font-bold text-[#1F2937]">
@@ -422,7 +422,7 @@ export default function SingleBookingDetail({
                       ))}
                     </li>
                     <li
-                      className=" flex-col  sm:relative items-center text-sm font-semibold text-gray-500  "
+                      className=" flex-col md:text-[12px] xl:text-[sm]  sm:relative items-center text-sm font-semibold text-gray-500  "
                       aria-current="page"
                       style={{
                         fontFamily: changeLang
@@ -679,7 +679,7 @@ export default function SingleBookingDetail({
                             }}
                             className="font-semibold"
                           >
-                            {t("start")}: {startLocation}
+                            {t("start")}: {shipmentData.start_location}
                           </p>
                           <span
                             className="block text-xs font-semibold"
@@ -767,7 +767,7 @@ export default function SingleBookingDetail({
                             }}
                             className="font-semibold"
                           >
-                            {t("Destination")}: {endLocation}
+                            {t("Destination")}: {shipmentData.end_location}
                           </p>
                           <span
                             className="block text-xs font-semibold"
