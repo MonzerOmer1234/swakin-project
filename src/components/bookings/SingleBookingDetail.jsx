@@ -23,7 +23,7 @@ export default function SingleBookingDetail({
   setChangeLang,
 
   specifiedCars,
-  
+
   bookingState,
   setBookingState,
   bookingStatusId,
@@ -46,44 +46,38 @@ export default function SingleBookingDetail({
   const [long, setLong] = useState(32.4);
   const [status, setStatus] = useState({});
 
-  console.log(specifiedCars)
+  console.log(specifiedCars);
   const carIds = specifiedCars.join("");
 
-  console.log(carIds)
-
-
-
-
-
-
-
-
-  
+  console.log(carIds);
 
   console.log(bid);
 
   const token = getAuthToken();
 
-   const getCarData = useCallback(async function () {
-    try {
-      setLoading(true);
-      const res = await axios.get(
-        `https://soaken.neuecode.com/api/get-cars?cars=${specifiedCars.toString()}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log(res);
+  const getCarData = useCallback(
+    async function () {
+      try {
+        setLoading(true);
+        const res = await axios.get(
+          `https://soaken.neuecode.com/api/get-cars?cars=${specifiedCars.toString()}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log(res);
 
-      setCarData(res.data.data);
-      setLoading(false);
-    } catch (error) {
-      setError(error);
-      setLoading(false);
-    }
-  } , [ token , carIds])
+        setCarData(res.data.data);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    },
+    [token, carIds]
+  );
   const getBookings = useCallback(
     async function () {
       try {
@@ -107,17 +101,14 @@ export default function SingleBookingDetail({
         // you have to write code here
       }
     },
-    [bookings, token ]
+    [bookings, token]
   );
 
   useEffect(() => {
     getBookings();
 
     getCarData();
-   
   }, []);
-
-
 
   const getBookingsDetails = useCallback(
     async function () {
@@ -384,14 +375,13 @@ export default function SingleBookingDetail({
                   </h1>
 
                   <ol
-                    className="flex flex-col places sm:flex-row gap-[20px] sm:ps-[25px] md:ps-0 md:gap-[15px] lg:ps-[9px]  ps-4  justify-center  items-center journey-details whitespace-nowrap py-3  mt-5 mx-7  lg:me-[15px] lg:w-[91%]"
+                    className={`flex flex-col sm:flex-row gap-4       justify-center  items-center journey-details whitespace-nowrap py-3  mt-5 mx-7  lg:me-0  lg:w-[91%]`}
                     style={{
                       border: "1px solid rgba(128, 128, 128, 0.19)",
                       borderRadius: "8px",
                     }}
                   >
                     <li
-                      className="places"
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
@@ -406,9 +396,9 @@ export default function SingleBookingDetail({
                       </a>
                     </li>
 
-                    <span className="hidden sm:inline dest"> {t(">")}</span>
+                    <span className="hidden sm:inline "> {t(">")}</span>
                     <li
-                      className=" flex flex-col places sm:flex-row  lg:ms-0 sm:relative sm:end-[23px] md:end-0"
+                      className=" flex flex-col  sm:flex-row gap-4  sm:relative"
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
@@ -417,14 +407,14 @@ export default function SingleBookingDetail({
                     >
                       {stop.map((point) => (
                         <>
-                          <a className="inline-flex flex-col ps-3   items-center text-sm text-gray-500 ">
+                          <a className="flex flex-col  items-center text-sm text-gray-500 ">
                             {t("stop")}
                             <br />{" "}
                             <span className=" font-bold text-[#1F2937]">
                               {point.location_point.name_ar}
                             </span>
                           </a>
-                          <span className="hidden sm:inline relative top-3 ms-[10px] dest">
+                          <span className="hidden sm:inline relative top-3">
                             {" "}
                             {t(">")}
                           </span>
@@ -432,7 +422,7 @@ export default function SingleBookingDetail({
                       ))}
                     </li>
                     <li
-                      className=" flex-col items-center text-sm font-semibold text-gray-500 truncate dark:text-neutral-200"
+                      className=" flex-col  sm:relative items-center text-sm font-semibold text-gray-500  "
                       aria-current="page"
                       style={{
                         fontFamily: changeLang
@@ -441,8 +431,8 @@ export default function SingleBookingDetail({
                       }}
                     >
                       <span
-                        className={`relative final-place  ms-[40px] ${
-                          changeLang ? "ms-[35px]" : ""
+                        className={`relative final-place  ${
+                           changeLang ? 'ms-[13px] lg:ms-[32px]': ""
                         }`}
                       >
                         {t("Destination")}{" "}

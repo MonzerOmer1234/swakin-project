@@ -175,7 +175,7 @@ export default function DashboardContentTwo({
           }}
         >
           <li
-            className="places"
+            
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
@@ -187,27 +187,27 @@ export default function DashboardContentTwo({
               </span>
             </a>
           </li>
-          <span className="hidden sm:inline  sm:ms-[-40px] md:ms-0 lg:ms-3">
+          <span className="hidden sm:inline ">
             {" "}
             {t(">")}
           </span>
 
           <li
-            className=" flex flex-col  sm:flex-row gap-10  lg:ms-0 sm:relative sm:end-[40px] md:end-0 "
+            className=" flex flex-col  sm:flex-row gap-4  sm:relative "
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {stopPoints.map((point) => (
               <>
-                <a className="inline-flex flex-col    items-center text-sm text-gray-500  ">
+                <a className="flex flex-col    items-center text-sm text-gray-500  ">
                   {t("stop")}
                   <br />{" "}
                   <span className=" font-bold text-[#1F2937] ">
                     {point.location_point.name_ar}
                   </span>
                 </a>
-                <span className="hidden sm:inline relative top-3 ms-[10px] ">
+                <span className="hidden sm:inline relative top-3 ">
                   {" "}
                   {t(">")}
                 </span>
