@@ -262,7 +262,7 @@ const Shipment = ({
                 />
               ))}
 
-          {(!shipmentDetail && !shipmentsData) && (
+          {(shipmentsData.length === 0) && (
             <div
               style={{
 
