@@ -30,6 +30,8 @@ const Dashboard = ({
   setChangeLang,
   setLat,
   setLong,
+  specifiedCars,
+  setSpecifiedCars
 }) => {
   const [shipmentsData, setShipmentsData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -167,6 +169,8 @@ const Dashboard = ({
                     setArrivalDate={setArrivalDate}
                     setCarsNums={setCarsNums}
                     setShipName={setShipName}
+                    specifiedCars={specifiedCars}
+                    setSpecifiedCars={setSpecifiedCars}
                   />
                 ))
               ) : (

@@ -38,7 +38,15 @@ export default function ShipmentDetails({
 
  
 
- 
+  useEffect(()=>{
+    const data = window.localStorage.getItem('specified_cars');
+    setSpecifiedCars(JSON.parse(data))
+  } , [])
+
+  useEffect(()=>{
+    window.localStorage.setItem('specified_cars' , JSON.stringify(specifiedCars));
+  } , [specifiedCars])
+
   // get all cars
 
 

@@ -40,6 +40,14 @@ export default function BookingDetails({
   const [travelDate, setTravelDate] = useState("");
   const [carNums, setCarNums] = useState(0);
   const [availableSeats, setAvailableSeats] = useState(0);
+  const [shipemntId , setShipmentId] = useState(0)
+
+  useEffect(()=>{
+    const data = window.localStorage.getItem('specified_cars');
+    setSpecifiedCars(JSON.parse(data));
+   } , [])
+   
+
 
 
 
@@ -71,6 +79,7 @@ export default function BookingDetails({
       setStop(res.data.data.shipment_location_point);
       setCarNums(res.data.data.cars_no);
       setPrice(res.data.data.price);
+      setShipmentId(res.data.data.id);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -135,7 +144,7 @@ export default function BookingDetails({
     const bookingsData = {
       recipient_name: receipentName,
       recipient_phone: receipentPhone,
-      shipment_id: shipmentId,
+      shipment_id: shipemntId,
       car_id: specifiedCars,
     };
 
@@ -517,7 +526,7 @@ export default function BookingDetails({
                       </h1>
                     </div>
                     {carData &&
-                      carData.length > 0 &&
+                      carData.length > 0 && specifiedCars.length !==0 && 
                       carData.map((car) => (
                         <div className="container mb-[20px]">
                           <div className="flex w-[95%]  ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">

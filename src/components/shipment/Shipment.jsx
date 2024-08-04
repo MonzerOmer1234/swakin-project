@@ -31,6 +31,8 @@ const Shipment = ({
   setChangeLang,
   setLat,
   setLong,
+  specifiedCars,
+  setSpecifiedCars,
   
 }) => {
   const [shipmentsData, setShipmentsData] = useState([]);
@@ -225,6 +227,8 @@ const Shipment = ({
                   stopPoints={shipment.shipment_location_point}
                   status={shipment.status.name_en}
                   changeLang={changeLang}
+                  specifiedCars={specifiedCars}
+                  setSpecifiedCars={setSpecifiedCars}
                 />
               ))
             : shipmentDetail.map((detail) => (
@@ -253,10 +257,12 @@ const Shipment = ({
                   setShipmentId={setShipmentId}
                   shipmentId={shipmentDetail[0].id}
                   changeLang={changeLang}
+                  specifiedCars={specifiedCars}
+                  setSpecifiedCars={setSpecifiedCars}
                 />
               ))}
 
-          {(!shipmentDetail || !shipmentsData) && (
+          {(!shipmentDetail && !shipmentsData) && (
             <div
               style={{
 

@@ -206,6 +206,8 @@ function App() {
                       setShipmentId={setShipmentId}
                       fullName={username}
                       username={newName}
+                      specifiedCars={specifiedCars}
+                      setSpecifiedCars={setSpecifiedCars}
                     />
                   }
                 />
@@ -241,6 +243,8 @@ function App() {
                       travelDate={travelDate}
                       serialNumber={serialNumber}
                       shipName={shipName}
+                      specifiedCars={specifiedCars}
+                      setSpecifiedCars={setSpecifiedCars}
                      
                       
                     />

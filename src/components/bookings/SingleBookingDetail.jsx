@@ -25,8 +25,6 @@ export default function SingleBookingDetail({
 
   specifiedCars,
 
-
-
   bookingState,
   setBookingState,
   bookingStatusId,
@@ -48,41 +46,14 @@ export default function SingleBookingDetail({
   const [lat, setLat] = useState(29.6);
   const [long, setLong] = useState(32.4);
   const [status, setStatus] = useState({});
-
-
+  const [bookingDetail, setBookingDetail] = useState([]);
 
   console.log(specifiedCars);
-  const carIds = specifiedCars.join("");
-
-  console.log(carIds);
 
   console.log(bid);
 
   const token = getAuthToken();
 
-  const getCarData = useCallback(
-    async function () {
-      try {
-        setLoading(true);
-        const res = await axios.get(
-          `https://soaken.neuecode.com/api/get-cars?cars=${specifiedCars.toString()}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        console.log(res);
-
-        setCarData(res.data.data);
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        setLoading(false);
-      }
-    },
-    [token, carIds]
-  );
   const getBookings = useCallback(
     async function () {
       try {
@@ -112,7 +83,7 @@ export default function SingleBookingDetail({
   useEffect(() => {
     getBookings();
 
-    getCarData();
+    // getCarData();
   }, []);
 
   const getBookingsDetails = useCallback(
@@ -136,6 +107,7 @@ export default function SingleBookingDetail({
 
         setLat(res.data.data.shipment.lat);
         setLong(res.data.data.shipment.long);
+        setBookingDetail(res.data.data.booking_detail);
       } catch (error) {
         console.log(error);
         setError(error);
@@ -143,6 +115,37 @@ export default function SingleBookingDetail({
     },
     [bid]
   );
+  console.log(bookingDetail);
+
+  const carIds = bookingDetail.map((detail) => detail.car_id);
+
+  console.log(carIds);
+  const getCarData = useCallback(
+    async function () {
+      try {
+        setLoading(true);
+        // await getBookingsDetails();
+        const res = await axios.get(
+          `https://soaken.neuecode.com/api/get-cars?cars=${carIds}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log(res);
+
+        setCarData(res.data.data);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    },
+    [token, carIds]
+  );
+
+  console.log(carIds);
 
   // cancel booking and get the latest booking statuses.
   const handleCancelBooking = useCallback(
@@ -171,6 +174,10 @@ export default function SingleBookingDetail({
     },
     [bookingData, bid, getBookings, bookingState, setBookingState]
   );
+
+  useEffect(() => {
+    getCarData();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(function () {
@@ -380,7 +387,7 @@ export default function SingleBookingDetail({
                   </h1>
 
                   <ol
-                    className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4 justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
+                    className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4   md:overflow-scroll      justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
                     style={{
                       border: "1px solid rgba(128, 128, 128, 0.19)",
                       borderRadius: "8px",
@@ -393,17 +400,17 @@ export default function SingleBookingDetail({
                           : "Inter , sans-serif",
                       }}
                     >
-                      <a className="flex  flex-col lg:text-[10px] xl:text-[15px]   items-center text-sm text-gray-500">
+                      <a className="flex  flex-col text-[17px] lg:ms-[130px] xl:ms-0  items-center text-sm text-gray-500">
                         {t("start Location")} <br />{" "}
-                        <span className=" font-bold block text-[#1F2937]">
+                        <span className=" font-bold block text-[#1F2937] ">
                           {shipmentData.start_location}
                         </span>
                       </a>
                     </li>
-
                     <span className="hidden sm:inline "> {t(">")}</span>
+
                     <li
-                      className=" flex flex-col  sm:flex-row gap-4  sm:relative"
+                      className=" flex flex-col  sm:flex-row gap-4  sm:relative "
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
@@ -412,14 +419,14 @@ export default function SingleBookingDetail({
                     >
                       {stop.map((point) => (
                         <>
-                          <a className="flex flex-col lg:text-[10px] xl:text-[15px] items-center text-sm text-gray-500 ">
+                          <a className="flex flex-col text-[17px]      items-center text-sm text-gray-500  ">
                             {t("stop")}
                             <br />{" "}
-                            <span className=" font-bold text-[#1F2937]">
+                            <span className=" font-bold text-[#1F2937] ">
                               {point.location_point.name_ar}
                             </span>
                           </a>
-                          <span className="hidden sm:inline relative top-3">
+                          <span className="hidden sm:inline relative top-3 ">
                             {" "}
                             {t(">")}
                           </span>
@@ -427,8 +434,10 @@ export default function SingleBookingDetail({
                       ))}
                     </li>
                     <li
-            className={`flex-col ${changeLang ? 'ms-0' : 'ms-[40px]'} md:ms-0  sm:relative items-center lg:text-[10px] xl:text-[15px]  font-semibold text-gray-500 `}
-            aria-current="page"
+                      className={`flex-col ${
+                        changeLang ? "ms-0" : "ms-[40px]"
+                      } md:ms-0  sm:relative items-center text-[17px] `}
+                      aria-current="page"
                       style={{
                         fontFamily: changeLang
                           ? "Almarai"
@@ -436,14 +445,14 @@ export default function SingleBookingDetail({
                       }}
                     >
                       <span
-                        className={`relative final-place  ${
-                           changeLang ? 'ms-[13px] lg:ms-[9px]': ""
+                        className={` text-sm text-[#6B7280]  ${
+                          changeLang ? "ms-[13px] lg:ms-[9px]" : ""
                         }`}
                       >
                         {t("Destination")}{" "}
                       </span>{" "}
                       <br />
-                      <span className=" font-bold text-[#1F2937] w-[84px] ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
+                      <span className=" font-bold text-[#1F2937]  ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
                         {shipmentData.end_location}
                       </span>
                     </li>
@@ -548,6 +557,7 @@ export default function SingleBookingDetail({
                   </div>
                   {carData &&
                     carData.length > 0 &&
+                    carIds.length !== 0 &&
                     carData.map((car) => (
                       <div className="container mb-[20px]">
                         <div className="flex w-[95%]  ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">

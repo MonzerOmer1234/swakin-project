@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./dashboard.css";
 import { getDaysDiff } from "../util/calculate-days-diff";
 import { useTranslation } from "react-i18next";
@@ -34,11 +34,13 @@ export default function DashboardContentTwo({
   stopPoints,
   setLat,
   setLong,
-
+  specifiedCars,
+  setSpecifiedCars
 }) {
   console.log(changeLang);
- 
+
   const [t] = useTranslation();
+  const navigate = useNavigate();
 
   // set all shipment credentials with clicking book now button
   function handleBooking() {
@@ -46,7 +48,7 @@ export default function DashboardContentTwo({
     setSerialNumber(serialNo);
     setArrivalDate(arrivalDate);
     setTravelDate(travelDate);
-
+  
     setStartLocation(startLocation);
     setEndLocation(endLocation);
     setStop(stopPoints);
@@ -54,6 +56,9 @@ export default function DashboardContentTwo({
     setPrice(price);
     setShipName(shipmentName);
     setShipmentId(shipmentId);
+    window.localStorage.setItem('specified_cars' , '[]')
+    // navigate(`/shipments/${serialNo}/booking`);
+    
   }
   // const date1 = new Date('7/13/2010');
   // const date2 = new Date('12/15/2010');
@@ -168,29 +173,25 @@ export default function DashboardContentTwo({
         </div>
 
         <ol
-          className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4       justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
+          className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4   md:overflow-scroll      justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
           style={{
             border: "1px solid rgba(128, 128, 128, 0.19)",
             borderRadius: "8px",
           }}
         >
           <li
-            
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
-            <a className="flex  flex-col lg:text-[10px] xl:text-[sm]   items-center text-sm text-gray-500">
+            <a className="flex  flex-col text-[17px] md:ms-[40px] lg:ms-[130px]   items-center text-sm text-gray-500">
               {t("start Location")} <br />{" "}
               <span className=" font-bold block text-[#1F2937] ">
                 {startLocation}
               </span>
             </a>
           </li>
-          <span className="hidden sm:inline ">
-            {" "}
-            {t(">")}
-          </span>
+          <span className="hidden sm:inline "> {t(">")}</span>
 
           <li
             className=" flex flex-col  sm:flex-row gap-4  sm:relative "
@@ -200,7 +201,7 @@ export default function DashboardContentTwo({
           >
             {stopPoints.map((point) => (
               <>
-                <a className="flex flex-col lg:text-[10px] xl:text-[sm]      items-center text-sm text-gray-500  ">
+                <a className="flex flex-col text-[17px]      items-center text-sm text-gray-500  ">
                   {t("stop")}
                   <br />{" "}
                   <span className=" font-bold text-[#1F2937] ">
@@ -215,21 +216,25 @@ export default function DashboardContentTwo({
             ))}
           </li>
           <li
-            className={`flex-col ${changeLang ? 'ms-0' : 'ms-[40px]'} md:ms-0  sm:relative items-center lg:text-[10px] xl:text-[sm]  font-semibold text-gray-500 `}
+            className={`flex-col ${
+              changeLang ? "ms-0" : "ms-[40px]"
+            } md:ms-0  sm:relative items-center text-[17px] `}
             aria-current="page"
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
             <span
-              className={`relative final-place   ${
-                changeLang ? 'ms-[13px] lg:ms-[9px]': ""
+              className={` text-sm text-[#6B7280]  ${
+                changeLang ? "ms-[13px] lg:ms-[9px]" : ""
               }`}
             >
               {t("Destination")}{" "}
             </span>{" "}
             <br />
-            <span className=" font-bold text-[#1F2937] w-[84px] ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">{endLocation}</span>
+            <span className=" font-bold text-[#1F2937]  ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
+              {endLocation}
+            </span>
           </li>
         </ol>
 
