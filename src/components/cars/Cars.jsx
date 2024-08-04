@@ -112,7 +112,7 @@ const Cars = ({ username, changeLang, setChangeLang }) => {
               setShowContent(true);
               setCarDetails({});
             }}
-            className="  bg-[#04036B] flex py-2 w-[150px] car-btn"
+            className="  bg-[#04036B] flex py-2 w-[150px] relative start-[20px]"
             style={{ borderRadius: "5px" }}
           >
             <svg
@@ -130,7 +130,7 @@ const Cars = ({ username, changeLang, setChangeLang }) => {
                 fill="white"
               />
             </svg>
-            <span className=" ms-2 text-white text-sm">
+            <span className=" ms-2 text-white text-sm ">
               {t("Add a new car")}
             </span>
           </button>

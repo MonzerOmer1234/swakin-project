@@ -149,7 +149,7 @@ export default function DashboardContentThree({ setData , changeLang }) {
         }}
         className=" p-6 lg:me-0 me-[20px]"
       >
-        <div className="flex items-center justify-between car-header">
+        <div className="flex items-center justify-between car-header relative start-[0]">
           <h1>{t('Cars')}</h1>
           <button
             onClick={() => {

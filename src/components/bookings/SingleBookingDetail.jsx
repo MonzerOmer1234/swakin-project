@@ -2,18 +2,16 @@ import { useParams } from "react-router-dom";
 import SideTabs from "../sidebar/SideTabs";
 import Navbar from "../sidebar/navbar/Navbar";
 import { getDaysDiff } from "../util/calculate-days-diff";
-import { useState, useCallback, useEffect, useContext } from "react";
+import { useState, useCallback, useEffect} from "react";
 import axios from "axios";
 import { getAuthToken } from "../util/auth";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 import Map from "../Map/Map";
-import DeleteModal from "../../UI/DeleteModal";
 import CancelBookingModal from "../../UI/CancelBookingModal";
 import ReactLoading from "react-loading";
-import { useRef } from "react";
-import { SpecifedCarsContext } from "../../App";
+
 
 export default function SingleBookingDetail({
   username,
@@ -117,35 +115,7 @@ export default function SingleBookingDetail({
   );
   console.log(bookingDetail);
 
-  const carIds = bookingDetail.map((detail) => detail.car_id);
-
-  console.log(carIds);
-  const getCarData = useCallback(
-    async function () {
-      try {
-        setLoading(true);
-        // await getBookingsDetails();
-        const res = await axios.get(
-          `https://soaken.neuecode.com/api/get-cars?cars=${carIds}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        console.log(res);
-
-        setCarData(res.data.data);
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        setLoading(false);
-      }
-    },
-    [token, carIds]
-  );
-
-  console.log(carIds);
+  
 
   // cancel booking and get the latest booking statuses.
   const handleCancelBooking = useCallback(
@@ -175,9 +145,7 @@ export default function SingleBookingDetail({
     [bookingData, bid, getBookings, bookingState, setBookingState]
   );
 
-  useEffect(() => {
-    getCarData();
-  }, []);
+
 
   useEffect(() => {
     const interval = setInterval(function () {
@@ -387,76 +355,70 @@ export default function SingleBookingDetail({
                   </h1>
 
                   <ol
-                    className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4   md:overflow-scroll      justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
-                    style={{
-                      border: "1px solid rgba(128, 128, 128, 0.19)",
-                      borderRadius: "8px",
-                    }}
-                  >
-                    <li
-                      style={{
-                        fontFamily: changeLang
-                          ? "Almarai"
-                          : "Inter , sans-serif",
-                      }}
-                    >
-                      <a className="flex  flex-col text-[17px] lg:ms-[130px]  items-center text-sm text-gray-500">
-                        {t("start Location")} <br />{" "}
-                        <span className=" font-bold block text-[#1F2937] ">
-                          {shipmentData.start_location}
-                        </span>
-                      </a>
-                    </li>
-                    <span className="hidden sm:inline "> {t(">")}</span>
+          className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4   md:overflow-scroll      justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
+          style={{
+            border: "1px solid rgba(128, 128, 128, 0.19)",
+            borderRadius: "8px",
+          }}
+        >
+          <li
+            style={{
+              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+            }}
+          >
+            <a className="flex  flex-col text-[17px] md:ms-[69px] lg:ms-[130px] xl:ms-[13px]   items-center text-sm text-gray-500">
+              {t("start Location")} <br />{" "}
+              <span className=" font-bold block text-[#1F2937] ">
+                {shipmentData.start_location}
+              </span>
+            </a>
+          </li>
+          <span className="hidden sm:inline "> {t(">")}</span>
 
-                    <li
-                      className=" flex flex-col  sm:flex-row gap-4  sm:relative "
-                      style={{
-                        fontFamily: changeLang
-                          ? "Almarai"
-                          : "Inter , sans-serif",
-                      }}
-                    >
-                      {stop.map((point) => (
-                        <>
-                          <a className="flex flex-col text-[17px]      items-center text-sm text-gray-500  ">
-                            {t("stop")}
-                            <br />{" "}
-                            <span className=" font-bold text-[#1F2937] ">
-                              {point.location_point.name_ar}
-                            </span>
-                          </a>
-                          <span className="hidden sm:inline relative top-3 ">
-                            {" "}
-                            {t(">")}
-                          </span>
-                        </>
-                      ))}
-                    </li>
-                    <li
-                      className={`flex-col ${
-                        changeLang ? "ms-0" : "ms-[40px]"
-                      } md:ms-0  sm:relative items-center text-[17px] `}
-                      aria-current="page"
-                      style={{
-                        fontFamily: changeLang
-                          ? "Almarai"
-                          : "Inter , sans-serif",
-                      }}
-                    >
-                      <span
-                        className={` text-sm text-[#6B7280]  ${
-                          changeLang ? "ms-[13px] lg:ms-[9px]" : ""
-                        }`}
-                      >
-                        {t("Destination")}{" "}
-                      </span>{" "}
-                      <br />
-                      <span className=" font-bold text-[#1F2937] relative -top-1 ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
-                        {shipmentData.end_location}
-                      </span>
-                    </li>
-                  </ol>
+          <li
+            className=" flex flex-col  sm:flex-row gap-4  sm:relative "
+            style={{
+              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+            }}
+          >
+            {stop.map((point) => (
+              <>
+                <a className="flex flex-col text-[17px]      items-center text-sm text-gray-500  ">
+                  {t("stop")}
+                  <br />{" "}
+                  <span className=" font-bold text-[#1F2937] ">
+                    {point.location_point.name_ar}
+                  </span>
+                </a>
+                <span className="hidden sm:inline relative top-3 ">
+                  {" "}
+                  {t(">")}
+                </span>
+              </>
+            ))}
+          </li>
+          <li
+            className={`flex-col ${
+              changeLang ? "ms-0" : "ms-[40px]"
+            } md:ms-0  sm:relative items-center text-[17px] `}
+            aria-current="page"
+            style={{
+              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+            }}
+          >
+            <span
+              className={` text-sm text-[#6B7280]  ${
+                changeLang ? "ms-[13px] lg:ms-[9px]" : ""
+              }`}
+            >
+              {t("Destination")}{" "}
+            </span>{" "}
+            <br />
+            <span className=" font-bold text-[#1F2937] relative -top-1  ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
+              {shipmentData.end_location}
+            </span>
+          </li>
+        </ol>
                   <p className=" flex flex-col gap-4 ms-[40px] sm:ms-0 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
                     <span
                       className="text-center sm:text-start"
@@ -555,24 +517,24 @@ export default function SingleBookingDetail({
                       {t("Cars")}
                     </h1>
                   </div>
-                  {carData &&
-                    carData.length > 0 &&
-                    carIds.length !== 0 &&
-                    carData.map((car) => (
+                  {bookingDetail &&
+                    bookingDetail.length > 0 &&
+                   
+                    bookingDetail.map((car) => (
                       <div className="container mb-[20px]">
-                        <div className="flex w-[95%]  ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                        <div className="flex w-[95%]   ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                           <p className=" text-gray-500">
                             <div className="flex items-center">
                               <img
-                                src={`https://soaken.neuecode.com/storage/${car.image}`}
+                                // src={`https://soaken.neuecode.com/storage/${car.image}`}
                                 alt={`${car.car_name_ar}`}
                                 width={"53px"}
                                 height={"53px"}
                               />
                               <span className=" font-bold text-[#1F2937] ms-3">
-                                {car.car_name_ar}
+                                {/* {car.car.car_name_en || car.car.car_name_ar} */}
                                 <br />
-                                {car.model_ar}
+                                {/* {car.car.model_en || car.car.model_ar} */}
                               </span>
                             </div>
                           </p>
@@ -589,7 +551,7 @@ export default function SingleBookingDetail({
                             </span>
                             <br />
                             <span className=" text-gray-500">
-                              {car.chassis_no}
+                              {/* {car.car.chassis_no} */}
                             </span>
                           </div>
                         </div>

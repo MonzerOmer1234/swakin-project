@@ -301,8 +301,8 @@ export default function CarItem({
           </div>
           <div className={`p-5 flex lg:flex-col gap-4  whitespace-nowrap update items-center ${changeLang ? 'justify-center' : 'justify-between'}`}>
             <button
-              className={`justify-center flex bg-[#CCFBF1]`}
-              style={{ borderRadius: "8px", width: changeLang  ? "180px" : "157px", height: "auto" }}
+              className={`justify-center flex items-center mb-2 h-[40px] bg-[#CCFBF1]`}
+              style={{ borderRadius: "8px", width: changeLang  ? "180px" : "157px"}}
               onClick={() => handleShowCar(id)}
             >
               <svg
@@ -332,12 +332,12 @@ export default function CarItem({
                   stroke-linejoin="round"
                 />{" "}
               </svg>
-              <span className={`ms-2 text-[#115E59] ${changeLang ? 'text-sm ps-2' : ''}  font-semibold `} style={{fontFamily : changeLang ? 'Almarai' : 'Inter ,sans-serif'}}>
+              <span className={`ms-2 h-[32px]  text-[#115E59] ${changeLang ? 'text-sm ps-2' : ''}  font-semibold `} style={{fontFamily : changeLang ? 'Almarai' : 'Inter ,sans-serif' , lineHeight : '32px'}}>
                 {t('Edit Car Info')}
               </span>
             </button>
             <button
-              className=" justify-center flex whitespace-nowrap bg-[#FEE2E2] p-1"
+              className=" justify-center items-center flex whitespace-nowrap bg-[#FEE2E2] p-1"
               onClick={handleDelete}
               style={{ borderRadius: "8px", width: "157px", height: "auto" }}
             >
@@ -384,7 +384,7 @@ export default function CarItem({
                   stroke-linejoin="round"
                 />
               </svg>
-              <span className=" ms-2 text-[#991B1B]" style={{fontFamily : changeLang ? 'Almarai' : 'Inter ,sans-serif'}}>{t('Delete Car')}</span>
+              <span className=" ms-2 text-[#991B1B] h-[32px] font-semibold" style={{fontFamily : changeLang ? 'Almarai' : 'Inter ,sans-serif' , lineHeight : '32px'}}>{t('Delete Car')}</span>
             </button>
           </div>
         </div>

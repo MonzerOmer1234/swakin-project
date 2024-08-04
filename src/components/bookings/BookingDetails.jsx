@@ -40,17 +40,12 @@ export default function BookingDetails({
   const [travelDate, setTravelDate] = useState("");
   const [carNums, setCarNums] = useState(0);
   const [availableSeats, setAvailableSeats] = useState(0);
-  const [shipemntId , setShipmentId] = useState(0)
+  const [shipemntId, setShipmentId] = useState(0);
 
-  useEffect(()=>{
-    const data = window.localStorage.getItem('specified_cars');
+  useEffect(() => {
+    const data = window.localStorage.getItem("specified_cars");
     setSpecifiedCars(JSON.parse(data));
-   } , [])
-   
-
-
-
-
+  }, []);
 
   const [price, setPrice] = useState(0);
 
@@ -372,7 +367,7 @@ export default function BookingDetails({
                     </h1>
 
                     <ol
-                      className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4       justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
+                      className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4   md:overflow-scroll      justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
                       style={{
                         border: "1px solid rgba(128, 128, 128, 0.19)",
                         borderRadius: "8px",
@@ -385,7 +380,7 @@ export default function BookingDetails({
                             : "Inter , sans-serif",
                         }}
                       >
-                        <a className="flex  flex-col md:text-[12px] xl:text-[sm]   items-center text-sm text-gray-500">
+                        <a className="flex  flex-col text-[17px] md:ms-[69px] lg:ms-[130px] xl:ms-[13px]   items-center text-sm text-gray-500">
                           {t("start Location")} <br />{" "}
                           <span className=" font-bold block text-[#1F2937] ">
                             {startLocation}
@@ -404,7 +399,7 @@ export default function BookingDetails({
                       >
                         {stop.map((point) => (
                           <>
-                            <a className="flex flex-col md:text-[12px] xl:text-[sm]      items-center text-sm text-gray-500  ">
+                            <a className="flex flex-col text-[17px]      items-center text-sm text-gray-500  ">
                               {t("stop")}
                               <br />{" "}
                               <span className=" font-bold text-[#1F2937] ">
@@ -419,8 +414,10 @@ export default function BookingDetails({
                         ))}
                       </li>
                       <li
-            className={`flex-col ${changeLang ? 'ms-0' : 'ms-[40px]'} md:ms-0  sm:relative items-center md:text-[12px] xl:text-[sm]  font-semibold text-gray-500 `}
-            aria-current="page"
+                        className={`flex-col ${
+                          changeLang ? "ms-0" : "ms-[40px]"
+                        } md:ms-0  sm:relative items-center text-[17px] `}
+                        aria-current="page"
                         style={{
                           fontFamily: changeLang
                             ? "Almarai"
@@ -428,14 +425,14 @@ export default function BookingDetails({
                         }}
                       >
                         <span
-                          className={`relative final-place   ${
+                          className={` text-sm text-[#6B7280]  ${
                             changeLang ? "ms-[13px] lg:ms-[9px]" : ""
                           }`}
                         >
                           {t("Destination")}{" "}
                         </span>{" "}
                         <br />
-                        <span className=" font-bold text-[#1F2937] w-[84px] ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
+                        <span className=" font-bold text-[#1F2937] relative -top-1  ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
                           {endLocation}
                         </span>
                       </li>
@@ -526,10 +523,11 @@ export default function BookingDetails({
                       </h1>
                     </div>
                     {carData &&
-                      carData.length > 0 && specifiedCars.length !==0 && 
+                      carData.length > 0 &&
+                      specifiedCars.length !== 0 &&
                       carData.map((car) => (
-                        <div className="container mb-[20px]">
-                          <div className="flex w-[95%]  ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                        <div className="  mb-[20px]">
+                          <div className="flex w-[95%] items-center  ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                             <p className=" text-gray-500">
                               <div
                                 className="flex items-center"

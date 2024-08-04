@@ -84,8 +84,10 @@ export default function DashboardContentTwo({
         }}
         className=" col-span-12  md:col-span-6 lg:col-span-6"
       >
-        <div className=" ms-1   p-6 journey relative  flex flex-col   gap-4 items-center">
+        <div className=" mx-1 overflow-scroll  p-6  relative  flex   gap-4 items-center">
+          <div className="flex items-center gap-5">
           <div className="bg-[#F1F1F2]  h-[20px] w-[20px]">
+            
             <svg
               className="size-4 my-[0.5px] ms-[0.5px]"
               xmlns="http://www.w3.org/2000/svg"
@@ -104,15 +106,19 @@ export default function DashboardContentTwo({
               <path d="M14.5 5H9.5V3C9.5 2.45 9.95 2 10.5 2H13.5C14.05 2 14.5 2.45 14.5 3V5Z" />
             </svg>
           </div>
+          <p className=" flex flex-col">
           <span
-            className="font-bold text-[#1F2937] text-center sm:text-start "
+            className="font-bold text-[#1F2937] whitespace-nowrap  "
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {" "}
-            {t("Journey")} {serialNo}
+            {t("Journey")} 
           </span>
+          <span className=" whitespace-nowrap">{serialNo}</span>
+          </p>
+         
           <a className="  bg-[#E5E7EB] rounded-full  flex items-center justify-center ">
             <span
               className="block bg-[#E5E7EB] rounded-full mx-[5px] mt-[4px]"
@@ -127,8 +133,11 @@ export default function DashboardContentTwo({
               {t(status)}
             </span>
           </a>
+
+          </div>
+      
           <span
-            className="  font-bold text-[#1F2937] text-sm whitespace-nowrap"
+            className=" ms-auto  font-bold text-[#1F2937] text-sm whitespace-nowrap"
             style={{
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
@@ -184,7 +193,7 @@ export default function DashboardContentTwo({
               fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
             }}
           >
-            <a className="flex  flex-col text-[17px] md:ms-[40px] lg:ms-[130px]   items-center text-sm text-gray-500">
+            <a className="flex  flex-col text-[17px] md:ms-[69px] lg:ms-[130px] xl:ms-[13px]   items-center text-sm text-gray-500">
               {t("start Location")} <br />{" "}
               <span className=" font-bold block text-[#1F2937] ">
                 {startLocation}
