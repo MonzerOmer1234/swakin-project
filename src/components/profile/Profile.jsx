@@ -142,21 +142,20 @@ export default function Profile({
 
               <div className=" flex flex-col items-center justify-start">
                 <div className="flex items-center ">
-                  <div className="img">
+                  <div className="img   sm:ms-[50px] md:ms-[100px]">
                     {userData && (
                       <img
                         src={`https://soaken.neuecode.com/storage/${
                           profilePic === null ? profileImage : profilePic
                         }`}
                         alt="user-profile"
-                        width="100px"
-                        height="100px"
-                        style={{ borderRadius: "50%" }}
+                      
+                        style={{ borderRadius: "50%" , width : '100px' , height : '100px'  , maxWidth : '100px'}}
                       />
                     )}
                   </div>
-                  <form action="POST" className=" ms-[40px] sm:ms-[20px]">
-                    <label htmlFor="upload-image">{t("change")}</label>
+                  <form action="POST" className=" ms-[20px] sm:ms-[20px]">
+                    <label htmlFor="upload-image relative top-[4px] start-[50px] sm:top-0 sm:start-0">{t("change")}</label>
                     <input
                       type="file"
                       name="profile_pic"
@@ -174,7 +173,7 @@ export default function Profile({
                   </form>
                 </div>
 
-                <form method="POST" className=" mt-[20px] ms-[20px] w-[388px]">
+                <form method="POST" className=" mt-[20px] ms-[50px] w-[388px]">
                   <div>
                     <label
                       htmlFor=""
