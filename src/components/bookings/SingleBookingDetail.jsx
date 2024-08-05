@@ -399,7 +399,7 @@ export default function SingleBookingDetail({
           </li>
           <li
             className={`flex-col ${
-              changeLang ? "ms-0" : "ms-[10px] sm:ms-[40px]"
+              changeLang ? "ms-0" : "ms-0 sm:ms-[40px]"
             } md:ms-0  sm:relative items-center text-[17px] `}
             aria-current="page"
             style={{
