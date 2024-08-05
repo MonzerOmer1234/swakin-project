@@ -194,7 +194,7 @@ export default function Profile({
                         value={userName}
                         required
                         onChange={(e) => setUserName(e.target.value)}
-                        class={`py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-[#FFFFFF] `}
+                        class={`py-3 px-4 block w-full border-[#dcdcdc] rounded-lg text-sm bg-[#FFFFFF] `}
                         readOnly={!changeName}
                         style={{ boxShadow: " 0 0 1px 0 gray" }}
                       />
@@ -233,7 +233,7 @@ export default function Profile({
                         required
                         readOnly={!changeEmail}
                         onChange={(e) => setUserEmail(e.target.value)}
-                        class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-white"
+                        class="py-3 px-4 block w-full border-[#dcdcdc] rounded-lg text-sm bg-white"
                         style={{ boxShadow: " 0 0 1px 0 gray" }}
                       />
 
@@ -298,7 +298,7 @@ export default function Profile({
                         value={userPassword}
                         required
                         onChange={(e) => setUserPassword(e.target.value)}
-                        class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-white"
+                        class="py-3 px-4 block w-full border-[#dcdcdc] rounded-lg text-sm bg-white"
                         style={{ boxShadow: " 0 0 1px 0 gray" }}
                       />
                     </div>
@@ -330,7 +330,7 @@ export default function Profile({
                         onChange={(e) =>
                           setUserPasswordConfirmation(e.target.value)
                         }
-                        class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-white"
+                        class="py-3 px-4 block w-full border-[#dcdcdc] rounded-lg text-sm bg-white"
                         style={{ boxShadow: " 0 0 1px 0 gray" }}
                       />
                     </div>

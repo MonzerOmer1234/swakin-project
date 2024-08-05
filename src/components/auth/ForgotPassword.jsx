@@ -142,7 +142,7 @@ export default function ForgotPassword({changeLang}) {
                 placeholder={t('write your email here')}
                 type="text"
                 required
-                class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-white"
+                class="py-3 px-4 block w-full border-[#dcdcdc] rounded-lg text-sm bg-white"
                 style={{ boxShadow: " 0 0 1px 0 gray" }}
               />
               {error.message === "Request failed with status code 422" && (

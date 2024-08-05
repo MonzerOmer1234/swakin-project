@@ -166,7 +166,7 @@ export default function ResetPasssword({ changeLang }) {
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
-                class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-[#FFFFFF]"
+                class="py-3 px-4 block w-full border-[#dcdcdc] rounded-lg text-sm bg-[#FFFFFF]"
                 style={{ boxShadow: " 0 0 1px 0 gray" }}
               />
               {error.message === "Request failed with status code 422" && (
@@ -194,7 +194,7 @@ export default function ResetPasssword({ changeLang }) {
                 value={otp}
                 required
                 onChange={(e) => setotp(e.target.value)}
-                class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-[#FFFFFF]"
+                class="py-3 px-4 block w-full border-[#dcdcdc] rounded-lg text-sm bg-[#FFFFFF]"
                 style={{ boxShadow: " 0 0 1px 0 gray" }}
               />
               {error.message === "Request failed with status code 422" && (
@@ -228,7 +228,7 @@ export default function ResetPasssword({ changeLang }) {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-white"
+                class="py-3 px-4 block w-full border-[#dcdcdc] rounded-lg text-sm bg-white"
                 style={{ boxShadow: " 0 0 1px 0 gray" }}
               />
               {error.message === "Request failed with status code 422" && (
@@ -256,7 +256,7 @@ export default function ResetPasssword({ changeLang }) {
                 required
                 type="password"
                 name="password_confirmation"
-                class="py-3 px-4 block w-full border-[#E5E7EB] rounded-lg text-sm bg-white"
+                class="py-3 px-4 block w-full border-[#dcdcdc] rounded-lg text-sm bg-white"
                 style={{ boxShadow: " 0 0 1px 0 gray" }}
               />
               {error.message === "Request failed with status code 422" && (
