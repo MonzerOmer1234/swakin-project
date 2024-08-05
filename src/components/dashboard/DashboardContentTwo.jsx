@@ -82,7 +82,7 @@ export default function DashboardContentTwo({
           border: "1px solid #F1F1F2",
           margin: "20px 20px 20px",
         }}
-        className=" col-span-12  md:col-span-6 lg:col-span-6"
+        className="  md:col-span-6 lg:col-span-6"
       >
         <div className=" mx-1 overflow-scroll  p-6  relative  flex   gap-4 items-center">
           <div className="flex items-center gap-5">

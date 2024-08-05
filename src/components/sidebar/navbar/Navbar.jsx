@@ -234,7 +234,7 @@ export default function Navbar({
           style={{ width: "100%", border: "1px solid #E2E8F0" }}
         >
           <a
-            className="flex items-center justify-between text-sm  text-black focus:outline-none  dark:text-neutral-500   ps-5 h-16 cursor-text"
+            className="starter flex items-center justify-between text-sm  text-black focus:outline-none  dark:text-neutral-500   ps-5 h-16 cursor-text"
             style={{ width: "100%" }}
           >
             <span className=" flex justify-between items-center  w-full">

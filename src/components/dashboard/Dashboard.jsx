@@ -99,7 +99,7 @@ const Dashboard = ({
 
   return (
     <>
-      <div className="lg:col-span-12 lg:ms-[255px]">
+      <div className="  lg:col-span-12 lg:ms-[255px]">
         <Navbar
           setChangeLang={setChangeLang}
           changeLang={changeLang}
@@ -125,14 +125,14 @@ const Dashboard = ({
             <span className=" text-3xl">{fullName}</span>
           </h1>
 
-          <div className=" ms-[20px]  flex flex-col flex-wrap gap-5  lg:grid lg:grid-cols-12  ">
-            <div className=" lg:col-span-6 ">
+          <div className=" mx-[20px]  flex flex-col flex-wrap gap-5  lg:grid lg:grid-cols-12  ">
+            <div className=" w-full lg:col-span-6 ">
               <DashboardContentOne changeLang={changeLang} />
               <DashboardContentThree changeLang={changeLang} />
             </div>
             <div
-              className=" bg-white lg:col-span-6 me-[20px]"
-              style={{ borderRadius: "8px" }}
+              className="  bg-white lg:col-span-6 me-[20px]"
+              style={{ borderRadius: "8px" , width : 'calc(100% - 16px)' }}
             >
               <h1
                 className=" p-[20px] text-[#353B47] font-bold"
