@@ -226,7 +226,7 @@ export default function DashboardContentTwo({
           </li>
           <li
             className={`flex-col ${
-              changeLang ? "ms-0" : "ms-[50px] sm:ms-[20px]"
+              changeLang ? "ms-0" : "ms-0 sm:ms-[20px]"
             } md:ms-0  sm:relative items-center text-[17px] `}
             aria-current="page"
             style={{
