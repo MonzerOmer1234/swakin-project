@@ -105,8 +105,8 @@ export default function Navbar({
           </Link>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24px"
-              height="24px"
+              width="50px"
+              height="50px"
               viewBox="0 0 24 24"
               fill="none"
               className={`burger-icon hidden cursor-pointer relative end-[22px] top-[10px] `}
