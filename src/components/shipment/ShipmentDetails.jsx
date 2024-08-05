@@ -288,7 +288,7 @@ export default function ShipmentDetails({
                 <div className=" mt-[48px] flex flex-col shipment-info justify-start md:justify-center items-center">
                   <div
                     className="receipient-info  h-[236px]"
-                    style={{ border: "1px solid #F1F1F2" }}
+                    style={{ border: "1px solid #E5E7EB" }}
                   >
                     <h1
                       className={`p-4 font-bold text-[#353B47] ${
