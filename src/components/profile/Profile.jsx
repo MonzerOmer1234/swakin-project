@@ -149,7 +149,7 @@ export default function Profile({
                           profilePic === null ? profileImage : profilePic
                         }`}
                         alt="user-profile"
-                        className="ms-[40px] sm:ms-0"
+                        className="ms-[100px] sm:ms-0"
                       
                         style={{ borderRadius: "50%" , width : '100px' , height : '100px'  , maxWidth : '100px'}}
                       />
