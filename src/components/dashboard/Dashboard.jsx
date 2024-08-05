@@ -132,7 +132,7 @@ const Dashboard = ({
             </div>
             <div
               className="  bg-white lg:col-span-6 me-[20px]"
-              style={{ borderRadius: "8px" , width : 'calc(100% - 16px)' }}
+              style={{ borderRadius: "8px"  }}
             >
               <h1
                 className=" p-[20px] text-[#353B47] font-bold"

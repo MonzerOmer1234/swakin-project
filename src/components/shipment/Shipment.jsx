@@ -198,7 +198,7 @@ const Shipment = ({
           </form>
         </div>
 
-        <div className="lg:p-5  parent grid grid-cols-12 gap-[20px] bg-[#E5E7EB] ">
+        <div className="lg:p-5  parent lg:grid lg:grid-cols-12 gap-[20px] bg-[#E5E7EB] ">
           {shName.length === 0 || shipmentDetail.length === 0
             ? shipmentsData.map((shipment) => (
                 <DashboardContentTwo
