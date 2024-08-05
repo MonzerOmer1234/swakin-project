@@ -181,8 +181,8 @@ export default function Signup({ changeLang }) {
                 value={name}
                 required
                 onChange={(e) => setName(e.target.value)}
-                class="py-3 px-4 block w-full border-[#F1F1F2] rounded-lg text-sm bg-[#FFFFFF]"
-                style={{ boxShadow: " 0 0 1px 0 gray" }}
+                class="py-3 px-4 block w-full  rounded-lg text-sm bg-[#FFFFFF]"
+                style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
               />
               {error.message === "Request failed with status code 422" && (
                 <h1 className=" text-red-500 error">
@@ -208,8 +208,8 @@ export default function Signup({ changeLang }) {
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
-                class="py-3 px-4 block w-full border-[#F1F1F2] rounded-lg text-sm bg-white"
-                style={{ boxShadow: " 0 0 1px 0 gray" }}
+                class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
+                style={{ boxShadow: " 0 0 1px 0 gray"  , border: '1px solid #E5E7EB' }}
               />
               {error.message === "Request failed with status code 422" && (
                 <h1 className=" text-red-500 error">
@@ -263,8 +263,8 @@ export default function Signup({ changeLang }) {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                class="py-3 px-4 block w-full border-[#F1F1F2] rounded-lg text-sm bg-white"
-                style={{ boxShadow: " 0 0 1px 0 gray" }}
+                class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
+                style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
               />
               {error.message === "Request failed with status code 422" && (
                 <h1 className=" text-red-500 error">
@@ -291,8 +291,8 @@ export default function Signup({ changeLang }) {
                 required
                 type="password"
                 name="password_confirmation"
-                class="py-3 px-4 block w-full border-[#F1F1F2] rounded-lg text-sm bg-white"
-                style={{ boxShadow: " 0 0 1px 0 gray" }}
+                class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
+                style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
               />
               {error.message === "Request failed with status code 422" && (
                 <h1 className=" text-red-500 error">

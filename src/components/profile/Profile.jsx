@@ -194,9 +194,9 @@ export default function Profile({
                         value={userName}
                         required
                         onChange={(e) => setUserName(e.target.value)}
-                        class={`py-3 px-4 block w-full border-[#F1F1F2] rounded-lg text-sm bg-[#FFFFFF] `}
+                        class={`py-3 px-4 block w-full rounded-lg text-sm bg-[#FFFFFF] `}
                         readOnly={!changeName}
-                        style={{ boxShadow: " 0 0 1px 0 gray" }}
+                        style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
                       />
 
                       <a
@@ -233,8 +233,8 @@ export default function Profile({
                         required
                         readOnly={!changeEmail}
                         onChange={(e) => setUserEmail(e.target.value)}
-                        class="py-3 px-4 block w-full border-[#F1F1F2] rounded-lg text-sm bg-white"
-                        style={{ boxShadow: " 0 0 1px 0 gray" }}
+                        class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
+                        style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
                       />
 
                       <a
@@ -298,8 +298,8 @@ export default function Profile({
                         value={userPassword}
                         required
                         onChange={(e) => setUserPassword(e.target.value)}
-                        class="py-3 px-4 block w-full border-[#F1F1F2] rounded-lg text-sm bg-white"
-                        style={{ boxShadow: " 0 0 1px 0 gray" }}
+                        class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
+                        style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
                       />
                     </div>
                     {updateError.message ===
@@ -330,8 +330,8 @@ export default function Profile({
                         onChange={(e) =>
                           setUserPasswordConfirmation(e.target.value)
                         }
-                        class="py-3 px-4 block w-full border-[#F1F1F2] rounded-lg text-sm bg-white"
-                        style={{ boxShadow: " 0 0 1px 0 gray" }}
+                        class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
+                        style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
                       />
                     </div>
                     {updateError.message ===
