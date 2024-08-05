@@ -337,7 +337,7 @@ export default function ShipmentDetails({
                         required
                         class={`py-3 ${
                           changeLang ? "input-data-ar" : "input-data"
-                        } px-4 block w-[380px] me-[20px] border-[#dcdcdc] rounded-lg text-sm bg-[#FFFFFF]`}
+                        } px-4 block w-[380px] me-[20px] border-[#F1F1F2] rounded-lg text-sm bg-[#FFFFFF]`}
                         style={{ boxShadow: " 0 0 1px 0 gray" }}
                       />
                     </div>
