@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/swakin-project/static/css/main.902c0437.css",
-    "main.js": "/swakin-project/static/js/main.e3c3eb28.js",
+    "main.css": "/swakin-project/static/css/main.2f83e358.css",
+    "main.js": "/swakin-project/static/js/main.cf9870ba.js",
     "static/js/453.050be174.chunk.js": "/swakin-project/static/js/453.050be174.chunk.js",
     "index.html": "/swakin-project/index.html",
-    "main.902c0437.css.map": "/swakin-project/static/css/main.902c0437.css.map",
-    "main.e3c3eb28.js.map": "/swakin-project/static/js/main.e3c3eb28.js.map",
+    "main.2f83e358.css.map": "/swakin-project/static/css/main.2f83e358.css.map",
+    "main.cf9870ba.js.map": "/swakin-project/static/js/main.cf9870ba.js.map",
     "453.050be174.chunk.js.map": "/swakin-project/static/js/453.050be174.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.902c0437.css",
-    "static/js/main.e3c3eb28.js"
+    "static/css/main.2f83e358.css",
+    "static/js/main.cf9870ba.js"
   ]
 }
