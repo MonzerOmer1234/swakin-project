@@ -151,11 +151,11 @@ export default function Profile({
                         alt="user-profile"
                         width="100px"
                         height="100px"
-                        style={{ borderRadius: "50%", objectFit: "cover" }}
+                        style={{ borderRadius: "50%" }}
                       />
                     )}
                   </div>
-                  <form action="POST" className=" ms-[20px]">
+                  <form action="POST" className=" ms-[40px] sm:ms-[20px]">
                     <label htmlFor="upload-image">{t("change")}</label>
                     <input
                       type="file"
@@ -348,7 +348,7 @@ export default function Profile({
                   <button
                     onClick={handleUpdateProfile}
                     type="submit"
-                    className=" ms-auto update-profile  p-3 mb-3 relative   text-[white] bg-[#04036B] booking-btn"
+                    className=" ms-auto  update-profile  p-3 mb-3 relative   text-[white] bg-[#04036B] booking-btn"
                     style={{
                       border: "1px solid #1F2937",
                       borderRadius: "8px",

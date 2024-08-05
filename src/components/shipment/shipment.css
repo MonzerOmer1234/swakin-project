@@ -49,9 +49,14 @@
     margin-left: 0;
   }
   .update-profile{
-    margin: 20px 100px 0;
+    margin: 20px 100px;
   }
   .input-profile{
+    width: 323px;
+  }
+}
+@media (max-width:489px) {
+  .input-flex{
     width: 323px;
   }
 }
