@@ -399,6 +399,7 @@ export default function ShipmentDetails({
 
                     <MultiSelect
                       onChange={handleCars}
+                      placeholder=''
                       options={carData.map((car) => {
                         return { label: car.car_name_ar, value: car.id };
                       
