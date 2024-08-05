@@ -156,7 +156,7 @@ export default function Profile({
                     )}
                   </div>
                   <form action="POST" className=" ms-[20px] sm:ms-[20px]">
-                    <label htmlFor="upload-image relative top-[4px] start-[50px] sm:top-0 sm:start-0">{t("change")}</label>
+                    <label htmlFor="upload-image" className="relative top-[4px] start-[50px] sm:top-0 sm:start-0">{t("change")}</label>
                     <input
                       type="file"
                       name="profile_pic"
