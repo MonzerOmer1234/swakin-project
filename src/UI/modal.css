@@ -57,7 +57,7 @@ body.active-modal {
 }
 .modal-content {
   position: absolute;
-  top: 5px;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
   line-height: 0.4;
