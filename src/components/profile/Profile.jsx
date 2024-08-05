@@ -142,7 +142,7 @@ export default function Profile({
 
               <div className=" flex flex-col items-center justify-start">
                 <div className="flex items-center ">
-                  <div className="img sm:ms-[200px] ms-[100px]">
+                  <div className="img  ms-[100px]">
                     {userData && (
                       <img
                         src={`https://soaken.neuecode.com/storage/${
