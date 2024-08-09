@@ -68,6 +68,11 @@ body.active-modal {
   width: 512px;
   height: 700px;
 }
+@media (max-width :767px) {
+  .modal-content{
+    top: 30px;
+  }
+}
 
 .modal-content-ar {
   position: absolute;
