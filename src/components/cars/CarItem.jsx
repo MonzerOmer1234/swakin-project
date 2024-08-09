@@ -210,7 +210,7 @@ export default function CarItem({
             </p>
           </div>
           <div>
-            <p className="p-5 me-5 flex">
+            <p className="p-5 me-5 flex" >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
