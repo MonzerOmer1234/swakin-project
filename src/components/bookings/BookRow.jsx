@@ -148,7 +148,7 @@ export default function BookRow({
           </div>
 
           <div
-            className={`absolute ${
+            className={`absolute -mt-[40px] me-10 w-[200px] ${
               changeLang ? "right-[-77px]" : "right-0"
             } z-10 mt-2 ${
               changeLang ? " w-40" : "w-56"
@@ -159,7 +159,7 @@ export default function BookRow({
             tabindex="-1"
           >
             {!closeActions && (
-              <div class="py-1" role="none">
+              <div class={`py-1 `} role="none">
                 <Link
                   
                   to={`/shipments/mybookings/${bid}` }
