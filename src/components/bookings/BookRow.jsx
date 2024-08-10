@@ -148,7 +148,7 @@ export default function BookRow({
           </div>
 
           <div
-            className={`absolute -mt-[40px] me-10 w-[200px] ${
+            className={`absolute -mt-[40px] ${!changeLang && 'me-10 w-[200px]'}  ${
               changeLang ? "right-[-77px]" : "right-0"
             } z-10 mt-2 ${
               changeLang ? " w-40" : "w-56"

@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import SideTabs from "../sidebar/SideTabs";
 import Navbar from "../sidebar/navbar/Navbar";
 import { getDaysDiff } from "../util/calculate-days-diff";
-import { useState, useCallback, useEffect} from "react";
+import { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 import { getAuthToken } from "../util/auth";
 
@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 import Map from "../Map/Map";
 import CancelBookingModal from "../../UI/CancelBookingModal";
 import ReactLoading from "react-loading";
-
 
 export default function SingleBookingDetail({
   username,
@@ -115,8 +114,6 @@ export default function SingleBookingDetail({
   );
   console.log(bookingDetail);
 
-  
-
   // cancel booking and get the latest booking statuses.
   const handleCancelBooking = useCallback(
     async function () {
@@ -144,8 +141,6 @@ export default function SingleBookingDetail({
     },
     [bookingData, bid, getBookings, bookingState, setBookingState]
   );
-
-
 
   useEffect(() => {
     const interval = setInterval(function () {
@@ -355,70 +350,76 @@ export default function SingleBookingDetail({
                   </h1>
 
                   <ol
-          className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4   md:overflow-scroll      justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
-          style={{
-            border: "1px solid rgba(128, 128, 128, 0.19)",
-            borderRadius: "8px",
-          }}
-        >
-          <li
-            style={{
-              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
-            }}
-          >
-            <a className="flex  flex-col text-[17px] md:ms-[69px] lg:ms-[130px] xl:ms-[13px]   items-center text-sm text-gray-500">
-              {t("start Location")} <br />{" "}
-              <span className=" font-bold block text-[#1F2937] ">
-                {shipmentData.start_location}
-              </span>
-            </a>
-          </li>
-          <span className="hidden sm:inline "> {t(">")}</span>
+                    className={`flex flex-col sm:flex-row gap-4 lg:gap-2 xl:gap-4   md:overflow-scroll      justify-center  items-center journey-details whitespace-nowrap py-3 mx-7  mt-5 md:mx-3 lg:mx-7  lg:me-0  lg:w-[91%]`}
+                    style={{
+                      border: "1px solid rgba(128, 128, 128, 0.19)",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    <li
+                      style={{
+                        fontFamily: changeLang
+                          ? "Almarai"
+                          : "Inter , sans-serif",
+                      }}
+                    >
+                      <a className="flex  flex-col text-[17px] md:ms-[69px] lg:ms-[130px] xl:ms-[13px]   items-center text-sm text-gray-500">
+                        {t("start Location")} <br />{" "}
+                        <span className=" font-bold block text-[#1F2937] ">
+                          {shipmentData.start_location}
+                        </span>
+                      </a>
+                    </li>
+                    <span className="hidden sm:inline "> {t(">")}</span>
 
-          <li
-            className=" flex flex-col  sm:flex-row gap-4  sm:relative "
-            style={{
-              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
-            }}
-          >
-            {stop.map((point) => (
-              <>
-                <a className="flex flex-col text-[17px]      items-center text-sm text-gray-500  ">
-                  {t("stop")}
-                  <br />{" "}
-                  <span className=" font-bold text-[#1F2937] ">
-                    {point.location_point.name_ar}
-                  </span>
-                </a>
-                <span className="hidden sm:inline relative top-3 ">
-                  {" "}
-                  {t(">")}
-                </span>
-              </>
-            ))}
-          </li>
-          <li
-            className={`flex-col ${
-              changeLang ? "ms-0" : "ms-0 sm:ms-[40px]"
-            } md:ms-0  sm:relative items-center text-[17px] `}
-            aria-current="page"
-            style={{
-              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
-            }}
-          >
-            <span
-              className={` text-sm text-[#6B7280]  ${
-                changeLang ? "ms-[13px] lg:ms-[9px]" : ""
-              }`}
-            >
-              {t("Destination")}{" "}
-            </span>{" "}
-            <br />
-            <span className=" font-bold text-[#1F2937] relative -top-1  ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
-              {shipmentData.end_location}
-            </span>
-          </li>
-        </ol>
+                    <li
+                      className=" flex flex-col  sm:flex-row gap-4  sm:relative "
+                      style={{
+                        fontFamily: changeLang
+                          ? "Almarai"
+                          : "Inter , sans-serif",
+                      }}
+                    >
+                      {stop.map((point) => (
+                        <>
+                          <a className="flex flex-col text-[17px]      items-center text-sm text-gray-500  ">
+                            {t("stop")}
+                            <br />{" "}
+                            <span className=" font-bold text-[#1F2937] ">
+                              {point.location_point.name_ar}
+                            </span>
+                          </a>
+                          <span className="hidden sm:inline relative top-3 ">
+                            {" "}
+                            {t(">")}
+                          </span>
+                        </>
+                      ))}
+                    </li>
+                    <li
+                      className={`flex-col ${
+                        changeLang ? "ms-0" : "ms-0 sm:ms-[40px]"
+                      } md:ms-0  sm:relative items-center text-[17px] `}
+                      aria-current="page"
+                      style={{
+                        fontFamily: changeLang
+                          ? "Almarai"
+                          : "Inter , sans-serif",
+                      }}
+                    >
+                      <span
+                        className={` text-sm text-[#6B7280]  ${
+                          changeLang ? "ms-[13px] lg:ms-[9px]" : ""
+                        }`}
+                      >
+                        {t("Destination")}{" "}
+                      </span>{" "}
+                      <br />
+                      <span className=" font-bold text-[#1F2937] relative -top-1  ms-[5px] sm:ms-0 md:ms-[5px] xl:ms-0">
+                        {shipmentData.end_location}
+                      </span>
+                    </li>
+                  </ol>
                   <p className=" flex flex-col gap-4 ms-[23px] sm:ms-0 sm:gap-0 sm:flex-row mt-[50px] justify-between w-[90%]  ">
                     <span
                       className="text-center sm:text-start"
@@ -519,7 +520,6 @@ export default function SingleBookingDetail({
                   </div>
                   {bookingDetail &&
                     bookingDetail.length > 0 &&
-                   
                     bookingDetail.map((car) => (
                       <div className="container mb-[20px]">
                         <div className="flex w-[95%] items-center  ms-3  text-sm justify-between gap-9 bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-2 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
@@ -595,22 +595,22 @@ export default function SingleBookingDetail({
                       } `}
                       style={{
                         color:
-                          status.name_en === "Pending" ||
-                          status.name_en === "On Progress"
+                          status.name_en === "Pending"
                             ? "#1F2937"
                             : status.name_en === "Completed" ||
-                              status.name_en === "Confirmed"
+                              status.name_en === "Confirmed" ||
+                              status.name_en === "On Progress"
                             ? "#115E59"
                             : "#EF4444",
                         fontFamily: changeLang
                           ? "Almarai"
                           : "Inter , sans-serif",
                         backgroundColor:
-                          status.name_en === "Pending" ||
-                          status.name_en === "On Progress"
+                          status.name_en === "Pending" 
                             ? " #E5E7EB"
                             : status.name_en === "Completed" ||
-                              status.name_en === "Confirmed"
+                              status.name_en === "Confirmed" ||
+                          status.name_en === "On Progress"
                             ? "#CCFBF1"
                             : "#FECACA",
                       }}
@@ -719,7 +719,7 @@ export default function SingleBookingDetail({
                           style={{
                             border: "1px solid #E5E7EB",
                             backgroundColor:
-                              bookingStatusId === 2 ? "#CCFBF1" : "",
+                              status.booking_status_id === 2 ? "#CCFBF1" : "",
                           }}
                         >
                           {t("B")}
@@ -757,8 +757,8 @@ export default function SingleBookingDetail({
                     </li>
                   </ul>
                 </div>
-                {(bookingState === "Pending" ||
-                  bookingState === "Confirmed") && (
+                {(status.name_en === "Pending" ||
+                  status.name_en === "Confirmed") && (
                   <div className="flex booking">
                     <button
                       onClick={() => setShowCancelBookingModal(true)}
