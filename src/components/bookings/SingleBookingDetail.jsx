@@ -781,7 +781,7 @@ export default function SingleBookingDetail({
         </div>
       </div>
       <div className=" ms-[-80px] lg:ms-[20px]" style={{ width: "80vw" }}>
-        {bookingStatusId === 3 && <Map lat={lat} long={long} />}
+        {bookingData.booking_status_id === 3 && <Map lat={lat} long={long} />}
       </div>
     </>
   );
