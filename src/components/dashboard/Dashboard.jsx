@@ -118,7 +118,7 @@ const Dashboard = ({
             style={{
               fontSize: "20px",
               color: "#353B47",
-              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {t("Welcome back")} , <br />{" "}
@@ -137,7 +137,7 @@ const Dashboard = ({
               <h1
                 className=" p-[20px] text-[#353B47] font-bold"
                 style={{
-                  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                  fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
                 }}
               >
                 {t("Upcoming Shipments")}

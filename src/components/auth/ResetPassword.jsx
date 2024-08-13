@@ -12,7 +12,7 @@ import { getAuthToken } from "../util/auth";
 import { PhoneInput } from "react-international-phone";
 import { useTranslation } from "react-i18next";
 
-export default function ResetPasssword({ changeLang }) {
+export default function ResetPasssword() {
   const [otp, setotp] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -104,7 +104,7 @@ export default function ResetPasssword({ changeLang }) {
   return (
     <div
       className={`sign-up-box   h-[800px]  bg-[#E5E7EB]`}
-      style={{ fontFamily: changeLang ? "Almarai" : "" }}
+      style={{ fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "" }}
     >
       <div className=" flex justify-center items-start relative  top-[50px] ">
         <img src={logo} style={{ width: "30px", height: "30px" }} alt="logo" />
@@ -113,7 +113,7 @@ export default function ResetPasssword({ changeLang }) {
             className=" font-bold text-xl relative mb-1"
             style={{
               color: "#04036B",
-              fontFamily: changeLang ? "Almarai" : "Cairo ExtraLight",
+              fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Cairo ExtraLight",
             }}
           >
             سواكن للنقل و التجارة
@@ -121,7 +121,7 @@ export default function ResetPasssword({ changeLang }) {
           <span
             className="text-[7px]   uppercase font-normal"
             style={{
-              fontFamily: changeLang ? "Almarai" : "Inter, sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter, sans-serif",
               width: "128px",
               whiteSpace: "nowrap",
             }}
@@ -137,7 +137,7 @@ export default function ResetPasssword({ changeLang }) {
         <div className=" pt-[20px]  relative header">
           <h1
             className="text-center text-[#1F2937] font-bold text-[24px] mb-2"
-            style={{ fontFamily: changeLang ? "Almarai" : "Inter,sans-serif" }}
+            style={{ fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter,sans-serif" }}
           >
             {t("Reset Password")}
           </h1>
@@ -153,7 +153,7 @@ export default function ResetPasssword({ changeLang }) {
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
               style={{
-                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Email")}
@@ -181,7 +181,7 @@ export default function ResetPasssword({ changeLang }) {
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
               style={{
-                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Otp")}
@@ -215,7 +215,7 @@ export default function ResetPasssword({ changeLang }) {
               htmlFor=""
               className={`text-[#1F2937] font-normal text-[14px] `}
               style={{
-                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Password")}
@@ -243,7 +243,7 @@ export default function ResetPasssword({ changeLang }) {
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
               style={{
-                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Confirm Password")}
@@ -273,7 +273,7 @@ export default function ResetPasssword({ changeLang }) {
               class={`py-3 px-4 block w-full font-semibold  text-[15px] rounded-lg text-sm bg-[#04036B] text-white`}
               style={{
                 boxShadow: " 0 0 1px 0 gray",
-                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
                 cursor: "pointer",
               }}
             />

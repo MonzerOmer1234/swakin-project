@@ -155,7 +155,7 @@ const Shipment = ({
         />
 
         <div
-          style={{ fontFamily: changeLang ? "Almarai" : "Inter , sans-serif " }}
+          style={{ fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif " }}
           className=" flex gap-3 md:gap-0 flex-col md:flex-row justify-between  items-center p-5 bg-[#E5E7EB]"
         >
           <h1 className=" font-bold text-2xl">{t("Shipments")}</h1>

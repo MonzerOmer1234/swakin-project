@@ -102,7 +102,7 @@ const Bookings = ({
               <span
                 className="text-[#4B5563]"
                 style={{
-                  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                  fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
                 }}
               >
                 {t("Bookings")}{" "}
@@ -113,7 +113,7 @@ const Bookings = ({
         />
         <h1
           className="p-6 font-bold text-xl text-[#353B47]  bg-[#E5E7EB]"
-          style={{ fontFamily: changeLang ? "Almarai" : "Inter , sans-serif" }}
+          style={{ fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif" }}
         >
           {t("My Bookings")}
         </h1>
@@ -140,7 +140,7 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3  text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500 text-center"
                             style={{
-                              fontFamily: changeLang
+                              fontFamily: window.localStorage.getItem('lang') === "ar"
                                 ? "Almarai"
                                 : "Inter , sans-serif",
                             }}
@@ -151,7 +151,7 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: changeLang
+                              fontFamily: window.localStorage.getItem('lang') === "ar"
                                 ? "Almarai"
                                 : "Inter , sans-serif",
                             }}
@@ -162,7 +162,7 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: changeLang
+                              fontFamily: window.localStorage.getItem('lang') === "ar"
                                 ? "Almarai"
                                 : "Inter , sans-serif",
                             }}
@@ -174,7 +174,7 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: changeLang
+                              fontFamily: window.localStorage.getItem('lang') === "ar"
                                 ? "Almarai"
                                 : "Inter , sans-serif",
                             }}
@@ -185,7 +185,7 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: changeLang
+                              fontFamily: window.localStorage.getItem('lang') === "ar"
                                 ? "Almarai"
                                 : "Inter , sans-serif",
                             }}
@@ -196,7 +196,7 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: changeLang
+                              fontFamily: window.localStorage.getItem('lang') === "ar"
                                 ? "Almarai"
                                 : "Inter , sans-serif",
                             }}
@@ -207,7 +207,7 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: changeLang
+                              fontFamily: window.localStorage.getItem('lang') === "ar"
                                 ? "Almarai"
                                 : "Inter , sans-serif",
                             }}
@@ -219,7 +219,7 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: changeLang
+                              fontFamily: window.localStorage.getItem('lang') === "ar"
                                 ? "Almarai"
                                 : "Inter , sans-serif",
                             }}

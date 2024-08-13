@@ -144,7 +144,7 @@ export default function DashboardContentThree({ setData , changeLang }) {
           backgroundColor: "white",
           borderRadius: "8px",
           border: "1px solid #E5E7EB",
-          fontFamily : changeLang ? 'Almarai' : 'Inter , sans-serif'
+          fontFamily : window.localStorage.getItem('lang') === "ar" ? 'Almarai' : 'Inter , sans-serif'
        
         }}
         className=" p-6 lg:me-0 me-[20px]"
@@ -199,7 +199,7 @@ export default function DashboardContentThree({ setData , changeLang }) {
               <div className=" text-sm">
                 <span
                   className={`text-[#1F2937] font-bold ${changeLang ? 'text-center w-full block':""} `}
-                  style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
+                  style={{ fontFamily: window.localStorage.getItem('lang') === "ar" ? 'Almarai' : "Inter , sans-serif" }}
                 >
                  {t('Chassis No')}
                 </span>

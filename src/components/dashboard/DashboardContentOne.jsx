@@ -102,7 +102,7 @@ export default function DashboardContentOne({ changeLang }) {
               className="font-semibold "
               style={{
                 color: "#353B47",
-                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Active Booking")}
@@ -155,7 +155,7 @@ export default function DashboardContentOne({ changeLang }) {
                 >
                   <span
                     className={`relative top-[-12px] ${
-                      !changeLang ? "start-[20px]" : "end-[-20px]"
+                      window.localStorage.getItem('lang') !== "ar" ? "start-[20px]" : "end-[-20px]"
                     } font-medium text-gray-800 dark:text-white`}
                   >
                     <p
@@ -228,7 +228,7 @@ export default function DashboardContentOne({ changeLang }) {
                 >
                   <span
                     className={` relative top-[-12px] ${
-                      !changeLang ? "start-[20px]" : "end-[-20px]"
+                      window.localStorage.getItem('lang') !== "ar" ? "start-[20px]" : "end-[-20px]"
                     } font-medium text-gray-800 dark:text-white`}
                   >
                     <p

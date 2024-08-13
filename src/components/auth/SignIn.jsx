@@ -104,14 +104,14 @@ export default function SignIn({changeLang}) {
         <p className="ms-2 flex flex-col justify-center items-start">
           <span
             className=" font-bold text-xl relative mb-1"
-            style={{ color: "#04036B", fontFamily: changeLang ? 'Almarai' : "Cairo ExtraLight"  }}
+            style={{ color: "#04036B", fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Cairo ExtraLight"  }}
           >
             سواكن للنقل و التجارة
           </span>
           <span
             className="text-[7px]   uppercase font-normal"
             style={{
-              fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif",
               width: "128px",
               whiteSpace: "nowrap",
             }}
@@ -127,13 +127,13 @@ export default function SignIn({changeLang}) {
         <div className="pt-[20px] relative header">
           <h1
             className="text-center text-[#1F2937] font-bold text-[24px] mb-2"
-            style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
+            style={{ fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif" }}
           >
             {t('Sign In')}
           </h1>
           <p
             className=" text-[#515661] text-center font-normal text-[14px]"
-            style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
+            style={{ fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif" }}
           >
             {t("Don't have an account ?")}
             <Link to={"/sign-up"} className=" text-[#2A2981] font-medium">
@@ -154,7 +154,7 @@ export default function SignIn({changeLang}) {
             <label
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
-              style={{ fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif" }}
+              style={{ fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif" }}
             >
               {t('Email Address')}
             </label>
@@ -178,7 +178,7 @@ export default function SignIn({changeLang}) {
             <label
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
-              style={{fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif"}}
+              style={{fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif"}}
             >
               <p className=" flex justify-between items-center password">
                 <span>{t('Password')}</span>
@@ -209,7 +209,7 @@ export default function SignIn({changeLang}) {
               class="py-3 px-4 block w-full font-semibold  text-[15px] rounded-lg text-sm bg-[#04036B] text-white"
               style={{
                 boxShadow: " 0 0 1px 0 gray",
-                fontFamily: changeLang ? 'Almarai' : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif",
                 cursor: "pointer",
               }}
             />

@@ -27,10 +27,10 @@ export default function Sidebar({
   // this function handles the navigation between sidebar tabs
 
   function handleClick(index) {
-    if(index !== 6){
+
 
       setCurrentIndex(index);
-    }
+    
 
     if (index === 5) {
      console.log(currentIndex)
@@ -57,8 +57,10 @@ export default function Sidebar({
   }
 
   function handleChange(){
-     
-      setChangeLang(!changeLang)
+      if(currentIndex === 6){
+
+        setChangeLang(!changeLang)
+      }
     }
   
 
@@ -160,7 +162,7 @@ export default function Sidebar({
                     <Link
                       style={{
                         color: "#2E3441",
-                        fontFamily: changeLang ? 'Alamari' : 'Inter , sans-serif',
+                        fontFamily: window.localStorage.getItem('lang') === "ar" ? 'Alamari' : 'Inter , sans-serif',
                       }}
                       className={` flex items-center gap-x-3.5 py-2 px-2.5  rounded-lg  ${
                         currentIndex === index ? "active" : ""

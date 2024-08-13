@@ -110,7 +110,7 @@ export default function Signup({ changeLang }) {
   return (
     <div
       className={`sign-up-box   h-[900px]  bg-[#E5E7EB]`}
-      style={{ fontFamily: changeLang ? "Almarai" : "" }}
+      style={{ fontFamily: window.localStorage.getItem('lang') === "ar"  ? "Almarai" : "" }}
     >
       <div className=" flex justify-center items-start relative  top-[50px] ">
         <img src={logo} style={{ width: "30px", height: "30px" }} alt="logo" />
@@ -119,7 +119,7 @@ export default function Signup({ changeLang }) {
             className=" font-bold text-xl relative mb-1"
             style={{
               color: "#04036B",
-              fontFamily: changeLang ? "Almarai" : "Cairo ExtraLight",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ? "Almarai" : "Cairo ExtraLight",
             }}
           >
             سواكن للنقل و التجارة
@@ -127,7 +127,7 @@ export default function Signup({ changeLang }) {
           <span
             className="text-[7px]   uppercase font-normal"
             style={{
-              fontFamily: changeLang ? "Almarai" : "Inter, sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ? "Almarai" : "Inter, sans-serif",
               width: "128px",
               whiteSpace: "nowrap",
             }}
@@ -143,14 +143,14 @@ export default function Signup({ changeLang }) {
         <div className=" pt-[20px]  relative header">
           <h1
             className="text-center text-[#1F2937] font-bold text-[24px] mb-2"
-            style={{ fontFamily: changeLang ? "Almarai" : "Inter,sans-serif" }}
+            style={{ fontFamily: window.localStorage.getItem('lang') === "ar"  ? "Almarai" : "Inter,sans-serif" }}
           >
             {t("Sign Up")}
           </h1>
           <p
             className=" text-[#515661] text-center font-normal text-[14px]"
             style={{
-              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {t("Already have an account?")}{" "}
@@ -169,7 +169,7 @@ export default function Signup({ changeLang }) {
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
               style={{
-                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar"  ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Full Name")}
@@ -196,7 +196,7 @@ export default function Signup({ changeLang }) {
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
               style={{
-                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar"  ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Email Address")}
@@ -223,7 +223,7 @@ export default function Signup({ changeLang }) {
             htmlFor=""
             className=" text-[#1F2937] font-normal text-[14px] "
             style={{
-              fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ? "Almarai" : "Inter , sans-serif",
             }}
           >
             <div className=" flex justify-between phone-box">
@@ -250,7 +250,7 @@ export default function Signup({ changeLang }) {
               htmlFor=""
               className={`text-[#1F2937] font-normal text-[14px] `}
               style={{
-                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar"  ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Password")}
@@ -278,7 +278,7 @@ export default function Signup({ changeLang }) {
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
               style={{
-                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar"  ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Confirm Password")}
@@ -308,7 +308,7 @@ export default function Signup({ changeLang }) {
               class={`py-3 px-4 block w-full font-semibold  text-[15px] rounded-lg text-sm bg-[#04036B] text-white`}
               style={{
                 boxShadow: " 0 0 1px 0 gray",
-                fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar"  ? "Almarai" : "Inter , sans-serif",
                 cursor: "pointer",
               }}
             />

@@ -134,7 +134,7 @@ export default function Profile({
               <h1
                 className=" p-4 font-bold text-[#353B47] receipt-info"
                 style={{
-                  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                  fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
                 }}
               >
                 {t("Basic Details")}
@@ -180,7 +180,7 @@ export default function Profile({
                       htmlFor=""
                       className=" text-[#1F2937] font-normal text-[14px] "
                       style={{
-                        fontFamily: changeLang
+                        fontFamily: window.localStorage.getItem('lang') === "ar"
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
@@ -218,7 +218,7 @@ export default function Profile({
                       htmlFor=""
                       className=" text-[#1F2937] font-normal text-[14px] "
                       style={{
-                        fontFamily: changeLang
+                        fontFamily: window.localStorage.getItem('lang') === "ar"
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
@@ -256,7 +256,7 @@ export default function Profile({
                     htmlFor=""
                     className=" text-[#1F2937] font-normal text-[14px] "
                     style={{
-                      fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                      fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
                     }}
                   >
                     <div className=" flex justify-between phone-box">
@@ -284,7 +284,7 @@ export default function Profile({
                       htmlFor=""
                       className=" text-[#1F2937] font-normal text-[14px] "
                       style={{
-                        fontFamily: changeLang
+                        fontFamily: window.localStorage.getItem('lang') === "ar"
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
@@ -314,7 +314,7 @@ export default function Profile({
                       htmlFor=""
                       className=" text-[#1F2937] font-normal text-[14px] "
                       style={{
-                        fontFamily: changeLang
+                        fontFamily: window.localStorage.getItem('lang') === "ar"
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
@@ -352,7 +352,7 @@ export default function Profile({
                     style={{
                       border: "1px solid #1F2937",
                       borderRadius: "8px",
-                      fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                      fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
                     }}
                   >
                     {t("update profile")}
