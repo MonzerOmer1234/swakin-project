@@ -19,56 +19,50 @@ export default function Sidebar({
 
   const [t] = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [loading , setLoading] = useState(false);
-  const [error , setError] = useState({})
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
 
   const location = useLocation();
 
   // this function handles the navigation between sidebar tabs
 
   function handleClick(index) {
-
-    
-
-       setCurrentIndex(index);
-     
-    
+    setCurrentIndex(index);
 
     if (index === 5) {
-     console.log(currentIndex)
+      console.log(currentIndex);
       logout();
       const token = getAuthToken();
-         
+
       async function handleLogout() {
-       
-        try{
-          setLoading(true)
-          const res = await axios.post('https://soaken.neuecode.com/api/logout' , {
-             headers : {
-              Authorization : `Bearer ${token}`
-             }
-          })
-          console.log(res)
-          setLoading(false)
-        } catch(error){
-            setError(error)
-            setLoading(false)
+        try {
+          setLoading(true);
+          const res = await axios.post(
+            "https://soaken.neuecode.com/api/logout",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          console.log(res);
+          setLoading(false);
+        } catch (error) {
+          setError(error);
+          setLoading(false);
         }
       }
     }
   }
 
-  function handleChange(){
-      if(currentIndex === 6){
-       setCurrentIndex(6)
-        window.localStorage.getItem('lang') === "ar" ? window.localStorage.setItem('lang' , 'en') : window.localStorage.setItem('lang' , 'ar') 
-
-      }
+  function handleChange() {
+    if (currentIndex === 6) {
+       setChangeLang(!changeLang)
+     
     }
-  
+  }
 
-
-// checking the active index
+  // checking the active index
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -91,7 +85,7 @@ export default function Sidebar({
     }
   }, [location.pathname, id, serial, bid]);
   // network error
-  if ( error &&  error.message === "Network Error") {
+  if (error && error.message === "Network Error") {
     return (
       <>
         <div className=" flex flex-col justify-center items-center w-screen h-screen gap-4">
@@ -111,7 +105,7 @@ export default function Sidebar({
           </svg>
           <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            {t('please check your connection !!!')}
+            {t("please check your connection !!!")}
           </p>
         </div>
       </>
@@ -158,14 +152,17 @@ export default function Sidebar({
           className="hs-accordion-group p-6 w-full flex flex-col flex-wrap"
           data-hs-accordion-always-open
         >
-          <ul className="space-y-1.5" >
+          <ul className="space-y-1.5">
             {tabs && tabs.length > 0
               ? tabs.map((tab, index) => (
                   <li key={tab?.text}>
                     <Link
                       style={{
                         color: "#2E3441",
-                        fontFamily: window.localStorage.getItem('lang') === "ar" ? 'Alamari' : 'Inter , sans-serif',
+                        fontFamily:
+                          window.localStorage.getItem("lang") === "ar"
+                            ? "Alamari"
+                            : "Inter , sans-serif",
                       }}
                       className={` flex items-center gap-x-3.5 py-2 px-2.5  rounded-lg  ${
                         currentIndex === index ? "active" : ""
