@@ -2,7 +2,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import React, { createContext } from "react";
 import "./App.css";
 import axios from "axios";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import "react-loading-skeleton/dist/skeleton.css";
 import SideTabs from "./components/sidebar/SideTabs";
 import Dashboard from "./components/dashboard/Dashboard";
@@ -21,11 +21,6 @@ import ForgotPassword from "./components/auth/ForgotPassword";
 import ResetPassword from "./components/auth/ResetPassword";
 import { mainpulateUserName } from "./components/util/user";
 import Profile from "./components/profile/Profile";
-import Map from "./components/Map/Map";
-
-export const SpecifedCarsContext = createContext(null)
-
-
 
 function App() {
   // share the data across the entire application
@@ -57,32 +52,57 @@ function App() {
   const [bookingState, setBookingState] = useState("");
   const [policy, setPolicy] = useState(null);
   const [showCancelBookingModal, setShowCancelBookingModal] = useState(false);
-  const [bookingStatusId , setBookingStatusId] = useState(0);
+  const [bookingStatusId, setBookingStatusId] = useState(0);
 
 
+   localStorage.setItem('changeLang' , changeLang)
+  
+
+  // switch between languages
 
 
-
-
-
-
-
-  // handling of switching between arabic and english
-
-  useEffect(() => {
     if (changeLang) {
-      i18n.changeLanguage("ar");
+      window.localStorage.getItem('lang') === "ar" ? window.localStorage.setItem('lang' , 'en') : window.localStorage.setItem('lang' , 'ar') ;
 
-      document.body.style.direction = "rtl";
+      const data = window.localStorage.getItem('lang');
+    
+      i18n.changeLanguage(data);
+
+      if(data === "ar"){
+        document.body.style.direction = "rtl";
       document.body.style.fontFamily = "Almarai !important";
+      } else{
+
+        document.body.style.direction = "ltr";
+        document.body.style.fontFamily = "Inter , sans-serif"
+      }
+
+      
+      
     } else {
-      i18n.changeLanguage("en");
+      // window.localStorage.getItem('lang') === "" || window.localStorage.getItem('lang') === "ar" ? window.localStorage.setItem('lang' , 'ar') : window.localStorage.setItem('lang' , 'en') ;
 
-      document.body.style.direction = "ltr";
+      const data = window.localStorage.getItem('lang');
+      console.log(data)
+      i18n.changeLanguage(data);
+      
+      if(data === "ar" || !data){
+        document.body.style.direction = "rtl";
+      document.body.style.fontFamily = "Almarai !important";
+      } else{
+
+        document.body.style.direction = "ltr";
+        document.body.style.fontFamily = "Inter , sans-serif"
+      }
+
+    
+
     }
-  }, [changeLang]);
+  
 
-  // Consume the user api and get data 
+
+
+  // Consume the user api and get data
 
   const token = getAuthToken();
   const getUserData = useCallback(
@@ -123,7 +143,6 @@ function App() {
 
   const newName = mainpulateUserName(username);
 
-
   // Checking of the path of routes to conditionally render the sidebar
 
   const location = useLocation();
@@ -131,13 +150,12 @@ function App() {
     setPath(location.pathname);
   }, [path, location.pathname]);
 
-
   // loading skeleton
 
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
-        <ReactLoading type="spin" color="#1D4ED8"/>
+        <ReactLoading type="spin" color="#1D4ED8" />
       </div>
     );
   }
@@ -172,7 +190,6 @@ function App() {
 
   return (
     <>
-    
       {path !== "/sign-up" &&
       path !== "/sign-in" &&
       path !== "/forgot-password" &&
@@ -245,8 +262,6 @@ function App() {
                       shipName={shipName}
                       specifiedCars={specifiedCars}
                       setSpecifiedCars={setSpecifiedCars}
-                     
-                      
                     />
                   }
                 />
@@ -324,7 +339,6 @@ function App() {
                     specifiedCars={specifiedCars}
                     shipmentId={shipmentId}
                     setSpecifiedCars={setSpecifiedCars}
-                   
                   />
                 }
               />
@@ -372,7 +386,6 @@ function App() {
           />
         </Routes>
       )}
-
     </>
   );
 }

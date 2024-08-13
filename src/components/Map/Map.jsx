@@ -9,6 +9,8 @@ import { useTranslation } from "react-i18next";
 export default function Map({ lat , long }) {
 
 
+  console.log(lat , long)
+
   const [map, setMap] = useState(null);
   const [t] = useTranslation();
 

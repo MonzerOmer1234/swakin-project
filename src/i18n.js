@@ -15,7 +15,7 @@ i18n
         translation: arabicTranslation
       }
     },
-    lng: "en", 
+    lng: window.localStorage.getItem('lang')||"ar", 
 
     interpolation: {
       escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape

@@ -233,7 +233,7 @@ export default function Signup({ changeLang }) {
           </label>
           <div class="relative my-[10px]  .phone-div h-[44px]">
             <PhoneInput
-              defaultCountry="sa"
+              defaultCountry="qa"
               style={{ width: "388px" }}
               value={phone}
               onChange={(e) => setPhone(e.substring(1))}

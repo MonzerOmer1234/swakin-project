@@ -166,7 +166,7 @@ export default function Navbar({
               onClick={() => setChangeLang(!changeLang)}
               class="font-medium  text-gray-600 hover:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500"
             >
-              {changeLang ? "English" : "   العربية"}
+              {changeLang ? "العربية" : "English"}
             </Link>
             <Link
               onClick={handleLogout}
@@ -212,7 +212,7 @@ export default function Navbar({
               onClick={() => setChangeLang(!changeLang)}
               class="font-medium  text-gray-600 hover:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500"
             >
-              {changeLang ? "English" : "   العربية"}
+               {changeLang ? "العربية" : "English"}
             </Link>
             <Link
               onClick={handleLogout}

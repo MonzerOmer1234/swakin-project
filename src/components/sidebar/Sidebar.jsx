@@ -53,6 +53,13 @@ export default function Sidebar({
     }
   }
 
+  function handleChange(){
+    if(currentIndex === 6){
+
+      setChangeLang(!changeLang)
+    }
+  }
+
 
 // checking the active index
 
@@ -162,7 +169,7 @@ export default function Sidebar({
                       <span className={currentIndex === index ? "active" : ""}>
                         {tab?.icon}
                       </span>
-                      <span onClick={index === 6 ? ()=>setChangeLang(!changeLang) : ()=>setChangeLang(changeLang)}>{t(tab?.text)}</span>
+                      <span onClick={handleChange}>{t(tab?.text)}</span>
                     </Link>
                   </li>
                 ))

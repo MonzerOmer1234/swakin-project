@@ -781,7 +781,7 @@ export default function SingleBookingDetail({
         </div>
       </div>
       <div className=" ms-[-80px] lg:ms-[20px]" style={{ width: "80vw" }}>
-        {bookingData.booking_status_id === 3 && <Map lat={lat} long={long} />}
+        {status.name_en=== "On Progress" && <Map lat={lat} long={long} />}
       </div>
     </>
   );
