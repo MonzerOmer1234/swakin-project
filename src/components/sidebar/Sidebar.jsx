@@ -27,7 +27,10 @@ export default function Sidebar({
   // this function handles the navigation between sidebar tabs
 
   function handleClick(index) {
-    setCurrentIndex(index);
+    if(index !== 6){
+
+      setCurrentIndex(index);
+    }
 
     if (index === 5) {
      console.log(currentIndex)
@@ -54,11 +57,10 @@ export default function Sidebar({
   }
 
   function handleChange(){
-    if(currentIndex === 6){
-
+     
       setChangeLang(!changeLang)
     }
-  }
+  
 
 
 // checking the active index
