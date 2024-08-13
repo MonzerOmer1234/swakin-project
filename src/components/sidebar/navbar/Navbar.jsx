@@ -35,6 +35,11 @@ export default function Navbar({
   function handleBurgerIcon(){
     setOpenBurgerIcon(!openBurgerIcon)
   }
+
+  function handleChangeLang(){
+
+    window.localStorage.getItem('lang') === "ar" ? window.localStorage.setItem('lang' , 'en') : window.localStorage.setItem('lang' , 'ar') 
+  }
      
    
   // network error
@@ -163,10 +168,10 @@ export default function Navbar({
               {t("Profile")}
             </Link>
             <Link
-              onClick={() => setChangeLang(!changeLang)}
+              onClick={ handleChangeLang}
               class="font-medium  text-gray-600 hover:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500"
             >
-              {changeLang ? "العربية" : "English"}
+              {window.localStorage.getItem('lang') === "en" ? "العربية" : "English"}
             </Link>
             <Link
               onClick={handleLogout}
@@ -209,10 +214,10 @@ export default function Navbar({
               {t("Profile")}
             </Link>
             <Link
-              onClick={() => setChangeLang(!changeLang)}
+              onClick={handleChangeLang}
               class="font-medium  text-gray-600 hover:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500"
             >
-               {changeLang ? "العربية" : "English"}
+               {window.localStorage.getItem('lang') === "en" ? "العربية" : "English"}
             </Link>
             <Link
               onClick={handleLogout}

@@ -28,8 +28,10 @@ export default function Sidebar({
 
   function handleClick(index) {
 
+    
 
-      setCurrentIndex(index);
+       setCurrentIndex(index);
+     
     
 
     if (index === 5) {
@@ -58,8 +60,9 @@ export default function Sidebar({
 
   function handleChange(){
       if(currentIndex === 6){
+       setCurrentIndex(6)
+        window.localStorage.getItem('lang') === "ar" ? window.localStorage.setItem('lang' , 'en') : window.localStorage.setItem('lang' , 'ar') 
 
-        setChangeLang(!changeLang)
       }
     }
   
