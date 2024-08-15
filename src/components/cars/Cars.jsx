@@ -207,6 +207,7 @@ const Cars = ({ username, changeLang, setChangeLang }) => {
               changeLang={changeLang}
               id={id}
               carDetails={carDetails}
+              showContent={showContent}
               setShowContent={setShowContent}
               getCarData={getCarData}
             />

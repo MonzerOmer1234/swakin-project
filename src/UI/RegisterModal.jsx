@@ -6,10 +6,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
 import "./modal.css";
+import { Link } from "react-router-dom";
 
 export default function RegisterModal({
   setShowContent,
-
+  showContent,
   getCarData,
   id,
   carDetails,
@@ -41,6 +42,7 @@ export default function RegisterModal({
   );
 
   const [t] = useTranslation();
+  const [openPopup, setOpenPopup] = useState(false);
 
   console.log(carDetails);
 
@@ -83,9 +85,14 @@ export default function RegisterModal({
         );
         setSending(false);
         setError({});
-        console.log(error);
-        setShowContent(false);
-        getCarData();
+        toast.success(t("You have successfully add a new car"));
+        setOpenPopup(true);
+
+        
+        
+
+       
+        
       } catch (error) {
         console.log(error);
         setError(error.response.data.error);
@@ -133,15 +140,43 @@ export default function RegisterModal({
     }
   }
 
+  console.log(openPopup , showContent)
+
+
+
+
+
+
+  function handleAddNewCar() {
+    setOpenPopup(false);
+    setCarName("");
+    setCarModel("");
+    setCarColor("");
+    setCarChassisNo("");
+    setYear("");
+    setCarImage(null);
+  }
+
+
   console.log(carDetails.data);
 
   // changing modes depending on details of car
 
   useEffect(() => {
     if (Object.keys(carDetails).length === 0) {
-      setMode((window.localStorage.getItem('lang') === 'ar' || !window.localStorage.getItem('lang')) ? "اضافة عربة" : "Add car");
+      setMode(
+        window.localStorage.getItem("lang") === "ar" ||
+          !window.localStorage.getItem("lang")
+          ? "اضافة عربة"
+          : "Add car"
+      );
     } else {
-      setMode((window.localStorage.getItem('lang') === 'ar' || !window.localStorage.getItem('lang')) ? "تحديث السيارة" : "Update car");
+      setMode(
+        window.localStorage.getItem("lang") === "ar" ||
+          !window.localStorage.getItem("lang")
+          ? "تحديث السيارة"
+          : "Update car"
+      );
     }
   }, [carDetails, setMode, changeLang]);
 
@@ -154,20 +189,19 @@ export default function RegisterModal({
 
       toast.error(error.image && t(error.image.toString()));
     }
-  }, [error, error.chassis_no, error.image , t]);
+  }, [error, error.chassis_no, error.image, t]);
   useEffect(() => {
     if (updateError) {
       toast.error(updateError.year && t(updateError.year.toString()));
       toast.error(
-        updateError.chassis_no && t(updateError.chassis_no.toString()));
+        updateError.chassis_no && t(updateError.chassis_no.toString())
+      );
 
       toast.error(updateError.image && t(updateError.image.toString()));
     }
-  }, [updateError, updateError.chassis_no, updateError.image , t]);
+  }, [updateError, updateError.chassis_no, updateError.image, t]);
 
-
-  
-// handling network errors.
+  // handling network errors.
   if (networkError && networkError.message === "Network Error") {
     return (
       <>
@@ -197,207 +231,304 @@ export default function RegisterModal({
     );
   }
 
+  function handleClose(){
+  setShowContent(false)
+  window.location.reload();
+  }
+
   return (
     <>
-      {!changeLang && <ToastContainer />}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={true}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {openPopup ? (
+        <>
+          <div
+            className={`${
+              window.localStorage.getItem("lang") === "ar" ||
+              !window.localStorage.getItem("lang")
+                ? "overlay-ar "
+                : "overlay"
+            } `}
+            onClick={() => setShowContent(false)}
+          ></div>
+          <div
+            className={`${
+              window.localStorage.getItem("lang") === "ar" ||
+              !window.localStorage.getItem("lang")
+                ? "modal-content-ar"
+                : "modal-content"
+            } relative`}
+            style={{ height: "250px", top: "200px" }}
+          >
+            <span
+              className=" absolute  right-[20px] top-[20px] pe-3  text-xl cursor-pointer"
+              onClick={handleClose}
+            >
+              x
+            </span>
 
-      {changeLang && (
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      )}
-
-      <div
-        className={`${window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "overlay-ar" : "overlay"}`}
-        onClick={() => setShowContent(false)}
-      ></div>
-      <div className={`${window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "modal-content-ar " : "modal-content"}`}>
-        <h1 className=" text-center top-[30px] relative font-bold text-lg mb-[25px]">
-          {t("Car Info")}
-        </h1>
-
-        <span
-          className=" absolute right-[20px] top-[20px] pe-3  text-xl cursor-pointer"
-          onClick={() => setShowContent(false)}
-        >
-          x
-        </span>
-        <form
-          action=""
-          onSubmit={handleSubmit}
-          method="POST"
-          className="flex flex-col gap-[2px]"
-        >
-          <div className="ms-[30px] mt-3 ">
-            <label htmlFor="">{t("Car Name")}</label>
-            <input
-              name="car_name_ar"
-              value={carName}
-              type="text"
-              onChange={(e) => setCarName(e.target.value)}
-              className={`block mt-[15px] ps-3 `}
-              required
+            <p
+              className=" absolute add-car"
               style={{
-                border:
-                  error.car_name_ar || updateError.car_name_ar
-                    ? "1px solid red "
-                    : "1px solid rgba(128,128,128, 0.19)",
-                borderRadius: "5px",
                 height: "50px",
-                width: "calc(100% - 30px)",
+                right: "150px",
+                top: "70px",
+                fontFamily:
+                  window.localStorage.getItem("lang") === "ar" ||
+                  !window.localStorage.getItem("lang")
+                    ? "Almarai"
+                    : "Inter , sans-serif",
               }}
-            />
-          </div>
-
-          <div className="ms-[30px] mt-[20px]">
-            <label htmlFor="">{t("Car Model")}</label>
-            <input
-              name="model_ar"
-              value={carModel}
-              required
-              className={`block ps-3 mt-[15px] `}
-              type="text"
-              onChange={(e) => setCarModel(e.target.value)}
-              style={{
-                border:
-                  error.model_ar || updateError.model_ar
-                    ? "1px solid red "
-                    : "1px solid rgba(128,128,128, 0.19)",
-                borderRadius: "5px",
-                height: "50px",
-                width: "calc(100% - 30px)",
-              }}
-            />
-          </div>
-
-          <div>
-            <div className="ms-[30px] mt-[20px]">
-              <label htmlFor="">{t("Model Year")}</label>
-              <input
-                name="year"
-                type="text"
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-                required
-                className="block mt-[15px] ms-1 ps-3 "
+            >
+              {t("Are you want to add a new car?")}
+            </p>
+            <div
+              className="flex flex-col absolute gap-2 answer-add-car"
+              style={{ top: "100px", right: "150px" }}
+            >
+              <button
+                onClick={handleAddNewCar}
+                type="button"
+                class="text-white bg-blue-700 mt-[20px] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 style={{
-                  border:
-                    error.year || updateError.year
-                      ? "1px solid red "
-                      : "1px solid rgba(128,128,128, 0.19)",
-                  borderRadius: "5px",
-                  height: "50px",
-                  width: "calc(100% - 30px)",
+                  fontFamily:
+                    window.localStorage.getItem("lang") === "ar" ||
+                    !window.localStorage.getItem("lang")
+                      ? "Almarai"
+                      : "Inter , sans-serif",
                 }}
-              />
-            </div>
-          </div>
-          <div>
-            <div className="ms-[30px] mt-[20px]">
-              <label htmlFor="" className="ms-1">
-                {t("Color")}
-              </label>
-              <input
-                name="car_color"
-                value={carColor}
-                type="text"
-                onChange={(e) => setCarColor(e.target.value)}
-                required
-                className="block mt-[15px] ps-3 ms-1 "
+              >
+                {t("Yes , I want to add a new car")}
+              </button>
+              <Link
+                to={"/shipments"}
+                class="py-2.5 relative text-center me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                 style={{
-                  border:
-                    error.car_color || updateError.car_color
-                      ? "1px solid red "
-                      : "1px solid rgba(128,128,128, 0.19)",
-                  borderRadius: "5px",
-                  height: "50px",
-                  width: "calc(100% - 30px)",
+                  fontFamily:
+                    window.localStorage.getItem("lang") === "ar" ||
+                    !window.localStorage.getItem("lang")
+                      ? "Almarai"
+                      : "Inter , sans-serif",
                 }}
-              />
+              >
+                {t("Go to shipments")}
+              </Link>
             </div>
-          </div>
-          <div>
-            <div className="ms-[30px] mt-[20px]">
-              <label htmlFor="" className=" mb-2">
-                {t("Chassis Number")}
-              </label>
-              <input
-                name="chassis_no"
-                value={carChassisNo}
-                onChange={(e) => setCarChassisNo(e.target.value)}
-                type="text"
-                required
-                className="block mt-[15px] ps-3 ms-1"
-                style={{
-                  border:
-                    error.chassis_no || updateError.chassis_no
-                      ? "1px solid red "
-                      : "1px solid rgba(128,128,128, 0.19)",
-                  borderRadius: "5px",
-                  height: "50px",
-                  width: "calc(100% - 30px)",
-                }}
-              />
-            </div>
-          </div>
 
-          <div>
-            <div className="ms-[30px] mt-[20px]">
-              <form className="max-w-sm">
-                <label for="file-input " className=" mb-2">
-                  {t("Choose Image Upload")}
-                </label>
+            <div></div>
+          </div>
+        </>
+      ) : (
+        <>
+          {" "}
+          <div
+            className={`${
+              window.localStorage.getItem("lang") === "ar" ||
+              !window.localStorage.getItem("lang")
+                ? "overlay-ar"
+                : "overlay"
+            }`}
+            onClick={() => setShowContent(false)}
+          ></div>
+          <div
+            className={`${
+              window.localStorage.getItem("lang") === "ar" ||
+              !window.localStorage.getItem("lang")
+                ? "modal-content-ar "
+                : "modal-content"
+            }`}
+          >
+            <h1 className=" text-center top-[30px] relative font-bold text-lg mb-[25px]">
+              {t("Car Info")}
+            </h1>
+
+            <span
+              className=" absolute right-[20px] top-[20px] pe-3  text-xl cursor-pointer"
+              onClick={handleClose}
+            >
+              x
+            </span>
+            <form
+              action=""
+              onSubmit={handleSubmit}
+              method="POST"
+              className="flex flex-col gap-[2px]"
+            >
+              <div className="ms-[30px] mt-3 ">
+                <label htmlFor="">{t("Car Name")}</label>
                 <input
-                  type="file"
-                  onChange={(e) => setCarImage(e.target.files[0])}
+                  name="car_name_ar"
+                  value={carName}
+                  type="text"
+                  onChange={(e) => setCarName(e.target.value)}
+                  className={`block mt-[15px] ps-3 `}
                   required
-                  name="image"
-                  id="file-input"
-                  className="mt-[15px] ms-1 block image-div w-[396px] border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10   disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400
-              file:bg-gray-50 file:border-0 file:me-4 file:py-3 file:px-4 dark:file:bg-neutral-700 dark:file:text-neutral-400"
                   style={{
                     border:
-                      error.image || updateError.image
+                      error.car_name_ar || updateError.car_name_ar
                         ? "1px solid red "
                         : "1px solid rgba(128,128,128, 0.19)",
-                  }}
-                />
-              </form>
-              <div
-                className="flex w-[480px] ms-[20px] justify-end  gap-[10px] mt-[16px]"
-                style={{ width: "calc(100% - 20px)" }}
-              >
-                <input
-                  onClick={handleReset}
-                  type="reset"
-                  value={t("Cancel")}
-                  className="p-3 cursor-pointer h-[45px]"
-                  style={{
-                    boxShadow: "0 0 10px #ddd",
                     borderRadius: "5px",
-                    border: "1px solid rgba(128,128,128,0.19)",
+                    height: "50px",
+                    width: "calc(100% - 30px)",
                   }}
-                />
-                <input
-                  type="submit"
-                  value={sending || sendingUpdate ? t("Submitting ...") : mode}
-                  className="bg-[#04036B] text-white p-3 mb-2 text-center cursor-pointer"
-                  style={{ lineHeight: "20px", borderRadius: "5px" }}
                 />
               </div>
-            </div>
+
+              <div className="ms-[30px] mt-[20px]">
+                <label htmlFor="">{t("Car Model")}</label>
+                <input
+                  name="model_ar"
+                  value={carModel}
+                  required
+                  className={`block ps-3 mt-[15px] `}
+                  type="text"
+                  onChange={(e) => setCarModel(e.target.value)}
+                  style={{
+                    border:
+                      error.model_ar || updateError.model_ar
+                        ? "1px solid red "
+                        : "1px solid rgba(128,128,128, 0.19)",
+                    borderRadius: "5px",
+                    height: "50px",
+                    width: "calc(100% - 30px)",
+                  }}
+                />
+              </div>
+
+              <div>
+                <div className="ms-[30px] mt-[20px]">
+                  <label htmlFor="">{t("Model Year")}</label>
+                  <input
+                    name="year"
+                    type="text"
+                    value={year}
+                    onChange={(e) => setYear(e.target.value)}
+                    required
+                    className="block mt-[15px] ms-1 ps-3 "
+                    style={{
+                      border:
+                        error.year || updateError.year
+                          ? "1px solid red "
+                          : "1px solid rgba(128,128,128, 0.19)",
+                      borderRadius: "5px",
+                      height: "50px",
+                      width: "calc(100% - 30px)",
+                    }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="ms-[30px] mt-[20px]">
+                  <label htmlFor="" className="ms-1">
+                    {t("Color")}
+                  </label>
+                  <input
+                    name="car_color"
+                    value={carColor}
+                    type="text"
+                    onChange={(e) => setCarColor(e.target.value)}
+                    required
+                    className="block mt-[15px] ps-3 ms-1 "
+                    style={{
+                      border:
+                        error.car_color || updateError.car_color
+                          ? "1px solid red "
+                          : "1px solid rgba(128,128,128, 0.19)",
+                      borderRadius: "5px",
+                      height: "50px",
+                      width: "calc(100% - 30px)",
+                    }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="ms-[30px] mt-[20px]">
+                  <label htmlFor="" className=" mb-2">
+                    {t("Chassis Number")}
+                  </label>
+                  <input
+                    name="chassis_no"
+                    value={carChassisNo}
+                    onChange={(e) => setCarChassisNo(e.target.value)}
+                    type="text"
+                    required
+                    className="block mt-[15px] ps-3 ms-1"
+                    style={{
+                      border:
+                        error.chassis_no || updateError.chassis_no
+                          ? "1px solid red "
+                          : "1px solid rgba(128,128,128, 0.19)",
+                      borderRadius: "5px",
+                      height: "50px",
+                      width: "calc(100% - 30px)",
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="ms-[30px] mt-[20px]">
+                  <form className="max-w-sm">
+                    <label for="file-input " className=" mb-2">
+                      {t("Choose Image Upload")}
+                    </label>
+                    <input
+                      type="file"
+                      onChange={(e) => setCarImage(e.target.files[0])}
+                      required
+                      name="image"
+                      id="file-input"
+                      className="mt-[15px] ms-1 block image-div w-[396px] border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10   disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400
+        file:bg-gray-50 file:border-0 file:me-4 file:py-3 file:px-4 dark:file:bg-neutral-700 dark:file:text-neutral-400"
+                      style={{
+                        border:
+                          error.image || updateError.image
+                            ? "1px solid red "
+                            : "1px solid rgba(128,128,128, 0.19)",
+                      }}
+                    />
+                  </form>
+                  <div
+                    className="flex w-[480px] ms-[20px] justify-end  gap-[10px] mt-[16px]"
+                    style={{ width: "calc(100% - 20px)" }}
+                  >
+                    <input
+                      onClick={handleReset}
+                      type="reset"
+                      value={t("Cancel")}
+                      className="p-3 cursor-pointer h-[45px]"
+                      style={{
+                        boxShadow: "0 0 10px #ddd",
+                        borderRadius: "5px",
+                        border: "1px solid rgba(128,128,128,0.19)",
+                      }}
+                    />
+                    <input
+                      type="submit"
+                      value={
+                        sending || sendingUpdate ? t("Submitting ...") : mode
+                      }
+                      className="bg-[#04036B] text-white p-3 mb-2 text-center cursor-pointer"
+                      style={{ lineHeight: "20px", borderRadius: "5px" }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
+        </>
+      )}
     </>
   );
 }
