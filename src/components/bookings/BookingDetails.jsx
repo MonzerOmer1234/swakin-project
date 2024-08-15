@@ -272,7 +272,7 @@ export default function BookingDetails({
             <h1
               className="mb-[50px] font-bold text-[#353B47]"
               style={{
-                fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Booking")}

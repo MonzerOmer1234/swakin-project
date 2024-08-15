@@ -110,7 +110,7 @@ export default function DashboardContentTwo({
           <span
             className="font-bold text-[#1F2937] whitespace-nowrap  "
             style={{
-              fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {" "}
@@ -127,7 +127,7 @@ export default function DashboardContentTwo({
             <span
               className="text-[#1F2937] whitespace-nowrap p-2"
               style={{
-                fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t(status)}
@@ -139,7 +139,7 @@ export default function DashboardContentTwo({
           <span
             className=" ms-auto  font-bold text-[#1F2937] text-sm whitespace-nowrap"
             style={{
-              fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {price} {t("SAR")}
@@ -168,7 +168,7 @@ export default function DashboardContentTwo({
           </div>
           <span
             style={{
-              fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {t("Ship Name")}
@@ -190,7 +190,7 @@ export default function DashboardContentTwo({
         >
           <li
             style={{
-              fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
             }}
           >
             <a className="flex  flex-col text-[17px] md:ms-[69px] lg:ms-[130px] xl:ms-[13px]   items-center text-sm text-gray-500">
@@ -205,7 +205,7 @@ export default function DashboardContentTwo({
           <li
             className=" flex flex-col  sm:flex-row gap-4  sm:relative "
             style={{
-              fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {stopPoints.map((point) => (
@@ -230,12 +230,12 @@ export default function DashboardContentTwo({
             } md:ms-0  sm:relative items-center text-[17px] `}
             aria-current="page"
             style={{
-              fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
             }}
           >
             <span
               className={` text-sm text-[#6B7280]  ${
-                window.localStorage.getItem('lang') === "ar" ? "ms-[13px] lg:ms-[9px]" : ""
+                window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "ms-[13px] lg:ms-[9px]" : ""
               }`}
             >
               {t("Destination")}{" "}
@@ -253,7 +253,7 @@ export default function DashboardContentTwo({
               className=" text-gray-600 font-bold bg-[#F5F6F6] p-2  "
               style={{
                 borderRadius: "5px",
-                fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Departure Date")}{" "}
@@ -263,7 +263,7 @@ export default function DashboardContentTwo({
               className="text-gray-600 font-bold  bg-[#F5F6F6] p-2"
               style={{
                 borderRadius: "5px",
-                fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
               }}
             >
               {t("Duration")}{" "}
@@ -276,7 +276,7 @@ export default function DashboardContentTwo({
           <div
             className="flex ms-5 mb-3 gap-3 items-center mt-10 "
             style={{
-              fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
             }}
           >
             <p
@@ -297,7 +297,7 @@ export default function DashboardContentTwo({
         </div>
         <div
           className="flex ms-5 p-6 items-center"
-          style={{ fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif" }}
+          style={{ fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif" }}
         >
           <p>
             {t("Available Seats")}:{" "}

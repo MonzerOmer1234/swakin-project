@@ -96,14 +96,16 @@ export default function ForgotPassword() {
         <p className="ms-2 flex flex-col justify-center items-start">
           <span
             className=" font-bold text-xl relative mb-1"
-            style={{ color: "#04036B", fontFamily: window.localStorage.getItem('lang') === "ar" ? 'Almarai' : "Cairo ExtraLight"  }}
+            style={{ color: "#04036B", fontFamily: window.localStorage.getItem('lang') === "ar"  ||
+              !window.localStorage.getItem("lang") ? 'Almarai' : "Cairo ExtraLight"  }}
           >
             سواكن للنقل و التجارة
           </span>
           <span
             className="text-[7px]   uppercase font-normal"
             style={{
-              fontFamily: window.localStorage.getItem('lang') === "ar" ? 'Almarai' : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ||
+              !window.localStorage.getItem("lang") ? 'Almarai' : "Inter , sans-serif",
               width: "128px",
               whiteSpace: "nowrap",
             }}
@@ -130,7 +132,8 @@ export default function ForgotPassword() {
             <label
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
-              style={{ fontFamily: window.localStorage.getItem('lang') === "ar" ? 'Almarai' : "Inter , sans-serif" }}
+              style={{ fontFamily: window.localStorage.getItem('lang') === "ar"  ||
+                !window.localStorage.getItem("lang") ? 'Almarai' : "Inter , sans-serif" }}
             >
               {t('Email Address')}
             </label>
@@ -160,7 +163,8 @@ export default function ForgotPassword() {
               class="py-3 px-4 block w-full font-semibold  text-[15px] rounded-lg text-sm bg-[#04036B] text-white"
               style={{
                 boxShadow: " 0 0 1px 0 gray",
-                fontFamily: window.localStorage.getItem('lang') === "ar" ? 'Almarai' : "Inter , sans-serif",
+                fontFamily: window.localStorage.getItem('lang') === "ar"  ||
+                !window.localStorage.getItem("lang") ? 'Almarai' : "Inter , sans-serif",
                 cursor: "pointer",
               }}
             />

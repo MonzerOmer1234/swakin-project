@@ -91,7 +91,8 @@ export default function Navbar({
                 className=" font-semibold text-xl relative top-1"
                 style={{
                   color: "#04036B",
-                  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                  fontFamily: window.localStorage.getItem('lang') === "ar"  ||
+                  !window.localStorage.getItem("lang")  ? "Almarai" : "Inter , sans-serif",
                 }}
               >
                 سواكن للنقل و التجارة
@@ -99,7 +100,8 @@ export default function Navbar({
               <span
                 className="text-[7px]   uppercase font-normal"
                 style={{
-                  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                  fontFamily: window.localStorage.getItem('lang') === "ar"  ||
+                  !window.localStorage.getItem("lang")  ? "Almarai" : "Inter , sans-serif",
                   width: "128px",
                   whiteSpace: "nowrap",
                 }}
@@ -183,7 +185,8 @@ export default function Navbar({
         </nav>
       </header>
       <div
-            className={` ${openBurgerIcon ? 'flex' : 'hidden'} ${changeLang ? 'ps-4' : 'ps-5'} bg-white  relative links flex-col items-center gap-[20px]`}
+            className={` ${openBurgerIcon ? 'flex' : 'hidden'} ${window.localStorage.getItem('lang') === "ar"  ||
+              !window.localStorage.getItem("lang")  ? 'ps-4' : 'ps-5'} bg-white  relative links flex-col items-center gap-[20px]`}
             style={{ fontFamily: "Almarai" }}
           >
             <Link class="font-medium text-gray-600" to="/">
@@ -246,7 +249,8 @@ export default function Navbar({
               <span
                 className=" font-medium text-[#4B5563]"
                 style={{
-                  fontFamily: changeLang ? "Almarai" : "Inter , sans-serif",
+                  fontFamily: window.localStorage.getItem('lang') === "ar"  ||
+                  !window.localStorage.getItem("lang")  ? "Almarai" : "Inter , sans-serif",
                 }}
               >
                 {navName}

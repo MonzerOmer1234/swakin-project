@@ -53,14 +53,15 @@ export default function Sidebar({
         }
       }
     }
-  }
-
-  function handleChange() {
-    if (currentIndex === 6) {
-       setChangeLang(!changeLang)
-     
+    if(index === 6){
+      window.localStorage.getItem("lang") === "ar" ||
+      !window.localStorage.getItem("lang")
+        ? window.localStorage.setItem("lang", "en")
+        : window.localStorage.setItem("lang", "ar");
     }
   }
+
+ 
 
   // checking the active index
 
@@ -160,7 +161,8 @@ export default function Sidebar({
                       style={{
                         color: "#2E3441",
                         fontFamily:
-                          window.localStorage.getItem("lang") === "ar"
+                          window.localStorage.getItem("lang") === "ar" ||
+                          !window.localStorage.getItem("lang")
                             ? "Alamari"
                             : "Inter , sans-serif",
                       }}
@@ -173,7 +175,7 @@ export default function Sidebar({
                       <span className={currentIndex === index ? "active" : ""}>
                         {tab?.icon}
                       </span>
-                      <span onClick={handleChange}>{t(tab?.text)}</span>
+                      <span>{t(tab?.text)}</span>
                     </Link>
                   </li>
                 ))

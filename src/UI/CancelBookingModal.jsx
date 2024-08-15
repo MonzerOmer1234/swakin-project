@@ -103,7 +103,7 @@ export default function CancelBookingModal({
   // skeleton loading
   if (loading) {
     return (
-      <div className={`${window.localStorage.getItem('lang') === "ar" ? "delete-overlay-ar" : "overlay"}`}>
+      <div className={`${window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "delete-overlay-ar" : "overlay"}`}>
         <div className=" flex justify-center items-center relative top-2/4">
         <ReactLoading type="spin" color="#1D4ED8"/>
         </div>
@@ -143,7 +143,7 @@ export default function CancelBookingModal({
   return (
     <>
       <div
-        className={`${window.localStorage.getItem('lang') === "ar" ? "delete-overlay-ar" : "overlay"}`}
+        className={`${window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "delete-overlay-ar" : "overlay"}`}
         onClick={() => setShowCancelBookingModal(false)}
       >
         <div className={`cancel-booking-modal-content`}>

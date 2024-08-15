@@ -10,7 +10,7 @@ import "./sign-up.css";
 import "./sign-in.css";
 import { useTranslation } from "react-i18next";
 
-export default function SignIn({changeLang}) {
+export default function SignIn({ changeLang }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState("");
@@ -19,9 +19,8 @@ export default function SignIn({changeLang}) {
   const navigate = useNavigate();
   const [t] = useTranslation();
 
-
-  function handleForgotPassword(){
-    navigate('/forgot-password')
+  function handleForgotPassword() {
+    navigate("/forgot-password");
   }
 
   // get the token from the local storage to access the protected routes
@@ -63,7 +62,7 @@ export default function SignIn({changeLang}) {
   if (loading) {
     return (
       <div className="min-h-screen w-full flex justify-center items-center">
-     <ReactLoading type="spin" color="#1D4ED8"/>
+        <ReactLoading type="spin" color="#1D4ED8" />
       </div>
     );
   }
@@ -91,7 +90,7 @@ export default function SignIn({changeLang}) {
           </svg>
           <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            {t('please check your connection !!!')}
+            {t("please check your connection !!!")}
           </p>
         </div>
       </>
@@ -104,14 +103,25 @@ export default function SignIn({changeLang}) {
         <p className="ms-2 flex flex-col justify-center items-start">
           <span
             className=" font-bold text-xl relative mb-1"
-            style={{ color: "#04036B", fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Cairo ExtraLight"  }}
+            style={{
+              color: "#04036B",
+              fontFamily:
+                window.localStorage.getItem("lang") === "ar" ||
+                !window.localStorage.getItem("lang")
+                  ? "Almarai"
+                  : "Cairo ExtraLight",
+            }}
           >
             سواكن للنقل و التجارة
           </span>
           <span
             className="text-[7px]   uppercase font-normal"
             style={{
-              fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif",
+              fontFamily:
+                window.localStorage.getItem("lang") === "ar"  ||
+                !window.localStorage.getItem("lang")
+                  ? "Almarai"
+                  : "Inter , sans-serif",
               width: "128px",
               whiteSpace: "nowrap",
             }}
@@ -127,17 +137,29 @@ export default function SignIn({changeLang}) {
         <div className="pt-[20px] relative header">
           <h1
             className="text-center text-[#1F2937] font-bold text-[24px] mb-2"
-            style={{ fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif" }}
+            style={{
+              fontFamily:
+                window.localStorage.getItem("lang") === "ar"  ||
+                !window.localStorage.getItem("lang")
+                  ? "Almarai"
+                  : "Inter , sans-serif",
+            }}
           >
-            {t('Sign In')}
+            {t("Sign In")}
           </h1>
           <p
             className=" text-[#515661] text-center font-normal text-[14px]"
-            style={{ fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif" }}
+            style={{
+              fontFamily:
+                window.localStorage.getItem("lang") === "ar"  ||
+                !window.localStorage.getItem("lang")
+                  ? "Almarai"
+                  : "Inter , sans-serif",
+            }}
           >
             {t("Don't have an account ?")}
             <Link to={"/sign-up"} className=" text-[#2A2981] font-medium">
-              {t('Sign Up')}
+              {t("Sign Up")}
             </Link>
           </p>
         </div>
@@ -145,18 +167,27 @@ export default function SignIn({changeLang}) {
           method="POST"
           onSubmit={handleSubmit}
           className=" mt-[50px] ms-[20px] w-[388px]"
-          style={{ }}
+          style={{}}
         >
           {error.message === "Request failed with status code 401" && (
-            <h1 className=" text-red-500 text-center mb-4 error">{`${t(error.response.data.error)}`} ,  {t('please check your credentials')}</h1>
+            <h1 className=" text-red-500 text-center mb-4 error">
+              {`${t(error.response.data.error)}`} ,{" "}
+              {t("please check your credentials")}
+            </h1>
           )}
           <div>
             <label
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
-              style={{ fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif" }}
+              style={{
+                fontFamily:
+                  window.localStorage.getItem("lang") === "ar"  ||
+                  !window.localStorage.getItem("lang")
+                    ? "Almarai"
+                    : "Inter , sans-serif",
+              }}
             >
-              {t('Email Address')}
+              {t("Email Address")}
             </label>
             <div class="my-[10px] space-y-3">
               <input
@@ -166,10 +197,15 @@ export default function SignIn({changeLang}) {
                 type="text"
                 required
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
-                style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
+                style={{
+                  boxShadow: " 0 0 1px 0 gray",
+                  border: "1px solid #E5E7EB",
+                }}
               />
               {error.message === "Request failed with status code 422" && (
-                <h1 className=" text-red-500 error">{t(error.response.data.error.email)}</h1>
+                <h1 className=" text-red-500 error">
+                  {t(error.response.data.error.email)}
+                </h1>
               )}
             </div>
           </div>
@@ -178,11 +214,22 @@ export default function SignIn({changeLang}) {
             <label
               htmlFor=""
               className=" text-[#1F2937] font-normal text-[14px] "
-              style={{fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif"}}
+              style={{
+                fontFamily:
+                  window.localStorage.getItem("lang") === "ar"  ||
+                  !window.localStorage.getItem("lang")
+                    ? "Almarai"
+                    : "Inter , sans-serif",
+              }}
             >
               <p className=" flex justify-between items-center password">
-                <span>{t('Password')}</span>
-                <span className=" text-[#2A2981] cursor-pointer" onClick={handleForgotPassword}>{t('Forgot Password?')}</span>
+                <span>{t("Password")}</span>
+                <span
+                  className=" text-[#2A2981] cursor-pointer"
+                  onClick={handleForgotPassword}
+                >
+                  {t("Forgot Password?")}
+                </span>
               </p>
             </label>
             <div class="my-[10px] space-y-3">
@@ -194,10 +241,15 @@ export default function SignIn({changeLang}) {
                 required
                 placeholder={t("Write Your Password")}
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
-                style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
+                style={{
+                  boxShadow: " 0 0 1px 0 gray",
+                  border: "1px solid #E5E7EB",
+                }}
               />
-               {error.message === "Request failed with status code 422" && (
-                <h1 className=" text-red-500 error">{t(error.response.data.error.password)}</h1>
+              {error.message === "Request failed with status code 422" && (
+                <h1 className=" text-red-500 error">
+                  {t(error.response.data.error.password)}
+                </h1>
               )}
             </div>
           </div>
@@ -209,7 +261,11 @@ export default function SignIn({changeLang}) {
               class="py-3 px-4 block w-full font-semibold  text-[15px] rounded-lg text-sm bg-[#04036B] text-white"
               style={{
                 boxShadow: " 0 0 1px 0 gray",
-                fontFamily: window.localStorage.getItem('lang') === 'ar' ? 'Almarai' : "Inter , sans-serif",
+                fontFamily:
+                  window.localStorage.getItem("lang") === "ar"  ||
+                  !window.localStorage.getItem("lang")
+                    ? "Almarai"
+                    : "Inter , sans-serif",
                 cursor: "pointer",
               }}
             />

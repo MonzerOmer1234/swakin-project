@@ -149,9 +149,9 @@ export default function BookRow({
 
           <div
             className={`absolute -mt-[40px] ${!window.localStorage.getItem('lang') === "ar" && 'me-10 w-[200px]'}  ${
-              window.localStorage.getItem('lang') === "ar" ? "right-[-77px]" : "right-0"
+              window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")? "right-[-77px]" : "right-0"
             } z-10 mt-2 ${
-              window.localStorage.getItem('lang') === "ar" ? " w-40" : "w-56"
+              window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")? " w-40" : "w-56"
             } origin-top-right rounded-md bg-white shadow-lg  ring-black ring-opacity-5 focus:outline-none`}
             role="menu"
             aria-orientation="vertical"
@@ -169,7 +169,7 @@ export default function BookRow({
                   id="menu-item-0"
                   onClick={() => setCloseActions(true)}
                   style={{
-                    fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                    fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")? "Almarai" : "Inter , sans-serif",
                   }}
                 >
                  
@@ -183,7 +183,7 @@ export default function BookRow({
                     tabindex="-1"
                     id="menu-item-1"
                     style={{
-                      fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                      fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")? "Almarai" : "Inter , sans-serif",
                     }}
                     onClick={handleCancelBooking}
                   >

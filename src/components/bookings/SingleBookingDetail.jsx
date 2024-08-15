@@ -216,7 +216,7 @@ export default function SingleBookingDetail({
               <span
                 className="text-[#4B5563]"
                 style={{
-                  fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                  fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
                 }}
               >
                 {t("Shipments")}{" "}
@@ -224,7 +224,7 @@ export default function SingleBookingDetail({
               <span
                 className="text-[#1F2937] font-medium"
                 style={{
-                  fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                  fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
                 }}
               >
                 /{t("mybookings")}/ {bid}{" "}
@@ -238,7 +238,7 @@ export default function SingleBookingDetail({
           <h1
             className="mb-[50px] font-bold text-[#353B47]"
             style={{
-              fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
             }}
           >
             {t("Booking Details")}
@@ -257,7 +257,7 @@ export default function SingleBookingDetail({
                   <h1
                     className=" text-[#353B47] font-bold"
                     style={{
-                      fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                      fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
                     }}
                   >
                     {t("Booking Details")}
@@ -267,7 +267,7 @@ export default function SingleBookingDetail({
                       <span
                         className=" block mb-2 text-[#4B5563] font-medium"
                         style={{
-                          fontFamily: window.localStorage.getItem('lang') === "ar"
+                          fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                             ? "Almarai"
                             : "Inter , sans-serif",
                         }}
@@ -285,7 +285,7 @@ export default function SingleBookingDetail({
                       <span
                         className=" block mb-2 text-[#4B5563] font-medium whitespace-nowrap"
                         style={{
-                          fontFamily: window.localStorage.getItem('lang') === "ar"
+                          fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                             ? "Almarai"
                             : "Inter , sans-serif",
                         }}
@@ -305,7 +305,7 @@ export default function SingleBookingDetail({
                       <span
                         className=" block mb-2 text-[#4B5563] font-medium"
                         style={{
-                          fontFamily: window.localStorage.getItem('lang') === "ar"
+                          fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                             ? "Almarai"
                             : "Inter , sans-serif",
                         }}
@@ -323,7 +323,7 @@ export default function SingleBookingDetail({
                       <span
                         className=" block mb-2 text-[#4B5563] font-medium"
                         style={{
-                          fontFamily: window.localStorage.getItem('lang') === "ar"
+                          fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                             ? "Almarai"
                             : "Inter , sans-serif",
                         }}
@@ -343,7 +343,7 @@ export default function SingleBookingDetail({
                   <h1
                     className=" text-[#353B47] font-bold"
                     style={{
-                      fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                      fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
                     }}
                   >
                     {t("Shipment Details")}
@@ -358,7 +358,7 @@ export default function SingleBookingDetail({
                   >
                     <li
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
+                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
@@ -375,7 +375,7 @@ export default function SingleBookingDetail({
                     <li
                       className=" flex flex-col  sm:flex-row gap-4  sm:relative "
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
+                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
@@ -398,18 +398,18 @@ export default function SingleBookingDetail({
                     </li>
                     <li
                       className={`flex-col ${
-                        window.localStorage.getItem('lang') === "ar" ? "ms-0" : "ms-0 sm:ms-[40px]"
+                        window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "ms-0" : "ms-0 sm:ms-[40px]"
                       } md:ms-0  sm:relative items-center text-[17px] `}
                       aria-current="page"
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
+                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
                     >
                       <span
                         className={` text-sm text-[#6B7280]  ${
-                          window.localStorage.getItem('lang') === "ar" ? "ms-[13px] lg:ms-[9px]" : ""
+                          window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "ms-[13px] lg:ms-[9px]" : ""
                         }`}
                       >
                         {t("Destination")}{" "}
@@ -424,7 +424,7 @@ export default function SingleBookingDetail({
                     <span
                       className="text-center sm:text-start"
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
+                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
@@ -442,7 +442,7 @@ export default function SingleBookingDetail({
                     <span
                       className="text-center sm:text-start"
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
+                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
@@ -460,7 +460,7 @@ export default function SingleBookingDetail({
                     <span
                       className="text-center sm:text-start"
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
+                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
@@ -483,7 +483,7 @@ export default function SingleBookingDetail({
                   <p
                     className=" mt-[20px] ms-[40px] sm:ms-0 text-center sm:text-start"
                     style={{
-                      fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                      fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
                     }}
                   >
                     <span className="text-[#4B5563]">
@@ -510,7 +510,7 @@ export default function SingleBookingDetail({
                     <h1
                       className=" text-[#353B47] font-bold ms-[20px] my-[20px]"
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
+                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}
@@ -542,7 +542,7 @@ export default function SingleBookingDetail({
                             <span
                               className="text-[#1F2937] font-bold "
                               style={{
-                                fontFamily: window.localStorage.getItem('lang') === "ar"
+                                fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                                   ? "Almarai"
                                   : "Inter , sans-serif",
                               }}
@@ -573,7 +573,7 @@ export default function SingleBookingDetail({
                     className="font-semibold "
                     style={{
                       color: "#353B47",
-                      fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                      fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
                     }}
                   >
                     {t("Shipment Tracking")}
@@ -589,7 +589,7 @@ export default function SingleBookingDetail({
                     ></span>{" "}
                     <span
                       className={`p-3 ms-10 ${
-                        window.localStorage.getItem('lang') === "ar"
+                        window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                           ? "w-fit h-[55px]  rounded-[50px] whitespace-nowrap"
                           : "rounded-[50px] whitespace-nowrap"
                       } `}
@@ -602,7 +602,7 @@ export default function SingleBookingDetail({
                               status.name_en === "On Progress"
                             ? "#115E59"
                             : "#EF4444",
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
+                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                           ? "Almarai"
                           : "Inter , sans-serif",
                         backgroundColor:
@@ -644,13 +644,13 @@ export default function SingleBookingDetail({
                       >
                         <span
                           className={` relative top-[-12px] ${
-                            window.localStorage.getItem('lang') === "ar" ? "left-[-20px]" : "left-[20px]"
+                            window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "left-[-20px]" : "left-[20px]"
                           } font-medium text-gray-800 dark:text-white`}
                         >
                           <p
                             style={{
                               color: "#1F2937",
-                              fontFamily: window.localStorage.getItem('lang') === "ar"
+                              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                                 ? "Almarai"
                                 : "Inter , sans-serif",
                             }}
@@ -682,14 +682,14 @@ export default function SingleBookingDetail({
                         <div
                           className="my-3"
                           style={{
-                            fontFamily: window.localStorage.getItem('lang') === "ar"
+                            fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                               ? "Almarai"
                               : "Inter , sans-serif",
                           }}
                         >
                           <span
                             className={`relative top-[-12px] ${
-                              window.localStorage.getItem('lang') === "ar" ? "left-[-20px]" : "left-[20px]"
+                              window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "left-[-20px]" : "left-[20px]"
                             }  font-medium text-gray-800 dark:text-white`}
                           >
                             <p
@@ -732,13 +732,13 @@ export default function SingleBookingDetail({
                       >
                         <span
                           className={`relative top-[-12px] ${
-                            window.localStorage.getItem('lang') === "ar" ? "left-[-20px]" : "left-[20px]"
+                            window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "left-[-20px]" : "left-[20px]"
                           }  font-medium text-gray-800 dark:text-white`}
                         >
                           <p
                             style={{
                               color: "#1F2937",
-                              fontFamily: window.localStorage.getItem('lang') === "ar"
+                              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                                 ? "Almarai"
                                 : "Inter , sans-serif",
                             }}
@@ -766,7 +766,7 @@ export default function SingleBookingDetail({
                       style={{
                         border: "1px solid #1F2937",
                         borderRadius: "8px",
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
+                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
                           ? "Almarai"
                           : "Inter , sans-serif",
                       }}

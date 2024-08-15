@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, StrictMode, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -11,8 +11,9 @@ import './i18n';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <HashRouter>
-
+    <StrictMode>
     <App />
+    </StrictMode>
 
   </HashRouter>
 );

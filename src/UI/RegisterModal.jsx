@@ -139,9 +139,9 @@ export default function RegisterModal({
 
   useEffect(() => {
     if (Object.keys(carDetails).length === 0) {
-      setMode(changeLang ? "اضافة عربة" : "Add car");
+      setMode((window.localStorage.getItem('lang') === 'ar' || !window.localStorage.getItem('lang')) ? "اضافة عربة" : "Add car");
     } else {
-      setMode(changeLang ? "تحديث السيارة" : "Update car");
+      setMode((window.localStorage.getItem('lang') === 'ar' || !window.localStorage.getItem('lang')) ? "تحديث السيارة" : "Update car");
     }
   }, [carDetails, setMode, changeLang]);
 
@@ -217,10 +217,10 @@ export default function RegisterModal({
       )}
 
       <div
-        className={`${window.localStorage.getItem('lang') === "ar"  ? "overlay-ar" : "overlay"}`}
+        className={`${window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "overlay-ar" : "overlay"}`}
         onClick={() => setShowContent(false)}
       ></div>
-      <div className={`${window.localStorage.getItem('lang') === "ar"  ? "modal-content-ar " : "modal-content"}`}>
+      <div className={`${window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "modal-content-ar " : "modal-content"}`}>
         <h1 className=" text-center top-[30px] relative font-bold text-lg mb-[25px]">
           {t("Car Info")}
         </h1>

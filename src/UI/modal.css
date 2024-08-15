@@ -45,9 +45,17 @@ body.active-modal {
 }
 
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width:480px) {
   .Toastify__toast {
     margin-left: 250px !important;
+    margin-top: 50px;
+  }
+}
+@media ((min-width : 480px ) and(max-width : 666px)) {
+ 
+  .Toastify__toast {
+    margin-left: 100px !important;
+    margin-top: 50px;
   }
 }
 
@@ -150,5 +158,11 @@ div input:focus {
 @media ((min-width: 1025px) and (max-width : 1151px)) {
   .modal-content {
     left: 60%;
+  }
+}
+
+@media (max-width : 767px){
+  .add-car , .answer-add-car{
+    right: 80px !important;
   }
 }

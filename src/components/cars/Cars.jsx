@@ -104,7 +104,7 @@ const Cars = ({ username, changeLang, setChangeLang }) => {
         />
         <div
           className="m bg-[#E5E7EB]  p-5 font-bold text-2xl flex justify-between"
-          style={{ fontFamily: window.localStorage.getItem('lang') === "ar" ? "Alamrai" : "Inter , sans-serif" }}
+          style={{ fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Alamrai" : "Inter , sans-serif" }}
         >
           <h1>{t("Cars")}</h1>
           <button

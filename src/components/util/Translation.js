@@ -1,5 +1,3 @@
-
-
 export const engilshTranslation = {
   "Welcome back": "Welcome",
   "Available For Booking": "Available For Booking",
@@ -140,7 +138,11 @@ export const engilshTranslation = {
   "The name field is required.": "The name field is required.",
   "The profile pic field must be a file of type: jpg, jpeg, png, gif.":
     "The profile pic field must be a file of type: jpg, jpeg, png, gif.",
-    "Please select a car" : 'Please select a car'
+  "Please select a car": "Please select a car",
+  "Are you want to add a new car?": "Are you want to add a new car?",
+  "Yes , I want to add a new car": "Yes , I want to add a new car",
+  "Go to shipments": "Go to shipments",
+  "You have successfully add a new car": "You have successfully add a new car",
 };
 
 export const arabicTranslation = {
@@ -281,5 +283,9 @@ export const arabicTranslation = {
   "The name field is required.": "حقل الاسم مطلوب.",
   "The profile pic field must be a file of type: jpg, jpeg, png, gif.":
     "يجب أن يكون حقل صورة الملف الشخصي ملفًا من النوع: jpg، jpeg، png، gif.",
-    "Please select a car" : 'رجاء اختر سيارة'
+  "Please select a car": "رجاء اختر سيارة",
+  "Are you want to add a new car?": "هل تريد إضافة سيارة جديدة؟",
+  "Yes , I want to add a new car": "نعم, أريد إضافة سيارة جديدة",
+  "Go to shipments": "اذهب إلى الشحنات",
+  "You have successfully add a new car": "لقد قمت بإضافة سيارة جديدة بنجاح",
 };
