@@ -112,8 +112,8 @@ export default function SingleBookingDetail({
     },
     [bid]
   );
-  console.log(bookingDetail);
-
+  console.log(bookingData);
+  console.log( lat , long)
   // cancel booking and get the latest booking statuses.
   const handleCancelBooking = useCallback(
     async function () {
