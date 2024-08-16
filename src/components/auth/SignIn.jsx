@@ -194,7 +194,7 @@ export default function SignIn({ changeLang }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 name="email"
-                type="text"
+                type="email"
                 required
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
                 style={{
@@ -238,6 +238,7 @@ export default function SignIn({ changeLang }) {
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 name="password"
+                minLength={'8'}
                 required
                 placeholder={t("Write Your Password")}
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"

@@ -143,7 +143,7 @@ export default function ForgotPassword() {
                 onChange={(e) => setEmail(e.target.value)}
                 name="email"
                 placeholder={t('write your email here')}
-                type="text"
+                type="email"
                 required
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
                 style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}

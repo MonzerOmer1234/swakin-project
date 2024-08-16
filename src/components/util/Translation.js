@@ -143,6 +143,8 @@ export const engilshTranslation = {
   "Yes , I want to add a new car": "Yes , I want to add a new car",
   "Go to shipments": "Go to shipments",
   "You have successfully add a new car": "You have successfully add a new car",
+  "Track Your Shipment" : 'Track Your Shipment',
+  "No upcoming shipments Available" : "No upcoming shipments Available"
 };
 
 export const arabicTranslation = {
@@ -214,7 +216,7 @@ export const arabicTranslation = {
   "Email Address": "عنوان البريد الإلكتروني",
   Email: "البريد الإلكتروني",
   Password: "كلمة المرور",
-  Otp: "كلمةالمرور",
+  Otp: "الرمز",
   "Confirm Password": "تأكيد كلمة المرور",
   "write at least 8 characters": "اكتب 8 أحرف على الأقل",
   "repeat the password": "كرر كلمة المرور",
@@ -288,4 +290,6 @@ export const arabicTranslation = {
   "Yes , I want to add a new car": "نعم, أريد إضافة سيارة جديدة",
   "Go to shipments": "اذهب إلى الشحنات",
   "You have successfully add a new car": "لقد قمت بإضافة سيارة جديدة بنجاح",
+  "Track Your Shipment" : 'تتبع الشحنة الخاصة بك',
+  "No upcoming shipments Available" : 'لا توجد شحنات قادمة متاحة'
 };

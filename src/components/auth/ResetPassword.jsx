@@ -165,7 +165,7 @@ export default function ResetPasssword() {
             </label>
             <div class="my-[10px] space-y-3">
               <input
-                type="text"
+                type="email"
                 name="email"
                 placeholder={t("write your email here")}
                 value={email}
@@ -198,6 +198,7 @@ export default function ResetPasssword() {
                 name="otp"
                 placeholder={t("write the code you received in your mail")}
                 value={otp}
+                pattern="\d{5}"
                 required
                 onChange={(e) => setotp(e.target.value)}
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-[#FFFFFF]"
@@ -233,6 +234,7 @@ export default function ResetPasssword() {
                 type="password"
                 name="password"
                 required
+                minLength={'8'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
@@ -262,6 +264,7 @@ export default function ResetPasssword() {
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                 required
+                minLength={'8'}
                 type="password"
                 name="password_confirmation"
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"

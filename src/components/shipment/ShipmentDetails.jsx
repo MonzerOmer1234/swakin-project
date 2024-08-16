@@ -7,12 +7,12 @@ import { PhoneInput } from "react-international-phone";
 import { useState, useCallback, useEffect, useContext } from "react";
 import axios from "axios";
 import { getAuthToken } from "../util/auth";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 import MultiSelect from "react-multiple-select-dropdown-lite";
 import "react-multiple-select-dropdown-lite/dist/index.css";
-import { SpecifedCarsContext } from "../../App";
+
 
 export default function ShipmentDetails({
 
@@ -370,6 +370,7 @@ export default function ShipmentDetails({
                       }`}
                     >
                       <PhoneInput
+                       defaultCountry="qa"
                         style={{ width: "380px" }}
                         type="text"
                         name="phone"
@@ -399,6 +400,7 @@ export default function ShipmentDetails({
 
                     <MultiSelect
                       onChange={handleCars}
+                      
                       placeholder=''
                       options={carData.map((car) => {
                         return { label: car.car_name_ar, value: car.id };

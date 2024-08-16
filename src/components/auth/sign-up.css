@@ -43,5 +43,8 @@
   }
 }
 
+/* react-international-phone-country-selector-dropdown */
 
-.react-international-phone-input-container {}
+.phone-input-ar .react-international-phone-country-selector-dropdown{
+   margin: 0 -300px 0 !important;
+}

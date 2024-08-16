@@ -87,12 +87,6 @@ export default function RegisterModal({
         setError({});
         toast.success(t("You have successfully add a new car"));
         setOpenPopup(true);
-
-        
-        
-
-       
-        
       } catch (error) {
         console.log(error);
         setError(error.response.data.error);
@@ -140,12 +134,7 @@ export default function RegisterModal({
     }
   }
 
-  console.log(openPopup , showContent)
-
-
-
-
-
+  console.log(openPopup, showContent);
 
   function handleAddNewCar() {
     setOpenPopup(false);
@@ -156,7 +145,6 @@ export default function RegisterModal({
     setYear("");
     setCarImage(null);
   }
-
 
   console.log(carDetails.data);
 
@@ -231,9 +219,9 @@ export default function RegisterModal({
     );
   }
 
-  function handleClose(){
-  setShowContent(false)
-  window.location.reload();
+  function handleClose() {
+    setShowContent(false);
+    window.location.reload();
   }
 
   return (
@@ -413,6 +401,7 @@ export default function RegisterModal({
                     name="year"
                     type="text"
                     value={year}
+                    pattern="\d{4}"
                     onChange={(e) => setYear(e.target.value)}
                     required
                     className="block mt-[15px] ms-1 ps-3 "
@@ -489,6 +478,7 @@ export default function RegisterModal({
                       required
                       name="image"
                       id="file-input"
+                      accept=".png , .jpeg , .jpg "
                       className="mt-[15px] ms-1 block image-div w-[396px] border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10   disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400
         file:bg-gray-50 file:border-0 file:me-4 file:py-3 file:px-4 dark:file:bg-neutral-700 dark:file:text-neutral-400"
                       style={{

@@ -82,7 +82,6 @@ export default function Profile({
 
   // laoding
 
-
   // network error
   if (updateError && updateError.message === "Network Error") {
     return (
@@ -134,7 +133,10 @@ export default function Profile({
               <h1
                 className=" p-4 font-bold text-[#353B47] receipt-info"
                 style={{
-                  fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                  fontFamily:
+                    window.localStorage.getItem("lang") === "ar"
+                      ? "Almarai"
+                      : "Inter , sans-serif",
                 }}
               >
                 {t("Basic Details")}
@@ -150,18 +152,28 @@ export default function Profile({
                         }`}
                         alt="user-profile"
                         className="ms-[100px] sm:ms-0"
-                      
-                        style={{ borderRadius: "50%" , width : '100px' , height : '100px'  , maxWidth : '100px'}}
+                        style={{
+                          borderRadius: "50%",
+                          width: "100px",
+                          height: "100px",
+                          maxWidth: "100px",
+                        }}
                       />
                     )}
                   </div>
                   <form action="POST" className=" ms-[20px] sm:ms-[20px]">
-                    <label htmlFor="upload-image" className="relative top-[4px] start-[50px] sm:top-0 sm:start-0">{t("change")}</label>
+                    <label
+                      htmlFor="upload-image"
+                      className="relative top-[4px] start-[50px] sm:top-0 sm:start-0"
+                    >
+                      {t("change")}
+                    </label>
                     <input
                       type="file"
                       name="profile_pic"
                       id="upload-image"
-                      className=" opacity-0"
+                      accept=".png , .jpg , .jpeg"
+                      className="opacity-0"
                       onChange={(e) => setProfilePic(e.target.files[0])}
                       required
                     />
@@ -180,9 +192,10 @@ export default function Profile({
                       htmlFor=""
                       className=" text-[#1F2937] font-normal text-[14px] "
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
-                          ? "Almarai"
-                          : "Inter , sans-serif",
+                        fontFamily:
+                          window.localStorage.getItem("lang") === "ar"
+                            ? "Almarai"
+                            : "Inter , sans-serif",
                       }}
                     >
                       {t("Full Name")}
@@ -196,7 +209,10 @@ export default function Profile({
                         onChange={(e) => setUserName(e.target.value)}
                         class={`py-3 px-4 block w-full rounded-lg text-sm bg-[#FFFFFF] `}
                         readOnly={!changeName}
-                        style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
+                        style={{
+                          boxShadow: " 0 0 1px 0 gray",
+                          border: "1px solid #E5E7EB",
+                        }}
                       />
 
                       <a
@@ -218,9 +234,10 @@ export default function Profile({
                       htmlFor=""
                       className=" text-[#1F2937] font-normal text-[14px] "
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
-                          ? "Almarai"
-                          : "Inter , sans-serif",
+                        fontFamily:
+                          window.localStorage.getItem("lang") === "ar"
+                            ? "Almarai"
+                            : "Inter , sans-serif",
                       }}
                     >
                       {t("Email Address")}
@@ -228,13 +245,16 @@ export default function Profile({
                     <div class="my-[10px] space-y-3 input-flex flex items-center">
                       <input
                         name="email"
-                        type="text"
+                        type="email"
                         value={userEmail}
                         required
                         readOnly={!changeEmail}
                         onChange={(e) => setUserEmail(e.target.value)}
                         class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
-                        style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
+                        style={{
+                          boxShadow: " 0 0 1px 0 gray",
+                          border: "1px solid #E5E7EB",
+                        }}
                       />
 
                       <a
@@ -256,7 +276,10 @@ export default function Profile({
                     htmlFor=""
                     className=" text-[#1F2937] font-normal text-[14px] "
                     style={{
-                      fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                      fontFamily:
+                        window.localStorage.getItem("lang") === "ar"
+                          ? "Almarai"
+                          : "Inter , sans-serif",
                     }}
                   >
                     <div className=" flex justify-between phone-box">
@@ -265,11 +288,12 @@ export default function Profile({
                   </label>
                   <div class="relative my-[10px]  .phone-div h-[44px]">
                     <PhoneInput
-                      defaultCountry="sa"
+                      required
+                      defaultCountry="qa"
                       style={{ width: "323px" }}
                       value={userPhone}
                       onChange={(e) => setUserPhone(e.substring(1))}
-                      className="input-profile"
+                      className={`input-profile`}
                     />
                     {updateError.message ===
                       "Request failed with status code 422" && (
@@ -284,9 +308,10 @@ export default function Profile({
                       htmlFor=""
                       className=" text-[#1F2937] font-normal text-[14px] "
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
-                          ? "Almarai"
-                          : "Inter , sans-serif",
+                        fontFamily:
+                          window.localStorage.getItem("lang") === "ar"
+                            ? "Almarai"
+                            : "Inter , sans-serif",
                       }}
                     >
                       {t("Password")}
@@ -296,10 +321,14 @@ export default function Profile({
                         name="password"
                         type="password"
                         value={userPassword}
+                        minLength={'8'}
                         required
                         onChange={(e) => setUserPassword(e.target.value)}
                         class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
-                        style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
+                        style={{
+                          boxShadow: " 0 0 1px 0 gray",
+                          border: "1px solid #E5E7EB",
+                        }}
                       />
                     </div>
                     {updateError.message ===
@@ -314,9 +343,10 @@ export default function Profile({
                       htmlFor=""
                       className=" text-[#1F2937] font-normal text-[14px] "
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"
-                          ? "Almarai"
-                          : "Inter , sans-serif",
+                        fontFamily:
+                          window.localStorage.getItem("lang") === "ar"
+                            ? "Almarai"
+                            : "Inter , sans-serif",
                       }}
                     >
                       {t("Confirm Password")}
@@ -325,13 +355,17 @@ export default function Profile({
                       <input
                         name="password_confirmation"
                         type="password"
+                        minLength={'8'}
                         value={userPasswordConfirmation}
                         required
                         onChange={(e) =>
                           setUserPasswordConfirmation(e.target.value)
                         }
                         class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
-                        style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
+                        style={{
+                          boxShadow: " 0 0 1px 0 gray",
+                          border: "1px solid #E5E7EB",
+                        }}
                       />
                     </div>
                     {updateError.message ===
@@ -352,7 +386,10 @@ export default function Profile({
                     style={{
                       border: "1px solid #1F2937",
                       borderRadius: "8px",
-                      fontFamily: window.localStorage.getItem('lang') === "ar" ? "Almarai" : "Inter , sans-serif",
+                      fontFamily:
+                        window.localStorage.getItem("lang") === "ar"
+                          ? "Almarai"
+                          : "Inter , sans-serif",
                     }}
                   >
                     {t("update profile")}

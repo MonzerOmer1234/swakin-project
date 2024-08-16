@@ -4,7 +4,7 @@ import BookRow from "./BookRow";
 import axios from "axios";
 import { getAuthToken } from "../util/auth";
 
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 import { changeLanguage } from "i18next";
@@ -23,8 +23,7 @@ const Bookings = ({
   const [bookings, setBookings] = useState([]);
   const [bookingStatus, setBookingStatus] = useState("");
 
-
-  const [error , setError] = useState({});
+  const [error, setError] = useState({});
 
   const [status, setStatus] = useState("");
   const [t] = useTranslation();
@@ -49,7 +48,7 @@ const Bookings = ({
       setLoading(false);
     } catch (error) {
       console.log(error);
-      setError(error)
+      setError(error);
     }
   }
   useEffect(() => {
@@ -58,7 +57,7 @@ const Bookings = ({
   if (loading) {
     return (
       <div className="min-h-screen w-full lg:ms-[700px] flex justify-center items-center">
-       <ReactLoading type="spin" color="#1D4ED8"/>
+        <ReactLoading type="spin" color="#1D4ED8" />
       </div>
     );
   }
@@ -82,13 +81,12 @@ const Bookings = ({
           </svg>
           <h1 className="text-red-500 font-semibold  ">{t(error.message)}</h1>
           <p className=" text-red-500 font-semibold">
-            {t('please check your connection !!!')}
+            {t("please check your connection !!!")}
           </p>
         </div>
       </>
     );
   }
-
 
   return (
     <>
@@ -102,7 +100,11 @@ const Bookings = ({
               <span
                 className="text-[#4B5563]"
                 style={{
-                  fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
+                  fontFamily:
+                    window.localStorage.getItem("lang") === "ar" ||
+                    !window.localStorage.getItem("lang")
+                      ? "Almarai"
+                      : "Inter , sans-serif",
                 }}
               >
                 {t("Bookings")}{" "}
@@ -113,7 +115,13 @@ const Bookings = ({
         />
         <h1
           className="p-6 font-bold text-xl text-[#353B47]  bg-[#E5E7EB]"
-          style={{ fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif" }}
+          style={{
+            fontFamily:
+              window.localStorage.getItem("lang") === "ar" ||
+              !window.localStorage.getItem("lang")
+                ? "Almarai"
+                : "Inter , sans-serif",
+          }}
         >
           {t("My Bookings")}
         </h1>
@@ -140,9 +148,11 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3  text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500 text-center"
                             style={{
-                              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                                ? "Almarai"
-                                : "Inter , sans-serif",
+                              fontFamily:
+                                window.localStorage.getItem("lang") === "ar" ||
+                                !window.localStorage.getItem("lang")
+                                  ? "Almarai"
+                                  : "Inter , sans-serif",
                             }}
                           >
                             {t("BOOKING SERIAL")}
@@ -151,9 +161,11 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                                ? "Almarai"
-                                : "Inter , sans-serif",
+                              fontFamily:
+                                window.localStorage.getItem("lang") === "ar" ||
+                                !window.localStorage.getItem("lang")
+                                  ? "Almarai"
+                                  : "Inter , sans-serif",
                             }}
                           >
                             {t("SHIPMENT SERIAL")}
@@ -162,9 +174,11 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                                ? "Almarai"
-                                : "Inter , sans-serif",
+                              fontFamily:
+                                window.localStorage.getItem("lang") === "ar" ||
+                                !window.localStorage.getItem("lang")
+                                  ? "Almarai"
+                                  : "Inter , sans-serif",
                             }}
                           >
                             {t("CAR QUANTITY")}
@@ -174,9 +188,11 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                                ? "Almarai"
-                                : "Inter , sans-serif",
+                              fontFamily:
+                                window.localStorage.getItem("lang") === "ar" ||
+                                !window.localStorage.getItem("lang")
+                                  ? "Almarai"
+                                  : "Inter , sans-serif",
                             }}
                           >
                             {t("DISCOUNT")}
@@ -185,9 +201,11 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                                ? "Almarai"
-                                : "Inter , sans-serif",
+                              fontFamily:
+                                window.localStorage.getItem("lang") === "ar" ||
+                                !window.localStorage.getItem("lang")
+                                  ? "Almarai"
+                                  : "Inter , sans-serif",
                             }}
                           >
                             {t("TOTAL")}
@@ -196,9 +214,11 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                                ? "Almarai"
-                                : "Inter , sans-serif",
+                              fontFamily:
+                                window.localStorage.getItem("lang") === "ar" ||
+                                !window.localStorage.getItem("lang")
+                                  ? "Almarai"
+                                  : "Inter , sans-serif",
                             }}
                           >
                             {t("TAX")}
@@ -207,9 +227,11 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                                ? "Almarai"
-                                : "Inter , sans-serif",
+                              fontFamily:
+                                window.localStorage.getItem("lang") === "ar" ||
+                                !window.localStorage.getItem("lang")
+                                  ? "Almarai"
+                                  : "Inter , sans-serif",
                             }}
                           >
                             {t("Status")}
@@ -219,9 +241,11 @@ const Bookings = ({
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-[#6B7280] uppercase dark:text-neutral-500"
                             style={{
-                              fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                                ? "Almarai"
-                                : "Inter , sans-serif",
+                              fontFamily:
+                                window.localStorage.getItem("lang") === "ar" ||
+                                !window.localStorage.getItem("lang")
+                                  ? "Almarai"
+                                  : "Inter , sans-serif",
                             }}
                           >
                             {t("ACTION")}
@@ -261,7 +285,10 @@ const Bookings = ({
                               transform: "translateY(-50%)",
                             }}
                             className={`relative  top-[75px] ${
-                              changeLang ? "left-[-400px]" : "left-[400px]"
+                              window.localStorage.getItem("lang") === "ar" ||
+                              !window.localStorage.getItem("lang")
+                                ? "left-[-400px]"
+                                : "left-[400px]"
                             }  px-[20px] h-[100px]`}
                           >
                             <div className="p-4 ">

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getAuthToken } from "../util/auth";
 import { useTranslation } from "react-i18next";
 import ReactLoading from 'react-loading'
+import { Link } from "react-router-dom";
 
 export default function DashboardContentOne({ changeLang }) {
   const [loading, setLoading] = useState(false);
@@ -11,6 +12,7 @@ export default function DashboardContentOne({ changeLang }) {
   const [shipmentData, setShipmentData] = useState({});
   const [stops, setStops] = useState([]);
   const [activeBooking, setActiveBooking] = useState({});
+  const [bookingSerial , setBookingSerial] = useState(0)
 
   const [t] = useTranslation();
 
@@ -28,6 +30,7 @@ export default function DashboardContentOne({ changeLang }) {
 
       console.log(res);
       setActiveBooking(res.data.data.active_booking);
+      setBookingSerial(res.data.data.active_booking.serial_no)
       setStatus(res.data.data.active_booking.status);
       setShipmentData(res.data.data.active_booking.shipment);
       setStops(res.data.data.active_booking.shipment.shipment_location_point);
@@ -83,6 +86,7 @@ export default function DashboardContentOne({ changeLang }) {
   console.log(status);
   console.log(shipmentData);
   console.log(stops);
+  console.log(bookingSerial)
 
   return (
     <>
@@ -249,6 +253,21 @@ export default function DashboardContentOne({ changeLang }) {
                 </div>
               </li>
             </ul>
+            <div className="flex p-4 booking">
+                    <Link
+                        to={`/shipments/mybookings/${bookingSerial}`}
+                      className=" ms-auto me-5 p-3 relative top-2 text-[#1F2937] booking-btn"
+                      style={{
+                        border: "1px solid #1F2937",
+                        borderRadius: "8px",
+                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
+                          ? "Almarai"
+                          : "Inter , sans-serif",
+                      }}
+                    >
+                      {t("Track Your Shipment")}
+                    </Link>
+                  </div>
           </div>
         </div>
       ) : (

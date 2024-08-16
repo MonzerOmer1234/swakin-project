@@ -239,7 +239,7 @@ export default function Signup({ changeLang }) {
             <div class="my-[10px] space-y-3">
               <input
                 name="email"
-                type="text"
+                type="email"
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
@@ -278,8 +278,11 @@ export default function Signup({ changeLang }) {
               defaultCountry="qa"
               style={{ width: "388px" }}
               value={phone}
+              required
+                      
               onChange={(e) => setPhone(e.substring(1))}
-              className="phone-input"
+              className={`phone-input ${((window.localStorage.getItem('lang') === 'ar' )||  (!window.localStorage.getItem('lang'))) && 'phone-input-ar'}`}
+              
             />
             {error.message === "Request failed with status code 422" && (
               <h1 className=" text-red-500 error">
@@ -307,6 +310,7 @@ export default function Signup({ changeLang }) {
                 type="password"
                 name="password"
                 required
+                minLength={'8'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
@@ -342,6 +346,7 @@ export default function Signup({ changeLang }) {
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                 required
+                minLength={'8'}
                 type="password"
                 name="password_confirmation"
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"

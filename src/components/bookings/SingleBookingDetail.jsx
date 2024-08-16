@@ -319,7 +319,7 @@ export default function SingleBookingDetail({
                         {bookingData.policy}
                       </span>
                     </span>
-                    <span className=" relative md:end-[54px]">
+                    <span className=" relative md:end-[20px]">
                       <span
                         className=" block mb-2 text-[#4B5563] font-medium"
                         style={{
@@ -780,7 +780,7 @@ export default function SingleBookingDetail({
           </div>
         </div>
       </div>
-      <div className=" ms-[-80px] lg:ms-[20px]" style={{ width: "80vw" }}>
+      <div className="  bg-[#E5E7EB] lg:mx-[20px]" style={{ width: "80vw" }}>
         {status.name_en=== "On Progress" && <Map lat={lat} long={long} />}
       </div>
     </>
