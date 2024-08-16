@@ -12,6 +12,16 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useTranslation } from "react-i18next";
 import MultiSelect from "react-multiple-select-dropdown-lite";
 import "react-multiple-select-dropdown-lite/dist/index.css";
+import { PhoneNumberUtil } from "google-libphonenumber";
+
+const phoneUtil = PhoneNumberUtil.getInstance();
+const isPhoneValid = (phone) => {
+  try {
+    return phoneUtil.isValidNumber(phoneUtil.parseAndKeepRawInput(phone));
+  } catch (error) {
+    return false;
+  }
+};
 
 export default function ShipmentDetails({
   serialNumber,
@@ -32,6 +42,8 @@ export default function ShipmentDetails({
   const [t] = useTranslation();
   const navigate = useNavigate();
   const [availableSeats, setAvailableSeats] = useState(0);
+
+  const isValid = isPhoneValid(`+${receipentPhone}`);
 
   useEffect(() => {
     const data = window.localStorage.getItem("specified_cars");
@@ -407,10 +419,6 @@ export default function ShipmentDetails({
                       }`}
                     >
                       <PhoneInput
-                        inputProps={{
-                          minLength : '14',
-                          maxLength : '14',
-                        }}
                         defaultCountry="qa"
                         style={{ width: "380px" }}
                         type="text"
@@ -427,6 +435,15 @@ export default function ShipmentDetails({
                             : "input-data"
                         }`}
                       />
+                      {!isValid ? (
+                        <div className={`${error} ? ' hidden' : '' `} style={{ color: "red", textAlign: "center" }}>
+                          {t("Phone is not valid")}
+                        </div>
+                      ) : (
+                        <div className={`${error} ? ' hidden' : '' `} style={{ color: "green", textAlign: "center" }}>
+                          {t("Phone is valid")}
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className=" mt-3">

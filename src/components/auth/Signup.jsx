@@ -12,6 +12,16 @@ import axios from "axios";
 import { getAuthToken } from "../util/auth";
 import { PhoneInput } from "react-international-phone";
 import { useTranslation } from "react-i18next";
+import { PhoneNumberUtil } from "google-libphonenumber";
+
+const phoneUtil = PhoneNumberUtil.getInstance();
+const isPhoneValid = (phone) => {
+  try {
+    return phoneUtil.isValidNumber(phoneUtil.parseAndKeepRawInput(phone));
+  } catch (error) {
+    return false;
+  }
+};
 
 export default function Signup({ changeLang }) {
   const [name, setName] = useState("");
@@ -23,6 +33,8 @@ export default function Signup({ changeLang }) {
   const [info, setInfo] = useState({});
   const [error, setError] = useState({});
   const [t] = useTranslation();
+
+  const isValid = isPhoneValid(`+${phone}`);
 
   const navigate = useNavigate();
 
@@ -126,7 +138,7 @@ export default function Signup({ changeLang }) {
             style={{
               color: "#04036B",
               fontFamily:
-                window.localStorage.getItem("lang") === "ar"||
+                window.localStorage.getItem("lang") === "ar" ||
                 !window.localStorage.getItem("lang")
                   ? "Almarai"
                   : "Cairo ExtraLight",
@@ -138,7 +150,7 @@ export default function Signup({ changeLang }) {
             className="text-[7px]   uppercase font-normal"
             style={{
               fontFamily:
-                window.localStorage.getItem("lang") === "ar"||
+                window.localStorage.getItem("lang") === "ar" ||
                 !window.localStorage.getItem("lang")
                   ? "Almarai"
                   : "Inter, sans-serif",
@@ -275,20 +287,33 @@ export default function Signup({ changeLang }) {
           </label>
           <div class="relative my-[10px]  .phone-div h-[44px]">
             <PhoneInput
-             inputProps={{
-              
-              minLength : '14',
-              maxLength : '14',
-             }}
               defaultCountry="qa"
               style={{ width: "388px" }}
               value={phone}
               required
-                      
               onChange={(e) => setPhone(e.substring(1))}
-              className={`phone-input ${((window.localStorage.getItem('lang') === 'ar' )||  (!window.localStorage.getItem('lang'))) && 'phone-input-ar'}`}
-              
+              className={`phone-input ${
+                (window.localStorage.getItem("lang") === "ar" ||
+                  !window.localStorage.getItem("lang")) &&
+                "phone-input-ar"
+              }`}
             />
+
+            {!isValid ? (
+              <div
+                className={`${error} ? ' hidden' : ''`}
+                style={{ color: "red", textAlign: "center" }}
+              >
+                {t("Phone is not valid")}
+              </div>
+            ) : (
+              <div
+                className={`${error} ? ' hidden' : ''`}
+                style={{ color: "green", textAlign: "center" }}
+              >
+                {t("Phone is valid")}
+              </div>
+            )}
             {error.message === "Request failed with status code 422" && (
               <h1 className=" text-red-500 error">
                 {t(error.response.data.error.phone)}
@@ -315,7 +340,7 @@ export default function Signup({ changeLang }) {
                 type="password"
                 name="password"
                 required
-                minLength={'8'}
+                minLength={"8"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
@@ -351,7 +376,7 @@ export default function Signup({ changeLang }) {
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                 required
-                minLength={'8'}
+                minLength={"8"}
                 type="password"
                 name="password_confirmation"
                 class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"

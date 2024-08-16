@@ -11,6 +11,15 @@ import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { getAuthToken } from "../util/auth";
 import { PhoneInput } from "react-international-phone";
+import { PhoneNumberUtil } from "google-libphonenumber";
+const phoneUtil = PhoneNumberUtil.getInstance();
+const isPhoneValid = (phone) => {
+  try {
+    return phoneUtil.isValidNumber(phoneUtil.parseAndKeepRawInput(phone));
+  } catch (error) {
+    return false;
+  }
+};
 
 export default function Profile({
   username,
@@ -37,6 +46,8 @@ export default function Profile({
     useState(null);
   const [changeName, setChangeName] = useState(false);
   const [changeEmail, setChangeEmail] = useState(false);
+
+  const isValid = isPhoneValid(`+${userPhone}`);
 
   console.log(profileImage);
   console.log(name);
@@ -297,8 +308,22 @@ export default function Profile({
                       style={{ width: "323px" }}
                       value={userPhone}
                       onChange={(e) => setUserPhone(e.substring(1))}
-                      className={`${(window.localStorage.getItem('lang') === "ar" || !window.localStorage.getItem('lang')) ? 'input-profile-ar' : 'input-profile '}`}
+                      className={`${
+                        window.localStorage.getItem("lang") === "ar" ||
+                        !window.localStorage.getItem("lang")
+                          ? "input-profile-ar"
+                          : "input-profile "
+                      }`}
                     />
+                    {!isValid ? (
+                      <div className={`${error} ? 'hidden' : ''`} style={{ color: "red", textAlign: "center" }}>
+                        {t("Phone is not valid")}
+                      </div>
+                    ) : (
+                      <div className={`${error} ? 'hidden' : ''`} style={{ color: "green", textAlign: "center" }}>
+                        {t("Phone is valid")}
+                      </div>
+                    )}
                     {updateError.message ===
                       "Request failed with status code 422" && (
                       <h1 className=" text-red-500 error">

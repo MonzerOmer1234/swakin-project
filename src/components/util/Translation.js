@@ -143,8 +143,10 @@ export const engilshTranslation = {
   "Yes , I want to add a new car": "Yes , I want to add a new car",
   "Go to shipments": "Go to shipments",
   "You have successfully add a new car": "You have successfully add a new car",
-  "Track Your Shipment" : 'Track Your Shipment',
-  "No upcoming shipments Available" : "No upcoming shipments Available"
+  "Track Your Shipment": "Track Your Shipment",
+  "No upcoming shipments Available": "No upcoming shipments Available",
+  "Phone is not valid": "Phone is not valid",
+  'Phone is valid' : 'Phone is valid'
 };
 
 export const arabicTranslation = {
@@ -290,6 +292,9 @@ export const arabicTranslation = {
   "Yes , I want to add a new car": "نعم, أريد إضافة سيارة جديدة",
   "Go to shipments": "اذهب إلى الشحنات",
   "You have successfully add a new car": "لقد قمت بإضافة سيارة جديدة بنجاح",
-  "Track Your Shipment" : 'تتبع الشحنة الخاصة بك',
-  "No upcoming shipments Available" : 'لا توجد شحنات قادمة متاحة'
+  "Track Your Shipment": "تتبع الشحنة الخاصة بك",
+  "No upcoming shipments Available": "لا توجد شحنات قادمة متاحة",
+  "Phone is not valid": "الهاتف غير صالح",
+  'Phone is valid' : "الهاتف صالح"
+
 };
