@@ -256,7 +256,7 @@ export default function DashboardContentOne({ changeLang }) {
             <div className="flex p-4 booking">
                     <Link
                         to={`/shipments/mybookings/${bookingSerial}`}
-                      className=" ms-auto me-5 p-3 relative top-2 text-[#1F2937] booking-btn"
+                      className=" ms-auto -me-2 p-3 relative top-2 text-[#1F2937] booking-btn"
                       style={{
                         border: "1px solid #1F2937",
                         borderRadius: "8px",

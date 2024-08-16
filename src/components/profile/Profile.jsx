@@ -297,7 +297,7 @@ export default function Profile({
                       style={{ width: "323px" }}
                       value={userPhone}
                       onChange={(e) => setUserPhone(e.substring(1))}
-                      className={`input-profile`}
+                      className={`${(window.localStorage.getItem('lang') === "ar" || !window.localStorage.getItem('lang')) ? 'input-profile-ar' : 'input-profile '}`}
                     />
                     {updateError.message ===
                       "Request failed with status code 422" && (
