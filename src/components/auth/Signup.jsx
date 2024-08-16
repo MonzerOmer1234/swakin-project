@@ -275,6 +275,11 @@ export default function Signup({ changeLang }) {
           </label>
           <div class="relative my-[10px]  .phone-div h-[44px]">
             <PhoneInput
+             inputProps={{
+              
+              minLength : '14',
+              maxLength : '14',
+             }}
               defaultCountry="qa"
               style={{ width: "388px" }}
               value={phone}

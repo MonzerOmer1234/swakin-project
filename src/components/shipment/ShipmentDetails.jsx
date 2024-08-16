@@ -13,9 +13,7 @@ import { useTranslation } from "react-i18next";
 import MultiSelect from "react-multiple-select-dropdown-lite";
 import "react-multiple-select-dropdown-lite/dist/index.css";
 
-
 export default function ShipmentDetails({
-
   serialNumber,
   username,
   receipentName,
@@ -33,23 +31,21 @@ export default function ShipmentDetails({
   const [error, setError] = useState({});
   const [t] = useTranslation();
   const navigate = useNavigate();
-  const [availableSeats , setAvailableSeats] = useState(0)
+  const [availableSeats, setAvailableSeats] = useState(0);
 
+  useEffect(() => {
+    const data = window.localStorage.getItem("specified_cars");
+    setSpecifiedCars(JSON.parse(data));
+  }, []);
 
- 
-
-  useEffect(()=>{
-    const data = window.localStorage.getItem('specified_cars');
-    setSpecifiedCars(JSON.parse(data))
-  } , [])
-
-  useEffect(()=>{
-    window.localStorage.setItem('specified_cars' , JSON.stringify(specifiedCars));
-  } , [specifiedCars])
+  useEffect(() => {
+    window.localStorage.setItem(
+      "specified_cars",
+      JSON.stringify(specifiedCars)
+    );
+  }, [specifiedCars]);
 
   // get all cars
-
-
 
   async function getCarData() {
     const token = getAuthToken();
@@ -59,7 +55,6 @@ export default function ShipmentDetails({
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        
       });
       console.log(res);
       setCarData(res.data.data);
@@ -79,37 +74,37 @@ export default function ShipmentDetails({
 
   console.log(carData);
 
-
-  async function getShipmentDetails(){
+  async function getShipmentDetails() {
     const token = getAuthToken();
-    try{
+    try {
       setLoading(true);
-      const res = await axios.get(`https://soaken.neuecode.com/api/get-shipments-details/${id}` , {
-        headers : {
-          Authorization : `Bearer ${token}`
+      const res = await axios.get(
+        `https://soaken.neuecode.com/api/get-shipments-details/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      })
+      );
 
-      console.log(res)
+      console.log(res);
       setAvailableSeats(res.data.data.availableSeats);
-      setLoading(false)
-    } catch(error){
+      setLoading(false);
+    } catch (error) {
       console.log(error);
-      setError(error)
+      setError(error);
       setLoading(false);
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getShipmentDetails();
-  } , [id])
-
+  }, [id]);
 
   function handleCars(val) {
-    
     console.log(val);
-    const cars = val.map(car => car.value);
-   
+    const cars = val.map((car) => car.value);
+
     setSpecifiedCars(cars);
   }
 
@@ -164,7 +159,11 @@ export default function ShipmentDetails({
               <span
                 className="text-[#4B5563]"
                 style={{
-                  fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
+                  fontFamily:
+                    window.localStorage.getItem("lang") === "ar" ||
+                    !window.localStorage.getItem("lang")
+                      ? "Almarai"
+                      : "Inter , sans-serif",
                 }}
               >
                 {" "}
@@ -173,7 +172,11 @@ export default function ShipmentDetails({
               <span
                 className="text-[#1F2937] font-medium"
                 style={{
-                  fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
+                  fontFamily:
+                    window.localStorage.getItem("lang") === "ar" ||
+                    !window.localStorage.getItem("lang")
+                      ? "Almarai"
+                      : "Inter , sans-serif",
                 }}
               >
                 / {id} / {t("booking")}{" "}
@@ -249,13 +252,20 @@ export default function ShipmentDetails({
 
           <div
             className={`flex justify-center mt-3 ${
-              window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "ms-[-92px]" : "ms-[-55px]"
+              window.localStorage.getItem("lang") === "ar" ||
+              !window.localStorage.getItem("lang")
+                ? "ms-[-92px]"
+                : "ms-[-55px]"
             }  `}
           >
             <span
               className="font-bold  text-[#353B47]"
               style={{
-                fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
+                fontFamily:
+                  window.localStorage.getItem("lang") === "ar" ||
+                  !window.localStorage.getItem("lang")
+                    ? "Almarai"
+                    : "Inter , sans-serif",
               }}
             >
               {t("Car Details")}
@@ -263,7 +273,11 @@ export default function ShipmentDetails({
             <span
               className="font-bold text-[#353B47] relative start-[85px]"
               style={{
-                fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
+                fontFamily:
+                  window.localStorage.getItem("lang") === "ar" ||
+                  !window.localStorage.getItem("lang")
+                    ? "Almarai"
+                    : "Inter , sans-serif",
               }}
             >
               {t("Checkout")}
@@ -278,7 +292,11 @@ export default function ShipmentDetails({
               <h1
                 className=" p-4 font-bold text-[#353B47] relative shipment-header"
                 style={{
-                  fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
+                  fontFamily:
+                    window.localStorage.getItem("lang") === "ar" ||
+                    !window.localStorage.getItem("lang")
+                      ? "Almarai"
+                      : "Inter , sans-serif",
                 }}
               >
                 {t("Shipment Details")}
@@ -295,9 +313,11 @@ export default function ShipmentDetails({
                         changeLang ? "receipt-info-ar" : "receipt-info"
                       }`}
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                          ? "Almarai"
-                          : "Inter , sans-serif",
+                        fontFamily:
+                          window.localStorage.getItem("lang") === "ar" ||
+                          !window.localStorage.getItem("lang")
+                            ? "Almarai"
+                            : "Inter , sans-serif",
                       }}
                     >
                       {t("Shipment Receipent info")}
@@ -306,21 +326,28 @@ export default function ShipmentDetails({
                     <label
                       htmlFor=""
                       className={`text-[#1F2937]  flex justify-between font-normal text-[14px] ps-3 ${
-                        window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "data-ar" : "data"
+                        window.localStorage.getItem("lang") === "ar" ||
+                        !window.localStorage.getItem("lang")
+                          ? "data-ar"
+                          : "data"
                       }`}
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                          ? "Almarai"
-                          : "Inter , sans-serif",
+                        fontFamily:
+                          window.localStorage.getItem("lang") === "ar" ||
+                          !window.localStorage.getItem("lang")
+                            ? "Almarai"
+                            : "Inter , sans-serif",
                       }}
                     >
                       <span>{t("Full Name")}</span>
                       <span
                         className=" me-[20px] text-[#6B7280] font-medium"
                         style={{
-                          fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                            ? "Almarai"
-                            : "Inter , sans-serif",
+                          fontFamily:
+                            window.localStorage.getItem("lang") === "ar" ||
+                            !window.localStorage.getItem("lang")
+                              ? "Almarai"
+                              : "Inter , sans-serif",
                         }}
                       >
                         {t("Required")}
@@ -338,7 +365,10 @@ export default function ShipmentDetails({
                         class={`py-3 ${
                           changeLang ? "input-data-ar" : "input-data"
                         } px-4 block w-[380px] me-[20px]  rounded-lg text-sm bg-[#FFFFFF]`}
-                        style={{ boxShadow: " 0 0 1px 0 gray" , border: '1px solid #E5E7EB' }}
+                        style={{
+                          boxShadow: " 0 0 1px 0 gray",
+                          border: "1px solid #E5E7EB",
+                        }}
                       />
                     </div>
                     <label
@@ -347,18 +377,22 @@ export default function ShipmentDetails({
                         changeLang ? "data-ar" : "data"
                       } flex justify-between font-normal text-[14px] ps-3`}
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                          ? "Almarai"
-                          : "Inter , sans-serif",
+                        fontFamily:
+                          window.localStorage.getItem("lang") === "ar" ||
+                          !window.localStorage.getItem("lang")
+                            ? "Almarai"
+                            : "Inter , sans-serif",
                       }}
                     >
                       <span>{t("Phone Number")}</span>
                       <span
                         className=" me-[20px] text-[#6B7280] font-medium"
                         style={{
-                          fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                            ? "Almarai"
-                            : "Inter , sans-serif",
+                          fontFamily:
+                            window.localStorage.getItem("lang") === "ar" ||
+                            !window.localStorage.getItem("lang")
+                              ? "Almarai"
+                              : "Inter , sans-serif",
                         }}
                       >
                         {t("Required")}
@@ -366,11 +400,18 @@ export default function ShipmentDetails({
                     </label>
                     <div
                       class={`relative my-[10px] w-[380px]  h-[44px] ps-3 ${
-                        window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "phone-div-ar" : "phone-div"
+                        window.localStorage.getItem("lang") === "ar" ||
+                        !window.localStorage.getItem("lang")
+                          ? "phone-div-ar"
+                          : "phone-div"
                       }`}
                     >
                       <PhoneInput
-                       defaultCountry="qa"
+                        inputProps={{
+                          minLength : '14',
+                          maxLength : '14',
+                        }}
+                        defaultCountry="qa"
                         style={{ width: "380px" }}
                         type="text"
                         name="phone"
@@ -380,7 +421,10 @@ export default function ShipmentDetails({
                           setReceipentPhone((prev) => e.substring(1))
                         }
                         className={`${
-                          window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "input-data-ar" : "input-data"
+                          window.localStorage.getItem("lang") === "ar" ||
+                          !window.localStorage.getItem("lang")
+                            ? "input-data-ar"
+                            : "input-data"
                         }`}
                       />
                     </div>
@@ -389,23 +433,21 @@ export default function ShipmentDetails({
                     <p
                       className=" text-[#1F2937] font-semibold "
                       style={{
-                        fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang")
-                          ? "Almarai"
-                          : "Inter , sans-serif",
+                        fontFamily:
+                          window.localStorage.getItem("lang") === "ar" ||
+                          !window.localStorage.getItem("lang")
+                            ? "Almarai"
+                            : "Inter , sans-serif",
                       }}
                     >
                       {t("Select Cars to be shiped")}
                     </p>
-                   
 
                     <MultiSelect
                       onChange={handleCars}
-                      
-                      placeholder=''
+                      placeholder=""
                       options={carData.map((car) => {
                         return { label: car.car_name_ar, value: car.id };
-                      
-
                       })}
                       jsonValue
                     />
@@ -415,7 +457,11 @@ export default function ShipmentDetails({
               <div className="flex flex-col items-center  md:flex-row gap-5 md:gap-0  justify-between p-5 mt-[50px]">
                 <p
                   style={{
-                    fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
+                    fontFamily:
+                      window.localStorage.getItem("lang") === "ar" ||
+                      !window.localStorage.getItem("lang")
+                        ? "Almarai"
+                        : "Inter , sans-serif",
                   }}
                 >
                   {t("Available Seats")}
@@ -430,7 +476,11 @@ export default function ShipmentDetails({
                     style={{
                       border: "1px solid #1F2937",
                       borderRadius: "8px",
-                      fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
+                      fontFamily:
+                        window.localStorage.getItem("lang") === "ar" ||
+                        !window.localStorage.getItem("lang")
+                          ? "Almarai"
+                          : "Inter , sans-serif",
                     }}
                     to="/shipments"
                   >
@@ -443,7 +493,11 @@ export default function ShipmentDetails({
                     style={{
                       border: "1px solid #1F2937",
                       borderRadius: "8px",
-                      fontFamily: window.localStorage.getItem('lang') === "ar"  ||!window.localStorage.getItem("lang") ? "Almarai" : "Inter , sans-serif",
+                      fontFamily:
+                        window.localStorage.getItem("lang") === "ar" ||
+                        !window.localStorage.getItem("lang")
+                          ? "Almarai"
+                          : "Inter , sans-serif",
                     }}
                   >
                     {t("Next")}

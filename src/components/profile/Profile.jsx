@@ -288,6 +288,10 @@ export default function Profile({
                   </label>
                   <div class="relative my-[10px]  .phone-div h-[44px]">
                     <PhoneInput
+                      inputProps={{
+                        minLength: "14",
+                        maxLength: "14",
+                      }}
                       required
                       defaultCountry="qa"
                       style={{ width: "323px" }}
@@ -321,7 +325,7 @@ export default function Profile({
                         name="password"
                         type="password"
                         value={userPassword}
-                        minLength={'8'}
+                        minLength={"8"}
                         required
                         onChange={(e) => setUserPassword(e.target.value)}
                         class="py-3 px-4 block w-full  rounded-lg text-sm bg-white"
@@ -355,7 +359,7 @@ export default function Profile({
                       <input
                         name="password_confirmation"
                         type="password"
-                        minLength={'8'}
+                        minLength={"8"}
                         value={userPasswordConfirmation}
                         required
                         onChange={(e) =>
