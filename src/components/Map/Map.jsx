@@ -1,4 +1,4 @@
-import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
+import { useJsApiLoader, GoogleMap, MarkerF } from "@react-google-maps/api";
 import { useEffect, useState } from "react";
 import markerPhoto from "../../imgs/marker-photo.png";
 import "./map.css";
@@ -37,7 +37,7 @@ export default function Map({ lat, long }) {
                 onLoad={(map) => setMap(map)}
                 mapContainerStyle={{ height: "400px"  }}
               >
-                <Marker
+                <MarkerF
                   position={center}
                   icon={{
                     url: markerPhoto,
