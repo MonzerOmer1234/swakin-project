@@ -146,7 +146,8 @@ export const engilshTranslation = {
   "Track Your Shipment": "Track Your Shipment",
   "No upcoming shipments Available": "No upcoming shipments Available",
   "Phone is not valid": "Phone is not valid",
-  'Phone is valid' : 'Phone is valid'
+  'Phone is valid' : 'Phone is valid',
+  'The phone has already been taken.' :'The phone has already been taken.'
 };
 
 export const arabicTranslation = {
@@ -295,6 +296,7 @@ export const arabicTranslation = {
   "Track Your Shipment": "تتبع الشحنة الخاصة بك",
   "No upcoming shipments Available": "لا توجد شحنات قادمة متاحة",
   "Phone is not valid": "الهاتف غير صالح",
-  'Phone is valid' : "الهاتف صالح"
+  'Phone is valid' : "الهاتف صالح",
+  'The phone has already been taken.' : 'لقد تم أخذ الهاتف بالفعل.'
 
 };

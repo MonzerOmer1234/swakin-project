@@ -305,7 +305,7 @@ export default function Profile({
                       }}
                       required
                       defaultCountry="qa"
-                      style={{ width: "323px" }}
+                      style={{ width: "323px" , border : isValid ? '1px solid green' : '' }}
                       value={userPhone}
                       onChange={(e) => setUserPhone(e.substring(1))}
                       className={`${
@@ -315,15 +315,7 @@ export default function Profile({
                           : "input-profile "
                       }`}
                     />
-                    {!isValid ? (
-                      <div className={`${error} ? 'hidden' : ''`} style={{ color: "red", textAlign: "center" }}>
-                        {t("Phone is not valid")}
-                      </div>
-                    ) : (
-                      <div className={`${error} ? 'hidden' : ''`} style={{ color: "green", textAlign: "center" }}>
-                        {t("Phone is valid")}
-                      </div>
-                    )}
+                   
                     {updateError.message ===
                       "Request failed with status code 422" && (
                       <h1 className=" text-red-500 error">

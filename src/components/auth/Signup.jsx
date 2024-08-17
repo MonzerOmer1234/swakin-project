@@ -288,7 +288,7 @@ export default function Signup({ changeLang }) {
           <div class="relative my-[10px]  .phone-div h-[44px]">
             <PhoneInput
               defaultCountry="qa"
-              style={{ width: "388px" }}
+              style={{ width: "388px" , border : isValid ? '1px solid green' : '' }}
               value={phone}
               required
               onChange={(e) => setPhone(e.substring(1))}
@@ -299,21 +299,7 @@ export default function Signup({ changeLang }) {
               }`}
             />
 
-            {!isValid ? (
-              <div
-                className={`${error} ? ' hidden' : ''`}
-                style={{ color: "red", textAlign: "center" }}
-              >
-                {t("Phone is not valid")}
-              </div>
-            ) : (
-              <div
-                className={`${error} ? ' hidden' : ''`}
-                style={{ color: "green", textAlign: "center" }}
-              >
-                {t("Phone is valid")}
-              </div>
-            )}
+          
             {error.message === "Request failed with status code 422" && (
               <h1 className=" text-red-500 error">
                 {t(error.response.data.error.phone)}

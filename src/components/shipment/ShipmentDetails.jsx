@@ -420,7 +420,7 @@ export default function ShipmentDetails({
                     >
                       <PhoneInput
                         defaultCountry="qa"
-                        style={{ width: "380px" }}
+                        style={{ width: "380px" , border : isValid ? '1px solid green' : '' }}
                         type="text"
                         name="phone"
                         required
@@ -435,15 +435,7 @@ export default function ShipmentDetails({
                             : "input-data"
                         }`}
                       />
-                      {!isValid ? (
-                        <div className={`${error} ? ' hidden' : '' `} style={{ color: "red", textAlign: "center" }}>
-                          {t("Phone is not valid")}
-                        </div>
-                      ) : (
-                        <div className={`${error} ? ' hidden' : '' `} style={{ color: "green", textAlign: "center" }}>
-                          {t("Phone is valid")}
-                        </div>
-                      )}
+                     
                     </div>
                   </div>
                   <div className=" mt-3">
