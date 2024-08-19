@@ -7,6 +7,7 @@ import "./map.css";
 import { useTranslation } from "react-i18next";
 
 export default function Map({ lat, long }) {
+
   console.log(lat, long);
 
   const [map, setMap] = useState(null);
@@ -14,7 +15,7 @@ export default function Map({ lat, long }) {
 
   console.log(lat , long)
 
-  const center = { lat: lat === null ? 29.6  : lat, lng: long ===  null ? 32.4 : long };
+  const center = { lat: lat === null ? 29.6  : +lat, lng: long ===  null ? 32.4 : +long };
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -36,6 +37,8 @@ export default function Map({ lat, long }) {
                 zoom={15}
                 onLoad={(map) => setMap(map)}
                 mapContainerStyle={{ height: "400px"  }}
+                
+                
               >
                 <MarkerF
                   position={center}
