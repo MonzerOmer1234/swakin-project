@@ -15,10 +15,10 @@ export default function Map({ lat, long }) {
 
   console.log(lat , long)
 
-  const center = { lat: lat === null ? 29.6  : +lat, lng: long ===  null ? 32.4 : +long };
+  const center = { lat: lat === null ? 25.4 : +lat, lng: long ===  null ? 51.2 : +long };
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: 'AIzaSyDDddelwh-k6njWJbchHGYSouZ8I2dLW84',
     libraries: ["places"],
   });
 

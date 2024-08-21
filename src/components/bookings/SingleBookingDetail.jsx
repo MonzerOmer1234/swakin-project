@@ -40,8 +40,8 @@ export default function SingleBookingDetail({
 
   const [shipmentData, setShipmentData] = useState({});
   const [stop, setStop] = useState([]);
-  const [lat, setLat] = useState(29.6);
-  const [long, setLong] = useState(32.4);
+  const [lat, setLat] = useState("");
+  const [long, setLong] = useState("");
   const [status, setStatus] = useState({});
   const [bookingDetail, setBookingDetail] = useState([]);
 

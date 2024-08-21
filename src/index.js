@@ -11,9 +11,9 @@ import './i18n';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <HashRouter>
-    <StrictMode>
+   
     <App />
-    </StrictMode>
+  
 
   </HashRouter>
 );
@@ -22,3 +22,4 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
