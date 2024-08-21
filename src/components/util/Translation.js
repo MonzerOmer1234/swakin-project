@@ -24,7 +24,7 @@ export const engilshTranslation = {
   "Chassis Number": "Chassis Number",
   "Upcoming Shipments": "Upcoming Shipments",
   Journey: "Journey",
-  SAR: "SAR",
+  SAR: "QAR",
   "Ship Name": "Ship Name",
   "Departure Date": "Departure Date",
   "Arrival At": "Arrival At",

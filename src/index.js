@@ -11,8 +11,11 @@ import './i18n';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <HashRouter>
-   
+   <StrictMode>
+
     <App />
+
+   </StrictMode>
   
 
   </HashRouter>
